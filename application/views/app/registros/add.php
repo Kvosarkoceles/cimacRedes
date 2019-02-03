@@ -510,49 +510,41 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion19">Imagenes</a>
                     </div>
-                    <div id="accordion19" class="collapse" data-parent="#accordion1">
+                    <div id="accordion19" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
-                          <div class="form-row align-items-center">
-                            <div class="col-lg-12 mt-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="single-table">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered text-center">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><label for="imagen1" class="col-form-label">Imágen1</label></td>
-                                                            <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="imagen1" name="imagen1"></td>
-                                                            <td> <input type="button" name="button" class="btn btn-outline-primary mb-3" id="button" value="Insertar imágen" onClick="javascript:subirimagen1();"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><label for="imagen2" class="col-form-label">Imágen2</label></td>
-                                                          <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="imagen2" name="imagen2"></td>
-                                                          <td> <input type="button" name="button" class="btn btn-outline-primary mb-3" id="button" value="Insertar imágen" onClick="javascript:subirimagen1();"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><label for="imagen3" class="col-form-label">Imágen3</label></td>
-                                                          <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="imagen3" name="imagen3"></td>
-                                                          <td> <input type="button"class="btn btn-outline-primary mb-3" name="button" id="button" value="Insertar imágen" onClick="javascript:subirimagen1();"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><label for="imagen4" class="col-form-label">Imágen4</label></td>
-                                                          <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="imagen4" name="imagen4"></td>
-                                                          <td> <input type="button" class="btn btn-outline-primary mb-3" name="button" id="button" value="Insertar imágen" onClick="javascript:subirimagen1();"/></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><label for="imagen5" class="col-form-label">Imágen5</label></td>
-                                                          <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="imagen5" name="imagen5"></td>
-                                                          <td> <input type="button" class="btn btn-outline-primary mb-3" name="button" id="button" value="Insertar imágen" onClick="javascript:subirimagen1();"/></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                          <div class="card-body">
+                            <div class="form-row align-items-center">
+                              <div class="col-lg-4 mt-5">
+                                <td><label for="imagen1" class="col-form-label">Imágen1</label></td>
+                                <td> <input type="file" name="imagen1" class="form-control-file .form-control-sm" id="imagen1" /></td>
+
+                              </div>
+                              <div class="col-lg-4 mt-5">
+                                <td><label for="imagen1" class="col-form-label">Imágen2</label></td>
+                                <td> <input type="file" name="imagen1" class="form-control-file .form-control-sm" id="imagen1"  /></td>
+
+                              </div>
+                              <div class="col-lg-4 mt-5">
+                                <td><label for="Imágen3" class="col-form-label">Imágen3</label></td>
+                                <td> <input type="file" name="Imágen3" class="form-control-file .form-control-sm" id="Imágen3"/></td>
+
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-lg-6 mt-5">
+                                <td><label for="Imágen4" class="col-form-label">Imágen4</label></td>
+                                <td> <input type="file" name="Imágen4" class="form-control-file .form-control-sm" id="Imágen4" /></td>
+
+                              </div>
+                              <div class="col-lg-6 mt-5">
+                                <td><label for="Imágen5" class="col-form-label">Imágen5</label></td>
+                                <td> <input type="file" name="Imágen5" class="form-control-file .form-control-sm" id="Imágen5"  /></td>
+
+                              </div>
+
                             </div>
                           </div>
+
                         </div>
                     </div>
                 </div>
