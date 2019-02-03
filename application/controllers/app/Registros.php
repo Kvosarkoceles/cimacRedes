@@ -11,6 +11,7 @@ class Registros extends CI_Controller {
 		}
 		$this->load->model("Registros_model");
 		$this->load->model("Periodistas_model");
+		$this->load->model("File_model");
 	}
 
 	public function index(){
@@ -131,7 +132,9 @@ class Registros extends CI_Controller {
 		$cuales = $this->input->post("cuales");
 		$queAHechoLaComisionDeDerechosHumanos = $this->input->post("queAHechoLaComisionDeDerechosHumanos");
 		$relatoriaDelHecho = $this->input->post("relatoriaDelHecho");
-		$imagen1 = $this->input->post("imagen1");
+		//$this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")
+		//$imagen1 = $this->file->UploadImage('./public/img/','No se puede subir la imagen1...');
+		$imagen1 = $this->File_model->UploadImage('./public/img/','No se puede subir la imagen1...');
 		$imagen2 = $this->input->post("imagen2");
 		$imagen3 = $this->input->post("imagen3");
 		$imagen4 = $this->input->post("imagen4");
