@@ -95,4 +95,24 @@ class Registros_model extends CI_Model {
 		$resultados = $this->db->get("niveles");
 		return $resultados ->result();
 	}
+	public function getSexo(){
+		$resultados = $this->db->get("sexo");
+		return $resultados ->result();
+	}
+	public function getTipoAgresor(){
+		$resultados = $this->db->get("tipoagresor");
+		return $resultados ->result();
+	}
+	public function getNivelagresor($id){
+		$this->db->select("n.*");
+		$this->db->from("nivelAgresor n");
+		$this->db->where("n.id_nivel",$id);
+		$resultado = $this->db->get();
+		return $resultado->row();
+	}
+
+	public function getNivelagresorTemp(){
+		$resultados = $this->db->get("nivelAgresor");
+		return $resultados ->result();
+	}
 }

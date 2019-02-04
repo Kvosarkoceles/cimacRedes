@@ -15,72 +15,81 @@
                                                <div class="form-row align-items-center">
                                                             <div class="col-sm-4  my-1">
                                                                 <label for="nombres" class="col-form-label">Nombres</label>
-                                                                <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="nombres" name="nombres">
+                                                                <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('nombres');?>" id="nombres" name="nombres">
+                                                                <?php echo form_error("nombres","<span class='text-danger'>","</span>"); ?>
                                                             </div>
                                                             <div class="col-sm-4 my-1">
                                                                 <label for="apellidoPaterno" class="col-form-label">Primer Apellido</label>
-                                                                <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="apellidoPaterno" name="apellidoPaterno">
+                                                                <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('apellidoPaterno');?>" id="apellidoPaterno" name="apellidoPaterno">
+                                                                <?php echo form_error("apellidoPaterno","<span class='text-danger'>","</span>"); ?>
                                                             </div>
                                                             <div class="col-sm-4 my-1">
                                                                 <label for="apellidoMaterno" class="col-form-label">Segundo Apellido</label>
-                                                                <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="apellidoMaterno" name="apellidoMaterno">
+                                                                <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('apellidoMaterno');?>" id="apellidoMaterno" name="apellidoMaterno">
+                                                                <?php echo form_error("apellidoMaterno","<span class='text-danger'>","</span>"); ?>
                                                             </div>
                                                </div>
                                                <div class="form-row align-items-center">
                                                             <div class="col-sm-2  my-1 ">
                                                                 <label class="col-form-label">Edad</label>
                                                                 <select class="custom-select" name="edad" id="edad">
-                                                                <option selected="selected" value="0">Seleccione un valor</option>
+                                                                <option selected="selected" value="">Seleccione un valor</option>
                                                                 <?php foreach($edades as $edad):?>
-                                                                    <option value="<?php echo $edad->id;?>"><?php echo $edad->parametro;?></option>
+                                                                    <option value="<?php echo $edad->id;?>"<?php echo set_select('edad',$edad->id); ?>><?php echo $edad->parametro;?></option>
                                                                 <?php endforeach;?>
                                                                 </select>
+                                                                <?php echo form_error("edad","<span class='text-danger'>","</span>"); ?>
                                                             </div>
                                                             <div class="col-sm-3 my-1">
                                                                 <label class="col-form-label">Estado</label>
                                                                  <select class="custom-select" name="estado" id="estado">
-                                                                <option selected="selected" value="0">Seleccione un valor</option>
+                                                                <option selected="selected" value="">Seleccione un valor</option>
                                                                     <?php foreach($estados as $estado):?>
-                                                                        <option value="<?php echo $estado->id;?>"><?php echo $estado->nombre;?></option>
+                                                                        <option value="<?php echo $estado->id;?>"<?php echo set_select('estado',$estado->id); ?>><?php echo $estado->nombre;?></option>
                                                                     <?php endforeach;?>
                                                                 </select>
+                                                                  <?php echo form_error("estado","<span class='text-danger'>","</span>"); ?>
                                                             </div>
                                                             <div class="col-sm-4 my-1">
                                                                <label for="municipio" class="col-form-label form-control-sm input-rounded">Municipio</label>
-                                                                 <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="nommunicipiobres" name="municipio">
+                                                                 <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('municipio');?>" id="nommunicipiobres" name="municipio">
                                                             </div>
                                                             <div class="col-sm-3 my-1">
                                                                <label for="localidad" class="col-form-label form-control-sm input-rounded">Localidad</label>
-                                                                 <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="localidad" name="localidad">
+                                                                 <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('localidad');?>" id="localidad" name="localidad">
                                                             </div>
                                                </div>
                                                <div class="form-row align-items-center">
-                                                            <div class="col-sm-2  my-1 ">
-                                                                <label class="col-form-label">Su casa es:</label>
-                                                                <select class="custom-select" name="tiposdecasa" id="tiposdecasa">
-                                                                <option selected="selected" value="0">Seleccione un valor</option>
-                                                                <?php foreach($tiposdecasa as $tipo):?>
-                                                                    <option value="<?php echo $tipo->id;?>"><?php echo $tipo->nombre;?></option>
-                                                                <?php endforeach;?>
-                                                                </select>
-                                                            </div>
+                                                 <div class="col-sm-2  my-1 ">
+                                                     <label class="col-form-label">Su casa es:</label>
+                                                     <select class="custom-select" name="tiposdecasa" id="tiposdecasa">
+                                                     <option selected="selected" value="">Seleccione un valor</option>
+                                                     <?php foreach($tiposdecasa as $tipo):?>
+                                                         <option value="<?php echo $tipo->id;?>"<?php echo set_select('tiposdecasa',$tipo->id);?>><?php echo $tipo->nombre;?></option>
+                                                     <?php endforeach;?>
+                                                     </select>
+                                                     <?php echo form_error("tiposdecasa","<span class='text-danger'>","</span>"); ?>
+                                                 </div>
+
                                                             <div class="col-sm-4  my-1 ">
                                                                 <label for="viveCon" class="col-form-label">Vive con:</label>
-                                                                <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="viveCon" name="viveCon">
+                                                                <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('viveCon');?>" id="viveCon" name="viveCon">
                                                             </div>
                                                             <div class="col-sm-4  my-1 ">
                                                                 <label for="dependientesEconomicos" class="col-form-label">Dependientes económicos:</label>
-                                                               <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="dependientesEconomicos" name="dependientesEconomicos">
+                                                               <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('dependientesEconomicos');?>" id="dependientesEconomicos" name="dependientesEconomicos">
                                                             </div>
                                                             <div class="col-sm-2  my-1 ">
                                                                 <label class="col-form-label">Estado civil:</label>
                                                                 <select class="custom-select" name="estadoCivil" id="estadoCivil">
-                                                                <option selected="selected" value="0">Seleccione un valor</option>
+                                                                <option selected="selected" value="">Seleccione un valor</option>
                                                                 <?php foreach($estadocivil as $civil):?>
-                                                                    <option value="<?php echo $civil->id;?>"><?php echo $civil->nombre;?></option>
+                                                                    <option value="<?php echo $civil->id;?>"<?php echo set_select('estadoCivil',$civil->id);?>><?php echo $civil->nombre;?></option>
                                                                 <?php endforeach;?>
                                                                 </select>
+                                                                <?php echo form_error("estadoCivil","<span class='text-danger'>","</span>"); ?>
                                                             </div>
+
                                                </div>
                                                <div class="form-row align-items-center">
                                                     <div class="col-sm-4 my-1 ">
@@ -88,16 +97,16 @@
                                                         <select class="custom-select col-sm-8" name="comunidadindigena" id="comunidadindigena">
 
                                                         <?php foreach($comunidadindigena as $comunidad):?>
-                                                            <option value="<?php echo $comunidad->id;?>"><?php echo $comunidad->nombre;?></option>
+                                                            <option value="<?php echo $comunidad->id;?>"<?php echo set_select('comunidadindigena',$comunidad->id);?>><?php echo $comunidad->nombre;?></option>
                                                         <?php endforeach;?>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-4 my-1 ">
                                                         <label class="col-form-label col-sm-12">¿Pertenece a la comunidad LGBTTTI?</label>
-                                                        <select class="custom-select col-sm-8" name="   comunidadLGBTTTI" id="comunidadLGBTTTI">
+                                                        <select class="custom-select col-sm-8" name="comunidadLGBTTTI" id="comunidadLGBTTTI">
 
                                                         <?php foreach($comunidadlgbttti as $comunidadlgbttti):?>
-                                                            <option value="<?php echo $comunidadlgbttti->id;?>"><?php echo $comunidadlgbttti->nombre;?></option>
+                                                            <option value="<?php echo $comunidadlgbttti->id;?>"<?php echo set_select('comunidadLGBTTTI',$comunidadlgbttti->id);?>><?php echo $comunidadlgbttti->nombre;?></option>
                                                         <?php endforeach;?>
                                                         </select>
                                                     </div>
@@ -115,58 +124,58 @@
                                                 <div class="form-row align-items-center">
                                                     <div class="col-sm-4 my-1 ">
                                                         <label for="telefonoparticular" class="col-form-label" >Telefono Particular</label>
-                                                         <input class="form-control form-control-sm input-rounded col-sm-8" type="tel" value="" id="telefonoparticular" name="telefonoparticular">
+                                                         <input class="form-control form-control-sm input-rounded col-sm-8" type="tel" value="<?php echo set_value('telefonoparticular');?>" id="telefonoparticular" name="telefonoparticular">
                                                     </div>
                                                     <div class="col-sm-4 my-1 ">
                                                          <label for="telefonocelular" class="col-form-label">Telefono Celular</label>
-                                                          <input class="form-control form-control-sm input-rounded col-sm-8" type="tel" value="" id="telefonocelular" name="telefonocelular">
+                                                          <input class="form-control form-control-sm input-rounded col-sm-8" type="tel" value="<?php echo set_value('telefonocelular');?>" id="telefonocelular" name="telefonocelular">
                                                     </div>
                                                     <div class="col-sm-4 my-1 ">
                                                         <label for="email" class="col-form-label">Correo Electronico</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-8" type="email" value="" id="email" name="email"placeholder="name@example.com">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-8" type="email" value="<?php echo set_value('email');?>" id="email" name="email"placeholder="name@example.com">
                                                     </div>
                                                 </div>
                                                 <div class="form-row align-items-center">
                                                     <div class="col-sm-3 my-1 ">
                                                         <label for="telegram" class="col-form-label"><i
                                                         class="fa fa-paper-plane"></i>Telegram</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="telegram" name="telegram">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('telegram');?>" id="telegram" name="telegram">
                                                     </div>
                                                     <div class="col-sm-3 my-1 ">
                                                         <label for="skype" class="col-form-label"><i
                                                         class="fa fa-skype"></i> Skype</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="skype" name="skype">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('skype');?>" id="skype" name="skype">
                                                     </div>
                                                     <div class="col-sm-3 my-1 ">
                                                         <label for="facebook" class="col-form-label"><i
                                                         class="fa fa-facebook-official"></i>Facebook</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="facebook" name="facebook">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('facebook');?>" id="facebook" name="facebook">
                                                     </div>
                                                     <div class="col-sm-3 my-1 ">
                                                         <label for="twitter" class="col-form-label"><i
                                                         class="fa fa-twitter"></i> Twitter</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="twitter" name="twitter">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('twitter');?>" id="twitter" name="twitter">
                                                     </div>
                                                 </div>
                                                  <div class="form-row align-items-center">
                                                      <div class="col-sm-3 my-1 ">
                                                         <label for="instagram" class="col-form-label"><i
                                                         class="fa fa-instagram"></i> Instagram</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="instagram" name="instagram">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('instagram');?>" id="instagram" name="instagram">
                                                     </div>
                                                     <div class="col-sm-3 my-1 ">
                                                         <label for="youtube" class="col-form-label"><i
                                                         class="fa fa-youtube"></i> Youtube</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="youtube" name="youtube">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('youtube');?>" id="youtube" name="youtube">
                                                     </div>
                                                     <div class="col-sm-3 my-1 ">
                                                         <label for="snapchat" class="col-form-label">Snapchat</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="snapchat" name="snapchat">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('snapchat');?>" id="snapchat" name="snapchat">
                                                     </div>
                                                     <div class="col-sm-3 my-1 ">
                                                         <label for="otraredsocial" class="col-form-label"><i
                                                         class="fa fa-users"></i> Otra Red</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="otraredsocial" name="otraredsocial">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('otraredsocial');?>" id="otraredsocial" name="otraredsocial">
                                                     </div>
                                                  </div>
                                             </div>
@@ -179,52 +188,58 @@
                                         <div id="accordion13" class="collapse show" data-parent="#accordion1">
                                             <div class="card-body">
                                                 <div class="form-row align-items-center">
-                                                   <div class="col-sm-2  my-1 ">
-                                                        <label class="col-form-label">Tipo de medio</label>
-                                                        <select class="custom-select col-sm-11" name="tipodemedio" id="tipodemedio">
-                                                        <option selected="selected" value="0">Seleccione un valor</option>
-                                                        <?php foreach($tipodemedio as $tipomedio):?>
-                                                            <option value="<?php echo $tipomedio->id;?>"><?php echo $tipomedio->nombre;?></option>
-                                                        <?php endforeach;?>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-3 my-1 ">
+                                                  <div class="col-sm-2  my-1 ">
+                                                     <label for="rol">Tipo de medio:</label>
+                                                     <select class="custom-select" name="tipodemedio" id="tipodemedio">
+                                                     <option value="" selected="selected">Seleccione un valor</option>
+                                                     <?php foreach($tipodemedio as $tipomedio):?>
+                                                         <option value="<?php echo $tipomedio->id;?>" <?php echo set_select('tipodemedio',$tipomedio->id); ?>><?php echo $tipomedio->nombre;?></option>
+                                                     <?php endforeach;?>
+                                                     </select>
+                                                     <?php echo form_error("tipodemedio","<span class='text-danger'>","</span>"); ?>
+                                                  </div>
+                                                  <div class="col-sm-3 my-1 ">
                                                         <label for="paracuantosmedioslabora" class="col-form-label"> ¿Para cuantos medios labora?</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="number" value="" id="paracuantosmedioslabora" name="paracuantosmedioslabora">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="number" value="<?php echo set_value('paracuantosmedioslabora');?>" id="paracuantosmedioslabora" name="paracuantosmedioslabora">
                                                     </div>
                                                     <div class="col-sm-2 my-1 ">
-                                                        <label class="col-form-label">Tipo de contrato</label>
-                                                        <select class="custom-select col-sm-12" name="tipodecontrato" id="tipodecontrato">
-                                                        <option selected="selected" value="0">Seleccione un valor</option>
-                                                        <?php foreach($tipodecontrato as $tipocontrato):?>
-                                                            <option value="<?php echo $tipocontrato->id;?>"><?php echo $tipocontrato->nombre;?></option>
-                                                        <?php endforeach;?>
-                                                        </select>
+                                                      <label for="rol">Tipo de contrato:</label>
+                                                      <select class="custom-select" name="tipodecontrato" id="tipodecontrato">
+                                                      <option value="" selected="selected">Seleccione un valor</option>
+                                                      <?php foreach($tipodecontrato as $tipocontrato):?>
+                                                          <option value="<?php echo $tipocontrato->id;?>" <?php echo set_select('tipodecontrato',$tipocontrato->id); ?>><?php echo $tipocontrato->nombre;?></option>
+                                                      <?php endforeach;?>
+                                                      </select>
+                                                      <?php echo form_error("tipodecontrato","<span class='text-danger'>","</span>"); ?>
                                                     </div>
+
                                                     <div class="col-sm-5 my-1 ">
                                                         <label for="direcciondelmedio" class="col-form-label"> Direccion del medio</label>
-                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="" id="direcciondelmedio" name="direcciondelmedio">
+                                                        <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('direcciondelmedio');?>" id="direcciondelmedio" name="direcciondelmedio">
                                                     </div>
                                                  </div>
                                                 <div class="form-row align-items-center">
-                                                    <div class="col-sm-2  my-1 ">
-                                                        <label class="col-form-label">Cargo en el medio</label>
-                                                        <select class="custom-select col-sm-10" name="cargoenelmedio" id="cargoenelmedio">
-                                                        <option selected="selected" value="0">Seleccione un valor</option>
-                                                        <?php foreach($cargoenelmedio as $cargo):?>
-                                                            <option value="<?php echo $cargo->id;?>"><?php echo $cargo->nombre;?></option>
-                                                        <?php endforeach;?>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-2  my-1 ">
-                                                        <label class="col-form-label">Fuente</label>
-                                                        <select class="custom-select col-sm-10" name="fuente" id="fuente">
-                                                        <option selected="selected" value="0">Seleccione un valor</option>
-                                                        <?php foreach($fuente as $fuente):?>
-                                                            <option value="<?php echo $fuente->id;?>"><?php echo $fuente->nombre;?></option>
-                                                        <?php endforeach;?>
-                                                        </select>
-                                                    </div>
+                                                  <div class="col-sm-2 my-1 ">
+                                                    <label for="rol">Cargo en el medio:</label>
+                                                    <select class="custom-select" name="cargoenelmedio" id="cargoenelmedio">
+                                                    <option value="" selected="selected">Seleccione un valor</option>
+                                                    <?php foreach($cargoenelmedio as $cargo):?>
+                                                        <option value="<?php echo $cargo->id;?>" <?php echo set_select('cargoenelmedio',$cargo->id); ?>><?php echo $cargo->nombre;?></option>
+                                                    <?php endforeach;?>
+                                                    </select>
+                                                    <?php echo form_error("cargoenelmedio","<span class='text-danger'>","</span>"); ?>
+                                                  </div>
+                                                  <div class="col-sm-2 my-1 ">
+                                                    <label for="rol">Fuente:</label>
+                                                    <select class="custom-select" name="fuente" id="fuente">
+                                                    <option value="" selected="selected">Seleccione un valor</option>
+                                                    <?php foreach($fuente as $fuente):?>
+                                                        <option value="<?php echo $fuente->id;?>" <?php echo set_select('fuente',$fuente->id); ?>><?php echo $fuente->nombre;?></option>
+                                                    <?php endforeach;?>
+                                                    </select>
+                                                    <?php echo form_error("fuente","<span class='text-danger'>","</span>"); ?>
+                                                  </div>
+
                                                     <div class="col-sm-4 my-1 ">
                                                         <label for="Link1" class="col-form-label">Link 1</label>
                                                         <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="" id="Link1" name="Link1">

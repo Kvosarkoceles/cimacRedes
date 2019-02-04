@@ -92,7 +92,6 @@ class Periodistas extends CI_Controller {
 	}
 
 	public function store(){
-
 		$nombres = $this->input->post("nombres");
 		$apellidoPaterno = $this->input->post("apellidoPaterno");
 		$apellidoMaterno = $this->input->post("apellidoMaterno");
@@ -134,74 +133,85 @@ class Periodistas extends CI_Controller {
 		$cuantasreporterashayenelmedio = $this->input->post("cuantasreporterashayenelmedio");
 		$cuantasreporterasyreporteroshayenlafuente = $this->input->post("cuantasreporterasyreporteroshayenlafuente");
 		$cuantasreporterashayenlafuente	 = $this->input->post("cuantasreporterashayenlafuente");
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		$this->form_validation->set_rules("apellidoPaterno","Apellido Paterno","required");
+		$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
+		$this->form_validation->set_rules("edad","Edad","required");
+		$this->form_validation->set_rules("estado","Estado","required");
+		$this->form_validation->set_rules("tipodemedio","Tipo de medio","required");
+		$this->form_validation->set_rules("tipodecontrato","Tipo de contrato","required");
+		$this->form_validation->set_rules("cargoenelmedio","Cargo en el medio","required");
+		$this->form_validation->set_rules("fuente","Fuente","required");
+		$this->form_validation->set_rules("tiposdecasa","tiposdecasa","required");
+		$this->form_validation->set_rules("estadoCivil","Estado Civil","required");
 
-
-		$datosperiodistas  = array(
-			'fechaRegistro' =>date("Y")."-".date("m")."-".date("d"),
-			'nombres' => $nombres,
-			'apellidoPaterno' => $apellidoPaterno,
-			'apellidoMaterno' => $apellidoMaterno,
-			'id_Edad' => $edad,
-			'id_estados' => $estado,
-			'Municipio' => $municipio,
-			'Localidad' => $localidad,
-			'id_tipodecasa' => $tiposdecasa,
-			'viveCon' => $viveCon,
-			'dependientesEconomicos' => $dependientesEconomicos,
-			'id_estadoCivil' => $estadoCivil,
-			'comunidadIndigena' => $comunidadindigena,
-			'comunidadLGBTTTI' => $comunidadLGBTTTI,
-			'telefonoparticular' => $telefonoparticular,
-			'telefonocelular' => $telefonocelular,
-			'email' => $email,
-			'telegram' => $telegram,
-			'skype' => $skype,
-			'facebook' => $facebook,
-			'twitter' => $twitter,
-			'instagram' => $instagram,
-			'youtube' => $youtube,
-			'snapchat' => $snapchat,
-			'otraredsocial' => $otraredsocial,
-			'id_usuario' => $this->session->userdata("id"),
-			'estatus' => "1",
-		);
-		$idultimo=$this->Periodistas_model->save("datosperiodistas",$datosperiodistas);
-		$datoslaborales = array(
-			'Id_datospersonales' => $idultimo,
-			'id_tipodemedio' => $tipodemedio,
-			'paracuantosmedioslabora ' => $paracuantosmedioslabora,
-			'id_tipodecontrato' => $tipodecontrato,
-			'DireccionDelMedio' => $direcciondelmedio,
-			'id_cargoenelmedio' => $cargoenelmedio,
-			'id_fuente' => $fuente,
-			'Links1' => $Link1,
-			'Links2' => $Link2,
-			'Links3' => $Link3,
-			'Links4' => $Link4,
-			'Links5' => $Link5,
-			'AnosDeEjercerElPeriodismo' => $AnosDeEjercerElPeriodismo,
-			'id_SexoDelJefeInmediato' => $id_SexoDelJefeInmediato,
-			'cuantasreporterasyreporteroshayenelmedio' => $cuantasreporterasyreporteroshayenelmedio,
-			'cuantasreporterashayenelmedio' => $cuantasreporterashayenelmedio,
-			'cuantasreporterasyreporteroshayenlafuente' => $cuantasreporterasyreporteroshayenlafuente,
-			'cuantasreporterashayenlafuente' => $cuantasreporterashayenlafuente,
-		);
-		//if ($this->Periodistas_model->save($data)) {
-
-		if($idultimo){
-			if ($this->Periodistas_model->save("datoslaborales",$datoslaborales)) {
-				redirect(base_url()."app/registros/add/".$idultimo);
+		if ($this->form_validation->run()) {
+			$datosperiodistas  = array(
+				'fechaRegistro' =>date("Y")."-".date("m")."-".date("d"),
+				'nombres' => $nombres,
+				'apellidoPaterno' => $apellidoPaterno,
+				'apellidoMaterno' => $apellidoMaterno,
+				'id_Edad' => $edad,
+				'id_estados' => $estado,
+				'Municipio' => $municipio,
+				'Localidad' => $localidad,
+				'id_tipodecasa' => $tiposdecasa,
+				'viveCon' => $viveCon,
+				'dependientesEconomicos' => $dependientesEconomicos,
+				'id_estadoCivil' => $estadoCivil,
+				'comunidadIndigena' => $comunidadindigena,
+				'comunidadLGBTTTI' => $comunidadLGBTTTI,
+				'telefonoparticular' => $telefonoparticular,
+				'telefonocelular' => $telefonocelular,
+				'email' => $email,
+				'telegram' => $telegram,
+				'skype' => $skype,
+				'facebook' => $facebook,
+				'twitter' => $twitter,
+				'instagram' => $instagram,
+				'youtube' => $youtube,
+				'snapchat' => $snapchat,
+				'otraredsocial' => $otraredsocial,
+				'id_usuario' => $this->session->userdata("id"),
+				'estatus' => "1",
+			);
+			$idultimo=$this->Periodistas_model->save("datosperiodistas",$datosperiodistas);
+			$datoslaborales = array(
+				'Id_datospersonales' => $idultimo,
+				'id_tipodemedio' => $tipodemedio,
+				'paracuantosmedioslabora ' => $paracuantosmedioslabora,
+				'id_tipodecontrato' => $tipodecontrato,
+				'DireccionDelMedio' => $direcciondelmedio,
+				'id_cargoenelmedio' => $cargoenelmedio,
+				'id_fuente' => $fuente,
+				'Links1' => $Link1,
+				'Links2' => $Link2,
+				'Links3' => $Link3,
+				'Links4' => $Link4,
+				'Links5' => $Link5,
+				'AnosDeEjercerElPeriodismo' => $AnosDeEjercerElPeriodismo,
+				'id_SexoDelJefeInmediato' => $id_SexoDelJefeInmediato,
+				'cuantasreporterasyreporteroshayenelmedio' => $cuantasreporterasyreporteroshayenelmedio,
+				'cuantasreporterashayenelmedio' => $cuantasreporterashayenelmedio,
+				'cuantasreporterasyreporteroshayenlafuente' => $cuantasreporterasyreporteroshayenlafuente,
+				'cuantasreporterashayenlafuente' => $cuantasreporterashayenlafuente,
+			);
+			if($idultimo){
+				if ($this->Periodistas_model->save("datoslaborales",$datoslaborales)) {
+					redirect(base_url()."app/registros/add/".$idultimo);
+				}else{
+					$this->session->set_flashdata("error","No se pudo guardar la informacion");
+					redirect(base_url()."app/periodistas/add");
+				}
 			}else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
 				redirect(base_url()."app/periodistas/add");
 			}
+		}else {
+				$this->add();
+		}
 
 
-		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."app/periodistas/add");
-		}
 	}
 
 	public function update(){

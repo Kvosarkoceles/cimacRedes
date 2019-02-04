@@ -32,8 +32,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/default-css.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/styles.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/responsive.css">
+    
 </head>
 
 <body>
-   
-        

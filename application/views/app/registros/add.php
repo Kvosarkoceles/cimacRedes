@@ -694,7 +694,7 @@
                         <div class="card-body">
                             <div class="card-body">
                               <div class="form-row align-items-center">
-                                <div class="col-sm-3  my-1">
+                                <div class="col-sm-4  my-1">
                                     <label for="motivodelasgresion" class="col-form-label" align="center">Motivo de las gresiones</label>
                                     <select class="custom-select col-sm-12" name="motivodelasgresion" id="motivodelasgresion">
 
@@ -703,7 +703,7 @@
                                     <?php endforeach;?>
                                     </select>
                                 </div>
-                                <div class="col-sm-3  my-1">
+                                <div class="col-sm-4  my-1">
                                     <label for="tipoDeInvestigacion" class="col-form-label" align="center">Tipo de investigacion:</label>
                                     <select class="custom-select col-sm-12" name="tipoDeInvestigacion" id="tipoDeInvestigacion">
 
@@ -712,6 +712,48 @@
                                     <?php endforeach;?>
                                     </select>
                                 </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="sexoAgresor" class="col-form-label" align="center">Sexo del agresor:</label>
+                                    <select class="custom-select col-sm-12" name="sexoAgresor" id="sexoAgresor">
+
+                                    <?php foreach($sexo as $sex):?>
+                                        <option value="<?php echo $sex->id;?>"><?php echo $sex->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="agresor" class="col-form-label" align="center">Agresor:</label>
+                                    <select class="custom-select col-sm-12" name="agresor" id="agresor">
+
+                                    <?php foreach($agresor as $agres):?>
+                                        <option value="<?php echo $agres->id;?>"><?php echo $agres->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="agresor" class="col-form-label" align="center">Nivel:</label>
+                                    <select class="custom-select col-sm-12" name="agresor" id="agresor">
+
+                                    <?php foreach($nivelAgresor as $nivelA):?>
+                                      <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                  <select name="provincia" id="provincia">
+                                    <?php foreach($provincias as $fila){ ?>
+                                      <option value="<?=$fila -> id ?>"><?=$fila -> nombre ?></option>
+                                      <?php }?>
+                                    </select>
+                                    <select name="localidad" id="localidad">
+                                        <option value="">Selecciona tu provincía</option>
+                                    </select>
+                                </div>
+
+
+
+
+
                               </div>
                             </div>
 
