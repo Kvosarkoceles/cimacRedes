@@ -49,6 +49,24 @@ class Registros_model extends CI_Model {
 
 		return $resultados ->result();
 	}
+	public function getTipoDeInvestigacion(){
+		$this->db->select("ti.*");
+		$this->db->from("tipodeinvestigacion ti");
+
+		//$this->db->where("r.id_estado","1");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+	public function getMotivodelasgresion(){
+		$this->db->select("ma.*");
+		$this->db->from("motivodelasgresion ma");
+
+		//$this->db->where("r.id_estado","1");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
 	public function getPerfiles(){
 		$this->db->select("p.*");
 		$this->db->from("perfilBajo p");

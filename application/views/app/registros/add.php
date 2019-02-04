@@ -506,7 +506,7 @@
               <!-- Denuncias end -->
 
               <!-- Imagenes start -->
-                <div class="card">
+                <!--  <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion19">Imagenes</a>
                     </div>
@@ -547,11 +547,11 @@
 
                         </div>
                     </div>
-                </div>
+                </div> -->
               <!-- Imagenes end -->
 
               <!-- Documentos start -->
-                <div class="card">
+              <!--  <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion20">Documentos</a>
                     </div>
@@ -600,7 +600,7 @@
                         </div>
                       </div>
                     </div>
-                </div>
+                </div> -->
               <!-- Documentos end -->
 
               <!-- Links start -->
@@ -688,11 +688,33 @@
               <!-- Agresor start -->
                 <div class="card">
                     <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresor</a>
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
                     </div>
                     <div id="accordion23" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque porro alias assumenda accusamus incidunt odio molestiae maxime quo atque in et quaerat, vel unde aliquam aperiam quidem consectetur omnis dicta officiis? Dolorum, error dolorem!
+                            <div class="card-body">
+                              <div class="form-row align-items-center">
+                                <div class="col-sm-3  my-1">
+                                    <label for="motivodelasgresion" class="col-form-label" align="center">Motivo de las gresiones</label>
+                                    <select class="custom-select col-sm-12" name="motivodelasgresion" id="motivodelasgresion">
+
+                                    <?php foreach($motivodelasgresion as $motivo):?>
+                                        <option value="<?php echo $motivo->id;?>"><?php echo $motivo->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3  my-1">
+                                    <label for="tipoDeInvestigacion" class="col-form-label" align="center">Tipo de investigacion:</label>
+                                    <select class="custom-select col-sm-12" name="tipoDeInvestigacion" id="tipoDeInvestigacion">
+
+                                    <?php foreach($tipoDeInvestigacion as $tipo):?>
+                                        <option value="<?php echo $tipo->id;?>"><?php echo $tipo->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                              </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
