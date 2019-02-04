@@ -18,12 +18,24 @@ class Registros_model extends CI_Model {
 													 r.apellidoMaterno,r.localidad as localidadPeriodista,
 													 ed.parametro as edad,
 													 e.nombre as estado,
-													 e2.nombre as estadoIncidente");
+													 e2.nombre as estadoIncidente,
+													 sn.nombre as beneficiariaDelMecanismo,
+													 nv.nombre as carpetaDeInvestigacion,
+													 nv2.nombre as quejaAnteComision,
+													 sn2.nombre as estasDeAcuedoConElMecanismo,
+													 sn3.nombre as tePermitenSeguirHaciendoTuTrabajo,
+													 sn4.nombre as resultadosLaCarpetaDeInvestigacion");
 		$this->db->from("datosIncidente u");
 		$this->db->join("datosperiodistas r","u.id_datospersonales = r.id");
 		$this->db->join("edades ed","r.id_Edad = ed.id");
 		$this->db->join("estados e","r.id_estados = e.id");
 		$this->db->join("estados e2","u.id_estados = e2.id");
+		$this->db->join("sino sn","u.beneficiariaDelMecanismoDeProtecion = sn.valor");
+		$this->db->join("niveles nv","u.carpetaDeInvestigacionEnAlgunaProcuraduria = nv.id");
+		$this->db->join("niveles nv2","u.quejaAnteComisionDeDerechosHumanos = nv2.id");
+		$this->db->join("sino sn2","u.estasDeAcuedoConElMecanismoDeProteccion = sn2.valor");
+		$this->db->join("sino sn3","u.esasMedidasTePermitenSeguirHaciendoTuTrabajo = sn3.valor");
+		$this->db->join("sino sn4","u.tenidoResultadosLaCarpetaDeInvestigacion = sn4.valor");
 		$this->db->where("u.id",$id);
 		$resultado = $this->db->get();
 		return $resultado->row();
