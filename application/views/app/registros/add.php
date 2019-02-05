@@ -91,7 +91,125 @@
                     </div>
                 </div>
               <!-- Ubicación de la Agresión end -->
+              <!-- Agresor start -->
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
+                    </div>
+                    <div id="accordion23" class="collapse show" data-parent="#accordion1">
+                        <div class="card-body">
+                            <div class="card-body">
+                              <div class="form-row align-items-center">
+                                <div class="col-sm-4  my-1">
+                                    <label for="motivodelasgresion" class="col-form-label" align="center">Motivo de las gresiones</label>
+                                    <select class="custom-select col-sm-12" name="motivodelasgresion" id="motivodelasgresion">
 
+                                    <?php foreach($motivodelasgresion as $motivo):?>
+                                        <option value="<?php echo $motivo->id;?>"><?php echo $motivo->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="tipoDeInvestigacion" class="col-form-label" align="center">Tipo de investigacion:</label>
+                                    <select class="custom-select col-sm-12" name="tipoDeInvestigacion" id="tipoDeInvestigacion">
+
+                                    <?php foreach($tipoDeInvestigacion as $tipo):?>
+                                        <option value="<?php echo $tipo->id;?>"><?php echo $tipo->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="sexoAgresor" class="col-form-label" align="center">Sexo del agresor:</label>
+                                    <select class="custom-select col-sm-12" name="sexoAgresor" id="sexoAgresor">
+
+                                    <?php foreach($sexo as $sex):?>
+                                        <option value="<?php echo $sex->id;?>"><?php echo $sex->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="agresor" class="col-form-label" align="center">Agresor:</label>
+                                    <select class="custom-select col-sm-12" name="agresor" id="agresor">
+
+                                    <?php foreach($agresor as $agres):?>
+                                        <option value="<?php echo $agres->id;?>"><?php echo $agres->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="agresor" class="col-form-label" align="center">Nivel:</label>
+                                    <select class="custom-select col-sm-12" name="agresor" id="agresor">
+
+                                    <?php foreach($nivelAgresor as $nivelA):?>
+                                      <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                  <select name="provincia" id="provincia">
+                                    <?php foreach($provincias as $fila){ ?>
+                                      <option value="<?=$fila -> id ?>"><?=$fila -> nombre ?></option>
+                                      <?php }?>
+                                    </select>
+                                    <select name="localidad" id="localidad">
+                                        <option value="">Selecciona tu provincía</option>
+                                    </select>
+                                </div>
+
+
+
+
+
+                              </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+              <!-- Agresor end -->
+              <!-- Analisis start -->
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
+                    </div>
+                    <div id="accordion22" class="collapse" data-parent="#accordion1">
+                        <div class="card-body">
+                          <div class="card-body">
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="analisisDeContexto" class="col-form-label">Analisis de contexto:</label>
+                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:100px;"></textarea>
+                              </div>
+                              <div class="col-sm-6  my-1">
+                                  <label for="analisisDeRiesgo" class="col-form-label">Analisis de riesgo:</label>
+                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:100px;"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="observaciones" class="col-form-label">Observaciones:</label>
+                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:100px;"></textarea>
+                              </div>
+                              <div class="col-sm-3  my-1">
+                                  <label for="cimacHaceAcompanamientoAnteElMecanismo" class="col-form-label" align="center">Cimac hace acompanamiento ante el mecanismo:</label>
+                                  <select class="custom-select col-sm-12" name="cimacHaceAcompanamientoAnteElMecanismo" id="cimacHaceAcompanamientoAnteElMecanismo">
+
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-3  my-1">
+                                  <label for="queOtraOrganizacionLasAcompana" class="col-form-label" align="center">Que otra organizacion las acompaña:</label>
+                                  <input class="form-control" type="text" value="" id="queOtraOrganizacionLasAcompana" name="queOtraOrganizacionLasAcompana">
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+              <!-- Analisis end -->
               <!-- Tipo de violencia start -->
                 <div class="card">
                     <div class="card-header">
@@ -407,7 +525,7 @@
               <!-- Denuncias start -->
                 <div class="card">
                     <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion18">Denuncias</a>
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion18">Acciones de seguimiento</a>
                     </div>
                     <div id="accordion18" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
@@ -603,164 +721,10 @@
                 </div> -->
               <!-- Documentos end -->
 
-              <!-- Links start -->
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion21">Links</a>
-                    </div>
-                    <div id="accordion21" class="collapse" data-parent="#accordion1">
-                        <div class="card-body">
-                          <div class="card-body">
-                            <div class="form-row align-items-center">
-                              <div class="col-sm-4  my-1">
-                                  <label for="link1" class="col-form-label">link1:</label>
-                                  <input class="form-control" type="url" value="" id="link1" name="link1">
-                              </div>
-                              <div class="col-sm-4  my-1">
-                                  <label for="link2" class="col-form-label">link2:</label>
-                                  <input class="form-control" type="url" value="" id="link2" name="link2">
-                              </div>
-                              <div class="col-sm-4  my-1">
-                                  <label for="link3" class="col-form-label">link3:</label>
-                                  <input class="form-control" type="url" value="" id="link3" name="link3">
-                              </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                              <div class="col-sm-4  my-1">
-                                  <label for="link4" class="col-form-label">link4:</label>
-                                  <input class="form-control" type="url" value="" id="link4" name="link4">
-                              </div>
-                              <div class="col-sm-4  my-1">
-                                  <label for="link5" class="col-form-label">link5:</label>
-                                  <input class="form-control" type="url" value="" id="link5" name="link5">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-              <!-- Links end -->
-
-              <!-- Analisis start -->
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
-                    </div>
-                    <div id="accordion22" class="collapse" data-parent="#accordion1">
-                        <div class="card-body">
-                          <div class="card-body">
-                            <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
-                                  <label for="analisisDeContexto" class="col-form-label">Analisis de contexto:</label>
-                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:100px;"></textarea>
-                              </div>
-                              <div class="col-sm-6  my-1">
-                                  <label for="analisisDeRiesgo" class="col-form-label">Analisis de riesgo:</label>
-                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:100px;"></textarea>
-                              </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
-                                  <label for="observaciones" class="col-form-label">Observaciones:</label>
-                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:100px;"></textarea>
-                              </div>
-                              <div class="col-sm-3  my-1">
-                                  <label for="cimacHaceAcompanamientoAnteElMecanismo" class="col-form-label" align="center">Cimac hace acompanamiento ante el mecanismo:</label>
-                                  <select class="custom-select col-sm-12" name="cimacHaceAcompanamientoAnteElMecanismo" id="cimacHaceAcompanamientoAnteElMecanismo">
-
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
-                              <div class="col-sm-3  my-1">
-                                  <label for="queOtraOrganizacionLasAcompana" class="col-form-label" align="center">Que otra organizacion las acompaña:</label>
-                                  <input class="form-control" type="text" value="" id="queOtraOrganizacionLasAcompana" name="queOtraOrganizacionLasAcompana">
-                              </div>
-                            </div>
-                          </div>
-
-                        </div>
-                    </div>
-                </div>
-              <!-- Analisis end -->
-
-              <!-- Agresor start -->
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
-                    </div>
-                    <div id="accordion23" class="collapse show" data-parent="#accordion1">
-                        <div class="card-body">
-                            <div class="card-body">
-                              <div class="form-row align-items-center">
-                                <div class="col-sm-4  my-1">
-                                    <label for="motivodelasgresion" class="col-form-label" align="center">Motivo de las gresiones</label>
-                                    <select class="custom-select col-sm-12" name="motivodelasgresion" id="motivodelasgresion">
-
-                                    <?php foreach($motivodelasgresion as $motivo):?>
-                                        <option value="<?php echo $motivo->id;?>"><?php echo $motivo->nombre;?></option>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="tipoDeInvestigacion" class="col-form-label" align="center">Tipo de investigacion:</label>
-                                    <select class="custom-select col-sm-12" name="tipoDeInvestigacion" id="tipoDeInvestigacion">
-
-                                    <?php foreach($tipoDeInvestigacion as $tipo):?>
-                                        <option value="<?php echo $tipo->id;?>"><?php echo $tipo->nombre;?></option>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="sexoAgresor" class="col-form-label" align="center">Sexo del agresor:</label>
-                                    <select class="custom-select col-sm-12" name="sexoAgresor" id="sexoAgresor">
-
-                                    <?php foreach($sexo as $sex):?>
-                                        <option value="<?php echo $sex->id;?>"><?php echo $sex->nombre;?></option>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="agresor" class="col-form-label" align="center">Agresor:</label>
-                                    <select class="custom-select col-sm-12" name="agresor" id="agresor">
-
-                                    <?php foreach($agresor as $agres):?>
-                                        <option value="<?php echo $agres->id;?>"><?php echo $agres->nombre;?></option>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="agresor" class="col-form-label" align="center">Nivel:</label>
-                                    <select class="custom-select col-sm-12" name="agresor" id="agresor">
-
-                                    <?php foreach($nivelAgresor as $nivelA):?>
-                                      <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                  <select name="provincia" id="provincia">
-                                    <?php foreach($provincias as $fila){ ?>
-                                      <option value="<?=$fila -> id ?>"><?=$fila -> nombre ?></option>
-                                      <?php }?>
-                                    </select>
-                                    <select name="localidad" id="localidad">
-                                        <option value="">Selecciona tu provincía</option>
-                                    </select>
-                                </div>
 
 
 
 
-
-                              </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-              <!-- Agresor end -->
 
               <!-- Boton start -->
               <div class="form-group">
