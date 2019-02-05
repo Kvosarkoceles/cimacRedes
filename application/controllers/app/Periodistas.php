@@ -322,7 +322,7 @@ class Periodistas extends CI_Controller {
 				redirect(base_url()."app/periodistas/edit".$idperiodista);
 			}
 			if($this->Periodistas_model->update($idtrabajo,$datoslaborales,"datoslaborales")){
-					redirect(base_url()."app/periodistas");
+					redirect(base_url()."app/periodistas/info/$idperiodista");
 			}	else{
 					$this->session->set_flashdata("error","No se pudo guardar la informacion");
 					redirect(base_url()."app/periodistas/edit/".$idperiodista);

@@ -185,10 +185,9 @@
                   <div class="col-sm-2 my-1 ">
                     <label for="rol">Tipo de medio:</label>
                     <select class="custom-select" name="tipodemedio" id="tipodemedio">
-                      <option value="" selected="selected">Seleccione un valor</option>
                       <?php foreach($tipodemedio as $tipomedio):?>
                         <?php if ($tipomedio->id>1): ?>
-                          <option value="<?php echo $tipomedio->id;?>" <?php echo set_select('tipodemedio',$tipomedio->id); ?>><?php echo $tipomedio->nombre;?></option>
+                          <option value="<?php echo $tipomedio->id;?>" <?php echo $tipomedio->id==$trabajo->id_tipodemedio ? "selected":"";?> ><?php echo $tipomedio->nombre;?></option>
                         <?php endif; ?>
                        <?php endforeach;?>
                      </select>
@@ -196,15 +195,14 @@
                   </div>
                   <div class="col-sm-3 my-1 ">
                     <label for="paracuantosmedioslabora" class="col-form-label"> ¿Para cuantos medios labora?</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="number" value="<?php echo set_value('paracuantosmedioslabora');?>" id="paracuantosmedioslabora" name="paracuantosmedioslabora">
+                    <input class="form-control form-control-sm input-rounded col-sm-10" type="number" value="<?php echo $trabajo->paracuantosmedioslabora;?>" id="paracuantosmedioslabora" name="paracuantosmedioslabora">
                   </div>
                   <div class="col-sm-2 my-1 ">
                     <label for="rol">Tipo de contrato:</label>
                     <select class="custom-select" name="tipodecontrato" id="tipodecontrato">
-                      <option value="" selected="selected">Seleccione un valor</option>
                       <?php foreach($tipodecontrato as $tipocontrato):?>
-                        <?php if ($tipocontrato->id>1): ?>
-                          <option value="<?php echo $tipocontrato->id;?>" <?php echo set_select('tipodecontrato',$tipocontrato->id); ?>><?php echo $tipocontrato->nombre;?></option>
+                        <?php if ($tipocontrato->id>0): ?>
+                          <option value="<?php echo $tipocontrato->id;?>" <?php echo $tipocontrato->id==$trabajo->id_tipodecontrato ? "selected":"";?> ><?php echo $tipocontrato->nombre;?></option>
                         <?php endif; ?>
                       <?php endforeach;?>
                     </select>
@@ -212,17 +210,16 @@
                   </div>
                   <div class="col-sm-5 my-1 ">
                     <label for="direcciondelmedio" class="col-form-label"> Direccion del medio</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo set_value('direcciondelmedio');?>" id="direcciondelmedio" name="direcciondelmedio">
+                    <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo $trabajo->DireccionDelMedio;?>" id="direcciondelmedio" name="direcciondelmedio">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-2 my-1 ">
                     <label for="rol">Cargo en el medio:</label>
                     <select class="custom-select" name="cargoenelmedio" id="cargoenelmedio">
-                      <option value="" selected="selected">Seleccione un valor</option>
                       <?php foreach($cargoenelmedio as $cargo):?>
                         <?php if ($cargo->id>1): ?>
-                          <option value="<?php echo $cargo->id;?>" <?php echo set_select('cargoenelmedio',$cargo->id); ?>><?php echo $cargo->nombre;?></option>
+                          <option value="<?php echo $cargo->id;?>" <?php echo $cargo->id==$trabajo->id_cargoenelmedio	 ? "selected":"";?> ><?php echo $cargo->nombre;?></option>
                         <?php endif; ?>
                       <?php endforeach;?>
                     </select>
@@ -230,11 +227,10 @@
                   </div>
                   <div class="col-sm-2 my-1 ">
                     <label for="rol">Fuente:</label>
-                    <select class="custom-select" name="fuente" id="fuente">
-                      <option value="" selected="selected">Seleccione un valor</option>
+                    <select class="custom-select" name="fuente" id="fuente">                      
                       <?php foreach($fuente as $fuente):?>
                         <?php if ($fuente->id>1): ?>
-                          <option value="<?php echo $fuente->id;?>" <?php echo set_select('fuente',$fuente->id); ?>><?php echo $fuente->nombre;?></option>
+                          <option value="<?php echo $fuente->id;?>" <?php echo $fuente->id==$trabajo->id_fuente	 ? "selected":"";?> ><?php echo $fuente->nombre;?></option>
                         <?php endif; ?>
                       <?php endforeach;?>
                     </select>
@@ -242,60 +238,59 @@
                   </div>
                   <div class="col-sm-4 my-1 ">
                     <label for="Link1" class="col-form-label">Link 1</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo set_value('Link1');?>" id="Link1" name="Link1">
+                    <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo $trabajo->Links1;?>" id="Link1" name="Link1">
                   </div>
                   <div class="col-sm-4 my-1 ">
                     <label for="Link2" class="col-form-label">Link 2</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo set_value('Link2');?>" id="Link2" name="Link2">
+                    <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo $trabajo->Links2;?>" id="Link2" name="Link2">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-4 my-1 ">
                     <label for="Link3" class="col-form-label">Link 3</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link3');?>" id="Link3" name="Link3">
+                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo $trabajo->Links3;?>" id="Link3" name="Link3">
                   </div>
                   <div class="col-sm-4 my-1 ">
                     <label for="Link4" class="col-form-label">Link 4</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link4');?>" id="Link4" name="Link4">
+                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo $trabajo->Links4;?>" id="Link4" name="Link4">
                   </div>
                   <div class="col-sm-4 my-1 ">
                     <label for="Link5" class="col-form-label">Link 5</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link5');?>" id="Link5" name="Link5">
+                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo $trabajo->Links5;?>" id="Link5" name="Link5">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-4 my-1 ">
                     <label for="AnosDeEjercerElPeriodismo" class="col-form-label">Años de ejercer el periodismo</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="number" value="<?php echo set_value('AnosDeEjercerElPeriodismo');?>" id="AnosDeEjercerElPeriodismo" name="AnosDeEjercerElPeriodismo">
+                    <input class="form-control form-control-sm input-rounded col-sm-10" type="number" value="<?php echo $trabajo->AnosDeEjercerElPeriodismo;?>" id="AnosDeEjercerElPeriodismo" name="AnosDeEjercerElPeriodismo">
                   </div>
                   <div class="col-sm-2 my-1 ">
                     <label class="col-form-label">Sexo del jefe inmediato</label>
                     <select class="custom-select col-sm-12" name="sexodeljefeinmediato" id="sexodeljefeinmediato">
-                      <option selected="selected" value="1">Seleccione un valor</option>
                       <?php foreach($sexo as $sexo):?>
-                        <?php if ($sexo->id>1): ?>
-                          <option value="<?php echo $sexo->id;?>"><?php echo $sexo->nombre;?></option>
+                        <?php if ($sexo->id>0): ?>
+                          <option value="<?php echo $sexo->id;?>" <?php echo $sexo->id==$trabajo->id_SexoDelJefeInmediato ? "selected":"";?> ><?php echo $sexo->nombre;?></option>
                         <?php endif; ?>
                       <?php endforeach;?>
                     </select>
                   </div>
                   <div class="col-sm-6 my-1 ">
                     <label for="cuantasreporterasyreporteroshayenelmedio" class="col-form-label">¿Cuantas reporteras y reporteros hay en el medio?</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-6" type="number" value="<?php echo set_value('cuantasreporterasyreporteroshayenelmedio');?>"id="cuantasreporterasyreporteroshayenelmedio" name="cuantasreporterasyreporteroshayenelmedio">
+                    <input class="form-control form-control-sm input-rounded col-sm-6" type="number" value="<?php echo $trabajo->cuantasreporterasyreporteroshayenelmedio;?>" id="cuantasreporterasyreporteroshayenelmedio" name="cuantasreporterasyreporteroshayenelmedio">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-4 my-1 ">
                     <label for="cuantasreporterashayenelmedio" class="col-form-label">¿Cuantas reporteras hay en el medio?</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-7" type="number" value="<?php echo set_value('cuantasreporterashayenelmedio');?>" id="cuantasreporterashayenelmedio" name="cuantasreporterashayenelmedio">
+                    <input class="form-control form-control-sm input-rounded col-sm-7" type="number" value="<?php echo $trabajo->cuantasreporterashayenelmedio;?>" id="cuantasreporterashayenelmedio" name="cuantasreporterashayenelmedio">
                   </div>
                   <div class="col-sm-4 my-1 ">
                     <label for="cuantasreporterasyreporteroshayenlafuente" class="col-form-label">  ¿Cuantas reporteras y reporteros hay en la fuente?  </label>
-                    <input class="form-control form-control-sm input-rounded col-sm-9" type="number" value="<?php echo set_value('cuantasreporterasyreporteroshayenlafuente');?>" id="cuantasreporterasyreporteroshayenlafuente" name="cuantasreporterasyreporteroshayenlafuente">
+                    <input class="form-control form-control-sm input-rounded col-sm-9" type="number" value="<?php echo $trabajo->cuantasreporterasyreporteroshayenlafuente;?>" id="cuantasreporterasyreporteroshayenlafuente" name="cuantasreporterasyreporteroshayenlafuente">
                   </div>
                   <div class="col-sm-4 my-1 ">
                     <label for="cuantasreporterashayenlafuente" class="col-form-label">¿Cuantas reporteras hay en la fuente?</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-7" type="number" value="<?php echo set_value('cuantasreporterashayenlafuente');?>" id="cuantasreporterashayenlafuente" name="cuantasreporterashayenlafuente">
+                    <input class="form-control form-control-sm input-rounded col-sm-7" type="number" value="<?php echo $trabajo->cuantasreporterashayenlafuente;?>" id="cuantasreporterashayenlafuente" name="cuantasreporterashayenlafuente">
                   </div>
                 </div>
               </div>
