@@ -100,6 +100,7 @@ class Periodistas extends CI_Controller {
 		$municipio = $this->input->post("municipio");
 		$localidad = $this->input->post("localidad");
 		$tiposdecasa = $this->input->post("tiposdecasa");
+		$tiposdecasa = $this->input->post("tiposdecasa");
 		$viveCon = $this->input->post("viveCon");
 		$dependientesEconomicos = $this->input->post("dependientesEconomicos");
 		$estadoCivil = $this->input->post("estadoCivil");
@@ -142,8 +143,8 @@ class Periodistas extends CI_Controller {
 		$this->form_validation->set_rules("tipodecontrato","Tipo de contrato","required");
 		$this->form_validation->set_rules("cargoenelmedio","Cargo en el medio","required");
 		$this->form_validation->set_rules("fuente","Fuente","required");
-		$this->form_validation->set_rules("tiposdecasa","tiposdecasa","required");
-		$this->form_validation->set_rules("estadoCivil","Estado Civil","required");
+		//$this->form_validation->set_rules("tiposdecasa","tiposdecasa","required");
+		//$this->form_validation->set_rules("estadoCivil","Estado Civil","required");
 
 		if ($this->form_validation->run()) {
 			$datosperiodistas  = array(
