@@ -3,7 +3,7 @@
   <form action="<?php echo base_url();?>app/periodistas/store" method="POST">
     <div class="card">
       <div class="card-body">
-        <h3 class="header-title">Informacion de la periodista</h3>
+        <h3 class="header-title">Agregar periodista</h3>
         <div id="accordion1" class="according">
           <div class="card">
             <div class="card-header">

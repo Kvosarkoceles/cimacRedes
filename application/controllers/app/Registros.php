@@ -140,21 +140,11 @@ class Registros extends CI_Controller {
 		$relatoriaDelHecho = $this->input->post("relatoriaDelHecho");
 		//$this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")
 		//$imagen1 = $this->file->UploadImage('./public/img/','No se puede subir la imagen1...');
-	//	$imagen1 = $this->File_model->UploadImage('./public/img/','No se puede subir la imagen1...');
-		//$imagen2 = $this->input->post("imagen2");
-		//$imagen3 = $this->input->post("imagen3");
-		//$imagen4 = $this->input->post("imagen4");
-		//$imagen5 = $this->input->post("imagen5");
 		$link1 = $this->input->post("link1");
 		$link2 = $this->input->post("link2");
 		$link3 = $this->input->post("link3");
 		$link4 = $this->input->post("link4");
 		$link5 = $this->input->post("link5");
-		//$textos1 = $this->input->post("textos1");
-		//$textos2 = $this->input->post("textos2");
-		//$textos3 = $this->input->post("textos3");
-		//$textos4 = $this->input->post("textos4");
-		//$textos5 = $this->input->post("textos5");
 		$analisisDeContexto = $this->input->post("analisisDeContexto");
 		$analisisDeRiesgo = $this->input->post("analisisDeRiesgo");
 		$observaciones = $this->input->post("observaciones");
