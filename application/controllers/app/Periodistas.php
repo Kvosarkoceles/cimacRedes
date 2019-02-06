@@ -251,10 +251,6 @@ class Periodistas extends CI_Controller {
 		$Link5 = $this->input->post("Link5");
 		$AnosDeEjercerElPeriodismo = $this->input->post("AnosDeEjercerElPeriodismo");
 		$SexoDelJefeInmediato = $this->input->post("sexodeljefeinmediato");
-		$cuantasreporterasyreporteroshayenelmedio = $this->input->post("cuantasreporterasyreporteroshayenelmedio");
-		$cuantasreporterashayenelmedio = $this->input->post("cuantasreporterashayenelmedio");
-		$cuantasreporterasyreporteroshayenlafuente = $this->input->post("cuantasreporterasyreporteroshayenlafuente");
-		$cuantasreporterashayenlafuente	 = $this->input->post("cuantasreporterashayenlafuente");
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		$this->form_validation->set_rules("apellidoPaterno","Apellido Paterno","required");
 	//	$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
@@ -289,7 +285,9 @@ class Periodistas extends CI_Controller {
 				'instagram' => $instagram,
 				'youtube' => $youtube,
 				'snapchat' => $snapchat,
-				'otraredsocial' => $otraredsocial
+				'otraredsocial' => $otraredsocial,
+				'fechaultimamodificacion' =>date("Y")."-".date("m")."-".date("d"),
+				'id_uduarioModificacion	' => $this->session->userdata("id")
 			);
 			$datoslaborales = array(
 				'id_tipodemedio' => $tipodemedio,
@@ -305,10 +303,7 @@ class Periodistas extends CI_Controller {
 				'Links5' => $Link5,
 				'AnosDeEjercerElPeriodismo' => $AnosDeEjercerElPeriodismo,
 				'id_SexoDelJefeInmediato' => $SexoDelJefeInmediato,
-				'cuantasreporterasyreporteroshayenelmedio' => $cuantasreporterasyreporteroshayenelmedio,
-				'cuantasreporterashayenelmedio' => $cuantasreporterashayenelmedio,
-				'cuantasreporterasyreporteroshayenlafuente' => $cuantasreporterasyreporteroshayenlafuente,
-				'cuantasreporterashayenlafuente' => $cuantasreporterashayenlafuente,
+
 
 			);
 			if ($this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")) {

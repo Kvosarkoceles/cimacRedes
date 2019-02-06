@@ -17,6 +17,7 @@
                           <p><strong>Tipo de casa:</strong><small class="text-muted"><?php echo $periodista->casa;?></small></p>
                           <p><strong>Vive con:</strong><small class="text-muted"> <?php echo $periodista->viveCon;?></small></p>
                           <p><strong>Dependientes economicos:</strong><small class="text-muted"><?php echo $periodista->dependientesEconomicos;?></small></p>
+                          <p><strong>Hijas/Hijos:</strong><small class="text-muted"><?php echo $periodista->hijos;?></small></p>
                           <p><strong>Estado civil:</strong><small class="text-muted"> <?php echo $periodista->estadocivil;?></small></p>
                           <p><strong>¿Pertenece a la alguna comunidad indigena?</strong><small class="text-muted"><?php echo $periodista->indigena;?></small></p>
                           <p><strong>¿Pertenece a la comunidad LGBTTTI?</strong><small class="text-muted"><?php echo $periodista->LGBTTTI;?></small></p>
@@ -37,9 +38,9 @@
                           <p><strong>Facebook :</strong><small class="text-muted"> <?php echo $periodista->facebook;?></small></p>
                           <p><strong>Twitter:</strong><small class="text-muted"><?php echo $periodista->twitter;?></small></p>
                           <p><strong>Instagram:</strong><small class="text-muted"> <?php echo $periodista->instagram;?></small></p>
-                          <p><strong>Youtube</strong><small class="text-muted"><?php echo $periodista->youtube;?></small></p>
-                          <p><strong>Snapchat</strong><small class="text-muted"><?php echo $periodista->snapchat;?></small></p>
-                          <p><strong>Otra red social </strong><small class="text-muted"><?php echo $periodista->otraredsocial;?></small></p>
+                          <p><strong>Youtube:</strong><small class="text-muted"><?php echo $periodista->youtube;?></small></p>
+                          <p><strong>Snapchat:</strong><small class="text-muted"><?php echo $periodista->snapchat;?></small></p>
+                          <p><strong>Otra red social:</strong><small class="text-muted"><?php echo $periodista->otraredsocial;?></small></p>
                         </div>
                     </div>
                 </div>
@@ -62,10 +63,7 @@
                           <p><strong>Links5</strong><small class="text-muted"><?php echo $trabajo->Links5;?></small></p>
                           <p><strong>Años de ejercer el periodismo:</strong><small class="text-muted"><?php echo $trabajo->AnosDeEjercerElPeriodismo;?></small></p>
                           <p><strong>Sexo del jefe imediato:</strong><small class="text-muted"><?php echo $trabajo->sexo;?></small></p>
-                          <p><strong>Cuantas reporteras y reporteros hay en el medio: </strong><small class="text-muted"><?php echo $trabajo->cuantasreporterasyreporteroshayenelmedio;?></small></p>
-                          <p><strong>Cuantas reporteras hay en el medio:</strong><small class="text-muted"><?php echo $trabajo->cuantasreporterashayenelmedio;?></small></p>
-                          <p><strong>Cuantas reporteras y reporteros hay en la fuente:</strong><small class="text-muted"><?php echo $trabajo->cuantasreporterasyreporteroshayenlafuente;?></small></p>
-                          <p><strong>Cuantas reporteras hay en la fuente:</strong><small class="text-muted"><?php echo $trabajo->cuantasreporterashayenlafuente;?></small></p>
+
                         </div>
                     </div>
                 </div>
@@ -75,9 +73,6 @@
                     </div>
                     <div id="accordion24" class="collapse show" data-parent="#accordion2">
                         <div class="card-body">
-
-
-
                                   <!-- Progress Table start -->
                                   <div class="col-12 mt-5">
                                       <div class="card">
