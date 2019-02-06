@@ -195,7 +195,7 @@ class Periodistas extends CI_Controller {
 			);
 			if($idultimo){
 				if ($this->Periodistas_model->save("datoslaborales",$datoslaborales)) {
-					redirect(base_url()."app/registros/add/".$idultimo);
+					redirect(base_url()."app/periodistas");
 				}else{
 					$this->session->set_flashdata("error","No se pudo guardar la informacion");
 					redirect(base_url()."app/periodistas/add");
