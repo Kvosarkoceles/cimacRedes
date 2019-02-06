@@ -136,11 +136,11 @@ class Periodistas extends CI_Controller {
 		$cuantasreporterashayenlafuente	 = $this->input->post("cuantasreporterashayenlafuente");
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		$this->form_validation->set_rules("apellidoPaterno","Apellido Paterno","required");
-		$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
+		//$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
 		$this->form_validation->set_rules("edad","Edad","required");
 		$this->form_validation->set_rules("estado","Estado","required");
 		$this->form_validation->set_rules("tipodemedio","Tipo de medio","required");
-		$this->form_validation->set_rules("tipodecontrato","Tipo de contrato","required");
+	//	$this->form_validation->set_rules("tipodecontrato","Tipo de contrato","required");
 		$this->form_validation->set_rules("cargoenelmedio","Cargo en el medio","required");
 		$this->form_validation->set_rules("fuente","Fuente","required");
 		//$this->form_validation->set_rules("tiposdecasa","tiposdecasa","required");
@@ -261,11 +261,11 @@ class Periodistas extends CI_Controller {
 		$cuantasreporterashayenlafuente	 = $this->input->post("cuantasreporterashayenlafuente");
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		$this->form_validation->set_rules("apellidoPaterno","Apellido Paterno","required");
-		$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
+	//	$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
 		$this->form_validation->set_rules("edad","Edad","required");
 		$this->form_validation->set_rules("estado","Estado","required");
 		$this->form_validation->set_rules("tipodemedio","Tipo de medio","required");
-		$this->form_validation->set_rules("tipodecontrato","Tipo de contrato","required");
+	//	$this->form_validation->set_rules("tipodecontrato","Tipo de contrato","required");
 		$this->form_validation->set_rules("cargoenelmedio","Cargo en el medio","required");
 		$this->form_validation->set_rules("fuente","Fuente","required");
 		if ($this->form_validation->run()) {

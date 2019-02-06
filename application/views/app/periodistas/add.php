@@ -202,7 +202,7 @@
                   <div class="col-sm-2 my-1 ">
                     <label for="rol">Tipo de contrato:</label>
                     <select class="custom-select" name="tipodecontrato" id="tipodecontrato">
-                      <option value="" selected="selected">Seleccione un valor</option>
+                      <option value="1" selected="selected">Seleccione un valor</option>
                       <?php foreach($tipodecontrato as $tipocontrato):?>
                         <?php if ($tipocontrato->id>1): ?>
                           <option value="<?php echo $tipocontrato->id;?>" <?php echo set_select('tipodecontrato',$tipocontrato->id); ?>><?php echo $tipocontrato->nombre;?></option>
