@@ -264,7 +264,7 @@
                                   </select>
                               </div>
                               <div class="col-sm-2  my-1">
-                                  <label for="tipoDeViolenciaCibernetica" class="col-form-label">Cibernetica</label>
+                                  <label for="tipoDeViolenciaCibernetica" class="col-form-label">Violencia en línea</label>
                                   <select class="custom-select col-sm-9" name="tipoDeViolenciaCibernetica" id="tipoDeViolenciaCibernetica">
 
                                   <?php foreach($sinos as $sino):?>
@@ -333,7 +333,7 @@
                                   </select>
                               </div>
                               <div class="col-sm-2  my-1">
-                                  <label for="modalidadDeViolenciaCibernetica" class="col-form-label">Cibernetica</label>
+                                  <label for="modalidadDeViolenciaCibernetica" class="col-form-label">Violencia en línea</label>
                                   <select class="custom-select col-sm-9" name="modalidadDeViolenciaCibernetica" id="modalidadDeViolenciaCibernetica">
 
                                   <?php foreach($sinos as $sino):?>
@@ -474,7 +474,7 @@
               <!-- Atención Recibida< start -->
                 <div class="card">
                     <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida</a>
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida Por CIMAC</a>
                     </div>
                     <div id="accordion17" class="collapse" data-parent="#accordion1">
                         <div class="card-body">

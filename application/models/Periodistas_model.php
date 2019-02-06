@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Periodistas_model extends CI_Model {
 	public function getPeriodistas(){
-		$this->db->select("p.*,e.nombre as estado");
+		$this->db->select("p.*,e.nombre as estado,dl.*,tm.nombre as tipodemedio");
 		$this->db->from("datosperiodistas p");
 		$this->db->join("estados e","p.id_estados = e.id");
+		$this->db->join("datoslaborales dl","p.id = dl.Id_datospersonales");
+		$this->db->join("tipodemedio tm","dl.id_tipodemedio = tm.id");
 		$this->db->where("p.estatus","1");
 		$resultados = $this->db->get();
 		return $resultados ->result();
@@ -21,7 +23,7 @@ class Periodistas_model extends CI_Model {
 		}
 	public function getPeriodista($id){
 		$this->db->select("p.*, ed.parametro as edad,e.nombre as estado, t.nombre as casa, eC.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
-		//$this->db->select("p.*,e.nombre as estado, ed.parametro as edad, t.nombre as casa, ec.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
+	//$this->db->select("p.*,e.nombre as estado, ed.parametro as edad, t.nombre as casa, ec.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
 		$this->db->from("datosperiodistas p");
 		$this->db->join("estados e","p.id_estados = e.id");
 		$this->db->join("edades ed","p.id_Edad = ed.id");

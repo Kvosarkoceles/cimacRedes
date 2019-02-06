@@ -14,6 +14,7 @@
                                                 <th>#</th>
                                                 <th>Nombres</th>
                                                <th>Estado</th>
+                                               <th>Tipo de medio</th>
                                                 <th>opciones</th>
                                             </tr>
                                         </thead>
@@ -33,7 +34,7 @@
                                                               <li class="mr-3"><a href="<?php echo base_url();?>app/periodistas/delete/<?php echo $periodista->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
                                                               <li class="mr-3"><a href="<?php echo base_url();?>app/registros/add/<?php echo $periodista->id;?>" class="text-primary"><i class="fa fa-plus"></i></a></li>
                                                           </ul>
-                                                            
+
                                                         </td>
                                                     </tr>
                                                 <?php endforeach;?>
