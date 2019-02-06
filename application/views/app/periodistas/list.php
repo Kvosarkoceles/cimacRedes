@@ -15,7 +15,8 @@
                                                <th>Nombres</th>
                                               <th>Estado</th>
                                               <th>Tipo de medio</th>
-                                               <th>opciones</th>
+                                              <th>Tipo de cargo</th>
+                                              <th>opciones</th>
                                            </tr>
                                        </thead>
                                        <tbody>
@@ -26,6 +27,7 @@
                                                        <td><?php echo $periodista->nombres." ".$periodista->apellidoPaterno." ".$periodista->apellidoMaterno;?></td>
                                                        <td><?php echo $periodista->estado;?></td>
                                                        <td><?php echo $periodista->tipodemedio;?></td>
+                                                       <td><?php echo $periodista->cargoenelmedio;?></td>
                                                        <td>
                                                          <ul class="d-flex justify-content-center">
 

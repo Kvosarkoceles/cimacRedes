@@ -3,11 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Periodistas_model extends CI_Model {
 	public function getPeriodistas(){
-		$this->db->select("p.*,e.nombre as estado,dl.*,tm.nombre as tipodemedio");
+		$this->db->select("p.*,e.nombre as estado,dl.*,tm.nombre as tipodemedio,cm.nombre as cargoenelmedio");
 		$this->db->from("datosperiodistas p");
 		$this->db->join("estados e","p.id_estados = e.id");
 		$this->db->join("datoslaborales dl","p.id = dl.Id_datospersonales");
 		$this->db->join("tipodemedio tm","dl.id_tipodemedio = tm.id");
+		$this->db->join("cargoenelmedio cm","dl.id_cargoenelmedio = cm.id");
 		$this->db->where("p.estatus","1");
 		$resultados = $this->db->get();
 		return $resultados ->result();
