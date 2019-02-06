@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-02-2019 a las 20:18:07
+-- Tiempo de generación: 06-02-2019 a las 19:40:27
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0
 
@@ -188,7 +188,7 @@ CREATE TABLE `datoslaborales` (
   `Id_datospersonales` int(11) NOT NULL,
   `id_tipodemedio` int(11) NOT NULL,
   `paracuantosmedioslabora` int(11) NOT NULL,
-  `id_tipodecontrato` int(11) NOT NULL,
+  `id_tipodecontrato` int(11) NOT NULL DEFAULT '1',
   `DireccionDelMedio` varchar(200) DEFAULT NULL,
   `id_cargoenelmedio` int(11) NOT NULL,
   `id_fuente` int(11) NOT NULL,
@@ -198,19 +198,8 @@ CREATE TABLE `datoslaborales` (
   `Links4` varchar(200) DEFAULT NULL,
   `Links5` varchar(200) DEFAULT NULL,
   `AnosDeEjercerElPeriodismo` int(30) NOT NULL,
-  `id_SexoDelJefeInmediato` int(11) NOT NULL,
-  `cuantasreporterasyreporteroshayenelmedio` int(11) NOT NULL,
-  `cuantasreporterashayenelmedio` int(11) NOT NULL,
-  `cuantasreporterasyreporteroshayenlafuente` int(11) NOT NULL,
-  `cuantasreporterashayenlafuente` int(11) NOT NULL
+  `id_SexoDelJefeInmediato` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `datoslaborales`
---
-
-INSERT INTO `datoslaborales` (`id`, `Id_datospersonales`, `id_tipodemedio`, `paracuantosmedioslabora`, `id_tipodecontrato`, `DireccionDelMedio`, `id_cargoenelmedio`, `id_fuente`, `Links1`, `Links2`, `Links3`, `Links4`, `Links5`, `AnosDeEjercerElPeriodismo`, `id_SexoDelJefeInmediato`, `cuantasreporterasyreporteroshayenelmedio`, `cuantasreporterashayenelmedio`, `cuantasreporterasyreporteroshayenlafuente`, `cuantasreporterashayenlafuente`) VALUES
-(1, 1, 2, 2, 2, '', 2, 2, '', '', '', '', '', 0, 1, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -220,17 +209,18 @@ INSERT INTO `datoslaborales` (`id`, `Id_datospersonales`, `id_tipodemedio`, `par
 
 CREATE TABLE `datosperiodistas` (
   `id` int(11) NOT NULL,
-  `fechaRegistro` date DEFAULT NULL,
+  `fechaRegistro` date NOT NULL,
   `nombres` varchar(200) NOT NULL,
-  `apellidoPaterno` varchar(200) DEFAULT NULL,
+  `apellidoPaterno` varchar(200) NOT NULL,
   `apellidoMaterno` varchar(200) DEFAULT NULL,
-  `id_Edad` int(3) DEFAULT '0',
-  `id_estados` int(11) DEFAULT NULL,
+  `id_Edad` int(3) NOT NULL DEFAULT '0',
+  `id_estados` int(11) NOT NULL,
   `municipio` varchar(50) DEFAULT NULL,
   `localidad` varchar(100) DEFAULT NULL,
   `id_tipodecasa` int(20) DEFAULT '1',
-  `viveCon` varchar(50) NOT NULL,
-  `dependientesEconomicos` varchar(50) NOT NULL,
+  `viveCon` varchar(50) DEFAULT NULL,
+  `dependientesEconomicos` varchar(50) DEFAULT NULL,
+  `hijos` int(11) DEFAULT '0',
   `id_estadocivil` int(11) NOT NULL DEFAULT '1',
   `comunidadIndigena` int(11) NOT NULL DEFAULT '0',
   `comunidadLGBTTTI` int(11) NOT NULL DEFAULT '0',
@@ -246,15 +236,10 @@ CREATE TABLE `datosperiodistas` (
   `snapchat` varchar(200) DEFAULT NULL,
   `otraredsocial` varchar(200) DEFAULT NULL,
   `id_usuario` int(11) NOT NULL,
-  `estatus` int(11) NOT NULL
+  `estatus` int(11) NOT NULL,
+  `fechaultimamodificacion` date NOT NULL,
+  `id_uduarioModificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `datosperiodistas`
---
-
-INSERT INTO `datosperiodistas` (`id`, `fechaRegistro`, `nombres`, `apellidoPaterno`, `apellidoMaterno`, `id_Edad`, `id_estados`, `municipio`, `localidad`, `id_tipodecasa`, `viveCon`, `dependientesEconomicos`, `id_estadocivil`, `comunidadIndigena`, `comunidadLGBTTTI`, `telefonoparticular`, `telefonocelular`, `email`, `telegram`, `skype`, `facebook`, `twitter`, `instagram`, `youtube`, `snapchat`, `otraredsocial`, `id_usuario`, `estatus`) VALUES
-(1, '2019-02-05', 'Miguel Angel', 'Mendoza', 'Enriquez', 4, 8, '', '', 3, '', '', 1, 1, 1, '', '', '', '', '', '', '', '', '', '', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -667,9 +652,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `username`, `password`, `id_rol`, `id_estado`) VALUES
-(1, 'Miguel Angel Mendoza Enriquez', 'kvo', '11f6ad8ec52a2984abaafd7c3b516503785c2072', 1, 1),
-(2, 'María Magdalena', 'Mary', '11f6ad8ec52a2984abaafd7c3b516503785c2072', 1, 1),
-(3, 'juan carlos', 'Carlos', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', 2, 1);
+(1, 'Miguel Angel Mendoza Enriquez', 'Kvo', '8183bd79604a11041752a265b9ceacfb7218cf1e', 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -760,15 +743,33 @@ ALTER TABLE `nivelAgresor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `niveles`
+--
+ALTER TABLE `niveles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `perfilBajo`
 --
 ALTER TABLE `perfilBajo`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `sexo`
 --
 ALTER TABLE `sexo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `sino`
+--
+ALTER TABLE `sino`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -824,6 +825,12 @@ ALTER TABLE `cargoenelmedio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT de la tabla `comunidades`
+--
+ALTER TABLE `comunidades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `datoagresor`
 --
 ALTER TABLE `datoagresor`
@@ -839,13 +846,13 @@ ALTER TABLE `datosIncidente`
 -- AUTO_INCREMENT de la tabla `datoslaborales`
 --
 ALTER TABLE `datoslaborales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `datosperiodistas`
 --
 ALTER TABLE `datosperiodistas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `edades`
@@ -890,9 +897,21 @@ ALTER TABLE `nivelAgresor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `niveles`
+--
+ALTER TABLE `niveles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `perfilBajo`
 --
 ALTER TABLE `perfilBajo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -900,6 +919,12 @@ ALTER TABLE `perfilBajo`
 --
 ALTER TABLE `sexo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `sino`
+--
+ALTER TABLE `sino`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoagresor`
@@ -935,7 +960,7 @@ ALTER TABLE `tipodemedio`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

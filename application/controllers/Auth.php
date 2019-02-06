@@ -15,7 +15,7 @@ class Auth extends CI_Controller {
 		else{
 			$this->load->view("admin/login");
 		}
-		
+
 
 	}
 
@@ -32,8 +32,9 @@ class Auth extends CI_Controller {
 		}
 		else{
 			$data  = array(
-				'id' => $res->id, 
+				'id' => $res->id,
 				'nombre' => $res->nombre,
+				'username' => $res->username,
 				'rol' => $res->rol_id,
 				'login' => TRUE
 			);
