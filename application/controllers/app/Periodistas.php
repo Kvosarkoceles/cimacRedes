@@ -103,6 +103,7 @@ class Periodistas extends CI_Controller {
 		$tiposdecasa = $this->input->post("tiposdecasa");
 		$viveCon = $this->input->post("viveCon");
 		$dependientesEconomicos = $this->input->post("dependientesEconomicos");
+		$hijos = $this->input->post("hijos");
 		$estadoCivil = $this->input->post("estadoCivil");
 		$comunidadindigena = $this->input->post("comunidadindigena");
 		$comunidadLGBTTTI = $this->input->post("comunidadLGBTTTI");
@@ -130,10 +131,6 @@ class Periodistas extends CI_Controller {
 		$Link5 = $this->input->post("Link5");
 		$AnosDeEjercerElPeriodismo = $this->input->post("AnosDeEjercerElPeriodismo");
 		$id_SexoDelJefeInmediato = $this->input->post("sexodeljefeinmediato");
-		$cuantasreporterasyreporteroshayenelmedio = $this->input->post("cuantasreporterasyreporteroshayenelmedio");
-		$cuantasreporterashayenelmedio = $this->input->post("cuantasreporterashayenelmedio");
-		$cuantasreporterasyreporteroshayenlafuente = $this->input->post("cuantasreporterasyreporteroshayenlafuente");
-		$cuantasreporterashayenlafuente	 = $this->input->post("cuantasreporterashayenlafuente");
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		$this->form_validation->set_rules("apellidoPaterno","Apellido Paterno","required");
 		//$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
@@ -159,6 +156,7 @@ class Periodistas extends CI_Controller {
 				'id_tipodecasa' => $tiposdecasa,
 				'viveCon' => $viveCon,
 				'dependientesEconomicos' => $dependientesEconomicos,
+				'hijos' => $hijos,
 				'id_estadoCivil' => $estadoCivil,
 				'comunidadIndigena' => $comunidadindigena,
 				'comunidadLGBTTTI' => $comunidadLGBTTTI,
@@ -174,6 +172,8 @@ class Periodistas extends CI_Controller {
 				'snapchat' => $snapchat,
 				'otraredsocial' => $otraredsocial,
 				'id_usuario' => $this->session->userdata("id"),
+				'fechaultimamodificacion' =>date("Y")."-".date("m")."-".date("d"),
+				'id_uduarioModificacion	' => $this->session->userdata("id"),
 				'estatus' => "1",
 			);
 			$idultimo=$this->Periodistas_model->save("datosperiodistas",$datosperiodistas);
@@ -192,10 +192,6 @@ class Periodistas extends CI_Controller {
 				'Links5' => $Link5,
 				'AnosDeEjercerElPeriodismo' => $AnosDeEjercerElPeriodismo,
 				'id_SexoDelJefeInmediato' => $id_SexoDelJefeInmediato,
-				'cuantasreporterasyreporteroshayenelmedio' => $cuantasreporterasyreporteroshayenelmedio,
-				'cuantasreporterashayenelmedio' => $cuantasreporterashayenelmedio,
-				'cuantasreporterasyreporteroshayenlafuente' => $cuantasreporterasyreporteroshayenlafuente,
-				'cuantasreporterashayenlafuente' => $cuantasreporterashayenlafuente,
 			);
 			if($idultimo){
 				if ($this->Periodistas_model->save("datoslaborales",$datoslaborales)) {

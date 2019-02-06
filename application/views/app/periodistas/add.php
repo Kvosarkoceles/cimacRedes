@@ -79,11 +79,18 @@
                     <label for="viveCon" class="col-form-label">Vive con:</label>
                     <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('viveCon');?>" id="viveCon" name="viveCon">
                   </div>
-                  <div class="col-sm-4  my-1 ">
+                  <div class="col-sm-3  my-1 ">
                     <label for="dependientesEconomicos" class="col-form-label">Dependientes económicos:</label>
                     <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('dependientesEconomicos');?>" id="dependientesEconomicos" name="dependientesEconomicos">
                   </div>
-                  <div class="col-sm-2  my-1 ">
+                  <div class="col-sm-3  my-1 ">
+                    <label for="hijos" class="col-form-label">Hijas/Hijos:</label>
+                    <input class="form-control form-control-sm input-rounded col-sm-12" type="number" value="<?php echo set_value('dependientesEconomicos');?>" id="hijos" name="hijos">
+                  </div>
+
+                </div>
+                <div class="form-row align-items-center">
+                  <div class="col-sm-4  my-1 ">
                     <label class="col-form-label">Estado civil:</label>
                     <select class="custom-select" name="estadoCivil" id="estadoCivil">
                       <option selected="selected" value="1">Seleccione un valor</option>
@@ -95,11 +102,9 @@
                     </select>
                     <?php echo form_error("estadoCivil","<span class='text-danger'>","</span>"); ?>
                   </div>
-                </div>
-                <div class="form-row align-items-center">
                   <div class="col-sm-4 my-1 ">
                     <label class="col-form-label col-sm-12">¿Pertenece a la alguna comunidad indigena?</label>
-                    <select class="custom-select col-sm-8" name="comunidadindigena" id="comunidadindigena">
+                    <select class="custom-select col-sm-10" name="comunidadindigena" id="comunidadindigena">
                       <?php foreach($comunidadindigena as $comunidad):?>
                         <option value="<?php echo $comunidad->id;?>"<?php echo set_select('comunidadindigena',$comunidad->id);?>><?php echo $comunidad->nombre;?></option>
                       <?php endforeach;?>
@@ -107,7 +112,7 @@
                   </div>
                   <div class="col-sm-4 my-1 ">
                     <label class="col-form-label col-sm-12">¿Pertenece a la comunidad LGBTTTI?</label>
-                    <select class="custom-select col-sm-8" name="comunidadLGBTTTI" id="comunidadLGBTTTI">
+                    <select class="custom-select col-sm-10" name="comunidadLGBTTTI" id="comunidadLGBTTTI">
                       <?php foreach($comunidadlgbttti as $comunidadlgbttti):?>
                         <option value="<?php echo $comunidadlgbttti->id;?>"<?php echo set_select('comunidadLGBTTTI',$comunidadlgbttti->id);?>><?php echo $comunidadlgbttti->nombre;?></option>
                       <?php endforeach;?>
@@ -242,25 +247,25 @@
                     <?php echo form_error("fuente","<span class='text-danger'>","</span>"); ?>
                   </div>
                   <div class="col-sm-4 my-1 ">
-                    <label for="Link1" class="col-form-label">Link 1</label>
+                    <label for="Link1" class="col-form-label">Link del medio</label>
                     <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo set_value('Link1');?>" id="Link1" name="Link1">
                   </div>
                   <div class="col-sm-4 my-1 ">
-                    <label for="Link2" class="col-form-label">Link 2</label>
+                    <label for="Link2" class="col-form-label">Link del medio</label>
                     <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo set_value('Link2');?>" id="Link2" name="Link2">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-4 my-1 ">
-                    <label for="Link3" class="col-form-label">Link 3</label>
+                    <label for="Link3" class="col-form-label">Link del medio</label>
                     <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link3');?>" id="Link3" name="Link3">
                   </div>
                   <div class="col-sm-4 my-1 ">
-                    <label for="Link4" class="col-form-label">Link 4</label>
+                    <label for="Link4" class="col-form-label">Link del medio</label>
                     <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link4');?>" id="Link4" name="Link4">
                   </div>
                   <div class="col-sm-4 my-1 ">
-                    <label for="Link5" class="col-form-label">Link 5</label>
+                    <label for="Link5" class="col-form-label">Link del medio</label>
                     <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link5');?>" id="Link5" name="Link5">
                   </div>
                 </div>
@@ -279,24 +284,6 @@
                         <?php endif; ?>
                       <?php endforeach;?>
                     </select>
-                  </div>
-                  <div class="col-sm-6 my-1 ">
-                    <label for="cuantasreporterasyreporteroshayenelmedio" class="col-form-label">¿Cuantas reporteras y reporteros hay en el medio?</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-6" type="number" value="<?php echo set_value('cuantasreporterasyreporteroshayenelmedio');?>"id="cuantasreporterasyreporteroshayenelmedio" name="cuantasreporterasyreporteroshayenelmedio">
-                  </div>
-                </div>
-                <div class="form-row align-items-center">
-                  <div class="col-sm-4 my-1 ">
-                    <label for="cuantasreporterashayenelmedio" class="col-form-label">¿Cuantas reporteras hay en el medio?</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-7" type="number" value="<?php echo set_value('cuantasreporterashayenelmedio');?>" id="cuantasreporterashayenelmedio" name="cuantasreporterashayenelmedio">
-                  </div>
-                  <div class="col-sm-4 my-1 ">
-                    <label for="cuantasreporterasyreporteroshayenlafuente" class="col-form-label">  ¿Cuantas reporteras y reporteros hay en la fuente?  </label>
-                    <input class="form-control form-control-sm input-rounded col-sm-9" type="number" value="<?php echo set_value('cuantasreporterasyreporteroshayenlafuente');?>" id="cuantasreporterasyreporteroshayenlafuente" name="cuantasreporterasyreporteroshayenlafuente">
-                  </div>
-                  <div class="col-sm-4 my-1 ">
-                    <label for="cuantasreporterashayenlafuente" class="col-form-label">¿Cuantas reporteras hay en la fuente?</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-7" type="number" value="<?php echo set_value('cuantasreporterashayenlafuente');?>" id="cuantasreporterashayenlafuente" name="cuantasreporterashayenlafuente">
                   </div>
                 </div>
               </div>
