@@ -42,6 +42,7 @@ class Registros extends CI_Controller {
 			'sexo' => $this->Registros_model->getSexo(),
 			'agresor' => $this->Registros_model->getTipoAgresor(),
 			'nivelAgresor' => $this->Registros_model->getNivelagresor($id),
+			'Judicializacion' => $this->Registros_model->getJudicializacionr($id),
 
 		);
 		$this->load->view("layouts/header");
@@ -140,11 +141,7 @@ class Registros extends CI_Controller {
 		$relatoriaDelHecho = $this->input->post("relatoriaDelHecho");
 		//$this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")
 		//$imagen1 = $this->file->UploadImage('./public/img/','No se puede subir la imagen1...');
-		$link1 = $this->input->post("link1");
-		$link2 = $this->input->post("link2");
-		$link3 = $this->input->post("link3");
-		$link4 = $this->input->post("link4");
-		$link5 = $this->input->post("link5");
+
 		$analisisDeContexto = $this->input->post("analisisDeContexto");
 		$analisisDeRiesgo = $this->input->post("analisisDeRiesgo");
 		$observaciones = $this->input->post("observaciones");
@@ -197,21 +194,6 @@ class Registros extends CI_Controller {
 			'cuales' => $cuales,
 			'queAHechoLaComisionDeDerechosHumanos' => $queAHechoLaComisionDeDerechosHumanos,
 			'relatoriaDelHecho' => $relatoriaDelHecho,
-			//'imagen1' => $imagen1,
-			//'imagen2' => $imagen2,
-			//'imagen3' => $imagen3,
-			//'imagen4' => $imagen4,
-			//'imagen5' => $imagen5,
-			'link1' => $link1,
-			'link2' => $link2,
-			'link3' => $link3,
-			'link4' => $link4,
-			'link5' => $link5,
-			//'textos1' => $textos1,
-			//'textos2' => $textos2,
-			//'textos3' => $textos3,
-			//'textos4' => $textos4,
-			//'textos5' => $textos5,
 			'analisisDeContexto' => $analisisDeContexto,
 			'analisisDeRiesgo' => $analisisDeRiesgo,
 			'observaciones' => $observaciones,

@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Periodistas extends CI_Controller {
-
 	public function __construct(){
 		parent::__construct();
 
@@ -12,7 +11,6 @@ class Periodistas extends CI_Controller {
 		$this->load->model("Periodistas_model");
 		$this->load->model("Registros_model");
 	}
-
 	public function index(){
 		$data  = array(
 			'periodistas' => $this->Periodistas_model->getPeriodistas()
@@ -22,7 +20,6 @@ class Periodistas extends CI_Controller {
 		$this->load->view("app/periodistas/list",$data);
 		$this->load->view('layouts/footer');
 	}
-
 	public function add(){
 		$data  = array(
 			'edades' => $this->Periodistas_model->getEdades(),
@@ -48,7 +45,6 @@ class Periodistas extends CI_Controller {
 		$this->load->view("app/periodistas/add",$data);
 		$this->load->view("layouts/footer");
 	}
-
 	public function info($id){
 		$data  = array(
 			'periodista' => $this->Periodistas_model->getPeriodista($id),
@@ -62,7 +58,6 @@ class Periodistas extends CI_Controller {
 		$this->load->view("app/periodistas/info",$data);
 		$this->load->view('layouts/footer');
 	}
-
 	public function edit($id){
 		$data  = array(
 			'edades' => $this->Periodistas_model->getEdades(),
@@ -90,7 +85,6 @@ class Periodistas extends CI_Controller {
 		$this->load->view("app/periodistas/edit",$data);
 		$this->load->view("layouts/footer");
 	}
-
 	public function store(){
 		$nombres = $this->input->post("nombres");
 		$apellidoPaterno = $this->input->post("apellidoPaterno");
@@ -133,16 +127,11 @@ class Periodistas extends CI_Controller {
 		$id_SexoDelJefeInmediato = $this->input->post("sexodeljefeinmediato");
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		$this->form_validation->set_rules("apellidoPaterno","Apellido Paterno","required");
-		//$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
 		$this->form_validation->set_rules("edad","Edad","required");
 		$this->form_validation->set_rules("estado","Estado","required");
 		$this->form_validation->set_rules("tipodemedio","Tipo de medio","required");
-	//	$this->form_validation->set_rules("tipodecontrato","Tipo de contrato","required");
 		$this->form_validation->set_rules("cargoenelmedio","Cargo en el medio","required");
 		$this->form_validation->set_rules("fuente","Fuente","required");
-		//$this->form_validation->set_rules("tiposdecasa","tiposdecasa","required");
-		//$this->form_validation->set_rules("estadoCivil","Estado Civil","required");
-
 		if ($this->form_validation->run()) {
 			$datosperiodistas  = array(
 				'fechaRegistro' =>date("Y")."-".date("m")."-".date("d"),
@@ -207,10 +196,7 @@ class Periodistas extends CI_Controller {
 		}else {
 				$this->add();
 		}
-
-
 	}
-
 	public function update(){
 		$idperiodista = $this->input->post("idperiodista");
 		$idtrabajo = $this->input->post("idtrabajo");
@@ -253,11 +239,9 @@ class Periodistas extends CI_Controller {
 		$SexoDelJefeInmediato = $this->input->post("sexodeljefeinmediato");
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		$this->form_validation->set_rules("apellidoPaterno","Apellido Paterno","required");
-	//	$this->form_validation->set_rules("apellidoMaterno","Materno Paterno","required");
 		$this->form_validation->set_rules("edad","Edad","required");
 		$this->form_validation->set_rules("estado","Estado","required");
 		$this->form_validation->set_rules("tipodemedio","Tipo de medio","required");
-	//	$this->form_validation->set_rules("tipodecontrato","Tipo de contrato","required");
 		$this->form_validation->set_rules("cargoenelmedio","Cargo en el medio","required");
 		$this->form_validation->set_rules("fuente","Fuente","required");
 		if ($this->form_validation->run()) {
@@ -303,8 +287,6 @@ class Periodistas extends CI_Controller {
 				'Links5' => $Link5,
 				'AnosDeEjercerElPeriodismo' => $AnosDeEjercerElPeriodismo,
 				'id_SexoDelJefeInmediato' => $SexoDelJefeInmediato,
-
-
 			);
 			if ($this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")) {
 			}
@@ -323,16 +305,12 @@ class Periodistas extends CI_Controller {
 		}
 	}
 	public function getIncidentes($id){
-	$this->db->select("u.*");
-	$this->db->from("datosincidente u");
-
-//	$this->db->join("roles r","u.id_rol = r.id");
-	$this->db->where("u.id_datospersonales",$id);
-//	$this->db->where("u.estado","1");
-	$resultado = $this->db->get();
-	return $resultado->result();
-
-}
+		$this->db->select("u.*");
+		$this->db->from("datosincidente u");
+		$this->db->where("u.id_datospersonales",$id);
+		$resultado = $this->db->get();
+		return $resultado->result();
+		}
 	public function delete($id){
 		$data  = array(
 			'estatus' => "0",

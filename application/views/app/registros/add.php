@@ -190,19 +190,6 @@
                                   <label for="observaciones" class="col-form-label">Observaciones:</label>
                                   <textarea name="observaciones" id="observaciones" style="width:100%; height:100px;"></textarea>
                               </div>
-                              <div class="col-sm-3  my-1">
-                                  <label for="cimacHaceAcompanamientoAnteElMecanismo" class="col-form-label" align="center">Cimac hace acompanamiento ante el mecanismo:</label>
-                                  <select class="custom-select col-sm-12" name="cimacHaceAcompanamientoAnteElMecanismo" id="cimacHaceAcompanamientoAnteElMecanismo">
-
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
-                              <div class="col-sm-3  my-1">
-                                  <label for="queOtraOrganizacionLasAcompana" class="col-form-label" align="center">Que otra organizacion las acompaña:</label>
-                                  <input class="form-control" type="text" value="" id="queOtraOrganizacionLasAcompana" name="queOtraOrganizacionLasAcompana">
-                              </div>
                             </div>
                           </div>
 
@@ -353,7 +340,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion15">Manifestaciones de la violencia</a>
                     </div>
-                    <div id="accordion15" class="collapse" data-parent="#accordion1">
+                    <div id="accordion15" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
@@ -424,7 +411,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion16">Consecuencias</a>
                     </div>
-                    <div id="accordion16" class="collapse" data-parent="#accordion1">
+                    <div id="accordion16" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
@@ -447,8 +434,8 @@
                                   </select>
                               </div>
                               <div class="col-sm-3  my-1">
-                                  <label for="consecuenciasCambioDeDomicilio" class="col-form-label">Cambió de domicilio:</label>
-                                  <select class="custom-select col-sm-9" name="consecuenciasCambioDeDomicilio" id="consecuenciasCambioDeDomicilio">
+                                  <label for="consecuenciasDesplazamiento" class="col-form-label">Desplazamiento:</label>
+                                  <select class="custom-select col-sm-9" name="consecuenciasDesplazamiento" id="consecuenciasDesplazamiento">
 
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
@@ -456,11 +443,11 @@
                                   </select>
                               </div>
                               <div class="col-sm-3  my-1">
-                                  <label for="consecuenciasDesplazamiento" class="col-form-label">Desplazamiento:</label>
-                                  <select class="custom-select col-sm-9" name="consecuenciasDesplazamiento" id="consecuenciasDesplazamiento">
-
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <label for="Judicializacion" class="col-form-label">Judicializacion:</label>
+                                  <select class="custom-select col-sm-9" name="Judicializacion" id="Judicializacion">
+                                  <option selected="selected" value="0">No</option>
+                                  <?php foreach($Judicializacion as $Judicial):?>
+                                      <option value="<?php echo $Judicial->id;?>"><?php echo $Judicial->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -476,9 +463,24 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida Por CIMAC</a>
                     </div>
-                    <div id="accordion17" class="collapse" data-parent="#accordion1">
+                    <div id="accordion17" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="cimacHaceAcompanamientoAnteElMecanismo" class="col-form-label" align="center">Cimac hace acompanamiento ante el mecanismo:</label>
+                                  <select class="custom-select col-sm-6" name="cimacHaceAcompanamientoAnteElMecanismo" id="cimacHaceAcompanamientoAnteElMecanismo">
+
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-6  my-1">
+                                  <label for="queOtraOrganizacionLasAcompana" class="col-form-label" align="center">Que otra organizacion las acompaña:</label>
+                                  <input class="form-control  col-sm-8" type="text" value="" id="queOtraOrganizacionLasAcompana" name="queOtraOrganizacionLasAcompana">
+                              </div>
+                            </div>
                             <div class="form-row align-items-center">
                               <div class="col-sm-3  my-1">
                                   <label for="atencionMedicaRecibida" class="col-form-label">Médica</label>
@@ -531,11 +533,7 @@
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
-                                  <label for="agresionAnterior" class="col-form-label">Agresion anterior:</label>
-                                  <input class="form-control" type="url" value="" id="agresionAnterior" name="agresionAnterior">
 
-                              </div>
                               <div class="col-sm-6  my-1">
                                   <label for="beneficiariaDelMecanismoDeProtecion" class="col-form-label">Beneficiaria del mecanismo de protecion:</label>
                                   <select class="custom-select col-sm-10" name="beneficiariaDelMecanismoDeProtecion" id="beneficiariaDelMecanismoDeProtecion">
@@ -622,109 +620,6 @@
                     </div>
                 </div>
               <!-- Denuncias end -->
-
-              <!-- Imagenes start -->
-                <!--  <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion19">Imagenes</a>
-                    </div>
-                    <div id="accordion19" class="collapse show" data-parent="#accordion1">
-                        <div class="card-body">
-                          <div class="card-body">
-                            <div class="form-row align-items-center">
-                              <div class="col-lg-4 mt-5">
-                                <td><label for="imagen1" class="col-form-label">Imágen1</label></td>
-                                <td> <input type="file" name="imagen1" class="form-control-file .form-control-sm" id="imagen1" /></td>
-
-                              </div>
-                              <div class="col-lg-4 mt-5">
-                                <td><label for="imagen1" class="col-form-label">Imágen2</label></td>
-                                <td> <input type="file" name="imagen1" class="form-control-file .form-control-sm" id="imagen1"  /></td>
-
-                              </div>
-                              <div class="col-lg-4 mt-5">
-                                <td><label for="Imágen3" class="col-form-label">Imágen3</label></td>
-                                <td> <input type="file" name="Imágen3" class="form-control-file .form-control-sm" id="Imágen3"/></td>
-
-                              </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                              <div class="col-lg-6 mt-5">
-                                <td><label for="Imágen4" class="col-form-label">Imágen4</label></td>
-                                <td> <input type="file" name="Imágen4" class="form-control-file .form-control-sm" id="Imágen4" /></td>
-
-                              </div>
-                              <div class="col-lg-6 mt-5">
-                                <td><label for="Imágen5" class="col-form-label">Imágen5</label></td>
-                                <td> <input type="file" name="Imágen5" class="form-control-file .form-control-sm" id="Imágen5"  /></td>
-
-                              </div>
-
-                            </div>
-                          </div>
-
-                        </div>
-                    </div>
-                </div> -->
-              <!-- Imagenes end -->
-
-              <!-- Documentos start -->
-              <!--  <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion20">Documentos</a>
-                    </div>
-                    <div id="accordion20" class="collapse" data-parent="#accordion1">
-                      <div class="card-body">
-                        <div class="form-row align-items-center">
-                          <div class="col-lg-12 mt-5">
-                              <div class="card">
-                                  <div class="card-body">
-                                      <div class="single-table">
-                                          <div class="table-responsive">
-                                              <table class="table table-bordered text-center">
-                                                  <tbody>
-                                                      <tr>
-                                                          <td><label for="textos1" class="col-form-label">Documento1</label></td>
-                                                          <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="textos1" name="textos1"></td>
-                                                          <td> <input type="button" name="button" class="btn btn-outline-primary mb-3" id="button" value="Insertar archivo" onClick="javascript:subirimagen1();"/></td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td><label for="textos2" class="col-form-label">Documento2</label></td>
-                                                        <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="textos2" name="textos2"></td>
-                                                        <td> <input type="button" name="button" class="btn btn-outline-primary mb-3" id="button" value="Insertar archivo" onClick="javascript:subirimagen1();"/></td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td><label for="textos3" class="col-form-label">Documento3</label></td>
-                                                        <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="textos3" name="textos3"></td>
-                                                        <td> <input type="button"class="btn btn-outline-primary mb-3" name="button" id="button" value="Insertar archivo" onClick="javascript:subirimagen1();"/></td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td><label for="textos4" class="col-form-label">Documento4</label></td>
-                                                        <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="textos4" name="textos4"></td>
-                                                        <td> <input type="button" class="btn btn-outline-primary mb-3" name="button" id="button" value="Insertar archivo" onClick="javascript:subirimagen1();"/></td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td><label for="textos5" class="col-form-label">Documento5</label></td>
-                                                        <td><input class="form-control form-control-sm input-rounded col-sm-9" type="text" value="" id="textos5" name="textos5"></td>
-                                                        <td> <input type="button" class="btn btn-outline-primary mb-3" name="button" id="button" value="Insertar archivo" onClick="javascript:subirimagen1();"/></td>
-                                                      </tr>
-                                                  </tbody>
-                                              </table>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </div> -->
-              <!-- Documentos end -->
-
-
-
-
-
 
               <!-- Boton start -->
               <div class="form-group">

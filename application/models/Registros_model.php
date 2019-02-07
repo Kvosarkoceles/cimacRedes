@@ -24,7 +24,8 @@ class Registros_model extends CI_Model {
 													 nv2.nombre as quejaAnteComision,
 													 sn2.nombre as estasDeAcuedoConElMecanismo,
 													 sn3.nombre as tePermitenSeguirHaciendoTuTrabajo,
-													 sn4.nombre as resultadosLaCarpetaDeInvestigacion");
+													 sn4.nombre as resultadosLaCarpetaDeInvestigacion,
+													 jd.nombre as Judicializacion");
 		$this->db->from("datosIncidente u");
 		$this->db->join("datosperiodistas r","u.id_datospersonales = r.id");
 		$this->db->join("edades ed","r.id_Edad = ed.id");
@@ -36,6 +37,7 @@ class Registros_model extends CI_Model {
 		$this->db->join("sino sn2","u.estasDeAcuedoConElMecanismoDeProteccion = sn2.valor");
 		$this->db->join("sino sn3","u.esasMedidasTePermitenSeguirHaciendoTuTrabajo = sn3.valor");
 		$this->db->join("sino sn4","u.tenidoResultadosLaCarpetaDeInvestigacion = sn4.valor");
+		$this->db->join("tipodejudicializacion jd","u.id_consecuenciajudicializacion = jd.id");
 		$this->db->where("u.id",$id);
 		$resultado = $this->db->get();
 		return $resultado->row();
@@ -89,6 +91,10 @@ class Registros_model extends CI_Model {
 	}
 	public function getSiNo(){
 		$resultados = $this->db->get("sino");
+		return $resultados ->result();
+	}
+	public function getJudicializacionr(){
+		$resultados = $this->db->get("tipodejudicializacion");
 		return $resultados ->result();
 	}
 	public function getNiveles(){
