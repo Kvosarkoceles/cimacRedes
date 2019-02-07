@@ -11,7 +11,7 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getEdades(){
-		$this->db->select("e.*");
+		$this->db->select("e.parametro as nombre, e.descripcion,e.id");
 		$this->db->from("edades e");
 		$resultados = $this->db->get();
 		return $resultados ->result();
@@ -68,14 +68,34 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
-	public function getCargo(){
+	public function getTipodecargo(){
 		$this->db->select("c.*");
 		$this->db->from("cargoenelmedio c");
 		$resultados = $this->db->get();
 
 		return $resultados ->result();
 	}
+	public function getTipocargo($id){
+		$this->db->select("e.*");
+		$this->db->from("cargoenelmedio e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
+	public function getTipodefuente(){
+		$this->db->select("c.*");
+		$this->db->from("fuente c");
+		$resultados = $this->db->get();
 
+		return $resultados ->result();
+	}
+	public function getTipofuente($id){
+		$this->db->select("e.*");
+		$this->db->from("fuente e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
 
 	public function save($data){
 		return $this->db->insert("usuarios",$data);

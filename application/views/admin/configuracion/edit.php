@@ -4,7 +4,7 @@
 
                         <form action="<?php echo base_url();?>administrador/configuracion/<?php echo $base ?>" method="POST">
 
-                            <input type="text" name="idmenu" value="<?php echo $nombres->id?>" id ="idmenu">
+                            <input type="hidden" name="idmenu" value="<?php echo $nombres->id?>" id ="idmenu">
 
                         <div class="card">
                             <div class="card-body">

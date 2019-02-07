@@ -10,6 +10,7 @@ class Configuracion extends CI_Controller {
 		}
 		$this->load->model("Configuracion_model");
 	}
+			/*++ Funciones para las vistas start  ++*/
 	public function index(){
 		$data  = array(
 		'edades' => $this->Configuracion_model->getEdades(),
@@ -17,13 +18,84 @@ class Configuracion extends CI_Controller {
 		'estadocivil' => $this->Configuracion_model->getEstadocivil(),
 		'tipodemedio' => $this->Configuracion_model->	getTipodemedio(),
 		'tipodecontrato' => $this->Configuracion_model->getTipodecontrato(),
-		'cargoenelmedio' => $this->Configuracion_model->getCargo(),
+		'cargoenelmedio' => $this->Configuracion_model->getTipodecargo(),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("admin/configuracion/list",$data);
 		$this->load->view("layouts/footer");
 	}
+	public function edades(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getEdades(),
+		'ruta' => "editEdades"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function vivienda(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodecasa(),
+		'ruta' => "editCasa"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function civil(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getEstadocivil(),
+		'ruta' => "editaEstadoCivil"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function medio(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodemedio(),
+		'ruta' => "editaTipodemedio"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function contrato(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodecontrato(),
+		'ruta' => "editaTipodecontrato"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function cargo(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodecargo(),
+		'ruta' => "editaTipodecargo"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function fuente(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodefuente(),
+		'ruta' => "editaTipodefuente"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+		/*++ Funciones para las vistas end  ++*/
 	public function editEdades($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getEdad($id),
@@ -47,14 +119,14 @@ class Configuracion extends CI_Controller {
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
-				redirect(base_url()."administrador/configuracion");
+				redirect(base_url()."administrador/configuracion/edades");
 			}
 			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/usuarios/edit".$idusuario);
+				redirect(base_url()."administrador/configuracion/editEdades".$idmenu);
 			}
 		}else {
-			$this->edit($idusuario);
+			$this->editEdades($idmenu);
 		}
 	}
 	public function editCasa($id){
@@ -80,14 +152,14 @@ class Configuracion extends CI_Controller {
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
-				redirect(base_url()."administrador/configuracion");
+				redirect(base_url()."administrador/configuracion/vivienda");
 			}
 			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/usuarios/edit".$idusuario);
+				redirect(base_url()."administrador/configuracion/editCasa".$idmenu);
 			}
 		}else {
-			$this->edit($idusuario);
+			$this->editCasa($idmenu);
 		}
 	}
 	public function editaEstadoCivil($id){
@@ -113,14 +185,14 @@ class Configuracion extends CI_Controller {
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
-				redirect(base_url()."administrador/configuracion");
+				redirect(base_url()."administrador/configuracion/civil");
 			}
 			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/usuarios/edit".$idusuario);
+				redirect(base_url()."administrador/configuracion/editaEstadoCivil".$idmenu);
 			}
 		}else {
-			$this->edit($idusuario);
+			$this->editaEstadoCivil($idmenu);
 		}
 	}
 	public function editaTipodemedio($id){
@@ -146,14 +218,14 @@ class Configuracion extends CI_Controller {
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
-				redirect(base_url()."administrador/configuracion");
+				redirect(base_url()."administrador/configuracion/medio");
 			}
 			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/usuarios/edit".$idusuario);
+				redirect(base_url()."administrador/configuracion/editaTipodemedio".$idmenu);
 			}
 		}else {
-			$this->edit($idusuario);
+			$this->editaTipodemedio($idmenu);
 		}
 	}
 	public function editaTipodecontrato($id){
@@ -179,17 +251,82 @@ class Configuracion extends CI_Controller {
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
-				redirect(base_url()."administrador/configuracion");
+				redirect(base_url()."administrador/configuracion/contrato");
 			}
 			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/usuarios/edit".$idusuario);
+				redirect(base_url()."administrador/configuracion/editaTipodecontrato".$idmenu);
 			}
 		}else {
-			$this->edit($idusuario);
+			$this->editaTipodecontrato($idmenu);
 		}
 	}
+	public function editaTipodecargo($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getTipocargo($id),
+			'base' => "tipodecargo_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function tipodecargo_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'cargoenelmedio';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
 
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion/cargo");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaTipodecargo".$idmenu);
+			}
+		}else {
+			$this->editaTipodecargo($idmenu);
+		}
+	}
+	public function editaTipodefuente($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getTipofuente($id),
+			'base' => "tipodefuente_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function tipodefuente_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'fuente';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion/fuente");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaTipodefuente".$idmenu);
+			}
+		}else {
+			$this->editaTipodefuente($idmenu);
+		}
+	}
 
 
 
