@@ -33,35 +33,35 @@
                                     <li><a href="<?php echo base_url()?>app/periodistas">Periodistas</a></li>
                                     <li><a href="<?php echo base_url()?>app/registros">Registros</a></li>
                                 </ul>
-                            </li    >
+                            </li>
+                            <li><a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-cogs"></i> <span>Configuración</span></a>
+                                <ul class="collapse">
+                                  <li><a href="#" aria-expanded="true">Periodistas</a>
+                                      <ul class="collapse">
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/edades">Edades</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/vivienda">Tipo de vivienda</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/civil">Estado Civil</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/medio">Tipo de medio</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/contrato">Tipo de contrato</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/cargo">Cargo en el medio</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/fuente">Fuente</a></li>
+                                      </ul>
+                                  </li>
+                                  <li><a href="#" aria-expanded="true">Registros</a>
+                                      <ul class="collapse">
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/motivogresion">Motivo de las agresiones</a></li>
+                                          <li><a href="#">Item level (2)</a></li>
+                                          <li><a href="#">Item level (2)</a></li>
+                                      </ul>
+                                  </li>
+                                  <li><a href="#">Item level (1)</a></li>
+                                </ul>
+                            </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-cogs"></i><span>Administracion</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-group"></i><span>Administracion</span></a>
                                 <ul class="collapse">
                                     <li><a href="<?php echo base_url();?>administrador/usuarios">Usuarias</a></li>
 
-                                    <li><a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-cogs"></i> <span>Configuración</span></a>
-                                        <ul class="collapse">
-                                          <li><a href="#" aria-expanded="true">Periodistas</a>
-                                              <ul class="collapse">
-                                                  <li><a href="<?php echo base_url();?>administrador/configuracion/edades">Edades</a></li>
-                                                  <li><a href="<?php echo base_url();?>administrador/configuracion/vivienda">Tipo de vivienda</a></li>
-                                                  <li><a href="<?php echo base_url();?>administrador/configuracion/civil">Estado Civil</a></li>
-                                                  <li><a href="<?php echo base_url();?>administrador/configuracion/medio">Tipo de medio</a></li>
-                                                  <li><a href="<?php echo base_url();?>administrador/configuracion/contrato">Tipo de contrato</a></li>
-                                                  <li><a href="<?php echo base_url();?>administrador/configuracion/cargo">Cargo en el medio</a></li>
-                                                  <li><a href="<?php echo base_url();?>administrador/configuracion/fuente">Fuente</a></li>
-                                              </ul>
-                                          </li>
-                                          <li><a href="#" aria-expanded="true">Registros</a>
-                                              <ul class="collapse">
-                                                  <li><a href="#">Item level (2)</a></li>
-                                                  <li><a href="#">Item level (2)</a></li>
-                                                  <li><a href="#">Item level (2)</a></li>
-                                              </ul>
-                                          </li>
-                                          <li><a href="#">Item level (1)</a></li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </li>
                         </ul>

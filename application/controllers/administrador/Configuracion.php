@@ -10,7 +10,7 @@ class Configuracion extends CI_Controller {
 		}
 		$this->load->model("Configuracion_model");
 	}
-			/*++ Funciones para las vistas start  ++*/
+	/*++ Funciones para las vistas Periodistas tart  ++*/
 	public function index(){
 		$data  = array(
 		'edades' => $this->Configuracion_model->getEdades(),
@@ -95,7 +95,8 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/list",$data);
 		$this->load->view("layouts/footer");
 	}
-		/*++ Funciones para las vistas end  ++*/
+	/*++ Funciones para las vistas Periodistas end  ++*/
+	/*++ Funciones para editar variables Periodistas start  ++*/
 	public function editEdades($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getEdad($id),
@@ -327,9 +328,54 @@ class Configuracion extends CI_Controller {
 			$this->editaTipodefuente($idmenu);
 		}
 	}
+	/*++ Funciones para editar variables Periodistas end  ++*/
+	/*++ Funciones para las vistas Registros tart  ++*/
+	public function motivogresion(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getMotivodelaagresion(),
+		'ruta' => "editaMotivogresion"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	/*++ Funciones para las vistas Registros end  ++*/
+	/*++ Funciones para editar variables Registros start  ++*/
+	public function editaMotivogresion($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getMotivoagresion($id),
+			'base' => "motivogresion_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function motivogresion_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'motivodelasgresion';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
 
-
-
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion/motivogresion");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaMotivogresion".$idmenu);
+			}
+		}else {
+			$this->editaMotivogresion($idmenu);
+		}
+	}
+	/*++ Funciones para editar variables Registros end  ++*/
 	public function add(){
 		$data  = array(
 			'roles' => $this->Usuarios_model->getRoles(),

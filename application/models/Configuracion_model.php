@@ -97,6 +97,21 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 
+	public function getMotivodelaagresion(){
+		$this->db->select("c.*");
+		$this->db->from("motivodelasgresion c");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+	public function getMotivoagresion($id){
+		$this->db->select("e.*");
+		$this->db->from("motivodelasgresion e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
+
 	public function save($data){
 		return $this->db->insert("usuarios",$data);
 	}
