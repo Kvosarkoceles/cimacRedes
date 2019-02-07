@@ -16,10 +16,8 @@ class Configuracion extends CI_Controller {
 		'tipocasa' => $this->Configuracion_model->getTipodecasa(),
 		'estadocivil' => $this->Configuracion_model->getEstadocivil(),
 		'tipodemedio' => $this->Configuracion_model->	getTipodemedio(),
-
+		'tipodecontrato' => $this->Configuracion_model->getTipodecontrato(),
 		'cargoenelmedio' => $this->Configuracion_model->getCargo(),
-
-			//'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -158,7 +156,39 @@ class Configuracion extends CI_Controller {
 			$this->edit($idusuario);
 		}
 	}
+	public function editaTipodecontrato($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getTipocontrato($id),
+			'base' => "tipodecontrato_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function tipodecontrato_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'tipodecontrato';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
 
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/usuarios/edit".$idusuario);
+			}
+		}else {
+			$this->edit($idusuario);
+		}
+	}
 
 
 
