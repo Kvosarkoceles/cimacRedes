@@ -16,12 +16,18 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}
-	public function getCargo(){
-		$this->db->select("c.*");
-		$this->db->from("cargoenelmedio c");
+	public function getTipodecasa(){
+		$this->db->select("e.*");
+		$this->db->from("tipodecasa e");
 		$resultados = $this->db->get();
-
 		return $resultados ->result();
+	}
+	public function getCasa($id){
+		$this->db->select("e.*");
+		$this->db->from("tipodecasa e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
 	}
 	public function getEstadocivil(){
 		$this->db->select("ec.*");
@@ -29,6 +35,28 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}
+	public function getCivil($id){
+		$this->db->select("e.*");
+		$this->db->from("estadocivil e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
+	public function getTipodemedio(){
+		$this->db->select("e.*");
+		$this->db->from("tipodemedio e");
+		$resultados = $this->db->get();
+		return $resultados ->result();
+	}
+	public function getCargo(){
+		$this->db->select("c.*");
+		$this->db->from("cargoenelmedio c");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+
+
 	public function save($data){
 		return $this->db->insert("usuarios",$data);
 	}

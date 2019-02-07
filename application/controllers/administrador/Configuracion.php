@@ -12,10 +12,13 @@ class Configuracion extends CI_Controller {
 	}
 	public function index(){
 		$data  = array(
-		'cargoenelmedio' => $this->Configuracion_model->getCargo(),
 		'edades' => $this->Configuracion_model->getEdades(),
-		'estadocivil' => $this->Configuracion_model->	getEstadocivil(),
-		//'tipocasa' => $this->Configuracion_model->	getTipodecasa()
+		'tipocasa' => $this->Configuracion_model->getTipodecasa(),
+		'estadocivil' => $this->Configuracion_model->getEstadocivil(),
+		'tipodemedio' => $this->Configuracion_model->	getTipodemedio(),
+
+		'cargoenelmedio' => $this->Configuracion_model->getCargo(),
+
 			//'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
@@ -56,6 +59,79 @@ class Configuracion extends CI_Controller {
 			$this->edit($idusuario);
 		}
 	}
+	public function editCasa($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getCasa($id),
+			'base' => "casa_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function casa_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'tipodecasa';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/usuarios/edit".$idusuario);
+			}
+		}else {
+			$this->edit($idusuario);
+		}
+	}
+	public function editaEstadoCivil($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getCivil($id),
+			'base' => "estadoCivil_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function estadoCivil_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'estadocivil';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/usuarios/edit".$idusuario);
+			}
+		}else {
+			$this->edit($idusuario);
+		}
+	}
+
+
+
+
+
+
+
 	public function add(){
 		$data  = array(
 			'roles' => $this->Usuarios_model->getRoles(),
