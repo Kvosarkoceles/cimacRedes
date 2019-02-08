@@ -8,6 +8,7 @@
                         <thead class="text-uppercase">
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">Tipo de agresor</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">action</th>
@@ -19,7 +20,7 @@
                               <?php if ($menu->id > 1): ?>
                                 <tr>
                                   <th scope="col"><?php echo $menu->id;?></th>
-
+                                    <td><?php echo $menu->tipoAgresor ;?></td>
                                     <td><?php echo $menu->nombre ;?></td>
                                     <td><?php echo $menu->descripcion;?></td>
                                     <td>

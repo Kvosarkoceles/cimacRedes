@@ -1,5 +1,8 @@
 <div class="col-12 mt-5">
     <div class="card">
+      <div class="col-md-6">
+        <a href="<?php echo base_url();?>administrador/configuracion/addItem2" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Item</a>
+      </div>
         <div class="card-body">
           <h4 class="header-title"><?php echo $titulo; ?></h4>
               <div class="single-table">
@@ -8,6 +11,8 @@
                         <thead class="text-uppercase">
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">Tipo de agresor</th>
+                                <th scope="col">Nivel1</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">action</th>
@@ -19,7 +24,8 @@
                               <?php if ($menu->id > 1): ?>
                                 <tr>
                                   <th scope="col"><?php echo $menu->id;?></th>
-
+                                    <td><?php echo $menu->tipoAgresor ;?></td>
+                                    <td><?php echo $menu->nivel ;?></td>
                                     <td><?php echo $menu->nombre ;?></td>
                                     <td><?php echo $menu->descripcion;?></td>
                                     <td>

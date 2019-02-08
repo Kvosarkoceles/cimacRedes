@@ -137,19 +137,19 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4  my-1">
-                                    <label for="nivel" class="col-form-label" align="center">Nivel:</label>
+                                    <label for="nivel" class="col-form-label" align="center">Nivel1:</label>
                                     <select class="custom-select col-sm-12" name="nivel" id="agresor">
 
-                                    <?php foreach($nivelAgresor as $nivelA):?>
+                                    <?php foreach($nivel1_Agresor as $nivelA):?>
                                       <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
                                     <?php endforeach;?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4  my-1">
-                                    <label for="nivel" class="col-form-label" align="center">Area:</label>
+                                    <label for="nivel" class="col-form-label" align="center">Nivel2:</label>
                                     <select class="custom-select col-sm-12" name="nivel" id="agresor">
 
-                                    <?php foreach($nivelAgresor as $nivelA):?>
+                                    <?php foreach($nivel2_Agresor as $nivelA):?>
                                       <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
                                     <?php endforeach;?>
                                     </select>

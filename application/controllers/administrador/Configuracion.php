@@ -28,7 +28,8 @@ class Configuracion extends CI_Controller {
 	public function edades(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getEdades(),
-		'ruta' => "editEdades"
+		'ruta' => "editEdades",
+		'titulo' => "Edades"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -38,7 +39,8 @@ class Configuracion extends CI_Controller {
 	public function vivienda(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipodecasa(),
-		'ruta' => "editCasa"
+		'ruta' => "editCasa",
+		'titulo' => "Tipo de vivienda"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -48,7 +50,8 @@ class Configuracion extends CI_Controller {
 	public function civil(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getEstadocivil(),
-		'ruta' => "editaEstadoCivil"
+		'ruta' => "editaEstadoCivil",
+		'titulo' => "Estado civil"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -58,7 +61,8 @@ class Configuracion extends CI_Controller {
 	public function medio(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipodemedio(),
-		'ruta' => "editaTipodemedio"
+		'ruta' => "editaTipodemedio",
+		'titulo' => "Tipo de medio"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -68,7 +72,8 @@ class Configuracion extends CI_Controller {
 	public function contrato(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipodecontrato(),
-		'ruta' => "editaTipodecontrato"
+		'ruta' => "editaTipodecontrato",
+		'titulo' => "Tipo de contrato"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -78,7 +83,8 @@ class Configuracion extends CI_Controller {
 	public function cargo(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipodecargo(),
-		'ruta' => "editaTipodecargo"
+		'ruta' => "editaTipodecargo",
+		'titulo' => "Cargo en el medio"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -88,7 +94,8 @@ class Configuracion extends CI_Controller {
 	public function fuente(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipodefuente(),
-		'ruta' => "editaTipodefuente"
+		'ruta' => "editaTipodefuente",
+		'titulo' => "Fuente"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -333,7 +340,8 @@ class Configuracion extends CI_Controller {
 	public function motivogresion(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getMotivodelaagresion(),
-		'ruta' => "editaMotivogresion"
+		'ruta' => "editaMotivogresion",
+		'titulo' => "Motivos de la agresión"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -343,7 +351,8 @@ class Configuracion extends CI_Controller {
 	public function tipodeinvestigacion(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipodeinvestigacion(),
-		'ruta' => "editaTipodeinvestigacion"
+		'ruta' => "editaTipodeinvestigacion",
+		'titulo' => "Tipo de investigación"
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -419,6 +428,87 @@ class Configuracion extends CI_Controller {
 		}
 	}
 	/*++ Funciones para editar variables Registros end  ++*/
+	/*++ Funciones para las vistas Agresor tart  ++*/
+	public function tipoagresor(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipoagresor(),
+		'ruta' => "editaTipoagresor",
+		'titulo' => "Tipo de agresor"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function tipoagresor_nivel1(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipoagresor_nivel1(),
+		'ruta' => "editaNivel1",
+		'titulo' => "Tipo de agresor Nivel 1"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/listaNivel1",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function tipoagresor_nivel2(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipoagresor_nivel2(),
+		'ruta' => "editaNivel2",
+		'titulo' => "Tipo de agresor Nivel 2"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/listaNivel2",$data);
+		$this->load->view("layouts/footer");
+	}
+	/*++ Funciones para las vistas Agresor end  ++*/
+	/*++ Funciones para editar variables Agresor start  ++*/
+	public function editaTipoagresor($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getTipodeagresor($id),
+			'base' => "tipoagresor_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function tipoagresor_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'tipoagresor';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion/tipoagresor");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaTipoagresor".$idmenu);
+			}
+		}else {
+			$this->editaMotivogresion	($idmenu);
+		}
+	}
+	/*++ Funciones para las vistas Agresor end  ++*/
+	public function addItem2(){
+		$data  = array(
+			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),
+			'nivel1' => $this->Configuracion_model->getTipoagresor_nivel1(),
+
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
 	public function add(){
 		$data  = array(
 			'roles' => $this->Usuarios_model->getRoles(),
@@ -498,7 +588,6 @@ class Configuracion extends CI_Controller {
 		);
 		$this->load->view("admin/usuarios/view",$data);
 	}
-
 	public function edit($id){
 		$data  = array(
 			'roles' => $this->Usuarios_model->getRoles(),
@@ -509,7 +598,6 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/usuarios/edit",$data);
 		$this->load->view("layouts/footer");
 	}
-
 	public function delete($id){
 		$data  = array(
 			'id_estado' => "0",

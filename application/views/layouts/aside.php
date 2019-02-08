@@ -55,9 +55,9 @@
                                   </li>
                                   <li><a href="#" aria-expanded="true">Agresor</a>
                                       <ul class="collapse">
-                                          <li><a href="<?php echo base_url();?>administrador/configuracion/motivogresion">Tipo de agresor</a></li>
-                                          <li><a href="<?php echo base_url();?>administrador/configuracion/tipodeinvestigacion">Servidor publico</a></li>
-
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/tipoagresor">Tipo de agresor</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/tipoagresor_nivel1">Nivel1</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/tipoagresor_nivel2">Nivel2</a></li>
                                       </ul>
                                   </li>
                                 </ul>

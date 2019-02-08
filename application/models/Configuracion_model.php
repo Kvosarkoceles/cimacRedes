@@ -127,6 +127,41 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	/*Funciones para la registro end*/
+	/*Funciones para el Agresor start*/
+	public function getTipoagresor(){
+		$this->db->select("c.*");
+		$this->db->from("tipoagresor c");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+	public function getTipodeagresor($id){
+		$this->db->select("e.*");
+		$this->db->from("tipoagresor e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
+	public function getTipoagresor_nivel1(){
+		$this->db->select("c.*, cm.nombre as tipoAgresor");
+		$this->db->from("nivel1Agresor c");
+		$this->db->join("	tipoagresor cm","c.id_tipoAgresor	 = cm.id");
+		$this->db->order_by("cm.nombre", "asc");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+	public function getTipoagresor_nivel2(){
+		$this->db->select("c.*, cm.nombre as tipoAgresor, nv.nombre as nivel");
+		$this->db->from("nivel2Agresor c");
+		$this->db->join("tipoagresor cm","c.id_tipoAgresor	 = cm.id");
+		$this->db->join("nivel1Agresor nv","c.id_nivel1	 = nv.id");
+		$this->db->order_by("cm.nombre", "asc");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+	/*Funciones para el Agresor end*/
 	public function save($data){
 		return $this->db->insert("usuarios",$data);
 	}
