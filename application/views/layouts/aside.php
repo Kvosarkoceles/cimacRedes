@@ -12,7 +12,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><h1>CIMAC</h1></a>
+                    <a href="<?php echo base_url()?>"><h1>CIMAC</h1></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -50,11 +50,16 @@
                                   <li><a href="#" aria-expanded="true">Registros</a>
                                       <ul class="collapse">
                                           <li><a href="<?php echo base_url();?>administrador/configuracion/motivogresion">Motivo de las agresiones</a></li>
-                                          <li><a href="#">Item level (2)</a></li>
-                                          <li><a href="#">Item level (2)</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/tipodeinvestigacion">Tipo de investigacion</a></li>
                                       </ul>
                                   </li>
-                                  <li><a href="#">Item level (1)</a></li>
+                                  <li><a href="#" aria-expanded="true">Agresor</a>
+                                      <ul class="collapse">
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/motivogresion">Tipo de agresor</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/tipodeinvestigacion">Servidor publico</a></li>
+
+                                      </ul>
+                                  </li>
                                 </ul>
                             </li>
                             <li>

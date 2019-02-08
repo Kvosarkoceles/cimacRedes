@@ -340,6 +340,16 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/list",$data);
 		$this->load->view("layouts/footer");
 	}
+	public function tipodeinvestigacion(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodeinvestigacion(),
+		'ruta' => "editaTipodeinvestigacion"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
 	/*++ Funciones para las vistas Registros end  ++*/
 	/*++ Funciones para editar variables Registros start  ++*/
 	public function editaMotivogresion($id){
@@ -372,7 +382,40 @@ class Configuracion extends CI_Controller {
 				redirect(base_url()."administrador/configuracion/editaMotivogresion".$idmenu);
 			}
 		}else {
-			$this->editaMotivogresion($idmenu);
+			$this->editaMotivogresion	($idmenu);
+		}
+	}
+	public function editaTipodeinvestigacion($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getTipoinvestigacion($id),
+			'base' => "tipodeinvestigacion_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function tipodeinvestigacion_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'tipodeinvestigacion';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion/tipodeinvestigacion");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaTipodeinvestigacion".$idmenu);
+			}
+		}else {
+			$this->editaMotivogresion	($idmenu);
 		}
 	}
 	/*++ Funciones para editar variables Registros end  ++*/

@@ -137,8 +137,8 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4  my-1">
-                                    <label for="agresor" class="col-form-label" align="center">Nivel:</label>
-                                    <select class="custom-select col-sm-12" name="agresor" id="agresor">
+                                    <label for="nivel" class="col-form-label" align="center">Nivel:</label>
+                                    <select class="custom-select col-sm-12" name="nivel" id="agresor">
 
                                     <?php foreach($nivelAgresor as $nivelA):?>
                                       <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
@@ -146,13 +146,12 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4  my-1">
-                                  <select name="provincia" id="provincia">
-                                    <?php foreach($provincias as $fila){ ?>
-                                      <option value="<?=$fila -> id ?>"><?=$fila -> nombre ?></option>
-                                      <?php }?>
-                                    </select>
-                                    <select name="localidad" id="localidad">
-                                        <option value="">Selecciona tu provincía</option>
+                                    <label for="nivel" class="col-form-label" align="center">Area:</label>
+                                    <select class="custom-select col-sm-12" name="nivel" id="agresor">
+
+                                    <?php foreach($nivelAgresor as $nivelA):?>
+                                      <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
+                                    <?php endforeach;?>
                                     </select>
                                 </div>
 

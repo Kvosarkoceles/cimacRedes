@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Configuracion_model extends CI_Model {
-
+	/*Funciones para la periodeista start*/
 	public function getEdad($id){
 		$this->db->select("e.parametro as nombre, e.descripcion,e.id");
 		$this->db->from("edades e");
@@ -96,7 +96,8 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
-
+	/*Funciones para la periodeista end*/
+	/*Funciones para el registro start*/
 	public function getMotivodelaagresion(){
 		$this->db->select("c.*");
 		$this->db->from("motivodelasgresion c");
@@ -111,7 +112,21 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
+	public function getTipodeinvestigacion(){
+		$this->db->select("c.*");
+		$this->db->from("tipodeinvestigacion c");
+		$resultados = $this->db->get();
 
+		return $resultados ->result();
+	}
+	public function getTipoinvestigacion($id){
+		$this->db->select("e.*");
+		$this->db->from("tipodeinvestigacion e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
+	/*Funciones para la registro end*/
 	public function save($data){
 		return $this->db->insert("usuarios",$data);
 	}

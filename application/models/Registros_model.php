@@ -109,12 +109,11 @@ class Registros_model extends CI_Model {
 		$resultados = $this->db->get("tipoagresor");
 		return $resultados ->result();
 	}
-	public function getNivelagresor($id){
+	public function getNivelagresor(){
 		$this->db->select("n.*");
 		$this->db->from("nivelAgresor n");
-		$this->db->where("n.id_nivel",$id);
 		$resultado = $this->db->get();
-		return $resultado->row();
+		return $resultado->result();
 	}
 
 	public function getNivelagresorTemp(){

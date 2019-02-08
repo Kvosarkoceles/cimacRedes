@@ -41,7 +41,7 @@ class Registros extends CI_Controller {
 			'motivodelasgresion' => $this->Registros_model->getMotivodelasgresion(),
 			'sexo' => $this->Registros_model->getSexo(),
 			'agresor' => $this->Registros_model->getTipoAgresor(),
-			'nivelAgresor' => $this->Registros_model->getNivelagresor($id),
+			'nivelAgresor' => $this->Registros_model->getNivelagresor(),
 			'Judicializacion' => $this->Registros_model->getJudicializacionr($id),
 
 		);
