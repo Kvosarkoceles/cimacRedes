@@ -497,6 +497,27 @@ class Configuracion extends CI_Controller {
 			$this->editaMotivogresion	($idmenu);
 		}
 	}
+	public function editaNivel1($id){
+		$data  = array(
+			'nivel' => $this->Configuracion_model->getTipoNivel1($id),
+			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),			
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/editNivel1",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function editaNivel2($id){
+		$data  = array(
+			'nivel2' => $this->Configuracion_model->getTipoNivel2($id),
+			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),
+			'nivel1' => $this->Configuracion_model->getTipoagresor_nivel1(),
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/editNivel2",$data);
+		$this->load->view("layouts/footer");
+	}
 	/*++ Funciones para las vistas Agresor end  ++*/
 	public function addItem2(){
 		$data  = array(

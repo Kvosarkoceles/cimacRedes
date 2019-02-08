@@ -142,6 +142,13 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
+	public function getTipoNivel1($id){
+		$this->db->select("e.*");
+		$this->db->from("nivel1Agresor e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
 	public function getTipoagresor_nivel1(){
 		$this->db->select("c.*, cm.nombre as tipoAgresor");
 		$this->db->from("nivel1Agresor c");
@@ -150,6 +157,19 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 
 		return $resultados ->result();
+	}
+	public function getNivel2(){
+		$this->db->select("c.*");
+		$this->db->from("nivel2Agresor c");
+		$resultados = $this->db->get();
+		return $resultados ->result();
+	}
+	public function getTipoNivel2($id){
+		$this->db->select("e.*");
+		$this->db->from("nivel2Agresor e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
 	}
 	public function getTipoagresor_nivel2(){
 		$this->db->select("c.*, cm.nombre as tipoAgresor, nv.nombre as nivel");
