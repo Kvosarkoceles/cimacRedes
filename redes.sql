@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-02-2019 a las 19:40:27
+-- Tiempo de generación: 10-02-2019 a las 04:14:37
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0
 
@@ -30,12 +30,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `agresor` (
   `id` int(11) NOT NULL,
-  `id_motivoDeLaAgresion` int(11) NOT NULL,
-  `id_tipoDeInvestigacion` int(11) NOT NULL,
-  `id_agresor` int(11) NOT NULL,
-  `id_nivelesServidorPublico` int(11) NOT NULL,
-  `id_servidorPublico` int(11) NOT NULL
+  `id_sexo` int(11) NOT NULL,
+  `id_tipoAgresor` int(11) NOT NULL,
+  `id_nivel1` int(11) NOT NULL,
+  `id_nivel2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `agresor`
+--
+
+INSERT INTO `agresor` (`id`, `id_sexo`, `id_tipoAgresor`, `id_nivel1`, `id_nivel2`) VALUES
+(1, 1, 2, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -55,10 +61,10 @@ CREATE TABLE `cargoenelmedio` (
 
 INSERT INTO `cargoenelmedio` (`id`, `nombre`, `descripcion`) VALUES
 (1, 'Sin informacion', 'Valor inicial'),
-(2, 'Blogera', ''),
-(3, 'Colaboradora', ''),
+(2, 'Ciencia', 'dedicada a la ciencia'),
+(3, 'Colaboradora', 'colabora de vez en cuando'),
 (4, 'Columnista/Editorialista/Articulista', ''),
-(5, 'Corresponsal', ''),
+(5, 'Corresponsal', 'Trabajando a distancia'),
 (6, 'Directora', ''),
 (7, 'Fotoperiodista', ''),
 (8, 'Locutora', ''),
@@ -87,14 +93,14 @@ INSERT INTO `comunidades` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datoagresor`
+-- Estructura de tabla para la tabla `datosagresores`
 --
 
-CREATE TABLE `datoagresor` (
+CREATE TABLE `datosagresores` (
   `id` int(11) NOT NULL,
-  `id_sexo` int(11) NOT NULL,
-  `id_tipoAgresor` int(11) NOT NULL,
-  `id_nivel` int(11) NOT NULL
+  `id_incidente` int(11) NOT NULL,
+  `id_nivelesServidorPublico` int(11) NOT NULL,
+  `id_servidorPublico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -136,8 +142,8 @@ CREATE TABLE `datosIncidente` (
   `manifestacionesDeTipoDifamacionCalumniaInjuria` int(2) NOT NULL,
   `consecuenciaFueDespedida` int(2) NOT NULL,
   `consecuenciasBajoPerfil` int(2) NOT NULL,
-  `consecuenciasCambioDeDomicilio` int(2) NOT NULL,
   `consecuenciasDesplazamiento` int(2) NOT NULL,
+  `id_consecuenciajudicializacion` int(2) NOT NULL,
   `atencionMedicaRecibida` int(2) NOT NULL,
   `atencionPsicologicaRecibida` int(2) NOT NULL,
   `atencionJuridicaRecibida` int(2) NOT NULL,
@@ -153,29 +159,20 @@ CREATE TABLE `datosIncidente` (
   `cuales` text NOT NULL,
   `queAHechoLaComisionDeDerechosHumanos` text NOT NULL,
   `relatoriaDelHecho` text NOT NULL,
-  `imagen1` varchar(255) NOT NULL,
-  `imagen2` varchar(255) NOT NULL,
-  `imagen3` varchar(255) NOT NULL,
-  `imagen4` varchar(255) NOT NULL,
-  `imagen5` varchar(255) NOT NULL,
-  `textos1` varchar(255) NOT NULL,
-  `textos2` varchar(255) NOT NULL,
-  `textos3` varchar(255) NOT NULL,
-  `textos4` varchar(255) NOT NULL,
-  `textos5` varchar(255) NOT NULL,
-  `link1` varchar(255) NOT NULL,
-  `link2` varchar(255) NOT NULL,
-  `link3` varchar(255) NOT NULL,
-  `link4` varchar(255) NOT NULL,
-  `link5` varchar(255) NOT NULL,
   `analisisDeContexto` text NOT NULL,
   `analisisDeRiesgo` text NOT NULL,
   `observaciones` text NOT NULL,
   `cimacHaceAcompanamientoAnteElMecanismo` int(2) NOT NULL,
   `queOtraOrganizacionLasAcompana` varchar(255) NOT NULL,
-  `id_tipoDeInvestigacion` int(11) NOT NULL,
-  `id_agresor` int(11) NOT NULL
+  `id_tipoDeInvestigacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `datosIncidente`
+--
+
+INSERT INTO `datosIncidente` (`id`, `id_datospersonales`, `id_usuario`, `estatus`, `fechaRegistro`, `nombre`, `fechaIncidente`, `id_estados`, `municipio`, `localidad`, `latitud`, `longitud`, `tipoDeViolenciaPsicologica`, `tipodeViolenciaFisica`, `tipoDeViolenciaPatrimonial`, `tipodeViolenciaEconomica`, `tipoDeViolenciaSexual`, `tipoDeViolenciaCibernetica`, `modalidadViolenciaFamiliar`, `modalidadViolenciaLaboral`, `modalidadViolenciaEnLaComunidad`, `modalidadViolenciaInstitucional`, `modalidadViolenciaFeminicida`, `modalidadDeViolenciaCibernetica`, `manifestacionesDeTipoAmenazas`, `manifestacionesDeTipoFeminicida`, `manifestacionesDeTipoDesaparcionesForzadas`, `manifestacionesDeTipoDetenciones`, `manifestacionesDeTipoDetencionesArbitrariasExtrajudicia`, `manifestacionesDeTipoDifamacionCalumniaInjuria`, `consecuenciaFueDespedida`, `consecuenciasBajoPerfil`, `consecuenciasDesplazamiento`, `id_consecuenciajudicializacion`, `atencionMedicaRecibida`, `atencionPsicologicaRecibida`, `atencionJuridicaRecibida`, `ningunaAtencionRecibida`, `agresionAnterior`, `beneficiariaDelMecanismoDeProtecion`, `carpetaDeInvestigacionEnAlgunaProcuraduria`, `quejaAnteComisionDeDerechosHumanos`, `estasDeAcuedoConElMecanismoDeProteccion`, `esasMedidasTePermitenSeguirHaciendoTuTrabajo`, `porQue`, `tenidoResultadosLaCarpetaDeInvestigacion`, `cuales`, `queAHechoLaComisionDeDerechosHumanos`, `relatoriaDelHecho`, `analisisDeContexto`, `analisisDeRiesgo`, `observaciones`, `cimacHaceAcompanamientoAnteElMecanismo`, `queOtraOrganizacionLasAcompana`, `id_tipoDeInvestigacion`) VALUES
+(1, 1, 1, 1, '2019-02-06', '', '0000-00-00', 2, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, '', 0, '', '', '', '', '', '', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -200,6 +197,14 @@ CREATE TABLE `datoslaborales` (
   `AnosDeEjercerElPeriodismo` int(30) NOT NULL,
   `id_SexoDelJefeInmediato` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `datoslaborales`
+--
+
+INSERT INTO `datoslaborales` (`id`, `Id_datospersonales`, `id_tipodemedio`, `paracuantosmedioslabora`, `id_tipodecontrato`, `DireccionDelMedio`, `id_cargoenelmedio`, `id_fuente`, `Links1`, `Links2`, `Links3`, `Links4`, `Links5`, `AnosDeEjercerElPeriodismo`, `id_SexoDelJefeInmediato`) VALUES
+(1, 1, 3, 0, 1, '', 4, 5, '', '', '', '', '', 0, 1),
+(2, 2, 7, 0, 1, '', 7, 12, '', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -241,6 +246,14 @@ CREATE TABLE `datosperiodistas` (
   `id_uduarioModificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `datosperiodistas`
+--
+
+INSERT INTO `datosperiodistas` (`id`, `fechaRegistro`, `nombres`, `apellidoPaterno`, `apellidoMaterno`, `id_Edad`, `id_estados`, `municipio`, `localidad`, `id_tipodecasa`, `viveCon`, `dependientesEconomicos`, `hijos`, `id_estadocivil`, `comunidadIndigena`, `comunidadLGBTTTI`, `telefonoparticular`, `telefonocelular`, `email`, `telegram`, `skype`, `facebook`, `twitter`, `instagram`, `youtube`, `snapchat`, `otraredsocial`, `id_usuario`, `estatus`, `fechaultimamodificacion`, `id_uduarioModificacion`) VALUES
+(1, '2019-02-06', 'Miguel Angel', 'Mendoza', '', 4, 6, '', '', 1, '', '', 0, 1, 1, 1, '', '', '', '', '', '', '', '', '', '', '', 1, 1, '2019-02-06', 1),
+(2, '2019-02-06', 'prueba', 'apellido paterno', '', 2, 17, '', '', 1, '', '', 0, 1, 1, 1, '', '', '', '', '', '', '', '', '', '', '', 1, 1, '2019-02-06', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -259,9 +272,9 @@ CREATE TABLE `edades` (
 
 INSERT INTO `edades` (`id`, `parametro`, `descripcion`) VALUES
 (1, 'Sin informacion', 'Valor inicial'),
-(2, '15-20', ''),
-(3, '21-25', ''),
-(4, '26-30', '');
+(2, '20-25', 'de once a no se'),
+(3, '26-30', 'once a doce'),
+(4, '31-35', 'ventiuno a no se');
 
 -- --------------------------------------------------------
 
@@ -281,8 +294,8 @@ CREATE TABLE `estadocivil` (
 
 INSERT INTO `estadocivil` (`id`, `nombre`, `descripcion`) VALUES
 (1, 'Sin informacion', 'Valor inicial'),
-(2, 'Soltera', ''),
-(3, 'Casada', '');
+(2, 'Soltera', 'soltera'),
+(3, 'Casada', 'casada dos veces');
 
 -- --------------------------------------------------------
 
@@ -353,8 +366,8 @@ CREATE TABLE `fuente` (
 
 INSERT INTO `fuente` (`id`, `nombre`, `descripcion`) VALUES
 (1, 'Sin informacion', 'Valor inicial'),
-(2, 'Ciencia', ''),
-(3, 'Cultura', ''),
+(2, 'Ciencia', 'dedicada a la ciencia'),
+(3, 'Cultura', 'cultura'),
 (4, 'Derechos humanos', ''),
 (5, 'Economía', ''),
 (6, 'Educativa', ''),
@@ -388,39 +401,70 @@ CREATE TABLE `imagenes` (
 
 CREATE TABLE `motivodelasgresion` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `motivodelasgresion`
 --
 
-INSERT INTO `motivodelasgresion` (`id`, `nombre`) VALUES
-(1, 'Nota'),
-(2, 'Cobertura');
+INSERT INTO `motivodelasgresion` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'Sin informacion', ''),
+(2, 'Nota', ''),
+(3, 'Cobertura', ''),
+(4, 'otra', 'Por otra');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `nivelAgresor`
+-- Estructura de tabla para la tabla `nivel1Agresor`
 --
 
-CREATE TABLE `nivelAgresor` (
+CREATE TABLE `nivel1Agresor` (
   `id` int(11) NOT NULL,
-  `id_nivel` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL
+  `id_tipoAgresor` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `nivelAgresor`
+-- Volcado de datos para la tabla `nivel1Agresor`
 --
 
-INSERT INTO `nivelAgresor` (`id`, `id_nivel`, `nombre`) VALUES
-(1, 2, 'Ejecutivo'),
-(2, 3, 'Legislativo'),
-(3, 1, 'PRI'),
-(4, 1, 'PAN'),
-(5, 1, 'PRD');
+INSERT INTO `nivel1Agresor` (`id`, `id_tipoAgresor`, `nombre`, `descripcion`) VALUES
+(1, 0, 'Sin informacion', 'Valor inicial'),
+(2, 5, 'Ejecutivo', 'sistema ejecutivo'),
+(3, 5, 'Legislativo', ''),
+(4, 5, 'Judicial', ''),
+(5, 4, 'Pri', ''),
+(6, 4, 'Pan', 'partido de accion nacional');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `nivel2Agresor`
+--
+
+CREATE TABLE `nivel2Agresor` (
+  `id` int(11) NOT NULL,
+  `id_tipoAgresor` int(11) NOT NULL,
+  `id_nivel1` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `nivel2Agresor`
+--
+
+INSERT INTO `nivel2Agresor` (`id`, `id_tipoAgresor`, `id_nivel1`, `nombre`, `descripcion`) VALUES
+(1, 0, 0, 'Sin informacion', 'Valor inicial'),
+(2, 5, 2, 'Ejecutivo2', ''),
+(3, 5, 4, 'Legislativo2', 'no lo se'),
+(4, 5, 3, 'Judicial2', ''),
+(5, 5, 2, 'Pri2', ''),
+(6, 5, 2, 'Pan2', '');
 
 -- --------------------------------------------------------
 
@@ -529,17 +573,19 @@ INSERT INTO `sino` (`id`, `valor`, `nombre`) VALUES
 CREATE TABLE `tipoagresor` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `id_nivel` int(11) NOT NULL
+  `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipoagresor`
 --
 
-INSERT INTO `tipoagresor` (`id`, `nombre`, `id_nivel`) VALUES
-(1, 'Crimen Organizado', 0),
-(2, 'Seguridad Privada', 1),
-(3, 'Partido Politico', 2);
+INSERT INTO `tipoagresor` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'Sin información', 'Valor inicial'),
+(2, 'Crimen Organizado', 'descripción del crimen organizado'),
+(3, 'Seguridad Privada', 'Puercos'),
+(4, 'Partido Politico', 'Ratas'),
+(5, 'Servidor Publico', '');
 
 -- --------------------------------------------------------
 
@@ -559,8 +605,8 @@ CREATE TABLE `tipodecasa` (
 
 INSERT INTO `tipodecasa` (`id`, `nombre`, `descripcion`) VALUES
 (1, 'Sin informacion', 'Valor inicial'),
-(2, 'Propia', ''),
-(3, 'Renta', '');
+(2, 'Propia', 'Soy la dueña'),
+(3, 'Rentada', 'Me la prestaron');
 
 -- --------------------------------------------------------
 
@@ -580,9 +626,9 @@ CREATE TABLE `tipodecontrato` (
 
 INSERT INTO `tipodecontrato` (`id`, `nombre`, `descripcion`) VALUES
 (1, 'Sin informacion', 'Valor inicial'),
-(2, 'Base', ''),
-(3, 'Freelance', ''),
-(4, 'Honorarios', ''),
+(2, 'Base', 'base en sindicato'),
+(3, 'Freelance', 'por su cuenta en proyectos'),
+(4, 'Honorarios', 'por honorarios con retencion de impuestos'),
 (5, 'Propio', ''),
 (6, 'Solidario', '');
 
@@ -594,16 +640,38 @@ INSERT INTO `tipodecontrato` (`id`, `nombre`, `descripcion`) VALUES
 
 CREATE TABLE `tipodeinvestigacion` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipodeinvestigacion`
 --
 
-INSERT INTO `tipodeinvestigacion` (`id`, `nombre`) VALUES
-(1, 'Movimientos Sociales'),
-(2, 'Crimen Organizado');
+INSERT INTO `tipodeinvestigacion` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'Sin informacion', 'Valor inicial'),
+(2, 'Movimientos Sociales', 'movimiento naranja'),
+(3, 'Crimen Organizado', 'el pri');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipodejudicializacion`
+--
+
+CREATE TABLE `tipodejudicializacion` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipodejudicializacion`
+--
+
+INSERT INTO `tipodejudicializacion` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'Denuncia penal', ''),
+(2, 'Denuncia daño moral', '');
 
 -- --------------------------------------------------------
 
@@ -623,13 +691,13 @@ CREATE TABLE `tipodemedio` (
 
 INSERT INTO `tipodemedio` (`id`, `nombre`, `descripcion`) VALUES
 (1, 'Sin informacion', 'Valor inicial'),
-(2, 'Agencia', ''),
+(2, 'Agencia', 'Agencia generadora de noticias'),
 (3, 'Blog', ''),
 (4, 'Digital', ''),
 (5, 'Impreso', ''),
-(6, 'Medio alternativo', ''),
-(7, 'Medio comunitario', ''),
-(8, 'Radio', ''),
+(6, 'Alternativo', 'Medio creado por el usuario'),
+(7, 'Medio comunitario', 'Medio creado por la comunidad'),
+(8, 'Radio', 'Frecuencia en concesión proporcionada por el estado'),
 (9, 'Tv', '');
 
 -- --------------------------------------------------------
@@ -677,9 +745,9 @@ ALTER TABLE `comunidades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `datoagresor`
+-- Indices de la tabla `datosagresores`
 --
-ALTER TABLE `datoagresor`
+ALTER TABLE `datosagresores`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -737,9 +805,15 @@ ALTER TABLE `motivodelasgresion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `nivelAgresor`
+-- Indices de la tabla `nivel1Agresor`
 --
-ALTER TABLE `nivelAgresor`
+ALTER TABLE `nivel1Agresor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `nivel2Agresor`
+--
+ALTER TABLE `nivel2Agresor`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -797,6 +871,12 @@ ALTER TABLE `tipodeinvestigacion`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `tipodejudicializacion`
+--
+ALTER TABLE `tipodejudicializacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `tipodemedio`
 --
 ALTER TABLE `tipodemedio`
@@ -816,7 +896,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `agresor`
 --
 ALTER TABLE `agresor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `cargoenelmedio`
@@ -831,28 +911,28 @@ ALTER TABLE `comunidades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `datoagresor`
+-- AUTO_INCREMENT de la tabla `datosagresores`
 --
-ALTER TABLE `datoagresor`
+ALTER TABLE `datosagresores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `datosIncidente`
 --
 ALTER TABLE `datosIncidente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `datoslaborales`
 --
 ALTER TABLE `datoslaborales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `datosperiodistas`
 --
 ALTER TABLE `datosperiodistas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `edades`
@@ -888,13 +968,19 @@ ALTER TABLE `imagenes`
 -- AUTO_INCREMENT de la tabla `motivodelasgresion`
 --
 ALTER TABLE `motivodelasgresion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `nivelAgresor`
+-- AUTO_INCREMENT de la tabla `nivel1Agresor`
 --
-ALTER TABLE `nivelAgresor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `nivel1Agresor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `nivel2Agresor`
+--
+ALTER TABLE `nivel2Agresor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `niveles`
@@ -930,7 +1016,7 @@ ALTER TABLE `sino`
 -- AUTO_INCREMENT de la tabla `tipoagresor`
 --
 ALTER TABLE `tipoagresor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tipodecasa`
@@ -948,6 +1034,12 @@ ALTER TABLE `tipodecontrato`
 -- AUTO_INCREMENT de la tabla `tipodeinvestigacion`
 --
 ALTER TABLE `tipodeinvestigacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tipodejudicializacion`
+--
+ALTER TABLE `tipodejudicializacion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
