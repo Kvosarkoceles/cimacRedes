@@ -8,7 +8,7 @@
             <div class="col-sm-6  my-1 ">
               <div class="form-group">
                 <label for="rol">Tipo de agresor:</label>
-                <select class="custom-select" name="tipodemedio" id="tipodemedio">
+                <select class="custom-select" name="tipoagresor" id="tipoagresor">
                   <?php foreach($tipoagresor as $agresor):?>
                     <?php if ($agresor->id>1): ?>
                       <option value="<?php echo $agresor->id;?>" <?php echo $agresor->id==$nivel2->id_tipoAgresor ? "selected":"";?> ><?php echo $agresor->nombre;?></option>
@@ -25,12 +25,8 @@
             <div class="col-sm-6  my-1 ">
               <div class="form-group">
                 <label for="rol">Nivel1:</label>
-                <select class="custom-select" name="tipodemedio" id="tipodemedio">
-                  <?php foreach($nivel1 as $nivel):?>
-                    <?php if ($nivel->id>1): ?>
-                      <option value="<?php echo $nivel->id;?>" <?php echo $nivel->id==$nivel2->id_nivel1 ? "selected":"";?> ><?php echo $nivel->nombre;?></option>
-                    <?php endif; ?>
-                  <?php endforeach;?>
+                <select class="custom-select" name="province" id="province">
+                  <option value="<?php echo $nivel2->id_nivel1?>" selected="selected"> <?php echo $nivel2->nombreNivel1?> </option>
                 </select>
                 <?php echo form_error("rol","<span class='text-danger'>","</span>"); ?>
               </div>
@@ -69,5 +65,6 @@
           </div>
         </div>
       </div>
+    
     </form>
   </div>

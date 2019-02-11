@@ -9,6 +9,7 @@ class Configuracion extends CI_Controller {
 			redirect(base_url());
 		}
 		$this->load->model("Configuracion_model");
+		$this->load->model('Dependent_model', 'dep_model', TRUE);
 	}
 	/*++ Funciones para las vistas Periodistas tart  ++*/
 	public function index(){
@@ -500,7 +501,7 @@ class Configuracion extends CI_Controller {
 	public function editaNivel1($id){
 		$data  = array(
 			'nivel' => $this->Configuracion_model->getTipoNivel1($id),
-			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),			
+			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -508,7 +509,10 @@ class Configuracion extends CI_Controller {
 		$this->load->view("layouts/footer");
 	}
 	public function editaNivel2($id){
+		$data['tipoAgresor'] = $this->dep_model->get_tipoAgresor_query();
+	//	$this->load->view('welcome_message', $data);
 		$data  = array(
+			'tipoAgresor' => $this->dep_model->get_tipoAgresor_query(),
 			'nivel2' => $this->Configuracion_model->getTipoNivel2($id),
 			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),
 			'nivel1' => $this->Configuracion_model->getTipoagresor_nivel1(),
@@ -519,6 +523,24 @@ class Configuracion extends CI_Controller {
 		$this->load->view("layouts/footer");
 	}
 	/*++ Funciones para las vistas Agresor end  ++*/
+	public function get_nivel1()	{
+		$id_tipoAgresor = $this->input->post('id_tipoAgresor');
+		$nivel1 = $this->dep_model->get_nivel1_query($id_tipoAgresor);
+		if(count($nivel1)>0)
+		{
+			$pro_select_box = '';
+			//$pro_select_box .= '<option value="">Select Province</option>';
+
+			foreach ($nivel1 as $nivel) {
+				$pro_select_box .='<option value="'.$nivel->id.'">'.$nivel->nombre.'</option>';
+			}
+			echo json_encode($pro_select_box);
+		}
+	}
+
+
+
+
 	public function addItem2(){
 		$data  = array(
 			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),

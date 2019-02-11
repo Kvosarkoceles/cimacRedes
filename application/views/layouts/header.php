@@ -32,6 +32,76 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/default-css.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/styles.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/responsive.css">
+    <script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+         $('#tipoagresor').on('change', function(){
+              var id_tipoAgresor = $(this).val();
+              if(id_tipoAgresor == '')
+              {
+                  $('#province').prop('disabled', true);
+              }
+              else
+              {
+                  $('#province').prop('disabled', false);
+                  $.ajax({
+                      url:"<?php echo base_url() ?>administrador/configuracion/get_nivel1",
+                      type: "POST",
+                      data: {'id_tipoAgresor' : id_tipoAgresor},
+                      dataType: 'json',
+                      success: function(data){
+                         $('#province').html(data);
+                      },
+                      error: function(){
+                        $('#province').html('');
+                        $('#province').append('<option value="" selected="selected">Sin información</option>');
+
+
+                        $('#province').prop('disabled', true);
+                      //    alert('Error occur...!!');
+                      }
+                  });
+              }
+         });
+      });
+
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('#province').click(
+          function(){
+            var id_tipoAgresor = $('#tipoagresor').val();
+            if(id_tipoAgresor == '')
+            {
+                $('#province').click('disabled', true);
+            }
+            else
+            {
+                $('#province').prop('disabled', false);
+                $.ajax({
+                    url:"<?php echo base_url() ?>administrador/configuracion/get_nivel1",
+                    type: "POST",
+                    data: {'id_tipoAgresor' : id_tipoAgresor},
+                    dataType: 'json',
+                    success: function(data){
+                       $('#province').html(data);
+                    },
+                    error: function(){
+                      $('#province').html('');
+                      $('#province').append('<option value="" selected="selected">Sin información</option>');
+
+
+                      $('#province').prop('disabled', true);
+                    //    alert('Error occur...!!');
+                    }
+                });
+            }
+          }
+        );
+      }
+    );
+    </script>
+
 
 </head>
 
