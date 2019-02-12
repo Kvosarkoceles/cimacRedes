@@ -4,14 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Configuracion_model extends CI_Model {
 	/*Funciones para la periodeista start*/
 	public function getEdad($id){
-		$this->db->select("e.parametro as nombre, e.descripcion,e.id");
+		$this->db->select("e.*");
 		$this->db->from("edades e");
 		$this->db->where("e.id",$id);
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
 	public function getEdades(){
-		$this->db->select("e.parametro as nombre, e.descripcion,e.id");
+		$this->db->select("e.*");
 		$this->db->from("edades e");
 		$resultados = $this->db->get();
 		return $resultados ->result();

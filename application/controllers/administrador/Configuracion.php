@@ -11,7 +11,7 @@ class Configuracion extends CI_Controller {
 		$this->load->model("Configuracion_model");
 		$this->load->model('Dependent_model', 'dep_model', TRUE);
 	}
-	/*++ Funciones para las vistas Periodistas tart  ++*/
+
 	public function index(){
 		$data  = array(
 		'edades' => $this->Configuracion_model->getEdades(),
@@ -26,85 +26,31 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/list",$data);
 		$this->load->view("layouts/footer");
 	}
+	/*++ Funciones para Periodistas start  ++*/
+	/*++ Funciones para Edades start  ++*/
 	public function edades(){
 		$data  = array(
 		'menus' => $this->Configuracion_model->getEdades(),
 		'ruta' => "editEdades",
-		'titulo' => "Edades"
+		'titulo' => "Edades",
+		'agrega' => "addEdades",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("admin/configuracion/list",$data);
 		$this->load->view("layouts/footer");
 	}
-	public function vivienda(){
+	public function addEdades(){
 		$data  = array(
-		'menus' => $this->Configuracion_model->getTipodecasa(),
-		'ruta' => "editCasa",
-		'titulo' => "Tipo de vivienda"
+			'titulo' => 'Agrega nuevo parametro de edades',
+			'tabla' => 'edades',
+			'destino' => 'edades',
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("admin/configuracion/add",$data);
 		$this->load->view("layouts/footer");
 	}
-	public function civil(){
-		$data  = array(
-		'menus' => $this->Configuracion_model->getEstadocivil(),
-		'ruta' => "editaEstadoCivil",
-		'titulo' => "Estado civil"
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/list",$data);
-		$this->load->view("layouts/footer");
-	}
-	public function medio(){
-		$data  = array(
-		'menus' => $this->Configuracion_model->getTipodemedio(),
-		'ruta' => "editaTipodemedio",
-		'titulo' => "Tipo de medio"
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/list",$data);
-		$this->load->view("layouts/footer");
-	}
-	public function contrato(){
-		$data  = array(
-		'menus' => $this->Configuracion_model->getTipodecontrato(),
-		'ruta' => "editaTipodecontrato",
-		'titulo' => "Tipo de contrato"
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/list",$data);
-		$this->load->view("layouts/footer");
-	}
-	public function cargo(){
-		$data  = array(
-		'menus' => $this->Configuracion_model->getTipodecargo(),
-		'ruta' => "editaTipodecargo",
-		'titulo' => "Cargo en el medio"
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/list",$data);
-		$this->load->view("layouts/footer");
-	}
-	public function fuente(){
-		$data  = array(
-		'menus' => $this->Configuracion_model->getTipodefuente(),
-		'ruta' => "editaTipodefuente",
-		'titulo' => "Fuente"
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/list",$data);
-		$this->load->view("layouts/footer");
-	}
-	/*++ Funciones para las vistas Periodistas end  ++*/
-	/*++ Funciones para editar variables Periodistas start  ++*/
 	public function editEdades($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getEdad($id),
@@ -123,7 +69,7 @@ class Configuracion extends CI_Controller {
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
-				'parametro' => $nombres,
+				'nombre' => $nombres,
 				'descripcion' => $descripcion,
 			);
 
@@ -137,6 +83,31 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editEdades($idmenu);
 		}
+	}
+	/*++ Funciones para Edades end  ++*/
+	/*++ Funciones para Vivienda start  ++*/
+	public function vivienda(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodecasa(),
+		'ruta' => "editCasa",
+		'titulo' => "Tipo de vivienda",
+		'agrega' => "addVivienda",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addVivienda(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de vivienda',
+			'tabla' => 'tipodecasa',
+			'destino' => 'vivienda',
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
 	}
 	public function editCasa($id){
 		$data  = array(
@@ -171,6 +142,31 @@ class Configuracion extends CI_Controller {
 			$this->editCasa($idmenu);
 		}
 	}
+	/*++ Funciones para Vivienda end  ++*/
+	/*++ Funciones para Estado civil start  ++*/
+	public function civil(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getEstadocivil(),
+		'ruta' => "editaEstadoCivil",
+		'titulo' => "Estado civil",
+		'agrega' => "addCivil",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addCivil(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de estado civil',
+			'tabla' => 'estadocivil',
+			'destino' => 'civil',
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
 	public function editaEstadoCivil($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getCivil($id),
@@ -203,6 +199,31 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaEstadoCivil($idmenu);
 		}
+	}
+	/*++ Funciones para Estado civil end  ++*/
+	/*++ Funciones para Tipo de medio start  ++*/
+	public function medio(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodemedio(),
+		'ruta' => "editaTipodemedio",
+		'titulo' => "Tipo de medio",
+		'agrega' => "addMedio",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addMedio(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de medio',
+			'tabla' => 'tipodemedio',
+			'destino' => 'medio',
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
 	}
 	public function editaTipodemedio($id){
 		$data  = array(
@@ -237,6 +258,31 @@ class Configuracion extends CI_Controller {
 			$this->editaTipodemedio($idmenu);
 		}
 	}
+	/*++ Funciones para Tipo de medio end  ++*/
+	/*++ Funciones para Tipo de contrato start  ++*/
+	public function contrato(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodecontrato(),
+		'ruta' => "editaTipodecontrato",
+		'titulo' => "Tipo de contrato",
+		'agrega' => "addContrato",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addContrato(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de contrato',
+			'tabla' => 'tipodecontrato',
+			'destino' => 'contrato',
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
 	public function editaTipodecontrato($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipocontrato($id),
@@ -269,6 +315,31 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaTipodecontrato($idmenu);
 		}
+	}
+	/*++ Funciones para Tipo de contrato end  ++*/
+	/*++ Funciones para Tipo de cargo start  ++*/
+	public function cargo(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodecargo(),
+		'ruta' => "editaTipodecargo",
+		'titulo' => "Cargo en el medio",
+		'agrega' => "addCargo",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addCargo(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de cargo en medio',
+			'tabla' => 'cargoenelmedio',
+			'destino' => 'cargo',
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
 	}
 	public function editaTipodecargo($id){
 		$data  = array(
@@ -303,6 +374,39 @@ class Configuracion extends CI_Controller {
 			$this->editaTipodecargo($idmenu);
 		}
 	}
+	/*++ Funciones para Tipo de cargo end  ++*/
+		/*++ Funciones para Fuente start  ++*/
+	public function fuente(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodefuente(),
+		'ruta' => "editaTipodefuente",
+		'titulo' => "Fuente",
+		'agrega' => "addFuente",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addFuente(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de fuente',
+			'tabla' => 'fuente',
+			'destino' => 'fuente',
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
+	/*++ Funciones para Fuente end  ++*/
+	/*++ Funciones para Periodistas end  ++*/
+
+
+
+
+
+
 	public function editaTipodefuente($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipofuente($id),
@@ -342,7 +446,8 @@ class Configuracion extends CI_Controller {
 		$data  = array(
 		'menus' => $this->Configuracion_model->getMotivodelaagresion(),
 		'ruta' => "editaMotivogresion",
-		'titulo' => "Motivos de la agresión"
+		'titulo' => "Motivos de la agresión",
+		'agrega' => "addMotivogresion",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -353,7 +458,8 @@ class Configuracion extends CI_Controller {
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipodeinvestigacion(),
 		'ruta' => "editaTipodeinvestigacion",
-		'titulo' => "Tipo de investigación"
+		'titulo' => "Tipo de investigación",
+		'agrega' => "addTipodeinvestigacion",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -675,7 +781,28 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/add",$data);
 		$this->load->view("layouts/footer");
 	}
-
+	public function addMotivogresion(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo motivo de la agresión',
+			'tabla' => 'motivodelasgresion',
+			'destino' => 'motivogresion',
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addTipodeinvestigacion(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de investigación',
+			'tabla' => 'tipodeinvestigacion',
+			'destino' => 'tipodeinvestigacion',
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
 	public function store(){
 		$tabla = $this->input->post("tabla");
 		$destino = $this->input->post("destino");
