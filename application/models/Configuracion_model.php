@@ -144,7 +144,7 @@ class Configuracion_model extends CI_Model {
 	}
 	public function getTipoNivel1($id){
 		$this->db->select("e.*");
-		$this->db->from(" e");
+		$this->db->from("nivel1Agresor e");
 		$this->db->where("e.id",$id);
 		$resultados = $this->db->get();
 		return $resultados ->row();
