@@ -510,7 +510,6 @@ class Configuracion extends CI_Controller {
 	}
 	public function editaNivel2($id){
 		$data['tipoAgresor'] = $this->dep_model->get_tipoAgresor_query();
-	//	$this->load->view('welcome_message', $data);
 		$data  = array(
 			'tipoAgresor' => $this->dep_model->get_tipoAgresor_query(),
 			'nivel2' => $this->Configuracion_model->getTipoNivel2($id),
@@ -537,24 +536,81 @@ class Configuracion extends CI_Controller {
 			echo json_encode($pro_select_box);
 		}
 	}
+	public function storeNivel2(){
+		$id_nivel2 = $this->input->post("id_nivel2");
+		$tipoagresor = $this->input->post("tipoagresor");
+		$nivel1 = $this->input->post("nivel1");
+		$nombres = $this->input->post("nombre");
+		$descripcion = $this->input->post("descripcion");
+		$this->form_validation->set_rules("nombre","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'id_tipoAgresor' => $tipoagresor,
+				'id_nivel1' => $nivel1,
+				'nombre' => $nombres,
+				'descripcion'=> $descripcion
+				//'id_estado' => "1"
+			);
+
+			if ($this->Configuracion_model->save($data)) {
+				redirect(base_url()."administrador/configuracion/tipoagresor_nivel2");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/addItem2");
+			}
+		}else {
+			$this->addItem2();
+		}
 
 
+	}
+	public function updateNivel2(){
+		$menu='nivel2Agresor';
+		$id_nivel2 = $this->input->post("id_nivel2");
+		$tipoagresor = $this->input->post("tipoagresor");
+		$nivel1 = $this->input->post("nivel1");
+		$nombres = $this->input->post("nombre");
+		$descripcion = $this->input->post("descripcion");
+		$this->form_validation->set_rules("nombre","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'id_tipoAgresor' => $tipoagresor,
+				'id_nivel1' => $nivel1,
+				'nombre' => $nombres,
+				'descripcion'=> $descripcion
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$id_nivel2)) {
+				redirect(base_url()."administrador/configuracion/tipoagresor_nivel2");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaNivel2".$id_nivel2);
+			}
+		}else {
+			$this->edit($idusuario);
+		}
 
 
+	}
 	public function addItem2(){
 		$data  = array(
 			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),
 			'nivel1' => $this->Configuracion_model->getTipoagresor_nivel1(),
-
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("admin/configuracion/add",$data);
 		$this->load->view("layouts/footer");
 	}
+
+
+
+
 	public function add(){
 		$data  = array(
-			'roles' => $this->Usuarios_model->getRoles(),
+		//	'roles' => $this->Usuarios_model->getRoles(),
 
 		);
 		$this->load->view("layouts/header");
@@ -596,34 +652,7 @@ class Configuracion extends CI_Controller {
 
 
 	}
-	public function update(){
-		$idusuario = $this->input->post("idusuario");
-		$nombres = $this->input->post("nombres");
-		$username = $this->input->post("nick");
-		$rol = $this->input->post("rol");
-		$this->form_validation->set_rules("nombres","Nombres","required");
-		$this->form_validation->set_rules("nick","Usuario","required");
-		$this->form_validation->set_rules("rol","rol","required");
-		if ($this->form_validation->run()) {
-			$data  = array(
-				'nombre' => $nombres,
-				'username' => $username,
-				'id_rol' => $rol
-			);
 
-			if ($this->Usuarios_model->update($idusuario,$data)) {
-				redirect(base_url()."administrador/usuarios");
-			}
-			else{
-				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/usuarios/edit".$idusuario);
-			}
-		}else {
-			$this->edit($idusuario);
-		}
-
-
-	}
 	public function view(){
 		$idusuario = $this ->input ->post("idusuario");
 		$data = array(

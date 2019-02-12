@@ -1,5 +1,6 @@
 <div class="col-lg-12 mt-5">
-  <form action="<?php echo base_url();?>administrador/usuarios/store" method="POST">
+  <form action="<?php echo base_url();?>administrador/configuracion/updateNivel2" method="POST">
+      <input type="hidden" class="form-control" id="id_nivel2" name="id_nivel2" value="<?php echo $nivel2->id?>">
     <div class="card">
       <div class="card-body">
         <h3 class="header-title">Edita Item Nivel 2</h3>
@@ -7,7 +8,7 @@
           <div class="col-sm-6  my-1 ">
             <div class="col-sm-6  my-1 ">
               <div class="form-group">
-                <label for="rol">Tipo de agresor:</label>
+                <label for="tipoagresor">Tipo de agresor:</label>
                 <select class="custom-select" name="tipoagresor" id="tipoagresor">
                   <?php foreach($tipoagresor as $agresor):?>
                     <?php if ($agresor->id>1): ?>
@@ -24,8 +25,8 @@
           <div class="col-sm-6  my-1 ">
             <div class="col-sm-6  my-1 ">
               <div class="form-group">
-                <label for="rol">Nivel1:</label>
-                <select class="custom-select" name="province" id="province">
+                <label for="nivel1">Nivel1:</label>
+                <select class="custom-select" name="nivel1" id="nivel1">
                   <option value="<?php echo $nivel2->id_nivel1?>" selected="selected"> <?php echo $nivel2->nombreNivel1?> </option>
                 </select>
                 <?php echo form_error("rol","<span class='text-danger'>","</span>"); ?>
@@ -37,8 +38,8 @@
           <div class="col-sm-6  my-1 ">
             <div class="col-sm-6  my-1 ">
               <div class="form-group">
-                <label for="nombres">Nombres:</label>
-                <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $nivel2->nombre?>">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nivel2->nombre?>">
                 <?php echo form_error("nombres","<span class='text-danger'>","</span>"); ?>
               </div>
             </div>
@@ -48,8 +49,8 @@
           <div class="col-sm-6  my-1 ">
             <div class="col-sm-6  my-1 ">
               <div class="form-group">
-                <label for="nombres">Descripción:</label>
-                <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $nivel2->descripcion?>">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo $nivel2->descripcion?>">
                 <?php echo form_error("nombres","<span class='text-danger'>","</span>"); ?>
               </div>
             </div>
@@ -65,6 +66,6 @@
           </div>
         </div>
       </div>
-    
+
     </form>
   </div>

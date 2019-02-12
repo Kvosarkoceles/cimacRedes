@@ -144,7 +144,7 @@ class Configuracion_model extends CI_Model {
 	}
 	public function getTipoNivel1($id){
 		$this->db->select("e.*");
-		$this->db->from("nivel1Agresor e");
+		$this->db->from(" e");
 		$this->db->where("e.id",$id);
 		$resultados = $this->db->get();
 		return $resultados ->row();
@@ -167,8 +167,10 @@ class Configuracion_model extends CI_Model {
 	public function getTipoNivel2($id){
 		$this->db->select("e.*, cm.nombre as nombreNivel1");
 		$this->db->from("nivel2Agresor e");
-		$this->db->join("nivel1agresor cm","e.id_nivel1	 = cm.id");
+		$this->db->join("nivel1Agresor cm","e.id_nivel1	 = cm.id");
+
 		$this->db->where("e.id",$id);
+		//$this->db->order_by("cm.nombre", "asc");
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
@@ -177,14 +179,14 @@ class Configuracion_model extends CI_Model {
 		$this->db->from("nivel2Agresor c");
 		$this->db->join("tipoagresor cm","c.id_tipoAgresor	 = cm.id");
 		$this->db->join("nivel1Agresor nv","c.id_nivel1	 = nv.id");
-		$this->db->order_by("cm.nombre", "asc");
+		$this->db->order_by("nv.nombre", "asc");
 		$resultados = $this->db->get();
 
 		return $resultados ->result();
 	}
 	/*Funciones para el Agresor end*/
 	public function save($data){
-		return $this->db->insert("usuarios",$data);
+		return $this->db->insert("nivel2Agresor",$data);
 	}
 	public function update($menu,$data,$idmenu){
 		$this->db->where("id",$idmenu);
