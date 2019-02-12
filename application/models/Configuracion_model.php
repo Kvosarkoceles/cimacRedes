@@ -185,8 +185,8 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->result();
 	}
 	/*Funciones para el Agresor end*/
-	public function save($data){
-		return $this->db->insert("nivel2Agresor",$data);
+	public function save($tabla,$data){
+		return $this->db->insert("$tabla",$data);
 	}
 	public function update($menu,$data,$idmenu){
 		$this->db->where("id",$idmenu);

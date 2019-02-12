@@ -19,7 +19,6 @@
                               <?php if ($menu->id > 1): ?>
                                 <tr>
                                   <th scope="col"><?php echo $menu->id;?></th>
-
                                     <td><?php echo $menu->nombre ;?></td>
                                     <td><?php echo $menu->descripcion;?></td>
                                     <td>
@@ -39,7 +38,7 @@
                 </div>
             </div>
             <div class="col-md-12"  align="right">
-              <a href="<?php echo base_url();?>administrador/configuracion/add" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Item</a>
+              <a href="<?php echo base_url();?>administrador/configuracion/<?php echo $agrega; ?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Item</a>
             </div>
         </div>
     </div>

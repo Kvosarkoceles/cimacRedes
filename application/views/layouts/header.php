@@ -34,6 +34,34 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/responsive.css">
     <script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
     <script type="text/javascript">
+       $(document).ready(function(){
+          $('#country').on('change', function(){
+               var country_id = $(this).val();
+               if(country_id == '')
+               {
+                   $('#province').prop('disabled', true);
+               }
+               else
+               {
+                   $('#province').prop('disabled', false);
+                   $.ajax({
+                       url:"<?php echo base_url() ?>welcome/get_province",
+                       type: "POST",
+                       data: {'country_id' : country_id},
+                       dataType: 'json',
+                       success: function(data){
+                          $('#province').html(data);
+                       },
+                       error: function(){
+                           alert('Error occur...!!');
+                       }
+                   });
+               }
+          });
+       });
+    </script>
+
+    <script type="text/javascript">
       $(document).ready(function(){
          $('#tipoagresor').on('change', function(){
               var id_tipoAgresor = $(this).val();
