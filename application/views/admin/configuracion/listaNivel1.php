@@ -39,6 +39,9 @@
                     </table>
                 </div>
             </div>
+            <div class="col-md-12"  align="right">
+              <a href="<?php echo base_url();?>administrador/configuracion/addItem1" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Item</a>
+            </div>
         </div>
     </div>
 </div>

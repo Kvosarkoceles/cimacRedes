@@ -1,8 +1,6 @@
 <div class="col-12 mt-5">
     <div class="card">
-      <div class="col-md-6">
-        <a href="<?php echo base_url();?>administrador/configuracion/addItem2" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Item</a>
-      </div>
+
         <div class="card-body">
           <h4 class="header-title"><?php echo $titulo; ?></h4>
               <div class="single-table">
@@ -43,6 +41,9 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="col-md-12"  align="right">
+              <a href="<?php echo base_url();?>administrador/configuracion/addItem2" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Item</a>
             </div>
         </div>
     </div>
