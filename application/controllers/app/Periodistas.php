@@ -112,6 +112,7 @@ class Periodistas extends CI_Controller {
 		$youtube = $this->input->post("youtube");
 		$snapchat = $this->input->post("snapchat");
 		$otraredsocial = $this->input->post("otraredsocial");
+		$nombreDelMedio = $this->input->post("nombreDelMedio");
 		$tipodemedio = $this->input->post("tipodemedio");
 		$paracuantosmedioslabora = $this->input->post("paracuantosmedioslabora");
 		$tipodecontrato = $this->input->post("tipodecontrato");
@@ -168,6 +169,7 @@ class Periodistas extends CI_Controller {
 			$idultimo=$this->Periodistas_model->save("datosperiodistas",$datosperiodistas);
 			$datoslaborales = array(
 				'Id_datospersonales' => $idultimo,
+				'nombreDelMedio' => $nombreDelMedio,
 				'id_tipodemedio' => $tipodemedio,
 				'paracuantosmedioslabora ' => $paracuantosmedioslabora,
 				'id_tipodecontrato' => $tipodecontrato,
@@ -224,6 +226,7 @@ class Periodistas extends CI_Controller {
 		$youtube = $this->input->post("youtube");
 		$snapchat = $this->input->post("snapchat");
 		$otraredsocial = $this->input->post("otraredsocial");
+		$nombreDelMedio = $this->input->post("nombreDelMedio");
 		$tipodemedio = $this->input->post("tipodemedio");
 		$paracuantosmedioslabora = $this->input->post("paracuantosmedioslabora");
 		$tipodecontrato = $this->input->post("tipodecontrato");
@@ -274,6 +277,7 @@ class Periodistas extends CI_Controller {
 				'id_uduarioModificacion	' => $this->session->userdata("id")
 			);
 			$datoslaborales = array(
+				'nombreDelMedio' => $nombreDelMedio,
 				'id_tipodemedio' => $tipodemedio,
 				'paracuantosmedioslabora' => $paracuantosmedioslabora,
 				'id_tipodecontrato' => $tipodecontrato,

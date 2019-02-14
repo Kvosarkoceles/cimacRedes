@@ -3,6 +3,8 @@
     <div class="card">
         <div class="card-body">
             <h4 class="header-title">Informacion de la periodista</h4>
+            <p>Fecha de modificación:<small class="text-muted"><?php echo $periodista->fechaultimamodificacion ?></small></p>
+            <p>por:<small class="text-muted"><?php echo $periodista->usuario ?></small></p>
             <div id="accordion2" class="according accordion-s2">
                 <div class="card">
                     <div class="card-header">
@@ -50,17 +52,18 @@
                     </div>
                     <div id="accordion23" class="collapse show" data-parent="#accordion2">
                         <div class="card-body">
+                          <p><strong>Nombre del medio :</strong><small class="text-muted"><?php echo $trabajo->nombreDelMedio;?></small></p>
                           <p><strong>Tipo de medio :</strong><small class="text-muted"><?php echo $trabajo->tipodemedio;?></small></p>
                           <p><strong>Para cuantos medios labora:</strong><small class="text-muted"><?php echo $trabajo->paracuantosmedioslabora ;?></small></p>
                           <p><strong>Tipo de contrato:</strong><small class="text-muted"><?php echo $trabajo->tipodecontrato ;?></small></p>
                           <p><strong>Direccion del medio:</strong><small class="text-muted"><?php echo $trabajo->DireccionDelMedio ;?></small></p>
                           <p><strong>Cargo en el medio:</strong><small class="text-muted"><?php echo $trabajo->cargoenelmedio ;?></small></p>
                           <p><strong>Fuente:</strong><small class="text-muted"><?php echo $trabajo->fuente;?></small></p>
-                          <p><strong>Links1:</strong><small class="text-muted"> <?php echo $trabajo->Links1;?></small></p>
-                          <p><strong>Links2:</strong><small class="text-muted"><?php echo $trabajo->Links2;?></small></p>
-                          <p><strong>Links3:</strong><small class="text-muted"> <?php echo $trabajo->Links3;?></small></p>
-                          <p><strong>Links4</strong><small class="text-muted"><?php echo $trabajo->Links4;?></small></p>
-                          <p><strong>Links5</strong><small class="text-muted"><?php echo $trabajo->Links5;?></small></p>
+                          <p><strong>Link del medio:</strong><small class="text-muted"> <?php echo $trabajo->Links1;?></small></p>
+                          <p><strong>Link del medio:</strong><small class="text-muted"><?php echo $trabajo->Links2;?></small></p>
+                          <p><strong>Link del medio:</strong><small class="text-muted"> <?php echo $trabajo->Links3;?></small></p>
+                          <p><strong>Link del medio:</strong><small class="text-muted"><?php echo $trabajo->Links4;?></small></p>
+                          <p><strong>Link del medio:</strong><small class="text-muted"><?php echo $trabajo->Links5;?></small></p>
                           <p><strong>Años de ejercer el periodismo:</strong><small class="text-muted"><?php echo $trabajo->AnosDeEjercerElPeriodismo;?></small></p>
                           <p><strong>Sexo del jefe imediato:</strong><small class="text-muted"><?php echo $trabajo->sexo;?></small></p>
 

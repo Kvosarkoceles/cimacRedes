@@ -5,7 +5,7 @@
     <input type="hidden" name="idtrabajo" value="<?php echo $trabajo->id?>" id ="idtrabajo">
     <div class="card">
       <div class="card-body">
-        <h3 class="header-title">Agregar periodista</h3>
+        <h3 class="header-title">Edita periodista</h3>
         <div id="accordion1" class="according">
           <div class="card">
             <div class="card-header">
@@ -36,7 +36,7 @@
                     <select class="custom-select" name="edad" id="edad">
                       <?php foreach($edades as $edad):?>
                         <?php if ($edad->id>1): ?>
-                          <option value="<?php echo $edad->id;?>"<?php echo $edad->id==$periodista->id_Edad ? "selected":"";?>><?php echo $edad->parametro;?></option>
+                          <option value="<?php echo $edad->id;?>"<?php echo $edad->id==$periodista->id_Edad ? "selected":"";?>><?php echo $edad->nombre;?></option>
                         <?php endif; ?>
                       <?php endforeach;?>
                     </select>
@@ -186,7 +186,12 @@
             <div id="accordion13" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="form-row align-items-center">
-                  <div class="col-sm-2 my-1 ">
+                  <div class="col-sm-4 my-1 ">
+                    <label for="nombreDelMedio">Nombre del medio:</label>
+                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo $trabajo->nombreDelMedio?>" id="nombreDelMedio" name="nombreDelMedio">
+                     <?php echo form_error("nombreDelMedio","<span class='text-danger'>","</span>"); ?>
+                  </div>
+                  <div class="col-sm-3 my-1 ">
                     <label for="rol">Tipo de medio:</label>
                     <select class="custom-select" name="tipodemedio" id="tipodemedio">
                       <?php foreach($tipodemedio as $tipomedio):?>
@@ -212,13 +217,13 @@
                     </select>
                     <?php echo form_error("tipodecontrato","<span class='text-danger'>","</span>"); ?>
                   </div>
-                  <div class="col-sm-5 my-1 ">
-                    <label for="direcciondelmedio" class="col-form-label"> Direccion del medio</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="text" value="<?php echo $trabajo->DireccionDelMedio;?>" id="direcciondelmedio" name="direcciondelmedio">
-                  </div>
                 </div>
                 <div class="form-row align-items-center">
-                  <div class="col-sm-2 my-1 ">
+                  <div class="col-sm-5 my-1 ">
+                    <label for="direcciondelmedio" class="col-form-label"> Direccion del medio</label>
+                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo $trabajo->DireccionDelMedio;?>" id="direcciondelmedio" name="direcciondelmedio">
+                  </div>
+                  <div class="col-sm-4 my-1 ">
                     <label for="rol">Cargo en el medio:</label>
                     <select class="custom-select" name="cargoenelmedio" id="cargoenelmedio">
                       <?php foreach($cargoenelmedio as $cargo):?>
@@ -229,7 +234,7 @@
                     </select>
                     <?php echo form_error("cargoenelmedio","<span class='text-danger'>","</span>"); ?>
                   </div>
-                  <div class="col-sm-2 my-1 ">
+                  <div class="col-sm-3 my-1 ">
                     <label for="rol">Fuente:</label>
                     <select class="custom-select" name="fuente" id="fuente">
                       <?php foreach($fuente as $fuente):?>
@@ -240,30 +245,32 @@
                     </select>
                     <?php echo form_error("fuente","<span class='text-danger'>","</span>"); ?>
                   </div>
-                  <div class="col-sm-4 my-1 ">
+                </div>
+                <div class="form-row align-items-center">
+                  <div class="col-sm-6 my-1 ">
                     <label for="Link1" class="col-form-label">Link del medio</label>
                     <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo $trabajo->Links1;?>" id="Link1" name="Link1">
                   </div>
-                  <div class="col-sm-4 my-1 ">
+                  <div class="col-sm-6 my-1 ">
                     <label for="Link2" class="col-form-label">Link del medio</label>
                     <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo $trabajo->Links2;?>" id="Link2" name="Link2">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
-                  <div class="col-sm-4 my-1 ">
+                  <div class="col-sm-6 my-1 ">
                     <label for="Link3" class="col-form-label">Link del medio</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo $trabajo->Links3;?>" id="Link3" name="Link3">
+                    <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo $trabajo->Links3;?>" id="Link3" name="Link3">
                   </div>
-                  <div class="col-sm-4 my-1 ">
+                  <div class="col-sm-6 my-1 ">
                     <label for="Link4" class="col-form-label">Link del medio</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo $trabajo->Links4;?>" id="Link4" name="Link4">
-                  </div>
-                  <div class="col-sm-4 my-1 ">
-                    <label for="Link5" class="col-form-label">Link del medio</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo $trabajo->Links5;?>" id="Link5" name="Link5">
+                    <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo $trabajo->Links4;?>" id="Link4" name="Link4">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
+                  <div class="col-sm-6 my-1 ">
+                    <label for="Link5" class="col-form-label">Link del medio</label>
+                    <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo $trabajo->Links5;?>" id="Link5" name="Link5">
+                  </div>
                   <div class="col-sm-4 my-1 ">
                     <label for="AnosDeEjercerElPeriodismo" class="col-form-label">Años de ejercer el periodismo</label>
                     <input class="form-control form-control-sm input-rounded col-sm-10" type="number" value="<?php echo $trabajo->AnosDeEjercerElPeriodismo;?>" id="AnosDeEjercerElPeriodismo" name="AnosDeEjercerElPeriodismo">

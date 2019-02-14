@@ -9,6 +9,7 @@ class Periodistas_model extends CI_Model {
 		$this->db->join("datoslaborales dl","p.id = dl.Id_datospersonales");
 		$this->db->join("tipodemedio tm","dl.id_tipodemedio = tm.id");
 		$this->db->join("cargoenelmedio cm","dl.id_cargoenelmedio = cm.id");
+
 		$this->db->where("p.estatus","1");
 		$resultados = $this->db->get();
 		return $resultados ->result();
@@ -18,18 +19,26 @@ class Periodistas_model extends CI_Model {
 		$this->db->from("datosIncidente u");
 		$this->db->join("datosperiodistas r","u.id_datospersonales = r.id");
 		$this->db->join("estados e","u.id_estados = e.id");
-			$this->db->where("u.id_datospersonales",$id);
+		$this->db->where("u.id_datospersonales",$id);
 		$resultado = $this->db->get();
 		return $resultado->result();
 		}
 	public function getPeriodista($id){
-		$this->db->select("p.*, ed.nombre as edad,e.nombre as estado, t.nombre as casa, eC.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
+		$this->db->select("p.*,
+		ed.nombre as edad,
+		e.nombre as estado,
+		t.nombre as casa,
+		eC.nombre as estadocivil,
+		c.nombre as indigena,
+		c1.nombre as LGBTTTI,
+		us.nombre as usuario");
 	//$this->db->select("p.*,e.nombre as estado, ed.parametro as edad, t.nombre as casa, ec.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
 		$this->db->from("datosperiodistas p");
 		$this->db->join("estados e","p.id_estados = e.id");
 		$this->db->join("edades ed","p.id_Edad = ed.id");
 		$this->db->join("tipodecasa  t","p.id_tipodecasa = t.id");
 		$this->db->join("estadocivil eC","p.id_estadocivil = eC.id");
+		$this->db->join("usuarios us","p.id_uduarioModificacion = us.id");
 		//$this->db->join("estadocivil ec","p.id_estadocivil = t.id");
 		$this->db->join("comunidades c","p.comunidadIndigena = c.id");
 		$this->db->join("comunidades c1","p.comunidadLGBTTTI = c1.id");

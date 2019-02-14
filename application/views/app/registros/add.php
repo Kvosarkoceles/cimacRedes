@@ -49,40 +49,48 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion12">Ubicación de la Agresión</a>
                     </div>
-                    <div id="accordion12" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion12" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
                               <div class="col-sm-3  my-1">
                                   <label for="fechaIncidente" class="col-form-label">Fecha del Incidente</label>
-                                  <input class="form-control form-control-sm input-rounded col-sm-12" type="date" value="" id="fechaIncidente" name="fechaIncidente">
+                                  <input class="form-control form-control-sm input-rounded col-sm-12" type="date" value="<?php echo set_value('fechaIncidente');?>" id="fechaIncidente" name="fechaIncidente">
+                                  <?php echo form_error("fechaIncidente","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                               </div>
                               <div class="col-sm-3 my-1">
                                   <label class="col-form-label">Estado</label>
                                    <select class="custom-select" name="estado" id="estado">
-                                  <option selected="selected" value="0">Seleccione un valor</option>
+                                  <option selected="selected" value="">Seleccione un valor</option>
                                       <?php foreach($estados as $estado):?>
-                                          <option value="<?php echo $estado->id;?>"><?php echo $estado->nombre;?></option>
+                                        <?php if ($estado->id>1): ?>
+                                          <option value="<?php echo $estado->id;?>" <?php echo set_select('estado',$estado->id); ?>><?php echo $estado->nombre;?></option>
+                                        <?php endif; ?>
                                       <?php endforeach;?>
                                   </select>
+                                  <?php echo form_error("estado","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                               </div>
                               <div class="col-sm-3 my-1">
                                  <label for="municipio" class="col-form-label form-control-sm input-rounded">Municipio</label>
-                                   <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="nommunicipiobres" name="municipio">
+                                 <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('municipio');?>" id="municipio" name="municipio">
+                                 <?php echo form_error("municipio","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                               </div>
                               <div class="col-sm-3 my-1">
                                  <label for="localidad" class="col-form-label form-control-sm input-rounded">Localidad</label>
-                                   <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="localidad" name="localidad">
+                                   <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('localidad');?>" id="localidad" name="localidad">
+                                   <?php echo form_error("localidad","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                               </div>
                             </div>
                             <div class="form-row align-items-center">
                               <div class="col-sm-3  my-1">
                                   <label for="latitud" class="col-form-label">Latitud</label>
-                                  <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="latitud" name="latitud" placeholder="19.4319274">
+                                  <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('latitud');?>" id="latitud" name="latitud" placeholder="19.4319274">
+                                  <?php echo form_error("latitud","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                               </div>
                               <div class="col-sm-3  my-1">
                                   <label for="longitud" class="col-form-label">longitud</label>
-                                  <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="longitud" name="longitud" placeholder="-99.1477557">
+                                  <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('longitud');?>" id="longitud" name="longitud" placeholder="-99.1477557">
+                                  <?php echo form_error("longitud","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                               </div>
                             </div>
                           </div>
@@ -90,12 +98,12 @@
                     </div>
                 </div>
               <!-- Ubicación de la Agresión end -->
-              <!-- Agresor start -->
+              <!-- Agresión start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
                     </div>
-                    <div id="accordion23" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion23" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                             <div class="card-body">
                               <div class="form-row align-items-center">
@@ -163,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-              <!-- Agresor end -->
+              <!-- Agresión end -->
               <!-- Analisis start -->
                 <div class="card">
                     <div class="card-header">
@@ -199,7 +207,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion13">Tipo de violencia</a>
                     </div>
-                    <div id="accordion13" class="collapse" data-parent="#accordion1">
+                    <div id="accordion13" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
