@@ -13,18 +13,7 @@ class Configuracion extends CI_Controller {
 	}
 
 	public function index(){
-		$data  = array(
-		'edades' => $this->Configuracion_model->getEdades(),
-		'tipocasa' => $this->Configuracion_model->getTipodecasa(),
-		'estadocivil' => $this->Configuracion_model->getEstadocivil(),
-		'tipodemedio' => $this->Configuracion_model->	getTipodemedio(),
-		'tipodecontrato' => $this->Configuracion_model->getTipodecontrato(),
-		'cargoenelmedio' => $this->Configuracion_model->getTipodecargo(),
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/list",$data);
-		$this->load->view("layouts/footer");
+		show_404();
 	}
 	/*++ Funciones para Periodistas start  ++*/
 	/*++ Funciones para Edades start  ++*/
@@ -45,6 +34,7 @@ class Configuracion extends CI_Controller {
 			'titulo' => 'Agrega nuevo parametro de edades',
 			'tabla' => 'edades',
 			'destino' => 'edades',
+			'metodo' =>1
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -103,6 +93,7 @@ class Configuracion extends CI_Controller {
 			'titulo' => 'Agrega nuevo tipo de vivienda',
 			'tabla' => 'tipodecasa',
 			'destino' => 'vivienda',
+			'metodo' =>2
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -161,6 +152,7 @@ class Configuracion extends CI_Controller {
 			'titulo' => 'Agrega nuevo tipo de estado civil',
 			'tabla' => 'estadocivil',
 			'destino' => 'civil',
+			'metodo' =>3
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -219,6 +211,7 @@ class Configuracion extends CI_Controller {
 			'titulo' => 'Agrega nuevo tipo de medio',
 			'tabla' => 'tipodemedio',
 			'destino' => 'medio',
+			'metodo' => 4
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -274,14 +267,77 @@ class Configuracion extends CI_Controller {
 	}
 	public function addContrato(){
 		$data  = array(
-			'titulo' => 'Agrega nuevo tipo de contrato',
+			'titulo' => 'Agrega tipo de contrato',
 			'tabla' => 'tipodecontrato',
 			'destino' => 'contrato',
+			'metodo' =>5
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("admin/configuracion/add",$data);
 		$this->load->view("layouts/footer");
+	}
+	public function storeContrato(){
+		$tabla = $this->input->post("tabla");
+		$destino = $this->input->post("destino");
+		$nombre = $this->input->post("nombre");
+		$metodo = $this->input->post("metodo");
+		$descripcion = $this->input->post("descripcion");
+		$this->form_validation->set_rules("nombre","Nombres","required");
+
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombre,
+				'descripcion' => $descripcion
+			);
+			if ($this->Configuracion_model->save($tabla,$data)) {
+				redirect(base_url()."administrador/configuracion/".$destino);
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/".$destino);
+			}
+
+		}else {
+			switch ($metodo) {
+				case 1:
+					$this->addEdades();
+					break;
+				case 2:
+					$this->addVivienda();
+					break;
+				case 3:
+					$this->addCivil();
+					break;
+				case 4:
+					$this->addMedio();
+						break;
+				case 5:
+					$this->addContrato();
+					break;
+				case 6:
+					$this->addCargo();
+					break;
+				case 7:
+					$this->addFuente();
+					break;
+				case 8:
+					$this->addMotivogresion();
+					break;
+				case 9:
+					$this->addTipodeinvestigacion();
+					break;
+				case 10:
+					$this->addTipoagresor();
+					break;
+				default:
+						show_404();
+					break;
+			}
+
+		}
+
+
 	}
 	public function editaTipodecontrato($id){
 		$data  = array(
@@ -316,6 +372,7 @@ class Configuracion extends CI_Controller {
 			$this->editaTipodecontrato($idmenu);
 		}
 	}
+
 	/*++ Funciones para Tipo de contrato end  ++*/
 	/*++ Funciones para Tipo de cargo start  ++*/
 	public function cargo(){
@@ -335,6 +392,7 @@ class Configuracion extends CI_Controller {
 			'titulo' => 'Agrega nuevo tipo de cargo en medio',
 			'tabla' => 'cargoenelmedio',
 			'destino' => 'cargo',
+			'metodo' => 6
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -393,20 +451,13 @@ class Configuracion extends CI_Controller {
 			'titulo' => 'Agrega nuevo tipo de fuente',
 			'tabla' => 'fuente',
 			'destino' => 'fuente',
+			'metodo' => 7
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("admin/configuracion/add",$data);
 		$this->load->view("layouts/footer");
 	}
-	/*++ Funciones para Fuente end  ++*/
-	/*++ Funciones para Periodistas end  ++*/
-
-
-
-
-
-
 	public function editaTipodefuente($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipofuente($id),
@@ -440,6 +491,9 @@ class Configuracion extends CI_Controller {
 			$this->editaTipodefuente($idmenu);
 		}
 	}
+	/*++ Funciones para Fuente end  ++*/
+	/*++ Funciones para Periodistas end  ++*/
+
 	/*++ Funciones para editar variables Periodistas end  ++*/
 	/*++ Funciones para las vistas Registros tart  ++*/
 	public function motivogresion(){
@@ -454,20 +508,18 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/list",$data);
 		$this->load->view("layouts/footer");
 	}
-	public function tipodeinvestigacion(){
+	public function addMotivogresion(){
 		$data  = array(
-		'menus' => $this->Configuracion_model->getTipodeinvestigacion(),
-		'ruta' => "editaTipodeinvestigacion",
-		'titulo' => "Tipo de investigación",
-		'agrega' => "addTipodeinvestigacion",
+			'titulo' => 'Agrega nuevo motivo de la agresión',
+			'tabla' => 'motivodelasgresion',
+			'destino' => 'motivogresion',
+			'metodo' => 8
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("admin/configuracion/add",$data);
 		$this->load->view("layouts/footer");
 	}
-	/*++ Funciones para las vistas Registros end  ++*/
-	/*++ Funciones para editar variables Registros start  ++*/
 	public function editaMotivogresion($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getMotivoagresion($id),
@@ -500,6 +552,32 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaMotivogresion	($idmenu);
 		}
+	}
+	/*++ Funciones para las vistas Registros end  ++*/
+	/*++ Funciones para editar variables Registros start  ++*/
+	public function tipodeinvestigacion(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodeinvestigacion(),
+		'ruta' => "editaTipodeinvestigacion",
+		'titulo' => "Tipo de investigación",
+		'agrega' => "addTipodeinvestigacion",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addTipodeinvestigacion(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de investigación',
+			'tabla' => 'tipodeinvestigacion',
+			'destino' => 'tipodeinvestigacion',
+			'metodo' => 9
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
 	}
 	public function editaTipodeinvestigacion($id){
 		$data  = array(
@@ -548,30 +626,18 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/list",$data);
 		$this->load->view("layouts/footer");
 	}
-	public function tipoagresor_nivel1(){
+	public function addTipoagresor(){
 		$data  = array(
-		'menus' => $this->Configuracion_model->getTipoagresor_nivel1(),
-		'ruta' => "editaNivel1",
-		'titulo' => "Tipo de agresor Nivel 1"
+			'titulo' => 'Agrega nuevo tipo de agresor',
+			'tabla' => 'tipoagresor',
+			'destino' => 'tipoagresor',
+			'metodo' => 10
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/listaNivel1",$data);
+		$this->load->view("admin/configuracion/add",$data);
 		$this->load->view("layouts/footer");
 	}
-	public function tipoagresor_nivel2(){
-		$data  = array(
-		'menus' => $this->Configuracion_model->getTipoagresor_nivel2(),
-		'ruta' => "editaNivel2",
-		'titulo' => "Tipo de agresor Nivel 2"
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/listaNivel2",$data);
-		$this->load->view("layouts/footer");
-	}
-	/*++ Funciones para las vistas Agresor end  ++*/
-	/*++ Funciones para editar variables Agresor start  ++*/
 	public function editaTipoagresor($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipodeagresor($id),
@@ -605,6 +671,7 @@ class Configuracion extends CI_Controller {
 			$this->editaMotivogresion	($idmenu);
 		}
 	}
+
 	public function editaNivel1($id){
 		$data  = array(
 			'nivel' => $this->Configuracion_model->getTipoNivel1($id),
@@ -615,6 +682,93 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/editNivel1",$data);
 		$this->load->view("layouts/footer");
 	}
+	public function tipoagresor_nivel1(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipoagresor_nivel1(),
+		'ruta' => "editaNivel1",
+		'titulo' => "Tipo de agresor Nivel 1"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/listaNivel1",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function get_nivel1()	{
+		$id_tipoAgresor = $this->input->post('id_tipoAgresor');
+		$nivel1 = $this->dep_model->get_nivel1_query($id_tipoAgresor);
+		if(count($nivel1)>0)
+		{
+			$pro_select_box = '';
+			$pro_select_box .= '<option value="">Seleccione un valor</option>';
+
+			foreach ($nivel1 as $nivel) {
+				$pro_select_box .='<option value="'.$nivel->id.'">'.$nivel->nombre.'</option>';
+			}
+			echo json_encode($pro_select_box);
+		}
+	}
+	public function storeNivel1(){
+		$tipoagresor = $this->input->post("tipoagresor");
+		$nombres = $this->input->post("nombre");
+		$descripcion = $this->input->post("descripcion");
+		$this->form_validation->set_rules("nombre","Nombre","required");
+		$this->form_validation->set_rules("tipoagresor","Tipo de agresor","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'id_tipoAgresor' => $tipoagresor,
+				'nombre' => $nombres,
+				'descripcion'=> $descripcion
+			);
+			if ($this->Configuracion_model->save('nivel1Agresor',$data)) {
+				redirect(base_url()."administrador/configuracion/tipoagresor_nivel1");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/addItem1");
+			}
+		}else {
+			$this->addItem1();
+		}
+	}
+	public function addItem1(){
+		$data  = array(
+			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),
+			'nivel1' => $this->Configuracion_model->getTipoagresor_nivel1(),
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/addNivel1",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function updateNivel1(){
+		$menu='nivel1Agresor';
+		$id_nivel1 = $this->input->post("id_nivel1");
+		$id_tipoAgresor = $this->input->post("tipoagresor");
+		$nombres = $this->input->post("nombre");
+		$descripcion = $this->input->post("descripcion");
+		$this->form_validation->set_rules("nombre","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'id_tipoAgresor' => $id_tipoAgresor,
+				'nombre' => $nombres,
+				'descripcion'=> $descripcion
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$id_nivel1)) {
+				redirect(base_url()."administrador/configuracion/tipoagresor_nivel1");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaNivel1".$id_nivel1);
+			}
+		}else {
+			$this->editaNivel1($id_nivel1);
+		}
+
+
+	}
+
+
 	public function editaNivel2($id){
 		$data['tipoAgresor'] = $this->dep_model->get_tipoAgresor_query();
 		$data  = array(
@@ -628,16 +782,26 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/editNivel2",$data);
 		$this->load->view("layouts/footer");
 	}
-	/*++ Funciones para las vistas Agresor end  ++*/
-	public function get_nivel1()	{
-		$id_tipoAgresor = $this->input->post('id_tipoAgresor');
-		$nivel1 = $this->dep_model->get_nivel1_query($id_tipoAgresor);
-		if(count($nivel1)>0)
+	public function tipoagresor_nivel2(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipoagresor_nivel2(),
+		'ruta' => "editaNivel2",
+		'titulo' => "Tipo de agresor Nivel 2"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/listaNivel2",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function get_nivel2()	{
+		$id_nivel1 = $this->input->post('id_nivel1');
+		$nivel2 = $this->dep_model->get_nivel2_query($id_nivel1);
+		if(count($nivel2)>0)
 		{
 			$pro_select_box = '';
-			//$pro_select_box .= '<option value="">Select Province</option>';
+			$pro_select_box .= '<option value="">Seleccione un valor</option>';
 
-			foreach ($nivel1 as $nivel) {
+			foreach ($nivel2 as $nivel) {
 				$pro_select_box .='<option value="'.$nivel->id.'">'.$nivel->nombre.'</option>';
 			}
 			echo json_encode($pro_select_box);
@@ -649,6 +813,7 @@ class Configuracion extends CI_Controller {
 		$nombre = $this->input->post("nombre");
 		$descripcion = $this->input->post("descripcion");
 		$this->form_validation->set_rules("nombre","Nombres","required");
+		$this->form_validation->set_rules("tipoagresor","Tipo de agresor","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'id_tipoAgresor' => $tipoagresor,
@@ -667,32 +832,6 @@ class Configuracion extends CI_Controller {
 			}
 		}else {
 			$this->addItem2();
-		}
-
-
-	}
-	public function storeNivel1(){
-		$tipoagresor = $this->input->post("tipoagresor");
-		$nombres = $this->input->post("nombre");
-		$descripcion = $this->input->post("descripcion");
-		$this->form_validation->set_rules("nombre","Nombres","required");
-		if ($this->form_validation->run()) {
-			$data  = array(
-				'id_tipoAgresor' => $tipoagresor,
-				'nombre' => $nombres,
-				'descripcion'=> $descripcion
-				//'id_estado' => "1"
-			);
-
-			if ($this->Configuracion_model->save('nivel1Agresor',$data)) {
-				redirect(base_url()."administrador/configuracion/tipoagresor_nivel1");
-			}
-			else{
-				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/configuracion/addItem1");
-			}
-		}else {
-			$this->addItem1();
 		}
 
 
@@ -733,102 +872,8 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/addNivel2",$data);
 		$this->load->view("layouts/footer");
 	}
-	public function addItem1(){
-		$data  = array(
-			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),
-			'nivel1' => $this->Configuracion_model->getTipoagresor_nivel1(),
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/addNivel1",$data);
-		$this->load->view("layouts/footer");
-	}
-	public function updateNivel1(){
-		$menu='nivel1Agresor';
-		$id_nivel1 = $this->input->post("id_nivel1");
-		$id_tipoAgresor = $this->input->post("tipoagresor");
-		$nombres = $this->input->post("nombre");
-		$descripcion = $this->input->post("descripcion");
-		$this->form_validation->set_rules("nombre","Nombres","required");
-		if ($this->form_validation->run()) {
-			$data  = array(
-				'id_tipoAgresor' => $id_tipoAgresor,
-				'nombre' => $nombres,
-				'descripcion'=> $descripcion
-			);
-
-			if ($this->Configuracion_model->update($menu,$data,$id_nivel1)) {
-				redirect(base_url()."administrador/configuracion/tipoagresor_nivel1");
-			}
-			else{
-				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/configuracion/editaNivel1".$id_nivel1);
-			}
-		}else {
-			$this->editaNivel1($id_nivel1);
-		}
 
 
-	}
-	public function addTipoagresor(){
-		$data  = array(
-			'titulo' => 'Agrega nuevo tipo de agresor',
-			'tabla' => 'tipoagresor',
-			'destino' => 'tipoagresor',
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/add",$data);
-		$this->load->view("layouts/footer");
-	}
-	public function addMotivogresion(){
-		$data  = array(
-			'titulo' => 'Agrega nuevo motivo de la agresión',
-			'tabla' => 'motivodelasgresion',
-			'destino' => 'motivogresion',
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/add",$data);
-		$this->load->view("layouts/footer");
-	}
-	public function addTipodeinvestigacion(){
-		$data  = array(
-			'titulo' => 'Agrega nuevo tipo de investigación',
-			'tabla' => 'tipodeinvestigacion',
-			'destino' => 'tipodeinvestigacion',
-		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/configuracion/add",$data);
-		$this->load->view("layouts/footer");
-	}
-	public function store(){
-		$tabla = $this->input->post("tabla");
-		$destino = $this->input->post("destino");
-		$nombres = $this->input->post("nombre");
-		$descripcion = $this->input->post("descripcion");
-		$this->form_validation->set_rules("nombre","Nombres","required");
-		if ($this->form_validation->run()) {
-			$data  = array(
-				'nombre' => $nombres,
-				'descripcion'=> $descripcion
-				//'id_estado' => "1"
-			);
-
-			if ($this->Configuracion_model->save($tabla,$data)) {
-				redirect(base_url()."administrador/configuracion/$destino");
-			}
-			else{
-				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/configuracion/addItem1");
-			}
-		}else {
-			$this->addItem1();
-		}
-
-
-	}
 
 	public function view(){
 		$idusuario = $this ->input ->post("idusuario");

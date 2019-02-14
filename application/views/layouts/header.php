@@ -26,40 +26,50 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/styles.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/responsive.css">
     <!-- modernizr css -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?php echo base_url();?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
      <!-- others css -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/typography.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/default-css.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/styles.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/responsive.css">
+
+    <script src="<?php echo base_url() ?>assets/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/items.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/localization/messages_es.js"></script>
     <script src="<?php echo base_url() ?>assets/js/jquery.js"></script>
-    <script type="text/javascript">
-       $(document).ready(function(){
-          $('#country').on('change', function(){
-               var country_id = $(this).val();
-               if(country_id == '')
-               {
-                   $('#province').prop('disabled', true);
-               }
-               else
-               {
-                   $('#province').prop('disabled', false);
-                   $.ajax({
-                       url:"<?php echo base_url() ?>welcome/get_province",
-                       type: "POST",
-                       data: {'country_id' : country_id},
-                       dataType: 'json',
-                       success: function(data){
-                          $('#province').html(data);
-                       },
-                       error: function(){
-                           alert('Error occur...!!');
-                       }
-                   });
-               }
+    <script src="<?php echo base_url() ?>assets/js/validaciones.js"></script>
+
+    <!--<script type="text/javascript">
+            $(document).ready(function(){
+             $('#tipoagresor').on('change', function(){
+                  var country_id = $(this).val();
+                  if(country_id == '')
+                  {
+                      $('#nivel1').prop('disabled', true);
+                  }
+                  else
+                  {
+                      $('#nivel1').prop('disabled', false);
+                      $.ajax({
+                          url:"<?php echo base_url() ?>administrador/configuracion/get_nivel1",
+                          type: "POST",
+                          data: {'id_tipoAgresor' : id_tipoAgresor},
+                          dataType: 'json',
+                          success: function(data){
+                             $('#nivel1').html(data);
+                          },
+                          error: function(){
+                            $('#nivel1').html('');
+                            $('#nivel1').append('<option value="" selected="selected">Sin información</option>');
+                            $('#nivel1').prop('disabled', true);
+                          }
+                      });
+                  }
+             });
           });
-       });
-    </script>
+      </script>
+-->
 
     <script type="text/javascript">
       $(document).ready(function(){
@@ -68,10 +78,19 @@
               if(id_tipoAgresor == '')
               {
                   $('#nivel1').prop('disabled', true);
+                  $('#nivel2').prop('disabled', true);
+                  $('#nivel2').html('');
+                  $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
+                  $('#nivel1').html('');
+                  $('#nivel1').append('<option value="" selected="selected">Sin información</option>');
               }
               else
               {
+
                   $('#nivel1').prop('disabled', false);
+                  $('#nivel2').html('');
+                  $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
+                  $('#nivel2').prop('disabled', true);
                   $.ajax({
                       url:"<?php echo base_url() ?>administrador/configuracion/get_nivel1",
                       type: "POST",
@@ -84,6 +103,9 @@
                         $('#nivel1').html('');
                         $('#nivel1').append('<option value="" selected="selected">Sin información</option>');
                         $('#nivel1').prop('disabled', true);
+                        $('#nivel2').html('');
+                        $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
+                        $('#nivel2').prop('disabled', true);
                       //    alert('Error occur...!!');
                       }
                   });
@@ -92,7 +114,52 @@
       });
 
     </script>
-    <script>
+
+
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+         $('#nivel1').on('change', function(){
+              var id_nivel1 = $(this).val();
+              if(id_nivel1 == '')
+              {
+                  $('#nivel2').prop('disabled', true);
+                  $('#nivel2').html('');
+                  $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
+
+              }
+              else
+              {
+
+                  $('#nivel2').prop('disabled', false);
+                  $.ajax({
+                      url:"<?php echo base_url() ?>administrador/configuracion/get_nivel2",
+                      type: "POST",
+                      data: {'id_nivel1' : id_nivel1},
+                      dataType: 'json',
+                      success: function(data){
+                         $('#nivel2').html(data);
+                      },
+                      error: function(){
+                        $('#nivel2').html('');
+                        $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
+                        $('#nivel2').prop('disabled', true);
+                      //    alert('Error occur...!!');
+                      }
+                  });
+              }
+         });
+      });
+
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      });
+
+    </script>
+  <!--  <script>
       $(document).ready(function(){
         $('#province').click(
           function(){
@@ -126,8 +193,8 @@
         );
       }
     );
-    </script>
-    <script type="text/javascript">
+  </script>-->
+<!--    <script type="text/javascript">
        $(document).ready(function(){
           $('#tipoagresor').on('change', function(){
                var id_tipoAgresor = $(this).val();
@@ -156,7 +223,7 @@
                }
           });
        });
-   </script>
+   </script>-->
 
 </head>
 

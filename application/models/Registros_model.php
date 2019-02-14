@@ -16,7 +16,6 @@ class Registros_model extends CI_Model {
 		$this->db->select("u.*,r.nombres,
 													 r.apellidoPaterno,
 													 r.apellidoMaterno,r.localidad as localidadPeriodista,
-													 ed.parametro as edad,
 													 e.nombre as estado,
 													 e2.nombre as estadoIncidente,
 													 sn.nombre as beneficiariaDelMecanismo,

@@ -23,7 +23,7 @@ class Periodistas_model extends CI_Model {
 		return $resultado->result();
 		}
 	public function getPeriodista($id){
-		$this->db->select("p.*, ed.parametro as edad,e.nombre as estado, t.nombre as casa, eC.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
+		$this->db->select("p.*, ed.nombre as edad,e.nombre as estado, t.nombre as casa, eC.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
 	//$this->db->select("p.*,e.nombre as estado, ed.parametro as edad, t.nombre as casa, ec.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
 		$this->db->from("datosperiodistas p");
 		$this->db->join("estados e","p.id_estados = e.id");

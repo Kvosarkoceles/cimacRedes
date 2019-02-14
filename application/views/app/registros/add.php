@@ -6,7 +6,6 @@
         <div class="card-body">
             <h4 class="header-title">Agrega Registro</h4>
             <div id="accordion1" class="according">
-
               <!-- Informacion de la Periodista start -->
                 <div class="card">
                     <div class="card-header">
@@ -128,26 +127,25 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4  my-1">
-                                    <label for="agresor" class="col-form-label" align="center">Agresor:</label>
-                                    <select class="custom-select col-sm-12" name="agresor" id="agresor">
-
+                                    <label for="tipoagresor" class="col-form-label" align="center">Agresor:</label>
+                                    <select class="custom-select col-sm-12" name="tipoagresor" id="tipoagresor">
+                                      <option value="">selecione un valor</option>
                                     <?php foreach($agresor as $agres):?>
+                                      <?php if ($agres->id > 1): ?>
                                         <option value="<?php echo $agres->id;?>"><?php echo $agres->nombre;?></option>
+                                      <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
                                 </div>
                                 <div class="col-sm-4  my-1">
                                     <label for="nivel" class="col-form-label" align="center">Nivel1:</label>
-                                    <select class="custom-select col-sm-12" name="nivel" id="agresor">
-
-                                    <?php foreach($nivel1_Agresor as $nivelA):?>
-                                      <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
-                                    <?php endforeach;?>
+                                    <select class="custom-select col-sm-12" name="nivel1" id="nivel1" disabled>
+                                    <option value="">selecione un valor</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-4  my-1">
-                                    <label for="nivel" class="col-form-label" align="center">Nivel2:</label>
-                                    <select class="custom-select col-sm-12" name="nivel" id="agresor">
+                                    <label for="nivel2" class="col-form-label" align="center">Nivel2:</label>
+                                    <select class="custom-select col-sm-12" name="nivel2" id="nivel2" disabled="true">
 
                                     <?php foreach($nivel2_Agresor as $nivelA):?>
                                       <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
