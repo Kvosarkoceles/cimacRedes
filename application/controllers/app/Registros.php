@@ -103,6 +103,12 @@ class Registros extends CI_Controller {
 		$localidad = trim(strtoupper($this->input->post("localidad")));
 		$latitud = $this->input->post("latitud");
 		$longitud = $this->input->post("longitud");
+		$tipoDeViolenciaPsicologica = $this->input->post("tipoDeViolenciaPsicologica");
+		$tipodeViolenciaFisica = $this->input->post("tipodeViolenciaFisica");
+		$tipoDeViolenciaPatrimonial = $this->input->post("tipoDeViolenciaPatrimonial");
+		$tipodeViolenciaEconomica = $this->input->post("tipodeViolenciaEconomica");
+		$tipoDeViolenciaSexual = $this->input->post("tipoDeViolenciaSexual");
+		$tipoDeViolenciaCibernetica = $this->input->post("tipoDeViolenciaCibernetica");
 		$config = array(
 			array(
 				'field' => 'fechaIncidente',
@@ -148,6 +154,12 @@ class Registros extends CI_Controller {
 				'localidad' => $localidad,
 				'latitud' => $latitud,
 				'longitud' => $longitud,
+				'tipoDeViolenciaPsicologica' => $tipoDeViolenciaPsicologica,
+				'tipodeViolenciaFisica' => $tipodeViolenciaFisica,
+				'tipoDeViolenciaPatrimonial' => $tipoDeViolenciaPatrimonial,
+				'tipodeViolenciaEconomica' => $tipodeViolenciaEconomica,
+				'tipoDeViolenciaSexual' => $tipoDeViolenciaSexual,
+				'tipoDeViolenciaCibernetica' => $tipoDeViolenciaCibernetica,
 			);
 			if ($this->Registros_model->save($data)) {
 				redirect(base_url()."app/periodistas/info/".$id_datospersonales);
@@ -161,14 +173,8 @@ class Registros extends CI_Controller {
 		}
 
 
-		//$latitud = $this->input->post("latitud");
-		//$longitud = $this->input->post("longitud");
-		//$tipoDeViolenciaPsicologica = $this->input->post("tipoDeViolenciaPsicologica");
-		//$tipodeViolenciaFisica = $this->input->post("tipodeViolenciaFisica");
-		//$tipoDeViolenciaPatrimonial = $this->input->post("tipoDeViolenciaPatrimonial");
-		//$tipodeViolenciaEconomica = $this->input->post("tipodeViolenciaEconomica");
-		//$tipoDeViolenciaSexual = $this->input->post("tipoDeViolenciaSexual");
-		//$tipoDeViolenciaCibernetica = $this->input->post("tipoDeViolenciaCibernetica");
+
+
 		//$modalidadViolenciaFamiliar = $this->input->post("modalidadViolenciaFamiliar");
 		//$modalidadViolenciaLaboral = $this->input->post("modalidadViolenciaLaboral");
 		//$modalidadViolenciaEnLaComunidad = $this->input->post("modalidadViolenciaEnLaComunidad");
@@ -215,12 +221,7 @@ class Registros extends CI_Controller {
 			//'fechaIncidente' => $fechaIncidente,
 			//'id_estados' => $id_estados,
 
-			//'tipoDeViolenciaPsicologica' => $tipoDeViolenciaPsicologica,
-			//'tipodeViolenciaFisica' => $tipodeViolenciaFisica,
-			//'tipoDeViolenciaPatrimonial' => $tipoDeViolenciaPatrimonial,
-			//'tipodeViolenciaEconomica' => $tipodeViolenciaEconomica,
-			//'tipoDeViolenciaSexual' => $tipoDeViolenciaSexual,
-			//'tipoDeViolenciaCibernetica' => $tipoDeViolenciaCibernetica,
+
 			//'modalidadViolenciaFamiliar' => $modalidadViolenciaFamiliar,
 			//'modalidadViolenciaLaboral' => $modalidadViolenciaLaboral,
 			//'modalidadViolenciaEnLaComunidad' => $modalidadViolenciaEnLaComunidad,

@@ -103,7 +103,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
                     </div>
-                    <div id="accordion23" class="collapse" data-parent="#accordion1">
+                    <div id="accordion23" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                             <div class="card-body">
                               <div class="form-row align-items-center">
@@ -177,7 +177,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
                     </div>
-                    <div id="accordion22" class="collapse" data-parent="#accordion1">
+                    <div id="accordion22" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
@@ -207,7 +207,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion13">Tipo de violencia</a>
                     </div>
-                    <div id="accordion13" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion13" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
@@ -276,7 +276,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion14">Modalidad de violencia</a>
                     </div>
-                    <div id="accordion14" class="collapse" data-parent="#accordion1">
+                    <div id="accordion14" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
@@ -463,7 +463,7 @@
                 </div>
               <!-- Consecuencias end -->
 
-              <!-- Atención Recibida< start -->
+              <!-- Atención Recibida por cimac start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida Por CIMAC</a>
@@ -534,7 +534,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion18">Acciones de seguimiento</a>
                     </div>
-                    <div id="accordion18" class="collapse" data-parent="#accordion1">
+                    <div id="accordion18" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
