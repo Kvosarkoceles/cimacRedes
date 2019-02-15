@@ -109,6 +109,13 @@ class Registros extends CI_Controller {
 		$tipodeViolenciaEconomica = $this->input->post("tipodeViolenciaEconomica");
 		$tipoDeViolenciaSexual = $this->input->post("tipoDeViolenciaSexual");
 		$tipoDeViolenciaCibernetica = $this->input->post("tipoDeViolenciaCibernetica");
+		$modalidadViolenciaFamiliar = $this->input->post("modalidadViolenciaFamiliar");
+		$modalidadViolenciaLaboral = $this->input->post("modalidadViolenciaLaboral");
+		$modalidadViolenciaEnLaComunidad = $this->input->post("modalidadViolenciaEnLaComunidad");
+		$modalidadViolenciaInstitucional = $this->input->post("modalidadViolenciaInstitucional");
+		$modalidadViolenciaFeminicida = $this->input->post("modalidadViolenciaFeminicida");
+		$modalidadDeViolenciaCibernetica = $this->input->post("modalidadDeViolenciaCibernetica");
+		$relatoriaDelHecho = $this->input->post("relatoriaDelHecho");
 		$config = array(
 			array(
 				'field' => 'fechaIncidente',
@@ -160,6 +167,13 @@ class Registros extends CI_Controller {
 				'tipodeViolenciaEconomica' => $tipodeViolenciaEconomica,
 				'tipoDeViolenciaSexual' => $tipoDeViolenciaSexual,
 				'tipoDeViolenciaCibernetica' => $tipoDeViolenciaCibernetica,
+				'modalidadViolenciaFamiliar' => $modalidadViolenciaFamiliar,
+				'modalidadViolenciaLaboral' => $modalidadViolenciaLaboral,
+				'modalidadViolenciaEnLaComunidad' => $modalidadViolenciaEnLaComunidad,
+				'modalidadViolenciaInstitucional' => $modalidadViolenciaInstitucional,
+				'modalidadViolenciaFeminicida' => $modalidadViolenciaFeminicida,
+				'modalidadDeViolenciaCibernetica' => $modalidadDeViolenciaCibernetica,
+				'relatoriaDelHecho' => $relatoriaDelHecho,
 			);
 			if ($this->Registros_model->save($data)) {
 				redirect(base_url()."app/periodistas/info/".$id_datospersonales);
@@ -175,12 +189,7 @@ class Registros extends CI_Controller {
 
 
 
-		//$modalidadViolenciaFamiliar = $this->input->post("modalidadViolenciaFamiliar");
-		//$modalidadViolenciaLaboral = $this->input->post("modalidadViolenciaLaboral");
-		//$modalidadViolenciaEnLaComunidad = $this->input->post("modalidadViolenciaEnLaComunidad");
-		//$modalidadViolenciaInstitucional = $this->input->post("modalidadViolenciaInstitucional");
-		//$modalidadViolenciaFeminicida = $this->input->post("modalidadViolenciaFeminicida");
-		//$modalidadDeViolenciaCibernetica = $this->input->post("modalidadDeViolenciaCibernetica");
+
 		//$manifestacionesDeTipoAmenazas = $this->input->post("manifestacionesDeTipoAmenazas");
 		//$manifestacionesDeTipoFeminicida = $this->input->post("manifestacionesDeTipoFeminicida");
 		//$manifestacionesDeTipoDesaparcionesForzadas = $this->input->post("manifestacionesDeTipoDesaparcionesForzadas");
@@ -205,7 +214,7 @@ class Registros extends CI_Controller {
 		//$tenidoResultadosLaCarpetaDeInvestigacion = $this->input->post("tenidoResultadosLaCarpetaDeInvestigacion");
 		//$cuales = $this->input->post("cuales");
 		//$queAHechoLaComisionDeDerechosHumanos = $this->input->post("queAHechoLaComisionDeDerechosHumanos");
-		//$relatoriaDelHecho = $this->input->post("relatoriaDelHecho");
+
 		//$this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")
 		//$imagen1 = $this->file->UploadImage('./public/img/','No se puede subir la imagen1...');
 
@@ -222,12 +231,7 @@ class Registros extends CI_Controller {
 			//'id_estados' => $id_estados,
 
 
-			//'modalidadViolenciaFamiliar' => $modalidadViolenciaFamiliar,
-			//'modalidadViolenciaLaboral' => $modalidadViolenciaLaboral,
-			//'modalidadViolenciaEnLaComunidad' => $modalidadViolenciaEnLaComunidad,
-			//'modalidadViolenciaInstitucional' => $modalidadViolenciaInstitucional,
-			//'modalidadViolenciaFeminicida' => $modalidadViolenciaFeminicida,
-			//'modalidadDeViolenciaCibernetica' => $modalidadDeViolenciaCibernetica,
+
 			//'manifestacionesDeTipoAmenazas' => $manifestacionesDeTipoAmenazas,
 			//'manifestacionesDeTipoFeminicida' => $manifestacionesDeTipoFeminicida,
 			//'manifestacionesDeTipoDesaparcionesForzadas' => $manifestacionesDeTipoDesaparcionesForzadas,
@@ -252,7 +256,7 @@ class Registros extends CI_Controller {
 			//'tenidoResultadosLaCarpetaDeInvestigacion' => $tenidoResultadosLaCarpetaDeInvestigacion,
 			//'cuales' => $cuales,
 			//'queAHechoLaComisionDeDerechosHumanos' => $queAHechoLaComisionDeDerechosHumanos,
-			//'relatoriaDelHecho' => $relatoriaDelHecho,
+
 			//'analisisDeContexto' => $analisisDeContexto,
 			//'analisisDeRiesgo' => $analisisDeRiesgo,
 			//'observaciones' => $observaciones,

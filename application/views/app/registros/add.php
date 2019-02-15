@@ -92,6 +92,13 @@
                                   <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('longitud');?>" id="longitud" name="longitud" placeholder="-99.1477557">
                                   <?php echo form_error("longitud","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                               </div>
+
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-12  my-1">
+                                  <label for="relatoriaDelHecho" class="col-form-label">Relatoria de los hechos:</label>
+                                  <textarea name="relatoriaDelHecho" id="relatoriaDelHecho" style="width:100%; height:200px;"><?php echo set_value('relatoriaDelHecho');?></textarea>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -112,7 +119,7 @@
                                     <select class="custom-select col-sm-12" name="motivodelasgresion" id="motivodelasgresion">
 
                                     <?php foreach($motivodelasgresion as $motivo):?>
-                                        <option value="<?php echo $motivo->id;?>"><?php echo $motivo->nombre;?></option>
+                                        <option value="<?php echo $motivo->id;?><?php echo set_select('motivodelasgresion',$motivo->id); ?>"><?php echo $motivo->nombre;?></option>
                                     <?php endforeach;?>
                                     </select>
                                 </div>
@@ -216,7 +223,7 @@
                                   <select class="custom-select col-sm-9" name="tipoDeViolenciaPsicologica" id="tipoDeViolenciaPsicologica">
 
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('tipoDeViolenciaPsicologica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -225,7 +232,7 @@
                                   <select class="custom-select col-sm-9" name="tipodeViolenciaFisica" id="tipodeViolenciaFisica">
 
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('tipodeViolenciaFisica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -234,7 +241,7 @@
                                   <select class="custom-select col-sm-9" name="tipoDeViolenciaPatrimonial" id="tipoDeViolenciaPatrimonial">
 
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('tipoDeViolenciaPatrimonial',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -243,7 +250,7 @@
                                   <select class="custom-select col-sm-9" name="tipodeViolenciaEconomica" id="tipodeViolenciaEconomica">
 
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('tipodeViolenciaEconomica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -251,7 +258,7 @@
                                   <label for="tipoDeViolenciaSexual" class="col-form-label">Sexual</label>
                                   <select class="custom-select col-sm-9" name="tipoDeViolenciaSexual" id="tipoDeViolenciaSexual">
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('tipoDeViolenciaSexual',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -260,7 +267,7 @@
                                   <select class="custom-select col-sm-9" name="tipoDeViolenciaCibernetica" id="tipoDeViolenciaCibernetica">
 
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('tipoDeViolenciaCibernetica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -276,43 +283,39 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion14">Modalidad de violencia</a>
                     </div>
-                    <div id="accordion14" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion14" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaFamiliar" class="col-form-label">Familiar:</label>
                                   <select class="custom-select col-sm-9" name="modalidadViolenciaFamiliar" id="modalidadViolenciaFamiliar">
-
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaFamiliar',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaLaboral" class="col-form-label">laboral:</label>
                                   <select class="custom-select col-sm-9" name="modalidadViolenciaLaboral" id="modalidadViolenciaLaboral">
-
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaLaboral',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaEnLaComunidad" class="col-form-label">En La Comunidad:</label>
                                   <select class="custom-select col-sm-9" name="modalidadViolenciaEnLaComunidad" id="modalidadViolenciaEnLaComunidad">
-
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaEnLaComunidad',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaInstitucional" class="col-form-label">Institucional</label>
                                   <select class="custom-select col-sm-9" name="modalidadViolenciaInstitucional" id="modalidadViolenciaInstitucional">
-
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaInstitucional',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -320,16 +323,15 @@
                                   <label for="modalidadViolenciaFeminicida" class="col-form-label">Feminicida</label>
                                   <select class="custom-select col-sm-9" name="modalidadViolenciaFeminicida" id="modalidadViolenciaFeminicida">
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('modalidadViolenciaFeminicida',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadDeViolenciaCibernetica" class="col-form-label">Violencia en línea</label>
                                   <select class="custom-select col-sm-9" name="modalidadDeViolenciaCibernetica" id="modalidadDeViolenciaCibernetica">
-
                                   <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('modalidadDeViolenciaCibernetica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -615,10 +617,7 @@
                                   <label for="queAHechoLaComisionDeDerechosHumanos" class="col-form-label">¿Qué a hecho la comisión de derechos humanos?:</label>
                                   <textarea name="queAHechoLaComisionDeDerechosHumanos" id="queAHechoLaComisionDeDerechosHumanos" style="width:100%; height:100px;"></textarea>
                               </div>
-                              <div class="col-sm-6  my-1">
-                                  <label for="relatoriaDelHecho" class="col-form-label">Relatoria de los hechos:</label>
-                                  <textarea name="relatoriaDelHecho" id="relatoriaDelHecho" style="width:100%; height:100px;"></textarea>
-                              </div>
+
                             </div>
                           </div>
                         </div>
