@@ -184,7 +184,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
                     </div>
-                    <div id="accordion22" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion22" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
@@ -418,7 +418,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion16">Consecuencias</a>
                     </div>
-                    <div id="accordion16" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion16" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
@@ -434,7 +434,6 @@
                               <div class="col-sm-3  my-1">
                                   <label for="consecuenciasBajoPerfil" class="col-form-label">Bajo el perfil::</label>
                                   <select class="custom-select col-sm-9" name="consecuenciasBajoPerfil" id="consecuenciasBajoPerfil">
-                                  <option selected="selected" value="0">No</option>
                                   <?php foreach($perfiles as $perfile):?>
                                       <option value="<?php echo $perfile->id;?>"><?php echo $perfile->nombre;?></option>
                                   <?php endforeach;?>
@@ -470,7 +469,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida Por CIMAC</a>
                     </div>
-                    <div id="accordion17" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion17" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">

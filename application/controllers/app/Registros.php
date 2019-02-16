@@ -96,26 +96,60 @@ class Registros extends CI_Controller {
 	}
 
 	public function store(){
+		//variables fuera del formulario  start //
 		$id_datospersonales = $this->input->post("idperiodista");
+		//variables fuera del formulario  end //
+
+		//ubiucacion de la agrecions start//
 		$fechaIncidente = $this->input->post("fechaIncidente");
 		$id_estados = $this->input->post("estado");
 		$municipio = trim(strtoupper($this->input->post("municipio")));
 		$localidad = trim(strtoupper($this->input->post("localidad")));
 		$latitud = $this->input->post("latitud");
 		$longitud = $this->input->post("longitud");
+		$relatoriaDelHecho = trim($this->input->post("relatoriaDelHecho"));
+		//ubiucacion de la agrecions end//
+
+		//tipo de violencia start//
 		$tipoDeViolenciaPsicologica = $this->input->post("tipoDeViolenciaPsicologica");
 		$tipodeViolenciaFisica = $this->input->post("tipodeViolenciaFisica");
 		$tipoDeViolenciaPatrimonial = $this->input->post("tipoDeViolenciaPatrimonial");
 		$tipodeViolenciaEconomica = $this->input->post("tipodeViolenciaEconomica");
 		$tipoDeViolenciaSexual = $this->input->post("tipoDeViolenciaSexual");
 		$tipoDeViolenciaCibernetica = $this->input->post("tipoDeViolenciaCibernetica");
+		//tipo de violencia end//
+
+		//modalidad de la violencia start//
 		$modalidadViolenciaFamiliar = $this->input->post("modalidadViolenciaFamiliar");
 		$modalidadViolenciaLaboral = $this->input->post("modalidadViolenciaLaboral");
 		$modalidadViolenciaEnLaComunidad = $this->input->post("modalidadViolenciaEnLaComunidad");
 		$modalidadViolenciaInstitucional = $this->input->post("modalidadViolenciaInstitucional");
 		$modalidadViolenciaFeminicida = $this->input->post("modalidadViolenciaFeminicida");
 		$modalidadDeViolenciaCibernetica = $this->input->post("modalidadDeViolenciaCibernetica");
-		$relatoriaDelHecho = $this->input->post("relatoriaDelHecho");
+		//modalidad de la violencia end//
+
+		//atencion Recibida por CIMAC start//
+		$cimacHaceAcompanamientoAnteElMecanismo = $this->input->post("cimacHaceAcompanamientoAnteElMecanismo");
+		$queOtraOrganizacionLasAcompana = $this->input->post("queOtraOrganizacionLasAcompana");
+		$atencionMedicaRecibida = $this->input->post("atencionMedicaRecibida");
+		$atencionPsicologicaRecibida = $this->input->post("atencionPsicologicaRecibida");
+		$atencionJuridicaRecibida = $this->input->post("atencionJuridicaRecibida");
+		$ningunaAtencionRecibida = $this->input->post("ningunaAtencionRecibida");
+		//atencion Recibida por CIMAC end//
+
+		//Analisis start/
+		$analisisDeContexto = $this->input->post("analisisDeContexto");
+		$analisisDeRiesgo = $this->input->post("analisisDeRiesgo");
+		$observaciones = $this->input->post("observaciones");
+		//Analisis end//
+
+		//Consecuencias start//
+		$consecuenciaFueDespedida = $this->input->post("consecuenciaFueDespedida");
+		$consecuenciasBajoPerfil = $this->input->post("consecuenciasBajoPerfil");
+		$consecuenciasDesplazamiento = $this->input->post("consecuenciasDesplazamiento");
+		$consecuenciasJudicializacion = $this->input->post("Judicializacion");
+		//Consecuencias end//
+
 		$config = array(
 			array(
 				'field' => 'fechaIncidente',
@@ -151,29 +185,60 @@ class Registros extends CI_Controller {
 		$this->form_validation->set_rules($config);
 		if ($this->form_validation->run()) {
 			$data  = array(
+				//variables fuera del formulario  start //
 				'id_datospersonales' => $id_datospersonales,
 				'id_usuario' => $this->session->userdata("id"),
 				'estatus' => "1",
 				'fechaRegistro' =>date("Y")."-".date("m")."-".date("d"),
+				//variables fuera del formulario  end //
+
+				//ubiucacion de la agrecions star//
 				'fechaIncidente' => $fechaIncidente,
 				'id_estados' =>$id_estados,
 				'municipio' => $municipio,
 				'localidad' => $localidad,
 				'latitud' => $latitud,
 				'longitud' => $longitud,
+				'relatoriaDelHecho' => $relatoriaDelHecho,
+				//ubiucacion de la agrecions end//
+
+				//tipo de violencia star//
 				'tipoDeViolenciaPsicologica' => $tipoDeViolenciaPsicologica,
 				'tipodeViolenciaFisica' => $tipodeViolenciaFisica,
 				'tipoDeViolenciaPatrimonial' => $tipoDeViolenciaPatrimonial,
 				'tipodeViolenciaEconomica' => $tipodeViolenciaEconomica,
 				'tipoDeViolenciaSexual' => $tipoDeViolenciaSexual,
 				'tipoDeViolenciaCibernetica' => $tipoDeViolenciaCibernetica,
+				//tipo de violencia end//
+
+				//modalidad de la violencia star//
 				'modalidadViolenciaFamiliar' => $modalidadViolenciaFamiliar,
 				'modalidadViolenciaLaboral' => $modalidadViolenciaLaboral,
 				'modalidadViolenciaEnLaComunidad' => $modalidadViolenciaEnLaComunidad,
 				'modalidadViolenciaInstitucional' => $modalidadViolenciaInstitucional,
 				'modalidadViolenciaFeminicida' => $modalidadViolenciaFeminicida,
 				'modalidadDeViolenciaCibernetica' => $modalidadDeViolenciaCibernetica,
-				'relatoriaDelHecho' => $relatoriaDelHecho,
+				//modalidad de la violencia end//
+
+				//atencion Recibida por CIMAC stat//
+				'cimacHaceAcompanamientoAnteElMecanismo' => $cimacHaceAcompanamientoAnteElMecanismo,
+				'queOtraOrganizacionLasAcompana' => $queOtraOrganizacionLasAcompana,
+				'atencionMedicaRecibida' => $atencionMedicaRecibida,
+				'atencionPsicologicaRecibida' => $atencionPsicologicaRecibida,
+				'atencionJuridicaRecibida' => $atencionJuridicaRecibida,
+				'ningunaAtencionRecibida' => $ningunaAtencionRecibida,
+				//atencion Recibida por CIMAC end//
+				//Analisis start//
+				'analisisDeContexto' => $analisisDeContexto,
+				'analisisDeRiesgo' => $analisisDeRiesgo,
+				'observaciones' => $observaciones,
+				//Analisis end//
+				//Consecuencias start//
+				'consecuenciaFueDespedida' => $consecuenciaFueDespedida,
+				'consecuenciasBajoPerfil' => $consecuenciasBajoPerfil,
+				'id_consecuenciajudicializacion' => $consecuenciasJudicializacion,
+				'consecuenciasDesplazamiento' => $consecuenciasDesplazamiento,
+				//Consecuencias end//
 			);
 			if ($this->Registros_model->save($data)) {
 				redirect(base_url()."app/periodistas/info/".$id_datospersonales);
@@ -186,24 +251,13 @@ class Registros extends CI_Controller {
 		//	$this->add()."/".$id_datospersonales;
 		}
 
-
-
-
-
 		//$manifestacionesDeTipoAmenazas = $this->input->post("manifestacionesDeTipoAmenazas");
 		//$manifestacionesDeTipoFeminicida = $this->input->post("manifestacionesDeTipoFeminicida");
 		//$manifestacionesDeTipoDesaparcionesForzadas = $this->input->post("manifestacionesDeTipoDesaparcionesForzadas");
 		//$manifestacionesDeTipoDetenciones = $this->input->post("manifestacionesDeTipoDetenciones");
 		//$manifestacionesDeTipoDetencionesArbitrariasExtrajudicia = $this->input->post("manifestacionesDeTipoDetencionesArbitrariasExtrajudicia");
 		//$manifestacionesDeTipoDifamacionCalumniaInjuria = $this->input->post("manifestacionesDeTipoDifamacionCalumniaInjuria");
-		//$consecuenciaFueDespedida = $this->input->post("consecuenciaFueDespedida");
-		//$consecuenciasBajoPerfil = $this->input->post("consecuenciasBajoPerfil");
-		//$consecuenciasCambioDeDomicilio = $this->input->post("consecuenciasCambioDeDomicilio");
-		//$consecuenciasDesplazamiento = $this->input->post("consecuenciasDesplazamiento");
-		//$atencionMedicaRecibida = $this->input->post("atencionMedicaRecibida");
-		//$atencionPsicologicaRecibida = $this->input->post("atencionPsicologicaRecibida");
-		//$atencionJuridicaRecibida = $this->input->post("atencionJuridicaRecibida");
-		//$ningunaAtencionRecibida = $this->input->post("ningunaAtencionRecibida");
+
 		//$agresionAnterior = $this->input->post("agresionAnterior");
 		//$beneficiariaDelMecanismoDeProtecion = $this->input->post("beneficiariaDelMecanismoDeProtecion");
 		//$carpetaDeInvestigacionEnAlgunaProcuraduria = $this->input->post("carpetaDeInvestigacionEnAlgunaProcuraduria");
@@ -218,11 +272,7 @@ class Registros extends CI_Controller {
 		//$this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")
 		//$imagen1 = $this->file->UploadImage('./public/img/','No se puede subir la imagen1...');
 
-		//$analisisDeContexto = $this->input->post("analisisDeContexto");
-		//$analisisDeRiesgo = $this->input->post("analisisDeRiesgo");
-		//$observaciones = $this->input->post("observaciones");
-		//$cimacHaceAcompanamientoAnteElMecanismo = $this->input->post("cimacHaceAcompanamientoAnteElMecanismo");
-		//$queOtraOrganizacionLasAcompana = $this->input->post("queOtraOrganizacionLasAcompana");
+
 		//$datoregistro  = array(
 //			'id_usuario' => $this->session->userdata("id"),
 			//'id_datospersonales' => $id_datospersonales,
@@ -231,21 +281,12 @@ class Registros extends CI_Controller {
 			//'id_estados' => $id_estados,
 
 
-
 			//'manifestacionesDeTipoAmenazas' => $manifestacionesDeTipoAmenazas,
 			//'manifestacionesDeTipoFeminicida' => $manifestacionesDeTipoFeminicida,
 			//'manifestacionesDeTipoDesaparcionesForzadas' => $manifestacionesDeTipoDesaparcionesForzadas,
 			//'manifestacionesDeTipoDetenciones' => $manifestacionesDeTipoDetenciones,
 			//'m//anifestacionesDeTipoDetencionesArbitrariasExtrajudicia' => $manifestacionesDeTipoDetencionesArbitrariasExtrajudicia,
 			//'manifestacionesDeTipoDifamacionCalumniaInjuria' => $manifestacionesDeTipoDifamacionCalumniaInjuria,
-			//'consecuenciaFueDespedida' => $consecuenciaFueDespedida,
-			//'c//onsecuenciasBajoPerfil' => $consecuenciasBajoPerfil,
-			//'consecuenciasCambioDeDomicilio' => $consecuenciasCambioDeDomicilio,
-			//'consecuenciasDesplazamiento' => $consecuenciasDesplazamiento,
-			//'atencionMedicaRecibida' => $atencionMedicaRecibida,
-			//'atencionPsicologicaRecibida' => $atencionPsicologicaRecibida,
-			//'atencionJuridicaRecibida' => $atencionJuridicaRecibida,
-			//'ningunaAtencionRecibida' => $ningunaAtencionRecibida,
 			//'agresionAnterior' => $agresionAnterior,
 			//'beneficiariaDelMecanismoDeProtecion' => $beneficiariaDelMecanismoDeProtecion,
 			//'carpetaDeInvestigacionEnAlgunaProcuraduria' => $carpetaDeInvestigacionEnAlgunaProcuraduria,
@@ -257,11 +298,8 @@ class Registros extends CI_Controller {
 			//'cuales' => $cuales,
 			//'queAHechoLaComisionDeDerechosHumanos' => $queAHechoLaComisionDeDerechosHumanos,
 
-			//'analisisDeContexto' => $analisisDeContexto,
-			//'analisisDeRiesgo' => $analisisDeRiesgo,
-			//'observaciones' => $observaciones,
-			//'cimacHaceAcompanamientoAnteElMecanismo' => $cimacHaceAcompanamientoAnteElMecanismo,
-			//'queOtraOrganizacionLasAcompana' => $queOtraOrganizacionLasAcompana,
+
+
 			//'estatus' => "1",
 		//);
 

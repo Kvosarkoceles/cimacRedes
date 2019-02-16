@@ -3,8 +3,8 @@
                     <div class="col-lg-12 mt-5">
 
                         <form action="<?php echo base_url();?>administrador/configuracion/storeContrato" method="POST" id="agregaitems">
-                          <input type="hidden" class="form-control" id="tabla" name="tabla" value="<?php echo $tabla?>">
-                          <input type="hidden" class="form-control" id="destino" name="destino" value="<?php echo $destino?>">
+                          <input type="text" class="form-control" id="tabla" name="tabla" value="<?php echo $tabla?>">
+                          <input type="text" class="form-control" id="destino" name="destino" value="<?php echo $destino?>">
                           <input type="text" class="form-control" id="metodo" name="metodo" value="<?php echo $metodo?>">
                         <div class="card">
                             <div class="card-body">

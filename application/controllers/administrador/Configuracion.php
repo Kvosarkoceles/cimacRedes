@@ -327,8 +327,14 @@ class Configuracion extends CI_Controller {
 				case 9:
 					$this->addTipodeinvestigacion();
 					break;
-				case 10:
+				case 81:
 					$this->addTipoagresor();
+					break;
+				case 10:
+					$this->addPerfilbajo();
+					break;
+				case 11:
+					$this->addJudicializacion();
 					break;
 				default:
 						show_404();
@@ -613,6 +619,125 @@ class Configuracion extends CI_Controller {
 		}
 	}
 	/*++ Funciones para editar variables Registros end  ++*/
+	/*++ Funciones para las vistas Registros end  ++*/
+	/*++ Funciones para editar variables Registros start  ++*/
+	public function perfilbajo(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getTipodeperfilbajo(),
+		'ruta' => "editaPerfilbajo",
+		'titulo' => "Perfil bajo",
+		'agrega' => "addPerfilbajo",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addPerfilbajo(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo de perfil bajo',
+			'tabla' => 'perfilbajo',
+			'destino' => 'perfilbajo',
+			'metodo' => 10
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function editaPerfilbajo($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getTipoperfilbajo($id),
+			'base' => "perfilbajo_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function perfilbajo_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'perfilbajo';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion/perfilbajo");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaPerfilbajo".$idmenu);
+			}
+		}else {
+			$this->editaMotivogresion	($idmenu);
+		}
+	}
+	/*++ Funciones para editar variables Registros end  ++*/
+	/*++ Funciones para editar variables Registros start  ++*/
+	public function judicializacion(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getJudicializaciono(),
+		'ruta' => "editaJudicializacion",
+		'titulo' => "Judicializacion",
+		'agrega' => "addJudicializacion",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addJudicializacion(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo judicializacion',
+			'tabla' => 'tipodejudicializacion',
+			'destino' => 'judicializacion',
+			'metodo' => 11
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function editaJudicializacion($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getJudicializaciono($id),
+			'base' => "judicializacion_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function judicializacion_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'tipodejudicializacion';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion/judicializacion");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaJudicializacion".$idmenu);
+			}
+		}else {
+			$this->editaMotivogresion	($idmenu);
+		}
+	}
+	/*++ Funciones para editar variables Registros end  ++*/
 	/*++ Funciones para las vistas Agresor tart  ++*/
 	public function tipoagresor(){
 		$data  = array(
@@ -631,7 +756,7 @@ class Configuracion extends CI_Controller {
 			'titulo' => 'Agrega nuevo tipo de agresor',
 			'tabla' => 'tipoagresor',
 			'destino' => 'tipoagresor',
-			'metodo' => 10
+			'metodo' => 81
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");

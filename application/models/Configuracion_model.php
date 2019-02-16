@@ -126,6 +126,34 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
+	public function getTipodeperfilbajo(){
+		$this->db->select("c.*");
+		$this->db->from("perfilbajo c");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+	public function getTipoperfilbajo($id){
+		$this->db->select("e.*");
+		$this->db->from("perfilbajo e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
+	public function getJudicializaciono(){
+		$this->db->select("c.*");
+		$this->db->from("tipodejudicializacion c");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+	public function getTipojudicializaciono($id){
+		$this->db->select("e.*");
+		$this->db->from("tipodejudicializacion e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
 	/*Funciones para la registro end*/
 	/*Funciones para el Agresor start*/
 	public function getTipoagresor(){
