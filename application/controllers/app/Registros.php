@@ -148,8 +148,23 @@ class Registros extends CI_Controller {
 		$consecuenciasBajoPerfil = $this->input->post("consecuenciasBajoPerfil");
 		$consecuenciasDesplazamiento = $this->input->post("consecuenciasDesplazamiento");
 		$consecuenciasJudicializacion = $this->input->post("Judicializacion");
-		//Consecuencias end//
+		// Consecuencias end //
 
+		// Acciones de seguimiento start //
+		$beneficiariaDelMecanismoDeProtecion = $this->input->post("beneficiariaDelMecanismoDeProtecion");
+		$carpetaDeInvestigacionEnAlgunaProcuraduria = $this->input->post("carpetaDeInvestigacionEnAlgunaProcuraduria");
+		$quejaAnteComisionDeDerechosHumanos = $this->input->post("quejaAnteComisionDeDerechosHumanos");
+		$estasDeAcuedoConElMecanismoDeProteccion = $this->input->post("estasDeAcuedoConElMecanismoDeProteccion");
+		$esasMedidasTePermitenSeguirHaciendoTuTrabajo = $this->input->post("esasMedidasTePermitenSeguirHaciendoTuTrabajo");
+		$porQue = $this->input->post("porQue");
+		$tenidoResultadosLaCarpetaDeInvestigacion = $this->input->post("tenidoResultadosLaCarpetaDeInvestigacion");
+		$cuales = $this->input->post("cuales");
+		$queAHechoLaComisionDeDerechosHumanos = $this->input->post("queAHechoLaComisionDeDerechosHumanos");
+		// Acciones de seguimiento end //
+		// Agresion  start //
+		$motivodelasgresion = $this->input->post("motivodelasgresion");
+		$tipoDeInvestigacion = $this->input->post("tipoDeInvestigacion");
+		// Agresion  end //
 		$config = array(
 			array(
 				'field' => 'fechaIncidente',
@@ -239,6 +254,23 @@ class Registros extends CI_Controller {
 				'id_consecuenciajudicializacion' => $consecuenciasJudicializacion,
 				'consecuenciasDesplazamiento' => $consecuenciasDesplazamiento,
 				//Consecuencias end//
+
+				// Acciones de seguimiento start //
+				'beneficiariaDelMecanismoDeProtecion' => $beneficiariaDelMecanismoDeProtecion,
+				'carpetaDeInvestigacionEnAlgunaProcuraduria' => $carpetaDeInvestigacionEnAlgunaProcuraduria,
+				'quejaAnteComisionDeDerechosHumanos' => $quejaAnteComisionDeDerechosHumanos,
+				'estasDeAcuedoConElMecanismoDeProteccion' => $estasDeAcuedoConElMecanismoDeProteccion,
+				'esasMedidasTePermitenSeguirHaciendoTuTrabajo' => $esasMedidasTePermitenSeguirHaciendoTuTrabajo,
+				'porQue' => $porQue,
+				'tenidoResultadosLaCarpetaDeInvestigacion' => $tenidoResultadosLaCarpetaDeInvestigacion,
+				'cuales' => $cuales,
+				'queAHechoLaComisionDeDerechosHumanos' => $queAHechoLaComisionDeDerechosHumanos,
+				// Acciones de seguimiento end //
+
+					// Agresion  start //
+				'id_motivodelasgresion' => $motivodelasgresion,
+				'id_tipoDeInvestigacion' => $tipoDeInvestigacion,	
+					// Agresion  end //
 			);
 			if ($this->Registros_model->save($data)) {
 				redirect(base_url()."app/periodistas/info/".$id_datospersonales);
@@ -258,19 +290,7 @@ class Registros extends CI_Controller {
 		//$manifestacionesDeTipoDetencionesArbitrariasExtrajudicia = $this->input->post("manifestacionesDeTipoDetencionesArbitrariasExtrajudicia");
 		//$manifestacionesDeTipoDifamacionCalumniaInjuria = $this->input->post("manifestacionesDeTipoDifamacionCalumniaInjuria");
 
-		//$agresionAnterior = $this->input->post("agresionAnterior");
-		//$beneficiariaDelMecanismoDeProtecion = $this->input->post("beneficiariaDelMecanismoDeProtecion");
-		//$carpetaDeInvestigacionEnAlgunaProcuraduria = $this->input->post("carpetaDeInvestigacionEnAlgunaProcuraduria");
-		//$quejaAnteComisionDeDerechosHumanos = $this->input->post("quejaAnteComisionDeDerechosHumanos");
-		//$estasDeAcuedoConElMecanismoDeProteccion = $this->input->post("estasDeAcuedoConElMecanismoDeProteccion");
-		//$esasMedidasTePermitenSeguirHaciendoTuTrabajo = $this->input->post("esasMedidasTePermitenSeguirHaciendoTuTrabajo");
-		//$porQue = $this->input->post("porQue");
-		//$tenidoResultadosLaCarpetaDeInvestigacion = $this->input->post("tenidoResultadosLaCarpetaDeInvestigacion");
-		//$cuales = $this->input->post("cuales");
-		//$queAHechoLaComisionDeDerechosHumanos = $this->input->post("queAHechoLaComisionDeDerechosHumanos");
 
-		//$this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")
-		//$imagen1 = $this->file->UploadImage('./public/img/','No se puede subir la imagen1...');
 
 
 		//$datoregistro  = array(
@@ -288,15 +308,6 @@ class Registros extends CI_Controller {
 			//'m//anifestacionesDeTipoDetencionesArbitrariasExtrajudicia' => $manifestacionesDeTipoDetencionesArbitrariasExtrajudicia,
 			//'manifestacionesDeTipoDifamacionCalumniaInjuria' => $manifestacionesDeTipoDifamacionCalumniaInjuria,
 			//'agresionAnterior' => $agresionAnterior,
-			//'beneficiariaDelMecanismoDeProtecion' => $beneficiariaDelMecanismoDeProtecion,
-			//'carpetaDeInvestigacionEnAlgunaProcuraduria' => $carpetaDeInvestigacionEnAlgunaProcuraduria,
-			//'quejaAnteComisionDeDerechosHumanos' => $quejaAnteComisionDeDerechosHumanos,
-			//'estasDeAcuedoConElMecanismoDeProteccion' => $estasDeAcuedoConElMecanismoDeProteccion,
-			//'esasMedidasTePermitenSeguirHaciendoTuTrabajo' => $esasMedidasTePermitenSeguirHaciendoTuTrabajo,
-			//'porQue' => $porQue,
-			//'tenidoResultadosLaCarpetaDeInvestigacion' => $tenidoResultadosLaCarpetaDeInvestigacion,
-			//'cuales' => $cuales,
-			//'queAHechoLaComisionDeDerechosHumanos' => $queAHechoLaComisionDeDerechosHumanos,
 
 
 
