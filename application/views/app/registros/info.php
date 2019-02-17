@@ -1,10 +1,12 @@
 <!-- accordion style 1 start -->
 <div class="col-lg-12 mt-5">
+  <form action="<?php echo base_url();?>app/registros/store" method="POST">
+    <input type="hidden" name="idperiodista" value="<?php echo $registros->id?>" id ="idperiodista">
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Informacion del Registro</h4>
+            <h4 class="header-title">Agrega Registro</h4>
             <div id="accordion1" class="according">
-                <!-- 11-Informacion de la Periodista start -->
+              <!-- Informacion de la Periodista start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="card-link" data-toggle="collapse" href="#accordion11">Información de la Periodista</a>
@@ -30,7 +32,7 @@
                                                 </td>
                                                 <td><?php echo $registros->edad;?></td>
                                                 <td><?php echo $registros->estado;?></td>
-                                                <td><?php echo $registros->localidadPeriodista;?></td>
+                                                <td><?php echo $registros->localidad;?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -41,9 +43,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- Informacion de la Periodista end -->
+              <!-- iformacion de la Periodista start -->
 
-                <!-- 12-Ubicación de la Agresión start -->
+              <!-- Ubicación de la Agresión start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion12">Ubicación de la Agresión</a>
@@ -51,19 +53,138 @@
                     <div id="accordion12" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
-                              <p><strong>Fecha del Incidente: </strong><small class="text-muted"> <?php echo $registros->fechaIncidente;?></small></p>
-                              <p><strong>Estado: </strong><small class="text-muted"> <?php echo $registros->estadoIncidente;?></small></p>
-                              <p><strong>Municipio: </strong><small class="text-muted"> <?php echo $registros->municipio;?></small></p>
-                              <p><strong>Localidad: </strong><small class="text-muted"> <?php echo $registros->localidad;?></small></p>
-                              <p><strong>Latitud: </strong><small class="text-muted"> <?php echo $registros->latitud;?></small></p>
-                              <p><strong>Longitud: </strong><small class="text-muted"> <?php echo $registros->longitud;?></small></p>
+                            <p><strong>Fecha del Incidente: </strong><small class="text-muted"> <?php echo $registros->fechaIncidente;?></small></p>
+                            <p><strong>Estado: </strong><small class="text-muted"> <?php echo $registros->estadoIncidente;?></small></p>
+                            <p><strong>Municipio: </strong><small class="text-muted"> <?php echo $registros->municipio;?></small></p>
+                            <p><strong>Localidad: </strong><small class="text-muted"> <?php echo $registros->localidad;?></small></p>
+                            <p><strong>Latitud: </strong><small class="text-muted"> <?php echo $registros->latitud;?></small></p>
+                            <p><strong>Longitud: </strong><small class="text-muted"> <?php echo $registros->longitud;?></small></p>
+                          </div>
+                          <div class="card-body">
+
+
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-12  my-1">
+                                  <label for="relatoriaDelHecho" class="col-form-label">Relatoria de los hechos:</label>
+                                  <textarea name="relatoriaDelHecho" id="relatoriaDelHecho" style="width:100%; height:200px;" readonly=”readonly”> <?php echo $registros->relatoriaDelHecho;?></textarea>
+                              </div>
+                            </div>
                           </div>
                         </div>
                     </div>
                 </div>
-                <!-- Ubicación de la Agresión end -->
+              <!-- Ubicación de la Agresión end -->
+              <!-- Agresión start -->
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
+                    </div>
+                    <div id="accordion23" class="collapse" data-parent="#accordion1">
+                        <div class="card-body">
+                            <div class="card-body">
+                              <div class="form-row align-items-center">
+                                <div class="col-sm-4  my-1">
+                                    <label for="motivodelasgresion" class="col-form-label" align="center">Motivo de las gresiones</label>
+                                    <select class="custom-select col-sm-12" name="motivodelasgresion" id="motivodelasgresion">
+                                      <option value="">Selecciona un valor</option>
+                                    <?php foreach($motivodelasgresion as $motivo):?>
+                                      <?php if ($motivo->id>1): ?>
+                                        <option value="<?php echo $motivo->id;?><?php echo set_select('motivodelasgresion',$motivo->id); ?>"><?php echo $motivo->nombre;?></option>
+                                      <?php endif; ?>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="tipoDeInvestigacion" class="col-form-label" align="center">Tipo de investigacion:</label>
+                                    <select class="custom-select col-sm-12" name="tipoDeInvestigacion" id="tipoDeInvestigacion">
+                                      <option value="">Selecciona un valor</option>
+                                    <?php foreach($tipoDeInvestigacion as $tipo):?>
+                                        <?php if ($tipo->id>1): ?>
+                                          <option value="<?php echo $tipo->id;?>"><?php echo $tipo->nombre;?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="sexoAgresor" class="col-form-label" align="center">Sexo del agresor:</label>
+                                    <select class="custom-select col-sm-12" name="sexoAgresor" id="sexoAgresor">
+                                      <option value="">Selecciona un valor</option>
+                                    <?php foreach($sexo as $sex):?>
+                                      <?php if ($sex->id>1): ?>
+                                        <option value="<?php echo $sex->id;?>"><?php echo $sex->nombre;?></option>
+                                      <?php endif; ?>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="tipoagresor" class="col-form-label" align="center">Agresor:</label>
+                                    <select class="custom-select col-sm-12" name="tipoagresor" id="tipoagresor">
+                                      <option value="">selecione un valor</option>
+                                    <?php foreach($agresor as $agres):?>
+                                      <?php if ($agres->id > 1): ?>
+                                        <option value="<?php echo $agres->id;?>"><?php echo $agres->nombre;?></option>
+                                      <?php endif; ?>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="nivel" class="col-form-label" align="center">Nivel1:</label>
+                                    <select class="custom-select col-sm-12" name="nivel1" id="nivel1" disabled>
+                                    <option value="">selecione un valor</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4  my-1">
+                                    <label for="nivel2" class="col-form-label" align="center">Nivel2:</label>
+                                    <select class="custom-select col-sm-12" name="nivel2" id="nivel2" disabled="true">
 
-                <!-- 13-Tipo de violencia start -->
+                                    <?php foreach($nivel2_Agresor as $nivelA):?>
+                                      <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                </div>
+
+
+
+
+
+                              </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+              <!-- Agresión end -->
+              <!-- Analisis start -->
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
+                    </div>
+                    <div id="accordion22" class="collapse" data-parent="#accordion1">
+                        <div class="card-body">
+                          <div class="card-body">
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-12  my-1">
+                                  <label for="analisisDeContexto" class="col-form-label">Analisis de contexto:</label>
+                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:200px;" readonly=”readonly”> <?php echo $registros->analisisDeContexto;?></textarea>
+                              </div>
+                              <div class="col-sm-12 my-1">
+                                  <label for="analisisDeRiesgo" class="col-form-label">Analisis de riesgo:</label>
+                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:200px;" readonly=”readonly”> <?php echo $registros->analisisDeRiesgo;?></textarea>
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-12  my-1">
+                                  <label for="observaciones" class="col-form-label">Observaciones:</label>
+                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:200px;" readonly=”readonly”> <?php echo $registros->observaciones;?></textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+              <!-- Analisis end -->
+              <!-- Tipo de violencia start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion13">Tipo de violencia</a>
@@ -107,9 +228,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tipo de violencia end -->
+              <!-- Tipo de violencia end -->
 
-                <!-- 14 Modalidad de violencia start -->
+              <!-- Modalidad de violencia< start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion14">Modalidad de violencia</a>
@@ -117,45 +238,63 @@
                     <div id="accordion14" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
-                            <div class="single-table">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered text-center">
-                                        <thead class="text-uppercase">
-                                            <tr>
-                                                <th scope="col" colspan="6">Modalidad:</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Familiar</th>
-                                                <td>Laboral</td>
-                                                <td>En la comunidad</td>
-                                                <td>Institucional</td>
-                                                <td>Feminicida</td>
-                                                <td>Cibernetica</td>
-                                              </tr>
-                                              <tr>
-                                                <td><?php	if ($registros->modalidadViolenciaFamiliar > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->modalidadViolenciaLaboral > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->modalidadViolenciaEnLaComunidad > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->modalidadViolenciaInstitucional > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->modalidadViolenciaFeminicida > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->modalidadDeViolenciaCibernetica > 0){echo "X";}?></td>
-                                              </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-2  my-1">
+                                  <label for="modalidadViolenciaFamiliar" class="col-form-label">Familiar:</label>
+                                  <select class="custom-select col-sm-9" name="modalidadViolenciaFamiliar" id="modalidadViolenciaFamiliar">
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaFamiliar',$sino->valor); ?>><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-2  my-1">
+                                  <label for="modalidadViolenciaLaboral" class="col-form-label">laboral:</label>
+                                  <select class="custom-select col-sm-9" name="modalidadViolenciaLaboral" id="modalidadViolenciaLaboral">
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaLaboral',$sino->valor); ?>><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-2  my-1">
+                                  <label for="modalidadViolenciaEnLaComunidad" class="col-form-label">En La Comunidad:</label>
+                                  <select class="custom-select col-sm-9" name="modalidadViolenciaEnLaComunidad" id="modalidadViolenciaEnLaComunidad">
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaEnLaComunidad',$sino->valor); ?>><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-2  my-1">
+                                  <label for="modalidadViolenciaInstitucional" class="col-form-label">Institucional</label>
+                                  <select class="custom-select col-sm-9" name="modalidadViolenciaInstitucional" id="modalidadViolenciaInstitucional">
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaInstitucional',$sino->valor); ?>><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-2  my-1">
+                                  <label for="modalidadViolenciaFeminicida" class="col-form-label">Feminicida</label>
+                                  <select class="custom-select col-sm-9" name="modalidadViolenciaFeminicida" id="modalidadViolenciaFeminicida">
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('modalidadViolenciaFeminicida',$sino->valor); ?>><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-2  my-1">
+                                  <label for="modalidadDeViolenciaCibernetica" class="col-form-label">Violencia en línea</label>
+                                  <select class="custom-select col-sm-9" name="modalidadDeViolenciaCibernetica" id="modalidadDeViolenciaCibernetica">
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('modalidadDeViolenciaCibernetica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
                             </div>
-
                           </div>
                         </div>
                     </div>
                 </div>
-                <!-- Modalidad de violencia end -->
+              <!-- Modalidad de violencia< end -->
 
-                <!--15- Manifestaciones de la violencia start -->
+              <!-- Manifestaciones de la violencia start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion15">Manifestaciones de la violencia</a>
@@ -163,44 +302,32 @@
                     <div id="accordion15" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
-                            <div class="single-table">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered text-center">
-                                        <thead class="text-uppercase">
-                                            <tr>
-                                                <th scope="col" colspan="6">Manifestación:</th>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="tipodemanifestacion" class="col-form-label">Tipo de manifestaciones:</label>
+                                  <select class="custom-select col-sm-11" name="tipodemanifestacion" id="tipodemanifestacion">
+                                    <option value="">Seleccione una opción</option>
+                                  <?php foreach($tipodemanifestaciones as $manifestaciones):?>
+                                    <?php if ($manifestaciones->id >1): ?>
+                                      <option value="<?php echo $manifestaciones->id;?>"><?php echo $manifestaciones->nombre;?></option>
+                                    <?php endif; ?>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Amenazas</th>
-                                                <td>Feminicida</td>
-                                                <td>Desaparciones Forzadas</td>
-                                                <td>Detenciones</td>
-                                                <td>Detenciones Arbitrarias Extrajudicia</td>
-                                                <td>Difamacion Calumnia e Injuria</td>
-                                              </tr>
-                                              <tr>
-                                                <td><?php	if ($registros->manifestacionesDeTipoAmenazas > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoFeminicida > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoDesaparcionesForzadas > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoDetenciones > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoDetencionesArbitrariasExtrajudicia > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoDifamacionCalumniaInjuria > 0){echo "X";}?></td>
-                                              </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                              <div class="col-sm-6 my-1">
+                                 <label for="observacionesmanifestacion" class="col-form-label form-control-sm input-rounded">Observaciones</label>
+                                  <textarea name="observacionesmanifestacion" id="observacionesmanifestacion" style="width:100%; height:100px;"></textarea>
+                              </div>
                             </div>
+
                           </div>
                         </div>
                     </div>
                 </div>
-                <!-- Manifestaciones de la violencia end -->
+              <!-- Manifestaciones de la violencia end -->
 
-                <!-- 16-Consecuencias start -->
+              <!-- Consecuencias start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion16">Consecuencias</a>
@@ -219,20 +346,16 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Amenazas</th>
-                                                <td>Feminicida</td>
-                                                <td>Desaparciones Forzadas</td>
-                                                <td>Detenciones</td>
-                                                <td>Detenciones Arbitrarias Extrajudicia</td>
-                                                <td>Difamacion Calumnia e Injuria</td>
+                                                <td>Fue Despedida</th>
+                                                <td>Bajo Perfil</td>
+                                                <td>Desplazamiento</td>
+                                                <td>Judicializacion</td>
                                               </tr>
                                               <tr>
-                                                <td><?php	if ($registros->manifestacionesDeTipoAmenazas > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoFeminicida > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoDesaparcionesForzadas > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoDetenciones > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoDetencionesArbitrariasExtrajudicia > 0){echo "X";}?></td>
-                                                <td><?php	if ($registros->manifestacionesDeTipoDifamacionCalumniaInjuria > 0){echo "X";}?></td>
+                                                <td><?php	if ($registros->consecuenciaFueDespedida > 0){echo "X";}?></td>
+                                                <td><?php echo $registros->bajoPerfil;?></td>
+                                                <td><?php	if ($registros->consecuenciasDesplazamiento > 0){echo "X";}?></td>
+                                                <td><?php echo $registros->judicializacion;?></td>
                                               </tr>
 
                                         </tbody>
@@ -245,23 +368,17 @@
                 </div>
               <!-- Consecuencias end -->
 
-              <!-- 17-Atención Recibida< start -->
+              <!-- Atención Recibida por cimac start -->
                 <div class="card">
                     <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida</a>
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida Por CIMAC</a>
                     </div>
-                    <div id="accordion17" class="collapse" data-parent="#accordion1">
+                    <div id="accordion17" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="single-table">
                                 <div class="table-responsive">
                                     <table class="table table-bordered text-center">
-                                        <thead class="text-uppercase">
-                                            <tr>
-                                                <th scope="col" colspan="6">Atención Recibida:</th>
-
-                                            </tr>
-                                        </thead>
                                         <tbody>
                                             <tr>
                                                 <td>Médica</th>
@@ -280,82 +397,166 @@
                                     </table>
                                 </div>
                             </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="cimacHaceAcompanamientoAnteElMecanismo" class="col-form-label" align="center">Cimac hace acompanamiento ante el mecanismo:</label>
+                                  <select class="custom-select col-sm-6" name="cimacHaceAcompanamientoAnteElMecanismo" id="cimacHaceAcompanamientoAnteElMecanismo">
+
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-6  my-1">
+                                  <label for="queOtraOrganizacionLasAcompana" class="col-form-label" align="center">Que otra organizacion las acompaña:</label>
+                                  <input class="form-control  col-sm-8" type="text" value="" id="queOtraOrganizacionLasAcompana" name="queOtraOrganizacionLasAcompana">
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-3  my-1">
+                                  <label for="atencionMedicaRecibida" class="col-form-label">Médica</label>
+                                  <select class="custom-select col-sm-10" name="atencionMedicaRecibida" id="atencionMedicaRecibida">
+
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-3  my-1">
+                                  <label for="atencionPsicologicaRecibida" class="col-form-label">Psicológica:</label>
+                                  <select class="custom-select col-sm-10" name="atencionPsicologicaRecibida" id="atencionPsicologicaRecibida">
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-3  my-1">
+                                  <label for="atencionJuridicaRecibida" class="col-form-label">Jurídica:</label>
+                                  <select class="custom-select col-sm-10" name="atencionJuridicaRecibida" id="atencionJuridicaRecibida">
+
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-3  my-1">
+                                  <label for="ningunaAtencionRecibida" class="col-form-label">Ningúna:</label>
+                                  <select class="custom-select col-sm-10" name="ningunaAtencionRecibida" id="ningunaAtencionRecibida">
+
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                            </div>
                           </div>
                         </div>
                     </div>
                 </div>
-              <!--18- Denuncias start -->
+              <!-- Atención Recibida< end -->
+
+              <!-- Acciones de seguimiento start -->
                 <div class="card">
                     <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion18">Denuncias</a>
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion18">Acciones de seguimiento</a>
                     </div>
                     <div id="accordion18" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
-                            <?php if ( $registros->agresionAnterior=="") {
+                            <div class="form-row align-items-center">
 
-                            }else {
-                              echo "<p>
-                              <strong>Agresion anterior:</strong>
-                              <small>
-                              <a href=$registros->agresionAnterior>ver...</a>
-                              </small>
-                              </p>";
-                            } ?>
+                              <div class="col-sm-6  my-1">
+                                  <label for="beneficiariaDelMecanismoDeProtecion" class="col-form-label">Beneficiaria del mecanismo de protecion:</label>
+                                  <select class="custom-select col-sm-10" name="beneficiariaDelMecanismoDeProtecion" id="beneficiariaDelMecanismoDeProtecion">
+                                  <option selected="selected" value="0">Seleccione una opción</option>
+                                  <?php foreach($niveles as $nivel):?>
+                                      <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="carpetaDeInvestigacionEnAlgunaProcuraduria" class="col-form-label">Carpeta de investigacion en alguna procuraduria:</label>
+                                  <select class="custom-select col-sm-10" name="carpetaDeInvestigacionEnAlgunaProcuraduria" id="carpetaDeInvestigacionEnAlgunaProcuraduria">
+                                  <option selected="selected" value="0">Seleccione una opción</option>
+                                  <?php foreach($niveles as $nivel):?>
+                                      <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-6  my-1">
+                                  <label for="quejaAnteComisionDeDerechosHumanos" class="col-form-label">Queja ante comisión de derechos humanos:</label>
+                                  <select class="custom-select col-sm-10" name="quejaAnteComisionDeDerechosHumanos" id="quejaAnteComisionDeDerechosHumanos">
+                                  <option selected="selected" value="0">Seleccione una opción</option>
+                                  <?php foreach($niveles as $nivel):?>
+                                      <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="estasDeAcuedoConElMecanismoDeProteccion" class="col-form-label">Estas de acuedo con el mecanismo de proteccion:</label>
+                                  <select class="custom-select col-sm-10" name="estasDeAcuedoConElMecanismoDeProteccion" id="estasDeAcuedoConElMecanismoDeProteccion">
 
-                              <p><strong>Beneficiaria del mecanismo de protecion:</strong><small class="text-muted"> <?php echo $registros->beneficiariaDelMecanismo;?></small></p>
-                              <p><strong>Carpeta de investigacion en alguna procuraduria: </strong><small class="text-muted"> <?php echo $registros->carpetaDeInvestigacion;?></small></p>
-                              <p><strong>Queja ante comisión de derechos humanos: </strong><small class="text-muted"> <?php echo $registros->quejaAnteComision;?></small></p>
-                              <p><strong>Estas de acuedo con el mecanismo de proteccion: </strong><small class="text-muted"> <?php echo $registros->estasDeAcuedoConElMecanismo;?></small></p>
-                              <p><strong>Esas medidas te permiten seguir haciendo tu trabajo:</strong><small class="text-muted"> <?php echo $registros->tePermitenSeguirHaciendoTuTrabajo;?></small></p>
-                              <p><strong>¿Por que?:</strong></p><small class="text-muted"><p><?php echo $registros->porQue;?></small></p>
-                              <p><strong>Has tenido resultados la carpeta de investigacion:</strong><small class="text-muted"> <?php echo $registros->resultadosLaCarpetaDeInvestigacion;?></small></p>
-                              <p><strong>¿Cuales resultados?:</strong></p><small class="text-muted"><p><?php echo $registros->cuales;?></small></p>
-                              <p><strong>Qué a hecho la comisión de derechos humanos?:</strong></p><small class="text-muted"><p><?php echo $registros->queAHechoLaComisionDeDerechosHumanos;?></small></p>
-                              <p><strong>¿Relatoria de los hechos?:</strong></p><small class="text-muted"><p><?php echo $registros->relatoriaDelHecho;?></small></p>
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                              <div class="col-sm-6  my-1">
+                                  <label for="esasMedidasTePermitenSeguirHaciendoTuTrabajo" class="col-form-label">Esas medidas te permiten seguir haciendo tu trabajo:</label>
+                                  <select class="custom-select col-sm-10" name="esasMedidasTePermitenSeguirHaciendoTuTrabajo" id="esasMedidasTePermitenSeguirHaciendoTuTrabajo">
+                                    <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-12  my-1">
+                                  <label for="porQue" class="col-form-label">¿Por que?:</label>
+                                  <textarea name="porQue"  id="porQue" style="width:100%; height:100px;"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="tenidoResultadosLaCarpetaDeInvestigacion" class="col-form-label">Has tenido resultados la carpeta de investigacion:</label>
+                                  <select class="custom-select col-sm-10" name="tenidoResultadosLaCarpetaDeInvestigacion" id="tenidoResultadosLaCarpetaDeInvestigacion">
+
+                                  <?php foreach($sinos as $sino):?>
+                                      <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+
+                              </div>
+                              <div class="col-sm-6  my-1">
+                                  <label for="cuales" class="col-form-label">¿Cuales resultados?:</label>
+                                  <textarea name="cuales" id="cuales" style="width:100%; height:100px;"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6  my-1">
+                                  <label for="queAHechoLaComisionDeDerechosHumanos" class="col-form-label">¿Qué a hecho la comisión de derechos humanos?:</label>
+                                  <textarea name="queAHechoLaComisionDeDerechosHumanos" id="queAHechoLaComisionDeDerechosHumanos" style="width:100%; height:100px;"></textarea>
+                              </div>
+
+                            </div>
                           </div>
                         </div>
                     </div>
                 </div>
-              <!-- Denuncias end -->
-              <!-- 19-Links start -->
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion19">Links</a>
-                    </div>
-                    <div id="accordion19" class="collapse show" data-parent="#accordion1">
-                        <div class="card-body">
-                          <div class="card-body">
-                            <?php if ( $registros->link1=="") {
+              <!-- Acciones de seguimiento end -->
 
-                            }else {
-                              echo "<p>
-                              <strong>Link1:</strong>
-                              <small>
-                              <a href=$registros->link1>ver...</a>
-                              </small>
-                              </p>";
-                            } ?>
-                          </div>
-                        </div>
-
-
-                    </div>
-                </div>
-              <!-- Links end -->
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion19">Collapsible
-                            Group Item #3</a>
-                    </div>
-                    <div id="accordion19" class="collapse" data-parent="#accordion1">
-                        <div class="card-body">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque porro alias assumenda accusamus incidunt odio molestiae maxime quo atque in et quaerat, vel unde aliquam aperiam quidem consectetur omnis dicta officiis? Dolorum, error dolorem!
-                        </div>
-                    </div>
-                </div>
+              <!-- Boton start -->
+              <div class="form-group">
+                <button type="submit" class="btn btn-success btn-flat">Guardar</button>
+              </div>
+              <!-- Boton end -->
             </div>
         </div>
     </div>
+  </form>
 </div>
 <!-- accordion style 1 end -->

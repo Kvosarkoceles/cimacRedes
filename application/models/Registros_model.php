@@ -13,30 +13,21 @@ class Registros_model extends CI_Model {
 		return $resultados ->result();
 	}
 	public function getRegistro($id){
-		$this->db->select("u.*,r.nombres,
-													 r.apellidoPaterno,
-													 r.apellidoMaterno,r.localidad as localidadPeriodista,
-													 e.nombre as estado,
-													 e2.nombre as estadoIncidente,
-													 sn.nombre as beneficiariaDelMecanismo,
-													 nv.nombre as carpetaDeInvestigacion,
-													 nv2.nombre as quejaAnteComision,
-													 sn2.nombre as estasDeAcuedoConElMecanismo,
-													 sn3.nombre as tePermitenSeguirHaciendoTuTrabajo,
-													 sn4.nombre as resultadosLaCarpetaDeInvestigacion,
-													 jd.nombre as Judicializacion");
+		$this->db->select("u.*,p.nombres
+													,p.apellidoPaterno
+													,p.apellidoMaterno
+													,e.nombre as estado
+													,ei.nombre as estadoIncidente
+													,ed.nombre as edad
+													,pb.nombre as bajoPerfil
+													,j.nombre as judicializacion");
 		$this->db->from("datosIncidente u");
-		$this->db->join("datosperiodistas r","u.id_datospersonales = r.id");
-		$this->db->join("edades ed","r.id_Edad = ed.id");
-		$this->db->join("estados e","r.id_estados = e.id");
-		$this->db->join("estados e2","u.id_estados = e2.id");
-		$this->db->join("sino sn","u.beneficiariaDelMecanismoDeProtecion = sn.valor");
-		$this->db->join("niveles nv","u.carpetaDeInvestigacionEnAlgunaProcuraduria = nv.id");
-		$this->db->join("niveles nv2","u.quejaAnteComisionDeDerechosHumanos = nv2.id");
-		$this->db->join("sino sn2","u.estasDeAcuedoConElMecanismoDeProteccion = sn2.valor");
-		$this->db->join("sino sn3","u.esasMedidasTePermitenSeguirHaciendoTuTrabajo = sn3.valor");
-		$this->db->join("sino sn4","u.tenidoResultadosLaCarpetaDeInvestigacion = sn4.valor");
-		$this->db->join("tipodejudicializacion jd","u.id_consecuenciajudicializacion = jd.id");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->join("estados e","p.id_estados = e.id");
+		$this->db->join("edades ed","p.id_Edad = ed.id");
+		$this->db->join("estados ei","u.id_estados = ei.id");
+		$this->db->join("perfilbajo pb","u.consecuenciasBajoPerfil = pb.id");
+		$this->db->join("tipodejudicializacion j","u.id_consecuenciajudicializacion = j.id");
 		$this->db->where("u.id",$id);
 		$resultado = $this->db->get();
 		return $resultado->row();
@@ -77,8 +68,15 @@ class Registros_model extends CI_Model {
 
 		return $resultados ->result();
 	}
-	public function save($data){
+	public function save2listoparaborrar($data){
 		return $this->db->insert("datosIncidente",$data);
+	}
+	public function save($tabla,$data){
+		if ($this->db->insert($tabla,$data)) {
+			return $this->db->insert_id();
+		}else{
+			return false;
+		}
 	}
 	public function update($id,$data){
 		$this->db->where("id",$id);
@@ -110,18 +108,18 @@ class Registros_model extends CI_Model {
 	}
 	public function getNivel1agresor(){
 		$this->db->select("n.*");
-		$this->db->from("nivel1Agresor n");
+		$this->db->from("nivel1agresor n");
 		$resultado = $this->db->get();
 		return $resultado->result();
 	}
 	public function getNivel2agresor(){
 		$this->db->select("n.*");
-		$this->db->from("nivel2Agresor n");
+		$this->db->from("nivel2agresor n");
 		$resultado = $this->db->get();
 		return $resultado->result();
 	}
-	public function getNivelagresorTemp(){
-		$resultados = $this->db->get("nivelAgresor");
+	public function getTipodemanifestaciones(){
+		$resultados = $this->db->get("tipodemanifestaciones");
 		return $resultados ->result();
 	}
 }

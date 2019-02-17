@@ -44,6 +44,7 @@ class Registros extends CI_Controller {
 			'nivel1_Agresor' => $this->Registros_model->getNivel1agresor(),
 			'nivel2_Agresor' => $this->Registros_model->getNivel2agresor(),
 			'Judicializacion' => $this->Registros_model->getJudicializacionr($id),
+			'tipodemanifestaciones' => $this->Registros_model->getTipodemanifestaciones(),
 
 		);
 		$this->load->view("layouts/header");
@@ -164,7 +165,15 @@ class Registros extends CI_Controller {
 		// Agresion  start //
 		$motivodelasgresion = $this->input->post("motivodelasgresion");
 		$tipoDeInvestigacion = $this->input->post("tipoDeInvestigacion");
+		$sexoAgresor = $this->input->post("sexoAgresor");
+		$tipoagresor = $this->input->post("tipoagresor");
+		$nivel1 = $this->input->post("nivel1");
+		$nivel2 = $this->input->post("nivel2");
 		// Agresion  end //
+		// Manifestacion de la violencia  start //
+			$tipodemanifestacion = $this->input->post("tipodemanifestacion");
+			$observacionesmanifestacion = $this->input->post("observacionesmanifestacion");
+		// Manifestacion de la violencia  end //
 		$config = array(
 			array(
 				'field' => 'fechaIncidente',
@@ -269,14 +278,30 @@ class Registros extends CI_Controller {
 
 					// Agresion  start //
 				'id_motivodelasgresion' => $motivodelasgresion,
-				'id_tipoDeInvestigacion' => $tipoDeInvestigacion,	
+				'id_tipoDeInvestigacion' => $tipoDeInvestigacion,
 					// Agresion  end //
 			);
-			if ($this->Registros_model->save($data)) {
-				redirect(base_url()."app/periodistas/info/".$id_datospersonales);
+			$datosincidente=$this->Registros_model->save('datosincidente',$data);
+			$datosagresor = array(
+				'id_sexo' => $sexoAgresor,
+				'id_datosincidente' => $datosincidente,
+				'id_tipoAgresor' => $tipoagresor,
+				'id_nivel1' => $nivel1,
+				'id_nivel2' => $nivel2,
+			 );
+			$datosmanifestacion = array(
+				'id_datosincidente' => $datosincidente,
+				'id_tipodemanifestacion' => $tipodemanifestacion,
+				'observaciones' => $observacionesmanifestacion,
+			);
+			$agresorinsertado=$this->Registros_model->save('datosagresor',$datosagresor);
+			$manifestacion=$this->Registros_model->save('datosmanifestacion',$datosmanifestacion);
+			if ($datosincidente>0  && $agresorinsertado>0 && $manifestacion>0 ) {
+				redirect(base_url()."app/registros/info/".$datosincidente);
 			}
-			else {
-				redirect(base_url()."app/registros/add".$id_datospersonales);
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/usuarios/add");
 			}
 		}else {
 			$this-> add($id_datospersonales);
