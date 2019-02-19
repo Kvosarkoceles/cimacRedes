@@ -336,6 +336,9 @@ class Configuracion extends CI_Controller {
 				case 11:
 					$this->addJudicializacion();
 					break;
+				case 12:
+					$this->addManifestacion();
+					break;
 				default:
 						show_404();
 					break;
@@ -738,6 +741,65 @@ class Configuracion extends CI_Controller {
 		}
 	}
 	/*++ Funciones para editar variables Registros end  ++*/
+	/*++ Funciones para editar variables Registros start  ++*/
+	public function manifestacion(){
+		$data  = array(
+		'menus' => $this->Configuracion_model->getManifestacion(),
+		'ruta' => "editaManifestacion",
+		'titulo' => "Manifestacion de la violencia",
+		'agrega' => "addManifestacion",
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/list",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function addManifestacion(){
+		$data  = array(
+			'titulo' => 'Agrega nuevo tipo manifestacion',
+			'tabla' => 'tipodemanifestaciones',
+			'destino' => 'manifestacion',
+			'metodo' => 12
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/add",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function editaManifestacion($id){
+		$data  = array(
+			'nombres' => $this->Configuracion_model->getTipomanifestacion($id),
+			'base' => "manifestacion_update"
+		);
+		$this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/configuracion/edit",$data);
+		$this->load->view("layouts/footer");
+	}
+	public function manifestacion_update(){
+		$idmenu = $this->input->post("idmenu");
+		$nombres = $this->input->post("nombres");
+		$descripcion = $this->input->post("descripcion");
+		$menu = 'tipodemanifestaciones';
+		$this->form_validation->set_rules("nombres","Nombres","required");
+		if ($this->form_validation->run()) {
+			$data  = array(
+				'nombre' => $nombres,
+				'descripcion' => $descripcion,
+			);
+
+			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
+				redirect(base_url()."administrador/configuracion/manifestacion");
+			}
+			else{
+				$this->session->set_flashdata("error","No se pudo guardar la informacion");
+				redirect(base_url()."administrador/configuracion/editaManifestacion".$idmenu);
+			}
+		}else {
+			$this->editaManifestacion	($idmenu);
+		}
+	}
+	/*++ Funciones para editar variables Registros end  ++*/
 	/*++ Funciones para las vistas Agresor tart  ++*/
 	public function tipoagresor(){
 		$data  = array(
@@ -824,7 +886,7 @@ class Configuracion extends CI_Controller {
 		if(count($nivel1)>0)
 		{
 			$pro_select_box = '';
-			$pro_select_box .= '<option value="">Seleccione un valor</option>';
+			$pro_select_box .= '<option value="1	">Seleccione un valor</option>';
 
 			foreach ($nivel1 as $nivel) {
 				$pro_select_box .='<option value="'.$nivel->id.'">'.$nivel->nombre.'</option>';
@@ -844,7 +906,7 @@ class Configuracion extends CI_Controller {
 				'nombre' => $nombres,
 				'descripcion'=> $descripcion
 			);
-			if ($this->Configuracion_model->save('nivel1Agresor',$data)) {
+			if ($this->Configuracion_model->save('nivel1agresor',$data)) {
 				redirect(base_url()."administrador/configuracion/tipoagresor_nivel1");
 			}
 			else{
@@ -866,7 +928,7 @@ class Configuracion extends CI_Controller {
 		$this->load->view("layouts/footer");
 	}
 	public function updateNivel1(){
-		$menu='nivel1Agresor';
+		$menu='nivel1agresor';
 		$id_nivel1 = $this->input->post("id_nivel1");
 		$id_tipoAgresor = $this->input->post("tipoagresor");
 		$nombres = $this->input->post("nombre");
@@ -948,7 +1010,7 @@ class Configuracion extends CI_Controller {
 				//'id_estado' => "1"
 			);
 
-			if ($this->Configuracion_model->save('nivel2Agresor',$data)) {
+			if ($this->Configuracion_model->save('nivel2agresor',$data)) {
 				redirect(base_url()."administrador/configuracion/tipoagresor_nivel2");
 			}
 			else{
@@ -962,7 +1024,7 @@ class Configuracion extends CI_Controller {
 
 	}
 	public function updateNivel2(){
-		$menu='nivel2Agresor';
+		$menu='nivel2agresor';
 		$id_nivel2 = $this->input->post("id_nivel2");
 		$tipoagresor = $this->input->post("tipoagresor");
 		$nivel1 = $this->input->post("nivel1");

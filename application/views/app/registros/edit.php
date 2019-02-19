@@ -196,17 +196,17 @@
                             <div class="form-row align-items-center">
                               <div class="col-sm-6  my-1">
                                   <label for="analisisDeContexto" class="col-form-label">Analisis de contexto:</label>
-                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:100px;"></textarea>
+                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:300px;"></textarea>
                               </div>
                               <div class="col-sm-6  my-1">
                                   <label for="analisisDeRiesgo" class="col-form-label">Analisis de riesgo:</label>
-                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:100px;"></textarea>
+                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:300px;"></textarea>
                               </div>
                             </div>
                             <div class="form-row align-items-center">
                               <div class="col-sm-6  my-1">
                                   <label for="observaciones" class="col-form-label">Observaciones:</label>
-                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:100px;"></textarea>
+                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:300px;"></textarea>
                               </div>
                             </div>
                           </div>

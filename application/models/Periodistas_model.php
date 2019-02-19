@@ -16,7 +16,7 @@ class Periodistas_model extends CI_Model {
 	}
 	public function getRegistro($id){
 		$this->db->select("u.*, u.id as registroID, e.nombre as estado");
-		$this->db->from("datosIncidente u");
+		$this->db->from("datosincidente u");
 		$this->db->join("datosperiodistas r","u.id_datospersonales = r.id");
 		$this->db->join("estados e","u.id_estados = e.id");
 		$this->db->where("u.id_datospersonales",$id);
@@ -135,7 +135,7 @@ class Periodistas_model extends CI_Model {
 	}
 	public function getIncidentes($id){
 		$this->db->select("u.*");
-		$this->db->from("datosIncidente u");
+		$this->db->from("datosincidente u");
 
 //	$this->db->join("roles r","u.id_rol = r.id");
 	$this->db->where("u.id_datospersonales",$id);

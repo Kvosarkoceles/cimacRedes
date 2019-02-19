@@ -31,7 +31,6 @@ class Registros extends CI_Controller {
 	public function add($id){
 		$data  = array(
 			'periodista' => $this->Periodistas_model->getPeriodista($id),
-		//	'periodista' => $this->Periodistas_model->getPeriodista($id),
 			'edades' => $this->Periodistas_model->getEdades(),
 			'estados' => $this->Periodistas_model->getEstados(),
 			'sinos' => $this->Registros_model->getSiNo(),
@@ -58,6 +57,8 @@ class Registros extends CI_Controller {
 			//'periodista' => $this->Periodistas_model->getPeriodista($id),
 			//'trabajo' => $this->Periodistas_model->getTrabajo($id),
 			'registros' => $this->Registros_model->getRegistro($id),
+			'manifestaciones' => $this->Registros_model->getManifestaciones($id),
+			'agresor' => $this->Registros_model->getAgresor($id),
 		//	'roles' => $this->Usuarios_model->getRoles(),
 		//	'menus' => $this->Permisos_model->getMenus(),
 		//	'permiso' => $this->Permisos_model->getPermiso($id)
@@ -173,6 +174,7 @@ class Registros extends CI_Controller {
 		// Manifestacion de la violencia  start //
 			$tipodemanifestacion = $this->input->post("tipodemanifestacion");
 			$observacionesmanifestacion = $this->input->post("observacionesmanifestacion");
+
 		// Manifestacion de la violencia  end //
 		$config = array(
 			array(
@@ -204,6 +206,11 @@ class Registros extends CI_Controller {
       	'field' => 'longitud',
         'label' => 'longitud',
         'rules' => 'numeric|min_length[3]|max_length[50]'
+      ),
+			array(
+      	'field' => 'tipodemanifestacion',
+        'label' => 'tipo de manifestacion',
+        'rules' => 'required'
       ),
 		);
 		$this->form_validation->set_rules($config);

@@ -77,20 +77,20 @@
               var id_tipoAgresor = $(this).val();
               if(id_tipoAgresor == '')
               {
-                  $('#nivel1').prop('disabled', true);
-                  $('#nivel2').prop('disabled', true);
+                //  $('#nivel1').prop('disabled', true);
+                  //$('#nivel2').prop('disabled', true);
                   $('#nivel2').html('');
-                  $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
+                  $('#nivel2').append('<option value="1" selected="selected">Sin información</option>');
                   $('#nivel1').html('');
-                  $('#nivel1').append('<option value="" selected="selected">Sin información</option>');
+                  $('#nivel1').append('<option value="1" selected="selected">Sin información</option>');
               }
               else
               {
 
-                  $('#nivel1').prop('disabled', false);
+                  //  $('#nivel1').prop('disabled', false);
                   $('#nivel2').html('');
-                  $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
-                  $('#nivel2').prop('disabled', true);
+                  $('#nivel2').append('<option value="1" selected="selected">Sin información</option>');
+                  //  $('#nivel2').prop('disabled', true);
                   $.ajax({
                       url:"<?php echo base_url() ?>administrador/configuracion/get_nivel1",
                       type: "POST",
@@ -101,11 +101,11 @@
                       },
                       error: function(){
                         $('#nivel1').html('');
-                        $('#nivel1').append('<option value="" selected="selected">Sin información</option>');
-                        $('#nivel1').prop('disabled', true);
+                        $('#nivel1').append('<option value="1" selected="selected">Sin información</option>');
+                      //    $('#nivel1').prop('disabled', true);
                         $('#nivel2').html('');
-                        $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
-                        $('#nivel2').prop('disabled', true);
+                        $('#nivel2').append('<option value="1" selected="selected">Sin información</option>');
+                          //$('#nivel2').prop('disabled', true);
                       //    alert('Error occur...!!');
                       }
                   });
@@ -123,9 +123,9 @@
               var id_nivel1 = $(this).val();
               if(id_nivel1 == '')
               {
-                  $('#nivel2').prop('disabled', true);
+                    //$('#nivel2').prop('disabled', true);
                   $('#nivel2').html('');
-                  $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
+                  $('#nivel2').append('<option value="1" selected="selected">Sin información</option>');
 
               }
               else
@@ -142,8 +142,8 @@
                       },
                       error: function(){
                         $('#nivel2').html('');
-                        $('#nivel2').append('<option value="" selected="selected">Sin información</option>');
-                        $('#nivel2').prop('disabled', true);
+                        $('#nivel2').append('<option value="1" selected="selected">Sin información</option>');
+                        //  $('#nivel2').prop('disabled', true);
                       //    alert('Error occur...!!');
                       }
                   });
@@ -153,12 +153,8 @@
 
     </script>
 
-    <script type="text/javascript">
-      $(document).ready(function(){
 
-      });
 
-    </script>
   <!--  <script>
       $(document).ready(function(){
         $('#province').click(

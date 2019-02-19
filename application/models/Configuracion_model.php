@@ -154,6 +154,20 @@ class Configuracion_model extends CI_Model {
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
+	public function getManifestacion(){
+		$this->db->select("c.*");
+		$this->db->from("tipodemanifestaciones c");
+		$resultados = $this->db->get();
+
+		return $resultados ->result();
+	}
+	public function getTipomanifestacion($id){
+		$this->db->select("e.*");
+		$this->db->from("tipodemanifestaciones e");
+		$this->db->where("e.id",$id);
+		$resultados = $this->db->get();
+		return $resultados ->row();
+	}
 	/*Funciones para la registro end*/
 	/*Funciones para el Agresor start*/
 	public function getTipoagresor(){
@@ -172,14 +186,14 @@ class Configuracion_model extends CI_Model {
 	}
 	public function getTipoNivel1($id){
 		$this->db->select("e.*");
-		$this->db->from("nivel1Agresor e");
+		$this->db->from("nivel1agresor e");
 		$this->db->where("e.id",$id);
 		$resultados = $this->db->get();
 		return $resultados ->row();
 	}
 	public function getTipoagresor_nivel1(){
 		$this->db->select("c.*, cm.nombre as tipoAgresor");
-		$this->db->from("nivel1Agresor c");
+		$this->db->from("nivel1agresor c");
 		$this->db->join("	tipoagresor cm","c.id_tipoAgresor	 = cm.id");
 		$this->db->order_by("cm.nombre", "asc");
 		$resultados = $this->db->get();
@@ -188,14 +202,14 @@ class Configuracion_model extends CI_Model {
 	}
 	public function getNivel2(){
 		$this->db->select("c.*");
-		$this->db->from("nivel2Agresor c");
+		$this->db->from("nivel2agresor c");
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}
 	public function getTipoNivel2($id){
 		$this->db->select("e.*, cm.nombre as nombreNivel1");
-		$this->db->from("nivel2Agresor e");
-		$this->db->join("nivel1Agresor cm","e.id_nivel1	 = cm.id");
+		$this->db->from("nivel2agresor e");
+		$this->db->join("nivel1agresor cm","e.id_nivel1	 = cm.id");
 
 		$this->db->where("e.id",$id);
 		//$this->db->order_by("cm.nombre", "asc");
@@ -204,9 +218,9 @@ class Configuracion_model extends CI_Model {
 	}
 	public function getTipoagresor_nivel2(){
 		$this->db->select("c.*, cm.nombre as tipoAgresor, nv.nombre as nivel");
-		$this->db->from("nivel2Agresor c");
+		$this->db->from("nivel2agresor c");
 		$this->db->join("tipoagresor cm","c.id_tipoAgresor	 = cm.id");
-		$this->db->join("nivel1Agresor nv","c.id_nivel1	 = nv.id");
+		$this->db->join("nivel1agresor nv","c.id_nivel1	 = nv.id");
 		$this->db->order_by("nv.nombre", "asc");
 		$resultados = $this->db->get();
 

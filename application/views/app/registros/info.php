@@ -1,10 +1,10 @@
 <!-- accordion style 1 start -->
 <div class="col-lg-12 mt-5">
   <form action="<?php echo base_url();?>app/registros/store" method="POST">
-    <input type="hidden" name="idperiodista" value="<?php echo $registros->id?>" id ="idperiodista">
+    <input type="hidden" name="id_registro" value="<?php echo $registros->id?>" id ="id_registro">
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Agrega Registro</h4>
+            <h4 class="header-title">Información del Registro</h4>
             <div id="accordion1" class="according">
               <!-- Informacion de la Periodista start -->
                 <div class="card">
@@ -82,72 +82,16 @@
                     <div id="accordion23" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                             <div class="card-body">
-                              <div class="form-row align-items-center">
-                                <div class="col-sm-4  my-1">
-                                    <label for="motivodelasgresion" class="col-form-label" align="center">Motivo de las gresiones</label>
-                                    <select class="custom-select col-sm-12" name="motivodelasgresion" id="motivodelasgresion">
-                                      <option value="">Selecciona un valor</option>
-                                    <?php foreach($motivodelasgresion as $motivo):?>
-                                      <?php if ($motivo->id>1): ?>
-                                        <option value="<?php echo $motivo->id;?><?php echo set_select('motivodelasgresion',$motivo->id); ?>"><?php echo $motivo->nombre;?></option>
-                                      <?php endif; ?>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="tipoDeInvestigacion" class="col-form-label" align="center">Tipo de investigacion:</label>
-                                    <select class="custom-select col-sm-12" name="tipoDeInvestigacion" id="tipoDeInvestigacion">
-                                      <option value="">Selecciona un valor</option>
-                                    <?php foreach($tipoDeInvestigacion as $tipo):?>
-                                        <?php if ($tipo->id>1): ?>
-                                          <option value="<?php echo $tipo->id;?>"><?php echo $tipo->nombre;?></option>
-                                        <?php endif; ?>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="sexoAgresor" class="col-form-label" align="center">Sexo del agresor:</label>
-                                    <select class="custom-select col-sm-12" name="sexoAgresor" id="sexoAgresor">
-                                      <option value="">Selecciona un valor</option>
-                                    <?php foreach($sexo as $sex):?>
-                                      <?php if ($sex->id>1): ?>
-                                        <option value="<?php echo $sex->id;?>"><?php echo $sex->nombre;?></option>
-                                      <?php endif; ?>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="tipoagresor" class="col-form-label" align="center">Agresor:</label>
-                                    <select class="custom-select col-sm-12" name="tipoagresor" id="tipoagresor">
-                                      <option value="">selecione un valor</option>
-                                    <?php foreach($agresor as $agres):?>
-                                      <?php if ($agres->id > 1): ?>
-                                        <option value="<?php echo $agres->id;?>"><?php echo $agres->nombre;?></option>
-                                      <?php endif; ?>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="nivel" class="col-form-label" align="center">Nivel1:</label>
-                                    <select class="custom-select col-sm-12" name="nivel1" id="nivel1" disabled>
-                                    <option value="">selecione un valor</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="nivel2" class="col-form-label" align="center">Nivel2:</label>
-                                    <select class="custom-select col-sm-12" name="nivel2" id="nivel2" disabled="true">
-
-                                    <?php foreach($nivel2_Agresor as $nivelA):?>
-                                      <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-
-
-
-
-
-                              </div>
+                              <p><strong>Motivo de las gresiones: </strong><small class="text-muted"> <?php echo $registros->motivodelasgresion;?></small></p>
+                              <p><strong>Tipo de investigacion: </strong><small class="text-muted"> <?php echo $registros->tipoDeInvestigacion;?></small></p>
+                              <p><strong>Sexo del agresor: </strong><small class="text-muted"> <?php echo $agresor->sexo;?></small></p>
+                              <p><strong>Agresor: </strong><small class="text-muted"> <?php echo $agresor->tipo;?></small></p>
+                              <?php if ($agresor->id_nivel1>1): ?>
+                                <p><strong>Nivel1: </strong><small class="text-muted"> <?php echo $agresor->nivel1;?></small></p>
+                              <?php endif; ?>
+                              <?php if ($agresor->id_nivel2>1): ?>
+                                <p><strong>Nivel2: </strong><small class="text-muted"> <?php echo $agresor->nivel2;?></small></p>
+                              <?php endif; ?>
                             </div>
 
                         </div>
@@ -165,17 +109,17 @@
                             <div class="form-row align-items-center">
                               <div class="col-sm-12  my-1">
                                   <label for="analisisDeContexto" class="col-form-label">Analisis de contexto:</label>
-                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:200px;" readonly=”readonly”> <?php echo $registros->analisisDeContexto;?></textarea>
+                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:300px;" readonly=”readonly”> <?php echo $registros->analisisDeContexto;?></textarea>
                               </div>
                               <div class="col-sm-12 my-1">
                                   <label for="analisisDeRiesgo" class="col-form-label">Analisis de riesgo:</label>
-                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:200px;" readonly=”readonly”> <?php echo $registros->analisisDeRiesgo;?></textarea>
+                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:300px;" readonly=”readonly”> <?php echo $registros->analisisDeRiesgo;?></textarea>
                               </div>
                             </div>
                             <div class="form-row align-items-center">
                               <div class="col-sm-12  my-1">
                                   <label for="observaciones" class="col-form-label">Observaciones:</label>
-                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:200px;" readonly=”readonly”> <?php echo $registros->observaciones;?></textarea>
+                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:300px;" readonly=”readonly”> <?php echo $registros->observaciones;?></textarea>
                               </div>
                             </div>
                           </div>
@@ -238,56 +182,38 @@
                     <div id="accordion14" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
-                            <div class="form-row align-items-center">
-                              <div class="col-sm-2  my-1">
-                                  <label for="modalidadViolenciaFamiliar" class="col-form-label">Familiar:</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaFamiliar" id="modalidadViolenciaFamiliar">
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaFamiliar',$sino->valor); ?>><?php echo $sino->nombre;?></option>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
-                              <div class="col-sm-2  my-1">
-                                  <label for="modalidadViolenciaLaboral" class="col-form-label">laboral:</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaLaboral" id="modalidadViolenciaLaboral">
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaLaboral',$sino->valor); ?>><?php echo $sino->nombre;?></option>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
-                              <div class="col-sm-2  my-1">
-                                  <label for="modalidadViolenciaEnLaComunidad" class="col-form-label">En La Comunidad:</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaEnLaComunidad" id="modalidadViolenciaEnLaComunidad">
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaEnLaComunidad',$sino->valor); ?>><?php echo $sino->nombre;?></option>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
-                              <div class="col-sm-2  my-1">
-                                  <label for="modalidadViolenciaInstitucional" class="col-form-label">Institucional</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaInstitucional" id="modalidadViolenciaInstitucional">
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaInstitucional',$sino->valor); ?>><?php echo $sino->nombre;?></option>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
-                              <div class="col-sm-2  my-1">
-                                  <label for="modalidadViolenciaFeminicida" class="col-form-label">Feminicida</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaFeminicida" id="modalidadViolenciaFeminicida">
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('modalidadViolenciaFeminicida',$sino->valor); ?>><?php echo $sino->nombre;?></option>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
-                              <div class="col-sm-2  my-1">
-                                  <label for="modalidadDeViolenciaCibernetica" class="col-form-label">Violencia en línea</label>
-                                  <select class="custom-select col-sm-9" name="modalidadDeViolenciaCibernetica" id="modalidadDeViolenciaCibernetica">
-                                  <?php foreach($sinos as $sino):?>
-                                      <option value="<?php echo $sino->valor;?>" <?php echo set_select('modalidadDeViolenciaCibernetica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
+                            <div class="single-table">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered text-center">
+                                        <thead class="text-uppercase">
+                                            <tr>
+                                                <th scope="col" colspan="6">Modalidad:</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Familiar</th>
+                                                <td>Laboral</td>
+                                                <td>En la comunidad</td>
+                                                <td>Institucional</td>
+                                                <td>Feminicida</td>
+                                                <td>Violencia en línea</td>
+                                              </tr>
+                                              <tr>
+                                                <td><?php	if ($registros->modalidadViolenciaFamiliar > 0){echo "X";}?></td>
+                                                <td><?php	if ($registros->modalidadViolenciaLaboral > 0){echo "X";}?></td>
+                                                <td><?php	if ($registros->modalidadViolenciaEnLaComunidad > 0){echo "X";}?></td>
+                                                <td><?php	if ($registros->modalidadViolenciaInstitucional > 0){echo "X";}?></td>
+                                                <td><?php	if ($registros->modalidadViolenciaFeminicida > 0){echo "X";}?></td>
+                                                <td><?php	if ($registros->modalidadDeViolenciaCibernetica > 0){echo "X";}?></td>
+                                              </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+
                           </div>
                         </div>
                     </div>
@@ -299,28 +225,44 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion15">Manifestaciones de la violencia</a>
                     </div>
-                    <div id="accordion15" class="collapse" data-parent="#accordion1">
+                    <div id="accordion15" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
-                            <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
-                                  <label for="tipodemanifestacion" class="col-form-label">Tipo de manifestaciones:</label>
-                                  <select class="custom-select col-sm-11" name="tipodemanifestacion" id="tipodemanifestacion">
-                                    <option value="">Seleccione una opción</option>
-                                  <?php foreach($tipodemanifestaciones as $manifestaciones):?>
-                                    <?php if ($manifestaciones->id >1): ?>
-                                      <option value="<?php echo $manifestaciones->id;?>"><?php echo $manifestaciones->nombre;?></option>
-                                    <?php endif; ?>
-                                  <?php endforeach;?>
-                                  </select>
-                              </div>
+                            <div class="single-table">
+                                <div class="table-responsive">
+                                    <table class="table table-hover progress-table text-center">
+                                        <thead class="text-uppercase">
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Tipo</th>
+                                                <th scope="col">Observaciones</th>
 
-                              <div class="col-sm-6 my-1">
-                                 <label for="observacionesmanifestacion" class="col-form-label form-control-sm input-rounded">Observaciones</label>
-                                  <textarea name="observacionesmanifestacion" id="observacionesmanifestacion" style="width:100%; height:100px;"></textarea>
-                              </div>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          <?php if(!empty($manifestaciones)):?>
+                                               <?php foreach($manifestaciones as $manifesta):?>
+                                            <tr>
+                                                <td><?php echo $manifesta->id;?></td>
+                                                <td><?php echo $manifesta->manifestacion;?></td>
+                                                <td><?php echo $manifesta->observaciones;?></td>
+
+
+
+                                                <td>
+                                                    <ul class="d-flex justify-content-center">
+                                                        <li class="mr-3"><a href="<?php echo base_url()?>app/manifestacion/edit/<?php echo $manifesta->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
+                                                        <li><a href="<?php echo base_url()?>app/manifestacion/delete/<?php echo $manifesta->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                          <?php endforeach;?>
+                                      <?php endif;?>
+                                        </tbody>
+                                    </table>
+                                       <a href="<?php echo base_url();?>app/manifestacion/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Manifestacion</a>
+                                </div>
                             </div>
-
                           </div>
                         </div>
                     </div>
@@ -460,7 +402,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion18">Acciones de seguimiento</a>
                     </div>
-                    <div id="accordion18" class="collapse" data-parent="#accordion1">
+                    <div id="accordion18" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">

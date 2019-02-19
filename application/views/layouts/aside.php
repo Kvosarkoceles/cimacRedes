@@ -53,6 +53,7 @@
                                           <li><a href="<?php echo base_url();?>administrador/configuracion/tipodeinvestigacion">Tipo de investigacion</a></li>
                                           <li><a href="<?php echo base_url();?>administrador/configuracion/perfilbajo">Bajo el perfil</a></li>
                                           <li><a href="<?php echo base_url();?>administrador/configuracion/judicializacion">Judicializacion</a></li>
+                                          <li><a href="<?php echo base_url();?>administrador/configuracion/manifestacion">Manifestacion de la violencia</a></li>
                                       </ul>
                                   </li>
                                   <li><a href="#" aria-expanded="true">Agresor</a>

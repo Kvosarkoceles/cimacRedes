@@ -97,7 +97,7 @@
                             <div class="form-row align-items-center">
                               <div class="col-sm-12  my-1">
                                   <label for="relatoriaDelHecho" class="col-form-label">Relatoria de los hechos:</label>
-                                  <textarea name="relatoriaDelHecho" id="relatoriaDelHecho" style="width:100%; height:200px;"><?php echo set_value('relatoriaDelHecho');?></textarea>
+                                  <textarea name="relatoriaDelHecho" id="relatoriaDelHecho" style="width:100%; height:300px;"><?php echo set_value('relatoriaDelHecho');?></textarea>
                               </div>
                             </div>
                           </div>
@@ -117,56 +117,60 @@
                                 <div class="col-sm-4  my-1">
                                     <label for="motivodelasgresion" class="col-form-label" align="center">Motivo de las gresiones</label>
                                     <select class="custom-select col-sm-12" name="motivodelasgresion" id="motivodelasgresion">
-                                      <option value="">Selecciona un valor</option>
+                                      <option value="1">Selecciona un valor</option>
                                     <?php foreach($motivodelasgresion as $motivo):?>
                                       <?php if ($motivo->id>1): ?>
                                         <option value="<?php echo $motivo->id;?><?php echo set_select('motivodelasgresion',$motivo->id); ?>"><?php echo $motivo->nombre;?></option>
                                       <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
+                                    <?php echo form_error("motivodelasgresion","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                                 </div>
                                 <div class="col-sm-4  my-1">
                                     <label for="tipoDeInvestigacion" class="col-form-label" align="center">Tipo de investigacion:</label>
                                     <select class="custom-select col-sm-12" name="tipoDeInvestigacion" id="tipoDeInvestigacion">
-                                      <option value="">Selecciona un valor</option>
+                                      <option value="1">Selecciona un valor</option>
                                     <?php foreach($tipoDeInvestigacion as $tipo):?>
                                         <?php if ($tipo->id>1): ?>
                                           <option value="<?php echo $tipo->id;?>"><?php echo $tipo->nombre;?></option>
                                         <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
+                                    <?php echo form_error("tipoDeInvestigacion","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                                 </div>
                                 <div class="col-sm-4  my-1">
                                     <label for="sexoAgresor" class="col-form-label" align="center">Sexo del agresor:</label>
                                     <select class="custom-select col-sm-12" name="sexoAgresor" id="sexoAgresor">
-                                      <option value="">Selecciona un valor</option>
+                                      <option value="1">Selecciona un valor</option>
                                     <?php foreach($sexo as $sex):?>
                                       <?php if ($sex->id>1): ?>
                                         <option value="<?php echo $sex->id;?>"><?php echo $sex->nombre;?></option>
                                       <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
+                                    <?php echo form_error("sexoAgresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                                 </div>
                                 <div class="col-sm-4  my-1">
                                     <label for="tipoagresor" class="col-form-label" align="center">Agresor:</label>
                                     <select class="custom-select col-sm-12" name="tipoagresor" id="tipoagresor">
-                                      <option value="">selecione un valor</option>
+                                      <option value="1">selecione un valor</option>
                                     <?php foreach($agresor as $agres):?>
                                       <?php if ($agres->id > 1): ?>
                                         <option value="<?php echo $agres->id;?>"><?php echo $agres->nombre;?></option>
                                       <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
+                                    <?php echo form_error("tipoagresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                                 </div>
                                 <div class="col-sm-4  my-1">
                                     <label for="nivel" class="col-form-label" align="center">Nivel1:</label>
-                                    <select class="custom-select col-sm-12" name="nivel1" id="nivel1" disabled>
-                                    <option value="">selecione un valor</option>
+                                    <select class="custom-select col-sm-12" name="nivel1" id="nivel1" >
+                                    <option value="1">selecione un valor</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-4  my-1">
                                     <label for="nivel2" class="col-form-label" align="center">Nivel2:</label>
-                                    <select class="custom-select col-sm-12" name="nivel2" id="nivel2" disabled="true">
+                                    <select class="custom-select col-sm-12" name="nivel2" id="nivel2" >
 
                                     <?php foreach($nivel2_Agresor as $nivelA):?>
                                       <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
@@ -194,19 +198,19 @@
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-12  my-1">
                                   <label for="analisisDeContexto" class="col-form-label">Analisis de contexto:</label>
-                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:100px;"></textarea>
+                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:300px;"></textarea>
                               </div>
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-12 my-1">
                                   <label for="analisisDeRiesgo" class="col-form-label">Analisis de riesgo:</label>
-                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:100px;"></textarea>
+                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:300px;"></textarea>
                               </div>
                             </div>
                             <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-12  my-1">
                                   <label for="observaciones" class="col-form-label">Observaciones:</label>
-                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:100px;"></textarea>
+                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:300px;"></textarea>
                               </div>
                             </div>
                           </div>
@@ -226,8 +230,7 @@
                             <div class="form-row align-items-center">
                               <div class="col-sm-2  my-1">
                                   <label for="tipoDeViolenciaPsicologica" class="col-form-label">Psicologica</label>
-                                  <select class="custom-select col-sm-9" name="tipoDeViolenciaPsicologica" id="tipoDeViolenciaPsicologica">
-
+                                  <select class="custom-select col-sm-11" name="tipoDeViolenciaPsicologica" id="tipoDeViolenciaPsicologica">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"<?php echo set_select('tipoDeViolenciaPsicologica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -235,8 +238,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="tipodeViolenciaFisica" class="col-form-label">Física</label>
-                                  <select class="custom-select col-sm-9" name="tipodeViolenciaFisica" id="tipodeViolenciaFisica">
-
+                                  <select class="custom-select col-sm-11" name="tipodeViolenciaFisica" id="tipodeViolenciaFisica">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"<?php echo set_select('tipodeViolenciaFisica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -244,8 +246,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="tipoDeViolenciaPatrimonial" class="col-form-label">Patrimonial</label>
-                                  <select class="custom-select col-sm-9" name="tipoDeViolenciaPatrimonial" id="tipoDeViolenciaPatrimonial">
-
+                                  <select class="custom-select col-sm-11" name="tipoDeViolenciaPatrimonial" id="tipoDeViolenciaPatrimonial">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"<?php echo set_select('tipoDeViolenciaPatrimonial',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -253,8 +254,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="tipodeViolenciaEconomica" class="col-form-label">Economica</label>
-                                  <select class="custom-select col-sm-9" name="tipodeViolenciaEconomica" id="tipodeViolenciaEconomica">
-
+                                  <select class="custom-select col-sm-11" name="tipodeViolenciaEconomica" id="tipodeViolenciaEconomica">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>" <?php echo set_select('tipodeViolenciaEconomica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -262,7 +262,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="tipoDeViolenciaSexual" class="col-form-label">Sexual</label>
-                                  <select class="custom-select col-sm-9" name="tipoDeViolenciaSexual" id="tipoDeViolenciaSexual">
+                                  <select class="custom-select col-sm-11" name="tipoDeViolenciaSexual" id="tipoDeViolenciaSexual">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>" <?php echo set_select('tipoDeViolenciaSexual',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -270,8 +270,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="tipoDeViolenciaCibernetica" class="col-form-label">Violencia en línea</label>
-                                  <select class="custom-select col-sm-9" name="tipoDeViolenciaCibernetica" id="tipoDeViolenciaCibernetica">
-
+                                  <select class="custom-select col-sm-11" name="tipoDeViolenciaCibernetica" id="tipoDeViolenciaCibernetica">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>" <?php echo set_select('tipoDeViolenciaCibernetica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -295,7 +294,7 @@
                             <div class="form-row align-items-center">
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaFamiliar" class="col-form-label">Familiar:</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaFamiliar" id="modalidadViolenciaFamiliar">
+                                  <select class="custom-select col-sm-11" name="modalidadViolenciaFamiliar" id="modalidadViolenciaFamiliar">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaFamiliar',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -303,7 +302,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaLaboral" class="col-form-label">laboral:</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaLaboral" id="modalidadViolenciaLaboral">
+                                  <select class="custom-select col-sm-11" name="modalidadViolenciaLaboral" id="modalidadViolenciaLaboral">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaLaboral',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -311,7 +310,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaEnLaComunidad" class="col-form-label">En La Comunidad:</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaEnLaComunidad" id="modalidadViolenciaEnLaComunidad">
+                                  <select class="custom-select col-sm-11" name="modalidadViolenciaEnLaComunidad" id="modalidadViolenciaEnLaComunidad">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaEnLaComunidad',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -319,7 +318,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaInstitucional" class="col-form-label">Institucional</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaInstitucional" id="modalidadViolenciaInstitucional">
+                                  <select class="custom-select col-sm-11" name="modalidadViolenciaInstitucional" id="modalidadViolenciaInstitucional">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"<?php echo set_select('modalidadViolenciaInstitucional',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -327,7 +326,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadViolenciaFeminicida" class="col-form-label">Feminicida</label>
-                                  <select class="custom-select col-sm-9" name="modalidadViolenciaFeminicida" id="modalidadViolenciaFeminicida">
+                                  <select class="custom-select col-sm-11" name="modalidadViolenciaFeminicida" id="modalidadViolenciaFeminicida">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>" <?php echo set_select('modalidadViolenciaFeminicida',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -335,7 +334,7 @@
                               </div>
                               <div class="col-sm-2  my-1">
                                   <label for="modalidadDeViolenciaCibernetica" class="col-form-label">Violencia en línea</label>
-                                  <select class="custom-select col-sm-9" name="modalidadDeViolenciaCibernetica" id="modalidadDeViolenciaCibernetica">
+                                  <select class="custom-select col-sm-11" name="modalidadDeViolenciaCibernetica" id="modalidadDeViolenciaCibernetica">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>" <?php echo set_select('modalidadDeViolenciaCibernetica',$sino->valor); ?>><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -367,6 +366,7 @@
                                     <?php endif; ?>
                                   <?php endforeach;?>
                                   </select>
+                                    <?php echo form_error("tipodemanifestacion","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                               </div>
 
                               <div class="col-sm-6 my-1">
@@ -441,16 +441,15 @@
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-3  my-1">
                                   <label for="cimacHaceAcompanamientoAnteElMecanismo" class="col-form-label" align="center">Cimac hace acompanamiento ante el mecanismo:</label>
-                                  <select class="custom-select col-sm-6" name="cimacHaceAcompanamientoAnteElMecanismo" id="cimacHaceAcompanamientoAnteElMecanismo">
-
+                                  <select class="custom-select col-sm-12" name="cimacHaceAcompanamientoAnteElMecanismo" id="cimacHaceAcompanamientoAnteElMecanismo">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-9  my-1">
                                   <label for="queOtraOrganizacionLasAcompana" class="col-form-label" align="center">Que otra organizacion las acompaña:</label>
                                   <input class="form-control  col-sm-8" type="text" value="" id="queOtraOrganizacionLasAcompana" name="queOtraOrganizacionLasAcompana">
                               </div>
@@ -458,7 +457,7 @@
                             <div class="form-row align-items-center">
                               <div class="col-sm-3  my-1">
                                   <label for="atencionMedicaRecibida" class="col-form-label">Médica</label>
-                                  <select class="custom-select col-sm-10" name="atencionMedicaRecibida" id="atencionMedicaRecibida">
+                                  <select class="custom-select col-sm-11" name="atencionMedicaRecibida" id="atencionMedicaRecibida">
 
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
@@ -467,7 +466,7 @@
                               </div>
                               <div class="col-sm-3  my-1">
                                   <label for="atencionPsicologicaRecibida" class="col-form-label">Psicológica:</label>
-                                  <select class="custom-select col-sm-10" name="atencionPsicologicaRecibida" id="atencionPsicologicaRecibida">
+                                  <select class="custom-select col-sm-11" name="atencionPsicologicaRecibida" id="atencionPsicologicaRecibida">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -475,8 +474,7 @@
                               </div>
                               <div class="col-sm-3  my-1">
                                   <label for="atencionJuridicaRecibida" class="col-form-label">Jurídica:</label>
-                                  <select class="custom-select col-sm-10" name="atencionJuridicaRecibida" id="atencionJuridicaRecibida">
-
+                                  <select class="custom-select col-sm-11" name="atencionJuridicaRecibida" id="atencionJuridicaRecibida">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -484,8 +482,7 @@
                               </div>
                               <div class="col-sm-3  my-1">
                                   <label for="ningunaAtencionRecibida" class="col-form-label">Ningúna:</label>
-                                  <select class="custom-select col-sm-10" name="ningunaAtencionRecibida" id="ningunaAtencionRecibida">
-
+                                  <select class="custom-select col-sm-11" name="ningunaAtencionRecibida" id="ningunaAtencionRecibida">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
@@ -507,8 +504,7 @@
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
-
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-3  my-1">
                                   <label for="beneficiariaDelMecanismoDeProtecion" class="col-form-label">Beneficiaria del mecanismo de protecion:</label>
                                   <select class="custom-select col-sm-10" name="beneficiariaDelMecanismoDeProtecion" id="beneficiariaDelMecanismoDeProtecion">
                                   <option selected="selected" value="0">Seleccione una opción</option>
@@ -517,9 +513,7 @@
                                   <?php endforeach;?>
                                   </select>
                               </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-3  my-1">
                                   <label for="carpetaDeInvestigacionEnAlgunaProcuraduria" class="col-form-label">Carpeta de investigacion en alguna procuraduria:</label>
                                   <select class="custom-select col-sm-10" name="carpetaDeInvestigacionEnAlgunaProcuraduria" id="carpetaDeInvestigacionEnAlgunaProcuraduria">
                                   <option selected="selected" value="0">Seleccione una opción</option>
@@ -528,7 +522,7 @@
                                   <?php endforeach;?>
                                   </select>
                               </div>
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-3  my-1">
                                   <label for="quejaAnteComisionDeDerechosHumanos" class="col-form-label">Queja ante comisión de derechos humanos:</label>
                                   <select class="custom-select col-sm-10" name="quejaAnteComisionDeDerechosHumanos" id="quejaAnteComisionDeDerechosHumanos">
                                   <option selected="selected" value="0">Seleccione una opción</option>
@@ -537,18 +531,26 @@
                                   <?php endforeach;?>
                                   </select>
                               </div>
+                              <div class="col-sm-3  my-1">
+                                  <label for="renavi" class="col-form-label">Ingreso cuenta de RENAVI:</label>
+                                  <select class="custom-select col-sm-10" name="renavi" id="renavi">
+                                  <option selected="selected" value="0">Seleccione una opción</option>
+                                  <?php foreach($niveles as $nivel):?>
+                                      <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
+                                  <?php endforeach;?>
+                                  </select>
+                              </div>
                             </div>
                             <div class="form-row align-items-center">
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-4  my-1">
                                   <label for="estasDeAcuedoConElMecanismoDeProteccion" class="col-form-label">Estas de acuedo con el mecanismo de proteccion:</label>
-                                  <select class="custom-select col-sm-10" name="estasDeAcuedoConElMecanismoDeProteccion" id="estasDeAcuedoConElMecanismoDeProteccion">
-
+                                  <select class="custom-select col-sm-11" name="estasDeAcuedoConElMecanismoDeProteccion" id="estasDeAcuedoConElMecanismoDeProteccion">
                                   <?php foreach($sinos as $sino):?>
                                       <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
-                              <div class="col-sm-6  my-1">
+                              <div class="col-sm-4  my-1">
                                   <label for="esasMedidasTePermitenSeguirHaciendoTuTrabajo" class="col-form-label">Esas medidas te permiten seguir haciendo tu trabajo:</label>
                                   <select class="custom-select col-sm-10" name="esasMedidasTePermitenSeguirHaciendoTuTrabajo" id="esasMedidasTePermitenSeguirHaciendoTuTrabajo">
                                     <?php foreach($sinos as $sino):?>
@@ -556,11 +558,12 @@
                                   <?php endforeach;?>
                                   </select>
                               </div>
+
                             </div>
                             <div class="form-row align-items-center">
-                              <div class="col-sm-12  my-1">
+                              <div class="col-sm-12 my-1">
                                   <label for="porQue" class="col-form-label">¿Por que?:</label>
-                                  <textarea name="porQue"  id="porQue" style="width:100%; height:100px;"></textarea>
+                                  <textarea name="porQue"  id="porQue" style="width:100%; height:200px;" ></textarea>
                               </div>
                             </div>
                             <div class="form-row align-items-center">
