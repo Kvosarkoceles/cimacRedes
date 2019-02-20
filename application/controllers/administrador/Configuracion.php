@@ -381,7 +381,6 @@ class Configuracion extends CI_Controller {
 			$this->editaTipodecontrato($idmenu);
 		}
 	}
-
 	/*++ Funciones para Tipo de contrato end  ++*/
 	/*++ Funciones para Tipo de cargo start  ++*/
 	public function cargo(){

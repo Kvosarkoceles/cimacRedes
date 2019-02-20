@@ -31,7 +31,7 @@
                                         <div class="col-sm-6  my-1 ">
                                           <div class="form-group">
                                                   <label for="nivel1">Nivel1:</label>
-                                                  <select class="custom-select" name="nivel1" id="nivel1" disabled>
+                                                  <select class="custom-select" name="nivel1" id="nivel1">
                                                     <option value="">selecione un valor</option>
                                                   </select>
                                                   <?php echo form_error("rol","<span class='text-danger'>","</span>"); ?>

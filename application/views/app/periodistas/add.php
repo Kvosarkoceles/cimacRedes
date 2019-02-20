@@ -254,27 +254,27 @@
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-6 my-1 ">
-                    <label for="Link1" class="col-form-label">Link del medio</label>
+                    <label for="Link1" class="col-form-label">Medio de la agresión</label>
                     <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo set_value('Link1');?>" id="Link1" name="Link1">
                   </div>
                   <div class="col-sm-6 my-1 ">
-                    <label for="Link2" class="col-form-label">Link del medio</label>
+                    <label for="Link2" class="col-form-label">Medio donde labora</label>
                     <input class="form-control form-control-sm input-rounded col-sm-11" type="url" value="<?php echo set_value('Link2');?>" id="Link2" name="Link2">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-6 my-1 ">
-                    <label for="Link3" class="col-form-label">Link del medio</label>
+                    <label for="Link3" class="col-form-label">Medio donde labora</label>
                     <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link3');?>" id="Link3" name="Link3">
                   </div>
                   <div class="col-sm-6 my-1 ">
-                    <label for="Link4" class="col-form-label">Link del medio</label>
+                    <label for="Link4" class="col-form-label">Medio donde labora</label>
                     <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link4');?>" id="Link4" name="Link4">
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-6 my-1 ">
-                    <label for="Link5" class="col-form-label">Link del medio</label>
+                    <label for="Link5" class="col-form-label">Medio donde labora</label>
                     <input class="form-control form-control-sm input-rounded col-sm-10" type="url" value="<?php echo set_value('Link5');?>" id="Link5" name="Link5">
                   </div>
                   <div class="col-sm-4 my-1 ">
