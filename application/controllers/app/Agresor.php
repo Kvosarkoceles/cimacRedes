@@ -1,10 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Manifestacion extends CI_Controller {
+class Agresor extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
@@ -22,7 +21,7 @@ class Manifestacion extends CI_Controller {
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("app/registros/manifestacion/add",$data);
+		$this->load->view("app/registros/agresor/add",$data);
 		$this->load->view("layouts/footer");
 	}
 	public function info($id){
@@ -30,6 +29,7 @@ class Manifestacion extends CI_Controller {
 			'periodista' => $this->Periodistas_model->getPeriodista($id),
 			'trabajo' => $this->Periodistas_model->getTrabajo($id),
 			'registros' => $this->Periodistas_model->getRegistro($id),
+			'id_datosincidente'=>$id
 		//	'menus' => $this->Permisos_model->getMenus(),
 		//	'permiso' => $this->Permisos_model->getPermiso($id)
 		);
@@ -50,10 +50,16 @@ class Manifestacion extends CI_Controller {
 		$this->load->view("layouts/footer");
 	}
 	public function store(){
-		$tipodemanifestacion = $this->input->post("tipodemanifestacion");
-		$observacionesmanifestacion = $this->input->post("observacionesmanifestacion");
-		$datosincidente = $this->input->post("id_datosincidente");
-		$this->form_validation->set_rules("tipodemanifestacion","tipodemanifestacion","required");
+		// Agresion  start //
+		$motivodelasgresion = $this->input->post("motivodelasgresion");
+		$tipoDeInvestigacion = $this->input->post("tipoDeInvestigacion");
+		$sexoAgresor = $this->input->post("sexoAgresor");
+		$tipoagresor = $this->input->post("tipoagresor");
+		$nivel1 = $this->input->post("nivel1");
+		$nivel2 = $this->input->post("nivel2");
+		$nombreagresor = $this->input->post("nombreagresor");
+		// Agresion  end //
+		$this->form_validation->set_rules("sexoAgresor","tipodemanifestacion","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'id_datosincidente' => $datosincidente,
@@ -181,13 +187,6 @@ class Manifestacion extends CI_Controller {
 			$this->edit($idperiodista);
 		}
 	}
-	public function getIncidentes($id){
-		$this->db->select("u.*");
-		$this->db->from("datosincidente u");
-		$this->db->where("u.id_datospersonales",$id);
-		$resultado = $this->db->get();
-		return $resultado->result();
-		}
 	public function delete($id){
 		$data  = array(
 			'id_estatus' => "0",

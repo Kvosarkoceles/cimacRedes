@@ -59,11 +59,11 @@
                           <p><strong>Direccion del medio:</strong><small class="text-muted"><?php echo $trabajo->DireccionDelMedio ;?></small></p>
                           <p><strong>Cargo en el medio:</strong><small class="text-muted"><?php echo $trabajo->cargoenelmedio ;?></small></p>
                           <p><strong>Fuente:</strong><small class="text-muted"><?php echo $trabajo->fuente;?></small></p>
-                          <p><strong>Link del medio:</strong><small class="text-muted"> <?php echo $trabajo->Links1;?></small></p>
-                          <p><strong>Link del medio:</strong><small class="text-muted"><?php echo $trabajo->Links2;?></small></p>
-                          <p><strong>Link del medio:</strong><small class="text-muted"> <?php echo $trabajo->Links3;?></small></p>
-                          <p><strong>Link del medio:</strong><small class="text-muted"><?php echo $trabajo->Links4;?></small></p>
-                          <p><strong>Link del medio:</strong><small class="text-muted"><?php echo $trabajo->Links5;?></small></p>
+                          <p><strong>Medio de la agresión:</strong><small class="text-muted"> <?php echo $trabajo->Links1;?></small></p>
+                          <p><strong>Medio donde labora:</strong><small class="text-muted"><?php echo $trabajo->Links2;?></small></p>
+                          <p><strong>Medio donde labora:</strong><small class="text-muted"> <?php echo $trabajo->Links3;?></small></p>
+                          <p><strong>Medio donde labora:</strong><small class="text-muted"><?php echo $trabajo->Links4;?></small></p>
+                          <p><strong>Medio donde labora:</strong><small class="text-muted"><?php echo $trabajo->Links5;?></small></p>
                           <p><strong>Años de ejercer el periodismo:</strong><small class="text-muted"><?php echo $trabajo->AnosDeEjercerElPeriodismo;?></small></p>
                           <p><strong>Sexo del jefe imediato:</strong><small class="text-muted"><?php echo $trabajo->sexo;?></small></p>
 

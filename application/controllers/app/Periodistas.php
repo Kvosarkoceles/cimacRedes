@@ -93,8 +93,7 @@ class Periodistas extends CI_Controller {
 		$estado = $this->input->post("estado");
 		$municipio = $this->input->post("municipio");
 		$localidad = $this->input->post("localidad");
-		$tiposdecasa = $this->input->post("tiposdecasa");
-		$tiposdecasa = $this->input->post("tiposdecasa");
+		$tiposdecasa = $this->input->post("tiposdecasa");	
 		$viveCon = $this->input->post("viveCon");
 		$dependientesEconomicos = $this->input->post("dependientesEconomicos");
 		$hijos = $this->input->post("hijos");

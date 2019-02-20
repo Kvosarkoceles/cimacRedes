@@ -5,11 +5,11 @@ class Registros extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
 		$this->load->model("Registros_model");
+		$this->load->model("Agresor_model");
 		$this->load->model("Periodistas_model");
 		$this->load->model("File_model");
 	}
@@ -58,7 +58,7 @@ class Registros extends CI_Controller {
 			//'trabajo' => $this->Periodistas_model->getTrabajo($id),
 			'registros' => $this->Registros_model->getRegistro($id),
 			'manifestaciones' => $this->Registros_model->getManifestaciones($id),
-			'agresor' => $this->Registros_model->getAgresor($id),
+			'agresor' => $this->Agresor_model->getAgresores($id),
 		//	'roles' => $this->Usuarios_model->getRoles(),
 		//	'menus' => $this->Permisos_model->getMenus(),
 		//	'permiso' => $this->Permisos_model->getPermiso($id)
@@ -156,6 +156,8 @@ class Registros extends CI_Controller {
 		$beneficiariaDelMecanismoDeProtecion = $this->input->post("beneficiariaDelMecanismoDeProtecion");
 		$carpetaDeInvestigacionEnAlgunaProcuraduria = $this->input->post("carpetaDeInvestigacionEnAlgunaProcuraduria");
 		$quejaAnteComisionDeDerechosHumanos = $this->input->post("quejaAnteComisionDeDerechosHumanos");
+		$renavi = $this->input->post("renavi");
+		$norenavi = $this->input->post("norenavi");
 		$estasDeAcuedoConElMecanismoDeProteccion = $this->input->post("estasDeAcuedoConElMecanismoDeProteccion");
 		$esasMedidasTePermitenSeguirHaciendoTuTrabajo = $this->input->post("esasMedidasTePermitenSeguirHaciendoTuTrabajo");
 		$porQue = $this->input->post("porQue");
@@ -170,6 +172,7 @@ class Registros extends CI_Controller {
 		$tipoagresor = $this->input->post("tipoagresor");
 		$nivel1 = $this->input->post("nivel1");
 		$nivel2 = $this->input->post("nivel2");
+		$nombreagresor = $this->input->post("nombreagresor");
 		// Agresion  end //
 		// Manifestacion de la violencia  start //
 			$tipodemanifestacion = $this->input->post("tipodemanifestacion");
@@ -275,6 +278,8 @@ class Registros extends CI_Controller {
 				'beneficiariaDelMecanismoDeProtecion' => $beneficiariaDelMecanismoDeProtecion,
 				'carpetaDeInvestigacionEnAlgunaProcuraduria' => $carpetaDeInvestigacionEnAlgunaProcuraduria,
 				'quejaAnteComisionDeDerechosHumanos' => $quejaAnteComisionDeDerechosHumanos,
+				'id_renvi' => $renavi,
+				'numeroregistrorenavi' => $norenavi,
 				'estasDeAcuedoConElMecanismoDeProteccion' => $estasDeAcuedoConElMecanismoDeProteccion,
 				'esasMedidasTePermitenSeguirHaciendoTuTrabajo' => $esasMedidasTePermitenSeguirHaciendoTuTrabajo,
 				'porQue' => $porQue,
@@ -295,6 +300,8 @@ class Registros extends CI_Controller {
 				'id_tipoAgresor' => $tipoagresor,
 				'id_nivel1' => $nivel1,
 				'id_nivel2' => $nivel2,
+				'nombre' => $nombreagresor,
+
 			 );
 			$datosmanifestacion = array(
 				'id_datosincidente' => $datosincidente,

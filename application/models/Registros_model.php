@@ -9,6 +9,7 @@ class Registros_model extends CI_Model {
 		$this->db->join("estados e","u.id_estados = e.id");
 		$this->db->where("r.estatus","1");
 		$this->db->where("u.estatus","1");
+		
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}

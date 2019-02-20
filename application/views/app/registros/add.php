@@ -150,6 +150,8 @@
                                     </select>
                                     <?php echo form_error("sexoAgresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                                 </div>
+                              </div>
+                              <div class="form-row align-items-center">
                                 <div class="col-sm-4  my-1">
                                     <label for="tipoagresor" class="col-form-label" align="center">Agresor:</label>
                                     <select class="custom-select col-sm-12" name="tipoagresor" id="tipoagresor">
@@ -177,11 +179,13 @@
                                     <?php endforeach;?>
                                     </select>
                                 </div>
-
-
-
-
-
+                              </div>
+                              <div class="form-row align-items-center">
+                                <div class="col-sm-4  my-1">
+                                    <label for="nombreagresor" class="col-form-label" align="center">Nombre del agresor:</label>
+                                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('nombreagresor');?>" id="nombreagresor" name="nombreagresor">
+                                    <?php echo form_error("nombreagresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
+                                </div>
                               </div>
                             </div>
 
@@ -419,7 +423,7 @@
                               <div class="col-sm-3  my-1">
                                   <label for="Judicializacion" class="col-form-label">Judicializacion:</label>
                                   <select class="custom-select col-sm-9" name="Judicializacion" id="Judicializacion">
-                                  <option selected="selected" value="0">No</option>
+
                                   <?php foreach($Judicializacion as $Judicial):?>
                                       <option value="<?php echo $Judicial->id;?>"><?php echo $Judicial->nombre;?></option>
                                   <?php endforeach;?>
@@ -504,33 +508,35 @@
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
-                              <div class="col-sm-3  my-1">
+                              <div class="col-sm-4  my-1">
                                   <label for="beneficiariaDelMecanismoDeProtecion" class="col-form-label">Beneficiaria del mecanismo de protecion:</label>
-                                  <select class="custom-select col-sm-10" name="beneficiariaDelMecanismoDeProtecion" id="beneficiariaDelMecanismoDeProtecion">
+                                  <select class="custom-select col-sm-11" name="beneficiariaDelMecanismoDeProtecion" id="beneficiariaDelMecanismoDeProtecion">
                                   <option selected="selected" value="0">Seleccione una opción</option>
                                   <?php foreach($niveles as $nivel):?>
                                       <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
-                              <div class="col-sm-3  my-1">
+                              <div class="col-sm-4  my-1">
                                   <label for="carpetaDeInvestigacionEnAlgunaProcuraduria" class="col-form-label">Carpeta de investigacion en alguna procuraduria:</label>
-                                  <select class="custom-select col-sm-10" name="carpetaDeInvestigacionEnAlgunaProcuraduria" id="carpetaDeInvestigacionEnAlgunaProcuraduria">
+                                  <select class="custom-select col-sm-11" name="carpetaDeInvestigacionEnAlgunaProcuraduria" id="carpetaDeInvestigacionEnAlgunaProcuraduria">
                                   <option selected="selected" value="0">Seleccione una opción</option>
                                   <?php foreach($niveles as $nivel):?>
                                       <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
-                              <div class="col-sm-3  my-1">
+                              <div class="col-sm-4  my-1">
                                   <label for="quejaAnteComisionDeDerechosHumanos" class="col-form-label">Queja ante comisión de derechos humanos:</label>
-                                  <select class="custom-select col-sm-10" name="quejaAnteComisionDeDerechosHumanos" id="quejaAnteComisionDeDerechosHumanos">
+                                  <select class="custom-select col-sm-11" name="quejaAnteComisionDeDerechosHumanos" id="quejaAnteComisionDeDerechosHumanos">
                                   <option selected="selected" value="0">Seleccione una opción</option>
                                   <?php foreach($niveles as $nivel):?>
                                       <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
                                   <?php endforeach;?>
                                   </select>
                               </div>
+                            </div>
+                            <div class="form-row align-items-center">
                               <div class="col-sm-3  my-1">
                                   <label for="renavi" class="col-form-label">Ingreso cuenta de RENAVI:</label>
                                   <select class="custom-select col-sm-10" name="renavi" id="renavi">
@@ -540,9 +546,12 @@
                                   <?php endforeach;?>
                                   </select>
                               </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                              <div class="col-sm-4  my-1">
+                              <div class="col-sm-3  my-1">
+                                  <label for="norenavi" class="col-form-label" align="center">No.RENAVI:</label>
+                                  <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('norenavi');?>" id="norenavi" name="norenavi">
+                                  <?php echo form_error("norenavi","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
+                              </div>
+                              <div class="col-sm-3  my-1">
                                   <label for="estasDeAcuedoConElMecanismoDeProteccion" class="col-form-label">Estas de acuedo con el mecanismo de proteccion:</label>
                                   <select class="custom-select col-sm-11" name="estasDeAcuedoConElMecanismoDeProteccion" id="estasDeAcuedoConElMecanismoDeProteccion">
                                   <?php foreach($sinos as $sino):?>
@@ -550,7 +559,7 @@
                                   <?php endforeach;?>
                                   </select>
                               </div>
-                              <div class="col-sm-4  my-1">
+                              <div class="col-sm-3  my-1">
                                   <label for="esasMedidasTePermitenSeguirHaciendoTuTrabajo" class="col-form-label">Esas medidas te permiten seguir haciendo tu trabajo:</label>
                                   <select class="custom-select col-sm-10" name="esasMedidasTePermitenSeguirHaciendoTuTrabajo" id="esasMedidasTePermitenSeguirHaciendoTuTrabajo">
                                     <?php foreach($sinos as $sino):?>

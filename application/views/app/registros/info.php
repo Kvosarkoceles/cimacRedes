@@ -44,7 +44,6 @@
                     </div>
                 </div>
               <!-- iformacion de la Periodista start -->
-
               <!-- Ubicación de la Agresión start -->
                 <div class="card">
                     <div class="card-header">
@@ -84,14 +83,45 @@
                             <div class="card-body">
                               <p><strong>Motivo de las gresiones: </strong><small class="text-muted"> <?php echo $registros->motivodelasgresion;?></small></p>
                               <p><strong>Tipo de investigacion: </strong><small class="text-muted"> <?php echo $registros->tipoDeInvestigacion;?></small></p>
-                              <p><strong>Sexo del agresor: </strong><small class="text-muted"> <?php echo $agresor->sexo;?></small></p>
-                              <p><strong>Agresor: </strong><small class="text-muted"> <?php echo $agresor->tipo;?></small></p>
-                              <?php if ($agresor->id_nivel1>1): ?>
-                                <p><strong>Nivel1: </strong><small class="text-muted"> <?php echo $agresor->nivel1;?></small></p>
-                              <?php endif; ?>
-                              <?php if ($agresor->id_nivel2>1): ?>
-                                <p><strong>Nivel2: </strong><small class="text-muted"> <?php echo $agresor->nivel2;?></small></p>
-                              <?php endif; ?>
+                            <br>
+                              <div class="single-table">
+                                  <div class="table-responsive">
+                                      <table class="table table-hover progress-table text-center">
+                                          <thead class="text-uppercase">
+                                              <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">Sexo del agresor</th>
+                                                  <th scope="col">Agresor</th>
+                                                  <th scope="col">Nivel1</th>
+                                                  <th scope="col">Nivel2</th>
+                                                  <th scope="col">Nombre</th>
+                                                  <th scope="col"></th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                            <?php if(!empty($agresor)):?>
+                                                 <?php foreach($agresor as $agresor):?>
+                                              <tr>
+                                                  <td><?php echo $agresor->id;?></td>
+                                                  <td><?php echo $agresor->sexo;?></td>
+                                                  <td><?php echo $agresor->tipoAgresor;?></td>
+                                                  <td><?php echo $agresor->nivel1;?></td>
+                                                  <td><?php echo $agresor->nivel2;?></td>
+                                                  <td><?php echo $agresor->nombre;?></td>
+                                                  <td>
+                                                      <ul class="d-flex justify-content-center">
+                                                          <li class="mr-3"><a href="<?php echo base_url()?>app/agresor/edit/<?php echo $agresor->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
+                                                          <li><a href="<?php echo base_url()?>app/agresor/delete/<?php echo $agresor->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                            <?php endforeach;?>
+                                        <?php endif;?>
+                                          </tbody>
+                                      </table>
+                                         <a href="<?php echo base_url();?>app/agresor/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Manifestacion</a>
+                                  </div>
+                              </div>
                             </div>
 
                         </div>
@@ -173,7 +203,6 @@
                     </div>
                 </div>
               <!-- Tipo de violencia end -->
-
               <!-- Modalidad de violencia< start -->
                 <div class="card">
                     <div class="card-header">
@@ -219,7 +248,6 @@
                     </div>
                 </div>
               <!-- Modalidad de violencia< end -->
-
               <!-- Manifestaciones de la violencia start -->
                 <div class="card">
                     <div class="card-header">
@@ -268,7 +296,6 @@
                     </div>
                 </div>
               <!-- Manifestaciones de la violencia end -->
-
               <!-- Consecuencias start -->
                 <div class="card">
                     <div class="card-header">
@@ -309,7 +336,6 @@
                     </div>
                 </div>
               <!-- Consecuencias end -->
-
               <!-- Atención Recibida por cimac start -->
                 <div class="card">
                     <div class="card-header">
@@ -396,7 +422,6 @@
                     </div>
                 </div>
               <!-- Atención Recibida< end -->
-
               <!-- Acciones de seguimiento start -->
                 <div class="card">
                     <div class="card-header">

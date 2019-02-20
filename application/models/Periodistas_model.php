@@ -9,7 +9,7 @@ class Periodistas_model extends CI_Model {
 		$this->db->join("datoslaborales dl","p.id = dl.Id_datospersonales");
 		$this->db->join("tipodemedio tm","dl.id_tipodemedio = tm.id");
 		$this->db->join("cargoenelmedio cm","dl.id_cargoenelmedio = cm.id");
-
+		$this->db->order_by("p.nombres", "asc");
 		$this->db->where("p.estatus","1");
 		$resultados = $this->db->get();
 		return $resultados ->result();
