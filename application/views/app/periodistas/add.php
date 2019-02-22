@@ -55,7 +55,7 @@
                   </div>
                   <div class="col-sm-4 my-1">
                     <label for="municipio" class="col-form-label form-control-sm input-rounded">Municipio</label>
-                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('municipio');?>" id="nommunicipiobres" name="municipio">
+                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('municipio');?>" id="municipio" name="municipio">
                   </div>
                   <div class="col-sm-3 my-1">
                     <label for="localidad" class="col-form-label form-control-sm input-rounded">Localidad</label>
