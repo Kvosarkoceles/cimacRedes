@@ -54,14 +54,9 @@ class Registros extends CI_Controller {
 
 	public function info($id){
 		$data  = array(
-			//'periodista' => $this->Periodistas_model->getPeriodista($id),
-			//'trabajo' => $this->Periodistas_model->getTrabajo($id),
 			'registros' => $this->Registros_model->getRegistro($id),
 			'manifestaciones' => $this->Registros_model->getManifestaciones($id),
 			'agresor' => $this->Agresor_model->getAgresores($id),
-		//	'roles' => $this->Usuarios_model->getRoles(),
-		//	'menus' => $this->Permisos_model->getMenus(),
-		//	'permiso' => $this->Permisos_model->getPermiso($id)
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -307,6 +302,7 @@ class Registros extends CI_Controller {
 				'id_datosincidente' => $datosincidente,
 				'id_tipodemanifestacion' => $tipodemanifestacion,
 				'observaciones' => $observacionesmanifestacion,
+				'id_estatus' => 1
 			);
 			$agresorinsertado=$this->Registros_model->save('datosagresor',$datosagresor);
 			$manifestacion=$this->Registros_model->save('datosmanifestacion',$datosmanifestacion);
@@ -318,42 +314,8 @@ class Registros extends CI_Controller {
 				redirect(base_url()."administrador/usuarios/add");
 			}
 		}else {
-			$this-> add($id_datospersonales);
-		//	$this->add()."/".$id_datospersonales;
+			$this-> add($id_datospersonales);		
 		}
-
-		//$manifestacionesDeTipoAmenazas = $this->input->post("manifestacionesDeTipoAmenazas");
-		//$manifestacionesDeTipoFeminicida = $this->input->post("manifestacionesDeTipoFeminicida");
-		//$manifestacionesDeTipoDesaparcionesForzadas = $this->input->post("manifestacionesDeTipoDesaparcionesForzadas");
-		//$manifestacionesDeTipoDetenciones = $this->input->post("manifestacionesDeTipoDetenciones");
-		//$manifestacionesDeTipoDetencionesArbitrariasExtrajudicia = $this->input->post("manifestacionesDeTipoDetencionesArbitrariasExtrajudicia");
-		//$manifestacionesDeTipoDifamacionCalumniaInjuria = $this->input->post("manifestacionesDeTipoDifamacionCalumniaInjuria");
-
-
-
-
-		//$datoregistro  = array(
-//			'id_usuario' => $this->session->userdata("id"),
-			//'id_datospersonales' => $id_datospersonales,
-			//'f//echaRegistro' =>date("Y")."-".date("m")."-".date("d"),
-			//'fechaIncidente' => $fechaIncidente,
-			//'id_estados' => $id_estados,
-
-
-			//'manifestacionesDeTipoAmenazas' => $manifestacionesDeTipoAmenazas,
-			//'manifestacionesDeTipoFeminicida' => $manifestacionesDeTipoFeminicida,
-			//'manifestacionesDeTipoDesaparcionesForzadas' => $manifestacionesDeTipoDesaparcionesForzadas,
-			//'manifestacionesDeTipoDetenciones' => $manifestacionesDeTipoDetenciones,
-			//'m//anifestacionesDeTipoDetencionesArbitrariasExtrajudicia' => $manifestacionesDeTipoDetencionesArbitrariasExtrajudicia,
-			//'manifestacionesDeTipoDifamacionCalumniaInjuria' => $manifestacionesDeTipoDifamacionCalumniaInjuria,
-			//'agresionAnterior' => $agresionAnterior,
-
-
-
-			//'estatus' => "1",
-		//);
-
-
 	}
 
 	public function update(){

@@ -283,7 +283,6 @@
                     </div>
                 </div>
               <!-- Tipo de violencia end -->
-
               <!-- Modalidad de violencia< start -->
                 <div class="card">
                     <div class="card-header">
@@ -347,7 +346,6 @@
                     </div>
                 </div>
               <!-- Modalidad de violencia< end -->
-
               <!-- Manifestaciones de la violencia start -->
                 <div class="card">
                     <div class="card-header">
@@ -431,7 +429,6 @@
                     </div>
                 </div>
               <!-- Consecuencias end -->
-
               <!-- Atención Recibida por cimac start -->
                 <div class="card">
                     <div class="card-header">

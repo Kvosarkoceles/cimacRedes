@@ -1,7 +1,7 @@
 <!-- accordion style 1 start -->
 <div class="col-lg-12 mt-5">
   <form action="<?php echo base_url();?>app/manifestacion/store" method="POST">
-  <input type="text" name="id_datosincidente" value="<?php echo $id_datosincidente?>" id ="id_datosincidente">
+  <input type="hidden" name="id_datosincidente" value="<?php echo $id_datosincidente?>" id ="id_datosincidente">
     <div class="card">
         <div class="card-body">
             <h4 class="header-title">Agrega Registro</h4>

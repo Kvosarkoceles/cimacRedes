@@ -9,7 +9,7 @@ class Registros_model extends CI_Model {
 		$this->db->join("estados e","u.id_estados = e.id");
 		$this->db->where("r.estatus","1");
 		$this->db->where("u.estatus","1");
-		
+
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}
@@ -23,7 +23,8 @@ class Registros_model extends CI_Model {
 													,m.nombre as motivodelasgresion
 													,ti.nombre as tipoDeInvestigacion
 													,pb.nombre as bajoPerfil
-													,j.nombre as judicializacion");
+													,j.nombre as judicializacion
+													,ac.nombre as acompanamientocimac");
 							//						,pb.nombre as bajoPerfil
 								//					,j.nombre as judicializacion
 									//
@@ -37,6 +38,7 @@ class Registros_model extends CI_Model {
 		$this->db->join("tipodejudicializacion j","u.id_consecuenciajudicializacion = j.id");
 		$this->db->join("motivodelasgresion m","u.id_motivodelasgresion = m.id");
 		$this->db->join("tipodeinvestigacion ti","u.id_tipoDeInvestigacion = ti.id");
+		$this->db->join("sino ac","u.cimacHaceAcompanamientoAnteElMecanismo = ac.valor");
 		$this->db->where("u.id",$id);
 		$resultado = $this->db->get();
 		return $resultado->row();

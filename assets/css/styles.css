@@ -8,10 +8,10 @@
     Version: 1.0
 
 ----------------------------------------------
-    
+
     CSS INDEX
     ===================
-  
+
     1. Core Css
     2. Dashboard One
         2.1 Sidebar Menu
@@ -1640,7 +1640,7 @@ table.dbkit-table tr td {
 
 .according .card-header a {
     display: block;
-    background: #EFF3F6;
+    background: #f8effb;
     padding: 16px 15px;
     border-radius: 3px;
     color: #444;
@@ -2341,7 +2341,7 @@ table.dataTable thead td {
 }
 
 .form-gp label {
-    
+
     left: 0;
     top: 0;
     color: #b3b2b2;
