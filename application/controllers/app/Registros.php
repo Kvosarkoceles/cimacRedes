@@ -66,21 +66,10 @@ class Registros extends CI_Controller {
 
 	public function edit($id){
 		$data  = array(
-			'edades' => $this->Periodistas_model->getEdades(),
+			'registros' => $this->Registros_model->getRegistro($id),
+			'manifestaciones' => $this->Registros_model->getManifestaciones($id),
+			'agresor' => $this->Agresor_model->getAgresores($id),
 			'estados' => $this->Periodistas_model->getEstados(),
-			'tiposdecasa' => $this->Periodistas_model->getTiposDeCasa(),
-			'estadocivil' => $this->Periodistas_model->getEstadoCivil(),
-			'comunidadindigena' => $this->Periodistas_model->getComunidaIndigena(),
-			'comunidadlgbttti' => $this->Periodistas_model->getComunidaLGBTTTI(),
-			'tipodemedio' => $this->Periodistas_model->getTipoDeMedio(),
-			'tipodecontrato' => $this->Periodistas_model->getTipoDeContrato(),
-			'cargoenelmedio' => $this->Periodistas_model->getCargoEnElMedio(),
-			'fuente' => $this->Periodistas_model->getFuente(),
-			'sexo' => $this->Periodistas_model->getSexo(),
-			'periodista' => $this->Periodistas_model->getPeriodista($id),
-			'trabajo' => $this->Periodistas_model->getTrabajo($id),
-		//	'trabajo' => $this->Periodistas_model->getTrabajo2($id),
-
 		);
 		/*$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -314,7 +303,7 @@ class Registros extends CI_Controller {
 				redirect(base_url()."administrador/usuarios/add");
 			}
 		}else {
-			$this-> add($id_datospersonales);		
+			$this-> add($id_datospersonales);
 		}
 	}
 

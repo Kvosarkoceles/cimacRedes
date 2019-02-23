@@ -11,7 +11,7 @@
                     <div class="card-header">
                         <a class="card-link" data-toggle="collapse" href="#accordion11">Información de la Periodista</a>
                     </div>
-                    <div id="accordion11" class="collapse" data-parent="#accordion1">
+                    <div id="accordion11" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="single-table">
@@ -32,7 +32,7 @@
                                                 </td>
                                                 <td><?php echo $registros->edad;?></td>
                                                 <td><?php echo $registros->estado;?></td>
-                                                <td><?php echo $registros->localidad;?></td>
+                                                <td><?php echo $registros->localidad_periodista;?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -78,7 +78,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
                     </div>
-                    <div id="accordion23" class="collapse" data-parent="#accordion1">
+                    <div id="accordion23" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                             <div class="card-body">
                               <p><strong>Motivo de las gresiones: </strong><small class="text-muted"> <?php echo $registros->motivodelasgresion;?></small></p>
@@ -119,7 +119,7 @@
                                         <?php endif;?>
                                           </tbody>
                                       </table>
-                                         <a href="<?php echo base_url();?>app/agresor/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Manifestacion</a>
+                                         <a href="<?php echo base_url();?>app/agresor/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
                                   </div>
                               </div>
                             </div>
