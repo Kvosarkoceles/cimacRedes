@@ -1,17 +1,17 @@
 <!-- accordion style 1 start -->
 <div class="col-lg-12 mt-5">
   <form action="<?php echo base_url();?>app/registros/store" method="POST">
-    <input type="text" name="idperiodista" value="<?php echo $registros->id?>" id ="idperiodista">
+    <input type="hidden" name="id_registro" value="<?php echo $registros->id?>" id ="id_registro">
     <div class="card">
       <div class="card-body">
-        <h4 class="header-title">Agrega Registro</h4>
+        <h4 class="header-title">Edita Registro</h4>
         <div id="accordion1" class="according">
           <!-- Informacion de la Periodista start -->
           <div class="card">
             <div class="card-header">
               <a class="card-link" data-toggle="collapse" href="#accordion11">Información de la Periodista</a>
             </div>
-            <div id="accordion11" class="collapse" data-parent="#accordion1">
+            <div id="accordion11" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="single-table">
@@ -47,7 +47,7 @@
             <div class="card-header">
               <a class="collapsed card-link" data-toggle="collapse" href="#accordion12">Ubicación de la Agresión</a>
             </div>
-            <div id="accordion12" class="collapse" data-parent="#accordion1">
+            <div id="accordion12" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -107,7 +107,7 @@
             <div class="card-header">
               <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
             </div>
-            <div id="accordion23" class="collapse" data-parent="#accordion1">
+            <div id="accordion23" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -184,7 +184,7 @@
             <div class="card-header">
               <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
             </div>
-            <div id="accordion22" class="collapse" data-parent="#accordion1">
+            <div id="accordion22" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -213,7 +213,7 @@
             <div class="card-header">
               <a class="collapsed card-link" data-toggle="collapse" href="#accordion13">Tipo de violencia</a>
             </div>
-            <div id="accordion13" class="collapse" data-parent="#accordion1">
+            <div id="accordion13" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -276,7 +276,7 @@
             <div class="card-header">
               <a class="collapsed card-link" data-toggle="collapse" href="#accordion14">Modalidad de violencia</a>
             </div>
-            <div id="accordion14" class="collapse" data-parent="#accordion1">
+            <div id="accordion14" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -339,7 +339,7 @@
             <div class="card-header">
               <a class="collapsed card-link" data-toggle="collapse" href="#accordion15">Manifestaciones de la violencia</a>
             </div>
-            <div id="accordion15" class="collapse" data-parent="#accordion1">
+            <div id="accordion15" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="single-table">
@@ -383,7 +383,7 @@
             <div class="card-header">
               <a class="collapsed card-link" data-toggle="collapse" href="#accordion16">Consecuencias</a>
             </div>
-            <div id="accordion16" class="collapse" data-parent="#accordion1">
+            <div id="accordion16" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -433,7 +433,7 @@
             <div class="card-header">
               <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida Por CIMAC</a>
             </div>
-            <div id="accordion17" class="collapse" data-parent="#accordion1">
+            <div id="accordion17" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -500,89 +500,88 @@
                   <div class="form-row align-items-center">
                     <div class="col-sm-4  my-1">
                       <label for="beneficiariaDelMecanismoDeProtecion" class="col-form-label">Beneficiaria del mecanismo de protecion:</label>
-                        <select class="custom-select col-sm-11" name="beneficiariaDelMecanismoDeProtecion" id="beneficiariaDelMecanismoDeProtecion">
-                          <option selected="selected" value="0">Seleccione una opción</option>
-                          <?php foreach($niveles as $nivel):?>
-                            <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
-                          <?php endforeach;?>
-                        </select>
-                      </div>
-                      <div class="col-sm-4  my-1">
-                        <label for="carpetaDeInvestigacionEnAlgunaProcuraduria" class="col-form-label">Carpeta de investigacion en alguna procuraduria:</label>
-                        <select class="custom-select col-sm-11" name="carpetaDeInvestigacionEnAlgunaProcuraduria" id="carpetaDeInvestigacionEnAlgunaProcuraduria">
-                          <option selected="selected" value="0">Seleccione una opción</option>
-                          <?php foreach($niveles as $nivel):?>
-                            <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
-                          <?php endforeach;?>
-                        </select>
-                      </div>
-                      <div class="col-sm-4  my-1">
-                        <label for="quejaAnteComisionDeDerechosHumanos" class="col-form-label">Queja ante comisión de derechos humanos:</label>
-                        <select class="custom-select col-sm-11" name="quejaAnteComisionDeDerechosHumanos" id="quejaAnteComisionDeDerechosHumanos">
-                          <option selected="selected" value="0">Seleccione una opción</option>
-                          <?php foreach($niveles as $nivel):?>
-                            <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
-                          <?php endforeach;?>
-                        </select>
-                      </div>
+                      <select class="custom-select col-sm-11" name="beneficiariaDelMecanismoDeProtecion" id="beneficiariaDelMecanismoDeProtecion">
+                        <option selected="selected" value="0">Seleccione una opción</option>
+                        <?php foreach($niveles as $nivel):?>
+                          <option value="<?php echo $nivel->id;?>" <?php echo $nivel->id==$registros->beneficiariaDelMecanismoDeProtecion ? "selected":"";?> ><?php echo $nivel->nombre;?></option>
+                        <?php endforeach;?>
+                      </select>
                     </div>
-                    <div class="form-row align-items-center">
-                      <div class="col-sm-3  my-1">
-                        <label for="renavi" class="col-form-label">Ingreso cuenta de RENAVI:</label>
-                        <select class="custom-select col-sm-10" name="renavi" id="renavi">
-                          <option selected="selected" value="0">Seleccione una opción</option>
-                          <?php foreach($niveles as $nivel):?>
-                            <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
-                          <?php endforeach;?>
-                        </select>
-                      </div>
-                      <div class="col-sm-3  my-1">
-                        <label for="norenavi" class="col-form-label" align="center">No.RENAVI:</label>
-                        <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('norenavi');?>" id="norenavi" name="norenavi">
-                        <?php echo form_error("norenavi","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
-                      </div>
-                      <div class="col-sm-3  my-1">
-                        <label for="estasDeAcuedoConElMecanismoDeProteccion" class="col-form-label">Estas de acuedo con el mecanismo de proteccion:</label>
-                        <select class="custom-select col-sm-11" name="estasDeAcuedoConElMecanismoDeProteccion" id="estasDeAcuedoConElMecanismoDeProteccion">
-                          <?php foreach($sinos as $sino):?>
-                            <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
-                          <?php endforeach;?>
-                        </select>
-                      </div>
-                      <div class="col-sm-3  my-1">
-                        <label for="esasMedidasTePermitenSeguirHaciendoTuTrabajo" class="col-form-label">Esas medidas te permiten seguir haciendo tu trabajo:</label>
-                        <select class="custom-select col-sm-10" name="esasMedidasTePermitenSeguirHaciendoTuTrabajo" id="esasMedidasTePermitenSeguirHaciendoTuTrabajo">
-                          <?php foreach($sinos as $sino):?>
-                            <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
-                          <?php endforeach;?>
-                        </select>
-                      </div>
+                    <div class="col-sm-4  my-1">
+                      <label for="carpetaDeInvestigacionEnAlgunaProcuraduria" class="col-form-label">Carpeta de investigacion en alguna procuraduria:</label>
+                      <select class="custom-select col-sm-11" name="carpetaDeInvestigacionEnAlgunaProcuraduria" id="carpetaDeInvestigacionEnAlgunaProcuraduria">
+                        <option selected="selected" value="0">Seleccione una opción</option>
+                        <?php foreach($niveles as $nivel):?>
+                          <option value="<?php echo $nivel->id;?>" <?php echo $nivel->id==$registros->carpetaDeInvestigacionEnAlgunaProcuraduria ? "selected":"";?> ><?php echo $nivel->nombre;?></option>
+                        <?php endforeach;?>
+                      </select>
                     </div>
-                    <div class="form-row align-items-center">
-                      <div class="col-sm-12 my-1">
-                        <label for="porQue" class="col-form-label">¿Por que?:</label>
-                        <textarea name="porQue"  id="porQue" style="width:100%; height:200px;" ></textarea>
-                      </div>
+                    <div class="col-sm-4  my-1">
+                      <label for="quejaAnteComisionDeDerechosHumanos" class="col-form-label">Queja ante comisión de derechos humanos:</label>
+                      <select class="custom-select col-sm-11" name="quejaAnteComisionDeDerechosHumanos" id="quejaAnteComisionDeDerechosHumanos">
+                        <option selected="selected" value="0">Seleccione una opción</option>
+                        <?php foreach($niveles as $nivel):?>
+                          <option value="<?php echo $nivel->id;?>" <?php echo $nivel->id==$registros->quejaAnteComisionDeDerechosHumanos ? "selected":"";?> ><?php echo $nivel->nombre;?></option>
+                        <?php endforeach;?>
+                      </select>
                     </div>
-                    <div class="form-row align-items-center">
-                      <div class="col-sm-6  my-1">
-                        <label for="tenidoResultadosLaCarpetaDeInvestigacion" class="col-form-label">Has tenido resultados la carpeta de investigacion:</label>
-                        <select class="custom-select col-sm-10" name="tenidoResultadosLaCarpetaDeInvestigacion" id="tenidoResultadosLaCarpetaDeInvestigacion">
-                          <?php foreach($sinos as $sino):?>
-                            <option value="<?php echo $sino->valor;?>"><?php echo $sino->nombre;?></option>
-                          <?php endforeach;?>
-                        </select>
-                      </div>
-                      <div class="col-sm-6  my-1">
-                        <label for="cuales" class="col-form-label">¿Cuales resultados?:</label>
-                        <textarea name="cuales" id="cuales" style="width:100%; height:100px;"></textarea>
-                      </div>
+                  </div>
+                  <div class="form-row align-items-center">
+                    <div class="col-sm-3  my-1">
+                      <label for="renavi" class="col-form-label">Ingreso cuenta de RENAVI:</label>
+                      <select class="custom-select col-sm-10" name="renavi" id="renavi">
+                        <option selected="selected" value="0">Seleccione una opción</option>
+                        <?php foreach($niveles as $nivel):?>
+                          <option value="<?php echo $nivel->id;?>" <?php echo $nivel->id==$registros->id_renvi ? "selected":"";?> ><?php echo $nivel->nombre;?></option>
+                        <?php endforeach;?>
+                      </select>
                     </div>
-                    <div class="form-row align-items-center">
-                      <div class="col-sm-6  my-1">
-                        <label for="queAHechoLaComisionDeDerechosHumanos" class="col-form-label">¿Qué a hecho la comisión de derechos humanos?:</label>
-                        <textarea name="queAHechoLaComisionDeDerechosHumanos" id="queAHechoLaComisionDeDerechosHumanos" style="width:100%; height:100px;"></textarea>
-                      </div>
+                    <div class="col-sm-3  my-1">
+                      <label for="norenavi" class="col-form-label" align="center">No.RENAVI:</label>
+                      <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo $registros->numeroregistrorenavi;?>" id="norenavi" name="norenavi">
+                      <?php echo form_error("norenavi","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
+                    </div>
+                    <div class="col-sm-3  my-1">
+                      <label for="estasDeAcuedoConElMecanismoDeProteccion" class="col-form-label">Estas de acuedo con el mecanismo de proteccion:</label>
+                      <select class="custom-select col-sm-11" name="estasDeAcuedoConElMecanismoDeProteccion" id="estasDeAcuedoConElMecanismoDeProteccion">
+                        <?php foreach($sinos as $sino):?>
+                          <option value="<?php echo $sino->valor;?>" <?php echo $sino->valor==$registros->estasDeAcuedoConElMecanismoDeProteccion ? "selected":"";?> ><?php echo $sino->nombre;?></option>
+                        <?php endforeach;?>
+                      </select>
+                    </div>
+                    <div class="col-sm-3  my-1">
+                      <label for="esasMedidasTePermitenSeguirHaciendoTuTrabajo" class="col-form-label">Esas medidas te permiten seguir haciendo tu trabajo:</label>
+                      <select class="custom-select col-sm-10" name="esasMedidasTePermitenSeguirHaciendoTuTrabajo" id="esasMedidasTePermitenSeguirHaciendoTuTrabajo">
+                        <?php foreach($sinos as $sino):?>
+                          <option value="<?php echo $sino->valor;?>" <?php echo $sino->valor==$registros->esasMedidasTePermitenSeguirHaciendoTuTrabajo ? "selected":"";?> ><?php echo $sino->nombre;?></option>
+                        <?php endforeach;?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row align-items-center">
+                    <div class="col-sm-12 my-1">
+                      <label for="porQue" class="col-form-label">¿Por que?:</label>
+                      <textarea name="porQue"  id="porQue" style="width:100%; height:200px;" ><?php echo $registros->porQue	;?></textarea>
+                    </div>
+                  </div>
+                  <div class="form-row align-items-center">
+                    <div class="col-sm-6  my-1">
+                      <label for="tenidoResultadosLaCarpetaDeInvestigacion" class="col-form-label">Has tenido resultados la carpeta de investigacion:</label>
+                      <select class="custom-select col-sm-10" name="tenidoResultadosLaCarpetaDeInvestigacion" id="tenidoResultadosLaCarpetaDeInvestigacion">
+                        <?php foreach($sinos as $sino):?>
+                          <option value="<?php echo $sino->valor;?>" <?php echo $sino->valor==$registros->tenidoResultadosLaCarpetaDeInvestigacion ? "selected":"";?> ><?php echo $sino->nombre;?></option>
+                        <?php endforeach;?>
+                      </select>
+                    </div>
+                    <div class="col-sm-6  my-1">
+                      <label for="cuales" class="col-form-label">¿Cuales resultados?:</label>
+                      <textarea name="cuales" id="cuales" style="width:100%; height:100px;"><?php echo $registros->cuales	;?></textarea>
+                    </div>
+                  </div>
+                  <div class="form-row align-items-center">
+                    <div class="col-sm-6  my-1">
+                      <label for="queAHechoLaComisionDeDerechosHumanos" class="col-form-label">¿Qué a hecho la comisión de derechos humanos?:</label>
+                      <textarea name="queAHechoLaComisionDeDerechosHumanos" id="queAHechoLaComisionDeDerechosHumanos" style="width:100%; height:100px;"><?php echo $registros->queAHechoLaComisionDeDerechosHumanos	;?></textarea>
                     </div>
                   </div>
                 </div>
@@ -597,6 +596,7 @@
           <!-- Boton end -->
         </div>
       </div>
+    </div>
   </form>
 </div>
-  <!-- accordion style 1 end -->
+<!-- accordion style 1 end -->

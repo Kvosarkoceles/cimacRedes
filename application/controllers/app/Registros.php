@@ -76,6 +76,7 @@ class Registros extends CI_Controller {
 			'tipodemanifestaciones' => $this->Registros_model->getTipodemanifestaciones(),
 			'perfiles' => $this->Registros_model->getPerfiles(),
 			'Judicializacion' => $this->Registros_model->getJudicializacionr($id),
+			'niveles' => $this->Registros_model->getNiveles(),
 		);
 		/*$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
