@@ -70,6 +70,9 @@ class Registros extends CI_Controller {
 			'manifestaciones' => $this->Registros_model->getManifestaciones($id),
 			'agresor' => $this->Agresor_model->getAgresores($id),
 			'estados' => $this->Periodistas_model->getEstados(),
+			'motivodelasgresion' => $this->Registros_model->getMotivodelasgresion(),
+			'tipoDeInvestigacion' => $this->Registros_model->getTipoDeInvestigacion(),
+			'sinos' => $this->Registros_model->getSiNo(),
 		);
 		/*$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");

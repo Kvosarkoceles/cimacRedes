@@ -43,7 +43,6 @@
                     </div>
                 </div>
               <!-- iformacion de la Periodista start -->
-
               <!-- Ubicación de la Agresión start -->
                 <div class="card">
                     <div class="card-header">
@@ -110,7 +109,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
                     </div>
-                    <div id="accordion23" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion23" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                             <div class="card-body">
                               <div class="form-row align-items-center">
@@ -120,7 +119,7 @@
                                       <option value="1">Selecciona un valor</option>
                                     <?php foreach($motivodelasgresion as $motivo):?>
                                       <?php if ($motivo->id>1): ?>
-                                        <option value="<?php echo $motivo->id;?><?php echo set_select('motivodelasgresion',$motivo->id); ?>"><?php echo $motivo->nombre;?></option>
+                                        <option value="<?php echo $motivo->id;?>" <?php echo $motivo->id==$registros->id_motivodelasgresion ? "selected":"";?> ><?php echo $motivo->nombre;?></option>
                                       <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
@@ -132,60 +131,51 @@
                                       <option value="1">Selecciona un valor</option>
                                     <?php foreach($tipoDeInvestigacion as $tipo):?>
                                         <?php if ($tipo->id>1): ?>
-                                          <option value="<?php echo $tipo->id;?>"><?php echo $tipo->nombre;?></option>
+                                          <option value="<?php echo $tipo->id;?>" <?php echo $tipo->id==$registros->id_tipoDeInvestigacion ? "selected":"";?> ><?php echo $tipo->nombre;?></option>
                                         <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
                                     <?php echo form_error("tipoDeInvestigacion","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                                 </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="sexoAgresor" class="col-form-label" align="center">Sexo del agresor:</label>
-                                    <select class="custom-select col-sm-12" name="sexoAgresor" id="sexoAgresor">
-                                      <option value="1">Selecciona un valor</option>
-                                    <?php foreach($sexo as $sex):?>
-                                      <?php if ($sex->id>1): ?>
-                                        <option value="<?php echo $sex->id;?>"><?php echo $sex->nombre;?></option>
-                                      <?php endif; ?>
-                                    <?php endforeach;?>
-                                    </select>
-                                    <?php echo form_error("sexoAgresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
-                                </div>
                               </div>
-                              <div class="form-row align-items-center">
-                                <div class="col-sm-4  my-1">
-                                    <label for="tipoagresor" class="col-form-label" align="center">Agresor:</label>
-                                    <select class="custom-select col-sm-12" name="tipoagresor" id="tipoagresor">
-                                      <option value="1">selecione un valor</option>
-                                    <?php foreach($agresor as $agres):?>
-                                      <?php if ($agres->id > 1): ?>
-                                        <option value="<?php echo $agres->id;?>"><?php echo $agres->nombre;?></option>
-                                      <?php endif; ?>
-                                    <?php endforeach;?>
-                                    </select>
-                                    <?php echo form_error("tipoagresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="nivel" class="col-form-label" align="center">Nivel1:</label>
-                                    <select class="custom-select col-sm-12" name="nivel1" id="nivel1" >
-                                    <option value="1">selecione un valor</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4  my-1">
-                                    <label for="nivel2" class="col-form-label" align="center">Nivel2:</label>
-                                    <select class="custom-select col-sm-12" name="nivel2" id="nivel2" >
 
-                                    <?php foreach($nivel2_Agresor as $nivelA):?>
-                                      <option value="<?php echo $nivelA->id;?>"><?php echo $nivelA->nombre;?></option>
-                                    <?php endforeach;?>
-                                    </select>
-                                </div>
-                              </div>
-                              <div class="form-row align-items-center">
-                                <div class="col-sm-4  my-1">
-                                    <label for="nombreagresor" class="col-form-label" align="center">Nombre del agresor:</label>
-                                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo set_value('nombreagresor');?>" id="nombreagresor" name="nombreagresor">
-                                    <?php echo form_error("nombreagresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
-                                </div>
+                              <div class="single-table">
+                                  <div class="table-responsive">
+                                      <table class="table table-hover progress-table text-center">
+                                          <thead class="text-uppercase">
+                                              <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">Sexo del agresor</th>
+                                                  <th scope="col">Agresor</th>
+                                                  <th scope="col">Nivel1</th>
+                                                  <th scope="col">Nivel2</th>
+                                                  <th scope="col">Nombre</th>
+                                                  <th scope="col"></th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                            <?php if(!empty($agresor)):?>
+                                                 <?php foreach($agresor as $agresor):?>
+                                              <tr>
+                                                  <td><?php echo $agresor->id;?></td>
+                                                  <td><?php echo $agresor->sexo;?></td>
+                                                  <td><?php echo $agresor->tipoAgresor;?></td>
+                                                  <td><?php echo $agresor->nivel1;?></td>
+                                                  <td><?php echo $agresor->nivel2;?></td>
+                                                  <td><?php echo $agresor->nombre;?></td>
+                                                  <td>
+                                                      <ul class="d-flex justify-content-center">
+                                                          <li class="mr-3"><a href="<?php echo base_url()?>app/agresor/edit/<?php echo $agresor->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
+                                                          <li><a href="<?php echo base_url()?>app/agresor/delete/<?php echo $agresor->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                            <?php endforeach;?>
+                                        <?php endif;?>
+                                          </tbody>
+                                      </table>
+                                         <a href="<?php echo base_url();?>app/agresor/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
+                                  </div>
                               </div>
                             </div>
 
@@ -198,23 +188,23 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
                     </div>
-                    <div id="accordion22" class="collapse show" data-parent="#accordion1">
+                    <div id="accordion22" class="collapse" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
                               <div class="col-sm-12  my-1">
                                   <label for="analisisDeContexto" class="col-form-label">Analisis de contexto:</label>
-                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:300px;"></textarea>
+                                  <textarea name="analisisDeContexto" id="analisisDeContexto" style="width:100%; height:300px;" ><?php echo $registros->analisisDeContexto;?></textarea>
                               </div>
                               <div class="col-sm-12 my-1">
                                   <label for="analisisDeRiesgo" class="col-form-label">Analisis de riesgo:</label>
-                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:300px;"></textarea>
+                                  <textarea name="analisisDeRiesgo" id="analisisDeRiesgo" style="width:100%; height:300px;"><?php echo $registros->analisisDeRiesgo;?></textarea>
                               </div>
                             </div>
                             <div class="form-row align-items-center">
                               <div class="col-sm-12  my-1">
                                   <label for="observaciones" class="col-form-label">Observaciones:</label>
-                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:300px;"></textarea>
+                                  <textarea name="observaciones" id="observaciones" style="width:100%; height:300px;"><?php echo $registros->observaciones;?></textarea>
                               </div>
                             </div>
                           </div>
