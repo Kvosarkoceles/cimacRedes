@@ -423,9 +423,12 @@
                               <div class="col-sm-3  my-1">
                                   <label for="Judicializacion" class="col-form-label">Judicializacion:</label>
                                   <select class="custom-select col-sm-9" name="Judicializacion" id="Judicializacion">
-
+                                    <option value="1">Seleccione una opción</option>
                                   <?php foreach($Judicializacion as $Judicial):?>
+                                    <?php if ($Judicial->id >1): ?>
                                       <option value="<?php echo $Judicial->id;?>"><?php echo $Judicial->nombre;?></option>
+                                    <?php endif; ?>
+
                                   <?php endforeach;?>
                                   </select>
                               </div>
