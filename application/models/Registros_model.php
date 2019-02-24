@@ -25,7 +25,13 @@ class Registros_model extends CI_Model {
 													,ti.nombre as tipoDeInvestigacion
 													,pb.nombre as bajoPerfil
 													,j.nombre as judicializacion
-													,ac.nombre as acompanamientocimac");
+													,ac.nombre as acompanamientocimac
+													,ac2.nombre as beneficiariaDelMecanismo
+													,ac3.nombre as carpetaDeInvestigacion
+													,ac4.nombre as quejaAnteDerechosHumanos
+													,rn.nombre as renvi
+													,ac5.nombre as estasDeAcuedoConElMecanismo
+													,ac6.nombre as tePermitenSeguirHaciendoTuTrabajo");
 							//						,pb.nombre as bajoPerfil
 								//					,j.nombre as judicializacion
 									//
@@ -40,6 +46,12 @@ class Registros_model extends CI_Model {
 		$this->db->join("motivodelasgresion m","u.id_motivodelasgresion = m.id");
 		$this->db->join("tipodeinvestigacion ti","u.id_tipoDeInvestigacion = ti.id");
 		$this->db->join("sino ac","u.cimacHaceAcompanamientoAnteElMecanismo = ac.valor");
+		$this->db->join("sino ac2","u.beneficiariaDelMecanismoDeProtecion = ac2.valor");
+		$this->db->join("sino ac3","u.carpetaDeInvestigacionEnAlgunaProcuraduria = ac3.valor");
+		$this->db->join("sino ac4","u.quejaAnteComisionDeDerechosHumanos = ac3.valor");
+		$this->db->join("niveles rn","u.id_renvi = rn.id");
+		$this->db->join("sino ac5","u.estasDeAcuedoConElMecanismoDeProteccion = ac5.valor");
+		$this->db->join("sino ac6","u.esasMedidasTePermitenSeguirHaciendoTuTrabajo = ac5.valor");
 		$this->db->where("u.id",$id);
 		$resultado = $this->db->get();
 		return $resultado->row();

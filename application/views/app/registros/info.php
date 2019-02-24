@@ -49,7 +49,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion12">Ubicación de la Agresión</a>
                     </div>
-                    <div id="accordion12" class="collapse" data-parent="#accordion1">
+                    <div id="accordion12" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <p><strong>Fecha del Incidente: </strong><small class="text-muted"> <?php echo $registros->fechaIncidente;?></small></p>
@@ -89,7 +89,6 @@
                                       <table class="table table-hover progress-table text-center">
                                           <thead class="text-uppercase">
                                               <tr>
-                                                  <th scope="col">#</th>
                                                   <th scope="col">Sexo del agresor</th>
                                                   <th scope="col">Agresor</th>
                                                   <th scope="col">Nivel1</th>
@@ -102,24 +101,21 @@
                                             <?php if(!empty($agresor)):?>
                                                  <?php foreach($agresor as $agresor):?>
                                               <tr>
-                                                  <td><?php echo $agresor->id;?></td>
+
                                                   <td><?php echo $agresor->sexo;?></td>
                                                   <td><?php echo $agresor->tipoAgresor;?></td>
                                                   <td><?php echo $agresor->nivel1;?></td>
                                                   <td><?php echo $agresor->nivel2;?></td>
                                                   <td><?php echo $agresor->nombre;?></td>
                                                   <td>
-                                                      <ul class="d-flex justify-content-center">
-                                                          <li class="mr-3"><a href="<?php echo base_url()?>app/agresor/edit/<?php echo $agresor->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
-                                                          <li><a href="<?php echo base_url()?>app/agresor/delete/<?php echo $agresor->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
-                                                      </ul>
+
                                                   </td>
                                               </tr>
                                             <?php endforeach;?>
                                         <?php endif;?>
                                           </tbody>
                                       </table>
-                                         <a href="<?php echo base_url();?>app/agresor/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
+
                                   </div>
                               </div>
                             </div>
@@ -133,7 +129,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
                     </div>
-                    <div id="accordion22" class="collapse" data-parent="#accordion1">
+                    <div id="accordion22" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="form-row align-items-center">
@@ -163,7 +159,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion13">Tipo de violencia</a>
                     </div>
-                    <div id="accordion13" class="collapse" data-parent="#accordion1">
+                    <div id="accordion13" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="single-table">
@@ -208,7 +204,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion14">Modalidad de violencia</a>
                     </div>
-                    <div id="accordion14" class="collapse" data-parent="#accordion1">
+                    <div id="accordion14" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="single-table">
@@ -253,7 +249,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion15">Manifestaciones de la violencia</a>
                     </div>
-                    <div id="accordion15" class="collapse" data-parent="#accordion1">
+                    <div id="accordion15" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="single-table">
@@ -261,34 +257,22 @@
                                     <table class="table table-hover progress-table text-center">
                                         <thead class="text-uppercase">
                                             <tr>
-                                                <th scope="col">#</th>
                                                 <th scope="col">Tipo</th>
                                                 <th scope="col">Observaciones</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
                                           <?php if(!empty($manifestaciones)):?>
                                                <?php foreach($manifestaciones as $manifesta):?>
                                             <tr>
-                                                <td><?php echo $manifesta->id;?></td>
                                                 <td><?php echo $manifesta->manifestacion;?></td>
                                                 <td><?php echo $manifesta->observaciones;?></td>
-
-
-
-                                                <td>
-                                                    <ul class="d-flex justify-content-center">
-                                                        <li class="mr-3"><a href="<?php echo base_url()?>app/manifestacion/edit/<?php echo $manifesta->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
-                                                        <li><a href="<?php echo base_url()?>app/manifestacion/delete/<?php echo $manifesta->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
-                                                    </ul>
-                                                </td>
                                             </tr>
                                           <?php endforeach;?>
                                       <?php endif;?>
                                         </tbody>
                                     </table>
-                                       <a href="<?php echo base_url();?>app/manifestacion/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Manifestacion</a>
+
                                 </div>
                             </div>
                           </div>
@@ -301,7 +285,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion16">Consecuencias</a>
                     </div>
-                    <div id="accordion16" class="collapse" data-parent="#accordion1">
+                    <div id="accordion16" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <div class="single-table">
@@ -341,7 +325,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida Por CIMAC</a>
                     </div>
-                    <div id="accordion17" class="collapse" data-parent="#accordion1">
+                    <div id="accordion17" class="collapse show" data-parent="#accordion1">
                         <div class="card-body">
                           <div class="card-body">
                             <p><strong>Cimac hace acompanamiento ante el mecanismo: </strong><small class="text-muted"> <?php echo $registros->acompanamientocimac;?></small></p>
@@ -382,13 +366,13 @@
                           <div class="card-body">
 
                             <div class="card-body">
-                              <p><strong>Beneficiaria del mecanismo de protecion: </strong><small class="text-muted"> <?php echo $registros->beneficiariaDelMecanismoDeProtecion;?></small></p>
-                              <p><strong>Carpeta de investigacion en alguna procuraduria: </strong><small class="text-muted"> <?php echo $registros->carpetaDeInvestigacionEnAlgunaProcuraduria;?></small></p>
-                              <p><strong>Queja ante comisión de derechos humanos: </strong><small class="text-muted"> <?php echo $registros->quejaAnteComisionDeDerechosHumanos;?></small></p>
-                              <p><strong>Ingreso cuenta de RENAVI: </strong><small class="text-muted"> <?php echo $registros->id_renvi;?></small></p>
+                              <p><strong>Beneficiaria del mecanismo de protecion: </strong><small class="text-muted"> <?php echo $registros->beneficiariaDelMecanismo;?></small></p>
+                              <p><strong>Carpeta de investigacion en alguna procuraduria: </strong><small class="text-muted"> <?php echo $registros->carpetaDeInvestigacion;?></small></p>
+                              <p><strong>Queja ante comisión de derechos humanos: </strong><small class="text-muted"> <?php echo $registros->quejaAnteDerechosHumanos;?></small></p>
+                              <p><strong>Ingreso cuenta de RENAVI: </strong><small class="text-muted"> <?php echo $registros->renvi;?></small></p>
                               <p><strong>No.RENAVI: </strong><small class="text-muted"> <?php echo $registros->numeroregistrorenavi;?></small></p>
-                              <p><strong>Estas de acuedo con el mecanismo de proteccion:</strong><small class="text-muted"> <?php echo $registros->estasDeAcuedoConElMecanismoDeProteccion;?></small></p>
-                              <p><strong>Esas medidas te permiten seguir haciendo tu trabajo:</strong><small class="text-muted"> <?php echo $registros->esasMedidasTePermitenSeguirHaciendoTuTrabajo;?></small></p>
+                              <p><strong>Estas de acuedo con el mecanismo de proteccion:</strong><small class="text-muted"> <?php echo $registros->estasDeAcuedoConElMecanismo;?></small></p>
+                              <p><strong>Esas medidas te permiten seguir haciendo tu trabajo:</strong><small class="text-muted"> <?php echo $registros->tePermitenSeguirHaciendoTuTrabajo;?></small></p>
                               <p><strong>¿Por que?:</strong>
                               <div class="col-sm-6  my-1">
                                 <textarea name="porQue"  id="porQue" style="width:100%; height:100px;" readonly=”readonly”><?php echo $registros->porQue;?></textarea>

@@ -315,112 +315,180 @@ class Registros extends CI_Controller {
 	}
 
 	public function update(){
-		$idperiodista = $this->input->post("idperiodista");
-		$idtrabajo = $this->input->post("idtrabajo");
-		$nombres = $this->input->post("nombres");
-		$apellidoPaterno = $this->input->post("apellidoPaterno");
-		$apellidoMaterno = $this->input->post("apellidoMaterno");
-		$edad = $this->input->post("edad");
-		$estado = $this->input->post("estado");
+		//variables fuera del formulario  start //
+		$id_registro = $this->input->post("id_registro");
+		//variables fuera del formulario  end //
+
+		//ubiucacion de la agrecions start//
+		$fechaIncidente = $this->input->post("fechaIncidente");
+		$id_estados = $this->input->post("estado");
 		$municipio = $this->input->post("municipio");
 		$localidad = $this->input->post("localidad");
-		$tiposdecasa = $this->input->post("tiposdecasa");
-		$viveCon = $this->input->post("viveCon");
-		$dependientesEconomicos = $this->input->post("dependientesEconomicos");
-		$estadoCivil = $this->input->post("estadoCivil");
-		$comunidadindigena = $this->input->post("comunidadindigena");
-		$comunidadLGBTTTI = $this->input->post("comunidadLGBTTTI");
-		$telefonoparticular = $this->input->post("telefonoparticular");
-		$telefonocelular = $this->input->post("telefonocelular");
-		$email = $this->input->post("email");
-		$telegram = $this->input->post("telegram");
-		$skype = $this->input->post("skype");
-		$facebook = $this->input->post("facebook");
-		$twitter = $this->input->post("twitter");
-		$instagram = $this->input->post("instagram");
-		$youtube = $this->input->post("youtube");
-		$snapchat = $this->input->post("snapchat");
-		$otraredsocial = $this->input->post("otraredsocial");
-		$tipodemedio = $this->input->post("tipodemedio");
-		$paracuantosmedioslabora = $this->input->post("paracuantosmedioslabora");
-		$tipodecontrato = $this->input->post("tipodecontrato");
-		$direcciondelmedio = $this->input->post("direcciondelmedio");
-		$cargoenelmedio = $this->input->post("cargoenelmedio");
-		$fuente = $this->input->post("fuente");
-		$Link1 = $this->input->post("Link1");
-		$Link2 = $this->input->post("Link2");
-		$Link3 = $this->input->post("Link3");
-		$Link4 = $this->input->post("Link4");
-		$Link5 = $this->input->post("Link5");
-		$AnosDeEjercerElPeriodismo = $this->input->post("AnosDeEjercerElPeriodismo");
-		$SexoDelJefeInmediato = $this->input->post("sexodeljefeinmediato");
-		$cuantasreporterasyreporteroshayenelmedio = $this->input->post("cuantasreporterasyreporteroshayenelmedio");
-		$cuantasreporterashayenelmedio = $this->input->post("cuantasreporterashayenelmedio");
-		$cuantasreporterasyreporteroshayenlafuente = $this->input->post("cuantasreporterasyreporteroshayenlafuente");
-		$cuantasreporterashayenlafuente	 = $this->input->post("cuantasreporterashayenlafuente");
-
-
-		$datosperiodistas  = array(
-			'nombres' => $nombres,
-			'apellidoPaterno' => $apellidoPaterno,
-			'apellidoMaterno' => $apellidoMaterno,
-			'id_Edad' => $edad,
-			'id_estados' => $estado,
-			'Municipio' => $municipio,
-			'Localidad' => $localidad,
-			'id_tipodecasa' => $tiposdecasa,
-			'viveCon' => $viveCon,
-			'dependientesEconomicos' => $dependientesEconomicos,
-			'id_estadoCivil' => $estadoCivil,
-			'comunidadIndigena' => $comunidadindigena,
-			'comunidadLGBTTTI' => $comunidadLGBTTTI,
-			'telefonoparticular' => $telefonoparticular,
-			'telefonocelular' => $telefonocelular,
-			'email' => $email,
-			'telegram' => $telegram,
-			'skype' => $skype,
-			'facebook' => $facebook,
-			'twitter' => $twitter,
-			'instagram' => $instagram,
-			'youtube' => $youtube,
-			'snapchat' => $snapchat,
-			'otraredsocial' => $otraredsocial,
-			'id_usuario' => $this->session->userdata("id"),
+		$latitud = $this->input->post("latitud");
+		$longitud = $this->input->post("longitud");
+		$relatoriaDelHecho = trim($this->input->post("relatoriaDelHecho"));
+		//ubiucacion de la agrecions end//
+		// Agresion  start //
+		$motivodelasgresion = $this->input->post("motivodelasgresion");
+		$tipoDeInvestigacion = $this->input->post("tipoDeInvestigacion");
+		// Agresion  end //
+		//Analisis start/
+		$analisisDeContexto = $this->input->post("analisisDeContexto");
+		$analisisDeRiesgo = $this->input->post("analisisDeRiesgo");
+		$observaciones = $this->input->post("observaciones");
+		//Analisis end//
+		//tipo de violencia start//
+		$tipoDeViolenciaPsicologica = $this->input->post("tipoDeViolenciaPsicologica");
+		$tipodeViolenciaFisica = $this->input->post("tipodeViolenciaFisica");
+		$tipoDeViolenciaPatrimonial = $this->input->post("tipoDeViolenciaPatrimonial");
+		$tipodeViolenciaEconomica = $this->input->post("tipodeViolenciaEconomica");
+		$tipoDeViolenciaSexual = $this->input->post("tipoDeViolenciaSexual");
+		$tipoDeViolenciaCibernetica = $this->input->post("tipoDeViolenciaCibernetica");
+		//tipo de violencia end//
+		//modalidad de la violencia start//
+		$modalidadViolenciaFamiliar = $this->input->post("modalidadViolenciaFamiliar");
+		$modalidadViolenciaLaboral = $this->input->post("modalidadViolenciaLaboral");
+		$modalidadViolenciaEnLaComunidad = $this->input->post("modalidadViolenciaEnLaComunidad");
+		$modalidadViolenciaInstitucional = $this->input->post("modalidadViolenciaInstitucional");
+		$modalidadViolenciaFeminicida = $this->input->post("modalidadViolenciaFeminicida");
+		$modalidadDeViolenciaCibernetica = $this->input->post("modalidadDeViolenciaCibernetica");
+		//modalidad de la violencia end//
+		//Consecuencias start//
+		$consecuenciaFueDespedida = $this->input->post("consecuenciaFueDespedida");
+		$consecuenciasBajoPerfil = $this->input->post("consecuenciasBajoPerfil");
+		$consecuenciasDesplazamiento = $this->input->post("consecuenciasDesplazamiento");
+		$consecuenciasJudicializacion = $this->input->post("Judicializacion");
+		// Consecuencias end //
+		//atencion Recibida por CIMAC start//
+		$cimacHaceAcompanamientoAnteElMecanismo = $this->input->post("cimacHaceAcompanamientoAnteElMecanismo");
+		$queOtraOrganizacionLasAcompana = $this->input->post("queOtraOrganizacionLasAcompana");
+		$atencionMedicaRecibida = $this->input->post("atencionMedicaRecibida");
+		$atencionPsicologicaRecibida = $this->input->post("atencionPsicologicaRecibida");
+		$atencionJuridicaRecibida = $this->input->post("atencionJuridicaRecibida");
+		$ningunaAtencionRecibida = $this->input->post("ningunaAtencionRecibida");
+		//atencion Recibida por CIMAC end//
+		// Acciones de seguimiento start //
+		$beneficiariaDelMecanismoDeProtecion = $this->input->post("beneficiariaDelMecanismoDeProtecion");
+		$carpetaDeInvestigacionEnAlgunaProcuraduria = $this->input->post("carpetaDeInvestigacionEnAlgunaProcuraduria");
+		$quejaAnteComisionDeDerechosHumanos = $this->input->post("quejaAnteComisionDeDerechosHumanos");
+		$renavi = $this->input->post("renavi");
+		$norenavi = $this->input->post("norenavi");
+		$estasDeAcuedoConElMecanismoDeProteccion = $this->input->post("estasDeAcuedoConElMecanismoDeProteccion");
+		$esasMedidasTePermitenSeguirHaciendoTuTrabajo = $this->input->post("esasMedidasTePermitenSeguirHaciendoTuTrabajo");
+		$porQue = $this->input->post("porQue");
+		$tenidoResultadosLaCarpetaDeInvestigacion = $this->input->post("tenidoResultadosLaCarpetaDeInvestigacion");
+		$cuales = $this->input->post("cuales");
+		$queAHechoLaComisionDeDerechosHumanos = $this->input->post("queAHechoLaComisionDeDerechosHumanos");
+		// Acciones de seguimiento end //
+		$config = array(
+			array(
+				'field' => 'fechaIncidente',
+				'label' => 'fecha',
+				'rules' => 'required'
+			),
+			array(
+				'field' => 'estado',
+				'label' => 'estado',
+				'rules' => 'required'
+			),
+			array(
+				'field' => 'municipio',
+				'label' => 'municipio',
+				'rules' => 'min_length[3]|max_length[30]'
+			),
+			array(
+				'field' => 'localidad',
+				'label' => 'localidad',
+				'rules' => 'min_length[3]|max_length[50]'
+			),
+			array(
+				'field' => 'latitud',
+				'label' => 'latitud',
+				'rules' => 'numeric|min_length[3]|max_length[50]'
+			),
+			array(
+				'field' => 'longitud',
+				'label' => 'longitud',
+				'rules' => 'numeric|min_length[3]|max_length[50]'
+			),
+			array(
+				'field' => 'tipodemanifestacion',
+				'label' => 'tipo de manifestacion',
+				'rules' => 'required'
+			),
 		);
-		$datoslaborales = array(
-			'id_tipodemedio' => $tipodemedio,
-			'paracuantosmedioslabora' => $paracuantosmedioslabora,
-			'id_tipodecontrato' => $tipodecontrato,
-			'DireccionDelMedio' => $direcciondelmedio,
-			'id_cargoenelmedio' => $cargoenelmedio,
-			'id_fuente' => $fuente,
-			'Links1' => $Link1,
-			'Links2' => $Link2,
-			'Links3' => $Link3,
-			'Links4' => $Link4,
-			'Links5' => $Link5,
-			'AnosDeEjercerElPeriodismo' => $AnosDeEjercerElPeriodismo,
-			'id_SexoDelJefeInmediato' => $SexoDelJefeInmediato,
-			'cuantasreporterasyreporteroshayenelmedio' => $cuantasreporterasyreporteroshayenelmedio,
-			'cuantasreporterashayenelmedio' => $cuantasreporterashayenelmedio,
-			'cuantasreporterasyreporteroshayenlafuente' => $cuantasreporterasyreporteroshayenlafuente,
-			'cuantasreporterashayenlafuente' => $cuantasreporterashayenlafuente,
+	//	$this->form_validation->set_rules($config);
 
-		);
-		if ($this->Periodistas_model->update($idperiodista,$datosperiodistas,"datosperiodistas")) {
+			$data  = array(
+				//ubiucacion de la agrecions star//
+				'fechaIncidente' => $fechaIncidente,
+				'id_estados' =>$id_estados,
+				'municipio' => $municipio,
+				'localidad' => $localidad,
+				'latitud' => $latitud,
+				'longitud' => $longitud,
+				'relatoriaDelHecho' => $relatoriaDelHecho,
+				//ubiucacion de la agrecions end//
+				// Agresion  start //
+				'id_motivodelasgresion' => $motivodelasgresion,
+				'id_tipoDeInvestigacion' => $tipoDeInvestigacion,
+				// Agresion  end //
+				//Analisis start//
+				'analisisDeContexto' => $analisisDeContexto,
+				'analisisDeRiesgo' => $analisisDeRiesgo,
+				'observaciones' => $observaciones,
+				//Analisis end//
+				//tipo de violencia star//
+				'tipoDeViolenciaPsicologica' => $tipoDeViolenciaPsicologica,
+				'tipodeViolenciaFisica' => $tipodeViolenciaFisica,
+				'tipoDeViolenciaPatrimonial' => $tipoDeViolenciaPatrimonial,
+				'tipodeViolenciaEconomica' => $tipodeViolenciaEconomica,
+				'tipoDeViolenciaSexual' => $tipoDeViolenciaSexual,
+				'tipoDeViolenciaCibernetica' => $tipoDeViolenciaCibernetica,
+				//tipo de violencia end//
+				//modalidad de la violencia star//
+				'modalidadViolenciaFamiliar' => $modalidadViolenciaFamiliar,
+				'modalidadViolenciaLaboral' => $modalidadViolenciaLaboral,
+				'modalidadViolenciaEnLaComunidad' => $modalidadViolenciaEnLaComunidad,
+				'modalidadViolenciaInstitucional' => $modalidadViolenciaInstitucional,
+				'modalidadViolenciaFeminicida' => $modalidadViolenciaFeminicida,
+				'modalidadDeViolenciaCibernetica' => $modalidadDeViolenciaCibernetica,
+				//modalidad de la violencia end//
+				//Consecuencias start//
+				'consecuenciaFueDespedida' => $consecuenciaFueDespedida,
+				'consecuenciasBajoPerfil' => $consecuenciasBajoPerfil,
+				'id_consecuenciajudicializacion' => $consecuenciasJudicializacion,
+				'consecuenciasDesplazamiento' => $consecuenciasDesplazamiento,
+				//Consecuencias end//
+				//atencion Recibida por CIMAC stat//
+				'cimacHaceAcompanamientoAnteElMecanismo' => $cimacHaceAcompanamientoAnteElMecanismo,
+				'queOtraOrganizacionLasAcompana' => $queOtraOrganizacionLasAcompana,
+				'atencionMedicaRecibida' => $atencionMedicaRecibida,
+				'atencionPsicologicaRecibida' => $atencionPsicologicaRecibida,
+				'atencionJuridicaRecibida' => $atencionJuridicaRecibida,
+				'ningunaAtencionRecibida' => $ningunaAtencionRecibida,
+				//atencion Recibida por CIMAC end//
+				// Acciones de seguimiento start //
+				'beneficiariaDelMecanismoDeProtecion' => $beneficiariaDelMecanismoDeProtecion,
+				'carpetaDeInvestigacionEnAlgunaProcuraduria' => $carpetaDeInvestigacionEnAlgunaProcuraduria,
+				'quejaAnteComisionDeDerechosHumanos' => $quejaAnteComisionDeDerechosHumanos,
+				'id_renvi' => $renavi,
+				'numeroregistrorenavi' => $norenavi,
+				'estasDeAcuedoConElMecanismoDeProteccion' => $estasDeAcuedoConElMecanismoDeProteccion,
+				'esasMedidasTePermitenSeguirHaciendoTuTrabajo' => $esasMedidasTePermitenSeguirHaciendoTuTrabajo,
+				'porQue' => $porQue,
+				'tenidoResultadosLaCarpetaDeInvestigacion' => $tenidoResultadosLaCarpetaDeInvestigacion,
+				'cuales' => $cuales,
+				'queAHechoLaComisionDeDerechosHumanos' => $queAHechoLaComisionDeDerechosHumanos,
+				// Acciones de seguimiento end //
+			);
 
-
-		}
-		else{
-			$this->session->set_flashdata("error","No se pudo guardar la informacion");
-			redirect(base_url()."app/periodistas/edit".$idperiodista);
-		}
-
-		if($this->Periodistas_model->update($idtrabajo,$datoslaborales,"datoslaborales")){
-				redirect(base_url()."app/periodistas");
-		}	else{
+			if ($this->Registros_model->update($id_registro,$data)) {
+				redirect(base_url()."app/registros/info/$id_registro");
+			}
+			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."app/periodistas/edit".$idperiodista);
+				redirect(base_url()."administrador/configuracion/editEdades".$idmenu);
 			}
 
 	}

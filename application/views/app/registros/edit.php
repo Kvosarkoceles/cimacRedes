@@ -1,6 +1,6 @@
 <!-- accordion style 1 start -->
 <div class="col-lg-12 mt-5">
-  <form action="<?php echo base_url();?>app/registros/store" method="POST">
+  <form action="<?php echo base_url();?>app/registros/update" method="POST">
     <input type="hidden" name="id_registro" value="<?php echo $registros->id?>" id ="id_registro">
     <div class="card">
       <div class="card-body">
