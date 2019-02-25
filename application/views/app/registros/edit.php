@@ -171,7 +171,7 @@
                           <?php endif;?>
                         </tbody>
                       </table>
-                      <a href="<?php echo base_url();?>app/agresor/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
+                      <a href="<?php echo base_url();?>app/agresores/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
                     </div>
                   </div>
                 </div>
@@ -591,7 +591,7 @@
           <!-- Acciones de seguimiento end -->
           <!-- Boton start -->
           <div class="form-group">
-            <button type="submit" class="btn btn-success btn-flat">Guardar</button>
+            <button type="submit" class="btn btn-outline-primary mb-3">Guardar</button>
           </div>
           <!-- Boton end -->
         </div>

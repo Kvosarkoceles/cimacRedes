@@ -874,14 +874,24 @@
      $('#tenidoResultadosLaCarpetaDeInvestigacion').blur(function(){
        $(this).css("background-color", "#ffffff");
      });
-     //Cambia de color el menu tenidoResultadosLaCarpetaDeInvestigacion al seleccionar
+
+     //aregla caja de texto cuales
+     $('#cuales').blur(function(){
+       var value=$.trim($('#cuales').val());
+       $("#cuales").val(value);
+     });
      $('#cuales').focus(function(){
        $(this).css("background-color", "#EFF3F6");
      });
      $('#cuales').blur(function(){
        $(this).css("background-color", "#ffffff");
      });
-     //Cambia de color el menu queAHechoLaComisionDeDerechosHumanos al seleccionar
+
+     //aregla caja de texto queAHechoLaComisionDeDerechosHumanos
+     $('#queAHechoLaComisionDeDerechosHumanos').blur(function(){
+       var value=$.trim($('#queAHechoLaComisionDeDerechosHumanos').val());
+       $("#queAHechoLaComisionDeDerechosHumanos").val(value);
+     });
      $('#queAHechoLaComisionDeDerechosHumanos').focus(function(){
        $(this).css("background-color", "#EFF3F6");
      });

@@ -9,7 +9,7 @@ class Registros extends CI_Controller {
 			redirect(base_url());
 		}
 		$this->load->model("Registros_model");
-		$this->load->model("Agresor_model");
+		$this->load->model("Agresores_model");
 		$this->load->model("Periodistas_model");
 		$this->load->model("File_model");
 	}
@@ -56,7 +56,7 @@ class Registros extends CI_Controller {
 		$data  = array(
 			'registros' => $this->Registros_model->getRegistro($id),
 			'manifestaciones' => $this->Registros_model->getManifestaciones($id),
-			'agresor' => $this->Agresor_model->getAgresores($id),
+			'agresor' => $this->Agresores_model->getAgresores($id),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -68,7 +68,7 @@ class Registros extends CI_Controller {
 		$data  = array(
 			'registros' => $this->Registros_model->getRegistro($id),
 			'manifestaciones' => $this->Registros_model->getManifestaciones($id),
-			'agresor' => $this->Agresor_model->getAgresores($id),
+			'agresor' => $this->Agresores_model->getAgresores($id),
 			'estados' => $this->Periodistas_model->getEstados(),
 			'motivodelasgresion' => $this->Registros_model->getMotivodelasgresion(),
 			'tipoDeInvestigacion' => $this->Registros_model->getTipoDeInvestigacion(),

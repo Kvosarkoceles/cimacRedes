@@ -1,6 +1,6 @@
 <!-- accordion style 1 start -->
 <div class="col-lg-12 mt-5">
-  <form action="<?php echo base_url();?>app/registros/store" method="POST">
+
     <input type="hidden" name="id_registro" value="<?php echo $registros->id?>" id ="id_registro">
     <div class="card">
         <div class="card-body">
@@ -404,12 +404,13 @@
 
               <!-- Boton start -->
               <div class="form-group">
-                <button type="submit" class="btn btn-success btn-flat">Guardar</button>
+                <a href="<?php echo base_url();?>app/registros/edit/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span>Editar</a>
+
               </div>
               <!-- Boton end -->
             </div>
         </div>
     </div>
-  </form>
+
 </div>
 <!-- accordion style 1 end -->
