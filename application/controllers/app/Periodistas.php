@@ -93,7 +93,7 @@ class Periodistas extends CI_Controller {
 		$estado = $this->input->post("estado");
 		$municipio = $this->input->post("municipio");
 		$localidad = $this->input->post("localidad");
-		$tiposdecasa = $this->input->post("tiposdecasa");	
+		$tiposdecasa = $this->input->post("tiposdecasa");
 		$viveCon = $this->input->post("viveCon");
 		$dependientesEconomicos = $this->input->post("dependientesEconomicos");
 		$hijos = $this->input->post("hijos");
@@ -185,7 +185,7 @@ class Periodistas extends CI_Controller {
 			);
 			if($idultimo){
 				if ($this->Periodistas_model->save("datoslaborales",$datoslaborales)) {
-					redirect(base_url()."app/periodistas");
+					redirect(base_url()."app/registros/add/".$idultimo);
 				}else{
 					$this->session->set_flashdata("error","No se pudo guardar la informacion");
 					redirect(base_url()."app/periodistas/add");
