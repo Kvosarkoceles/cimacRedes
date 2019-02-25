@@ -514,27 +514,33 @@
                               <div class="col-sm-4  my-1">
                                   <label for="beneficiariaDelMecanismoDeProtecion" class="col-form-label">Beneficiaria del mecanismo de protecion:</label>
                                   <select class="custom-select col-sm-11" name="beneficiariaDelMecanismoDeProtecion" id="beneficiariaDelMecanismoDeProtecion">
-                                  <option selected="selected" value="0">Seleccione una opción</option>
+                                  <option selected="selected" value="1">Seleccione una opción</option>
                                   <?php foreach($niveles as $nivel):?>
+                                    <?php if ($nivel->id > 1): ?>
                                       <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
+                                    <?php endif; ?>
                                   <?php endforeach;?>
                                   </select>
                               </div>
                               <div class="col-sm-4  my-1">
                                   <label for="carpetaDeInvestigacionEnAlgunaProcuraduria" class="col-form-label">Carpeta de investigacion en alguna procuraduria:</label>
                                   <select class="custom-select col-sm-11" name="carpetaDeInvestigacionEnAlgunaProcuraduria" id="carpetaDeInvestigacionEnAlgunaProcuraduria">
-                                  <option selected="selected" value="0">Seleccione una opción</option>
+                                  <option selected="selected" value="1">Seleccione una opción</option>
                                   <?php foreach($niveles as $nivel):?>
+                                    <?php if ($nivel->id > 1): ?>
                                       <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
+                                    <?php endif; ?>
                                   <?php endforeach;?>
                                   </select>
                               </div>
                               <div class="col-sm-4  my-1">
                                   <label for="quejaAnteComisionDeDerechosHumanos" class="col-form-label">Queja ante comisión de derechos humanos:</label>
                                   <select class="custom-select col-sm-11" name="quejaAnteComisionDeDerechosHumanos" id="quejaAnteComisionDeDerechosHumanos">
-                                  <option selected="selected" value="0">Seleccione una opción</option>
+                                  <option selected="selected" value="1">Seleccione una opción</option>
                                   <?php foreach($niveles as $nivel):?>
+                                    <?php if ($nivel->id > 1): ?>
                                       <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
+                                    <?php endif; ?>
                                   <?php endforeach;?>
                                   </select>
                               </div>
@@ -543,9 +549,11 @@
                               <div class="col-sm-3  my-1">
                                   <label for="renavi" class="col-form-label">Ingreso cuenta de RENAVI:</label>
                                   <select class="custom-select col-sm-10" name="renavi" id="renavi">
-                                  <option selected="selected" value="0">Seleccione una opción</option>
+                                  <option selected="selected" value="1">Seleccione una opción</option>
                                   <?php foreach($niveles as $nivel):?>
+                                    <?php if ($nivel->id > 1): ?>
                                       <option value="<?php echo $nivel->id;?>"><?php echo $nivel->nombre;?></option>
+                                    <?php endif; ?>
                                   <?php endforeach;?>
                                   </select>
                               </div>

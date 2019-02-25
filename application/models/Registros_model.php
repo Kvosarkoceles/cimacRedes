@@ -19,36 +19,33 @@ class Registros_model extends CI_Model {
 													,p.apellidoMaterno
 													,p.localidad as localidad_periodista
 													,ed.nombre as edad
-													,ei.nombre as estadoIncidente
 													,e.nombre as estado
+													,ei.nombre as estadoIncidente
 													,m.nombre as motivodelasgresion
 													,ti.nombre as tipoDeInvestigacion
 													,pb.nombre as bajoPerfil
 													,j.nombre as judicializacion
 													,ac.nombre as acompanamientocimac
 													,ac2.nombre as beneficiariaDelMecanismo
-													,ac3.nombre as carpetaDeInvestigacion
-													,ac4.nombre as quejaAnteDerechosHumanos
+													,ci.nombre as carpetaDeInvestigacion
+													,cndh.nombre as quejaAnteDerechosHumanos
 													,rn.nombre as renvi
 													,ac5.nombre as estasDeAcuedoConElMecanismo
 													,ac6.nombre as tePermitenSeguirHaciendoTuTrabajo");
-							//						,pb.nombre as bajoPerfil
-								//					,j.nombre as judicializacion
-									//
-										//		");
+
 		$this->db->from("datosincidente u");
 		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
 		$this->db->join("estados e","p.id_estados = e.id");
 		$this->db->join("edades ed","p.id_Edad = ed.id");
 		$this->db->join("estados ei","u.id_estados = ei.id");
-		$this->db->join("perfilbajo pb","u.consecuenciasBajoPerfil = pb.id");
-		$this->db->join("tipodejudicializacion j","u.id_consecuenciajudicializacion = j.id");
 		$this->db->join("motivodelasgresion m","u.id_motivodelasgresion = m.id");
 		$this->db->join("tipodeinvestigacion ti","u.id_tipoDeInvestigacion = ti.id");
+		$this->db->join("perfilbajo pb","u.consecuenciasBajoPerfil = pb.id");
+		$this->db->join("tipodejudicializacion j","u.id_consecuenciajudicializacion = j.id");
 		$this->db->join("sino ac","u.cimacHaceAcompanamientoAnteElMecanismo = ac.valor");
-		$this->db->join("sino ac2","u.beneficiariaDelMecanismoDeProtecion = ac2.valor");
-		$this->db->join("sino ac3","u.carpetaDeInvestigacionEnAlgunaProcuraduria = ac3.valor");
-		$this->db->join("sino ac4","u.quejaAnteComisionDeDerechosHumanos = ac3.valor");
+		$this->db->join("niveles ac2","u.beneficiariaDelMecanismoDeProtecion = ac2.id");
+		$this->db->join("niveles ci","u.carpetaDeInvestigacionEnAlgunaProcuraduria = ci.id");
+		$this->db->join("niveles cndh","u.quejaAnteComisionDeDerechosHumanos = cndh.id");
 		$this->db->join("niveles rn","u.id_renvi = rn.id");
 		$this->db->join("sino ac5","u.estasDeAcuedoConElMecanismoDeProteccion = ac5.valor");
 		$this->db->join("sino ac6","u.esasMedidasTePermitenSeguirHaciendoTuTrabajo = ac5.valor");
