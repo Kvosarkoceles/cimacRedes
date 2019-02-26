@@ -112,8 +112,11 @@ class Periodistas_model extends CI_Model {
 		return $resultados ->result();
 	}
 	public function getFuente(){
-		$resultados = $this->db->get("fuente");
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("fuente n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getTiposDeCasa(){
 		$this->db->select("n.*");
@@ -143,7 +146,7 @@ class Periodistas_model extends CI_Model {
 		$resultado = $this->db->get();
 		return $resultado ->result();
 	}
-	public function getCargoEnElMedio(){	
+	public function getCargoEnElMedio(){
 		$this->db->select("n.*");
 		$this->db->from("cargoenelmedio n");
 		$this->db->where("n.id_estatus","1");

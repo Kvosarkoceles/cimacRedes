@@ -88,10 +88,10 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getTipodefuente(){
-		$this->db->select("c.*");
-		$this->db->from("fuente c");
+		$this->db->select("e.*,es.nombre as estatus");
+		$this->db->from("fuente e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-
 		return $resultados ->result();
 	}
 	public function getTipofuente($id){
