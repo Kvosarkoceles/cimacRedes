@@ -588,6 +588,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaMotivogresion",
 		'titulo' => "Motivos de la agresión",
 		'agrega' => "addMotivogresion",
+		'delete' => "delete_motivogresion",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -609,6 +610,7 @@ class Configuracion extends CI_Controller {
 	public function editaMotivogresion($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getMotivoagresion($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "motivogresion_update"
 		);
 		$this->load->view("layouts/header");
@@ -620,12 +622,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'motivodelasgresion';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -638,6 +642,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaMotivogresion	($idmenu);
 		}
+	}
+	public function delete_motivogresion($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('motivodelasgresion',$data,$id);
+		redirect(base_url()."administrador/configuracion/motivogresion");
 	}
 	/*++ Funciones para las vistas Registros end  ++*/
 	/*++ Funciones para editar variables Registros start  ++*/

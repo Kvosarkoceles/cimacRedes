@@ -104,10 +104,14 @@ class Configuracion_model extends CI_Model {
 	/*Funciones para la periodeista end*/
 	/*Funciones para el registro start*/
 	public function getMotivodelaagresion(){
-		$this->db->select("c.*");
-		$this->db->from("motivodelasgresion c");
-		$resultados = $this->db->get();
+		
 
+
+
+		$this->db->select("e.*,es.nombre as estatus");
+		$this->db->from("motivodelasgresion e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
+		$resultados = $this->db->get();
 		return $resultados ->result();
 	}
 	public function getMotivoagresion($id){

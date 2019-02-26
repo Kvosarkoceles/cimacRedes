@@ -85,11 +85,11 @@ class Registros_model extends CI_Model {
 		return $resultados ->result();
 	}
 	public function getMotivodelasgresion(){
-		$this->db->select("ma.*");
-		$this->db->from("motivodelasgresion ma");
-		//$this->db->where("r.id_estado","1");
-		$resultados = $this->db->get();
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("motivodelasgresion n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getPerfiles(){
 		$this->db->select("p.*");
