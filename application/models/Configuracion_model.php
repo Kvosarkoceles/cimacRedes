@@ -132,10 +132,10 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getTipodeperfilbajo(){
-		$this->db->select("c.*");
-		$this->db->from("perfilbajo c");
+		$this->db->select("e.*,es.nombre as estatus");
+		$this->db->from("perfilbajo e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-
 		return $resultados ->result();
 	}
 	public function getTipoperfilbajo($id){

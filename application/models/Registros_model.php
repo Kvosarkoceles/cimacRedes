@@ -92,11 +92,11 @@ class Registros_model extends CI_Model {
 		return $resultado ->result();
 	}
 	public function getPerfiles(){
-		$this->db->select("p.*");
-		$this->db->from("perfilbajo p");
-		//$this->db->where("r.id_estado","1");
-		$resultados = $this->db->get();
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("perfilbajo n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function save($tabla,$data){
 		if ($this->db->insert($tabla,$data)) {
