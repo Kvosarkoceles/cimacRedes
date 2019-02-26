@@ -233,6 +233,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaTipodemedio",
 		'titulo' => "Tipo de medio",
 		'agrega' => "addMedio",
+		'delete' => "delete_medio",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -254,6 +255,7 @@ class Configuracion extends CI_Controller {
 	public function editaTipodemedio($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipomedio($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "tipodemedio_update"
 		);
 		$this->load->view("layouts/header");
@@ -265,12 +267,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'tipodemedio';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -283,6 +287,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaTipodemedio($idmenu);
 		}
+	}
+	public function delete_medio($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('tipodemedio',$data,$id);
+		redirect(base_url()."administrador/configuracion/medio");
 	}
 	/*++ Funciones para Tipo de medio end  ++*/
 	/*++ Funciones para Tipo de contrato start  ++*/

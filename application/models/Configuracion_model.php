@@ -47,8 +47,9 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getTipodemedio(){
-		$this->db->select("e.*");
+		$this->db->select("e.*,es.nombre as estatus");
 		$this->db->from("tipodemedio e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}

@@ -120,15 +120,21 @@ class Periodistas_model extends CI_Model {
 		$this->db->from("tipodecasa n");
 		$this->db->where("n.id_estatus","1");
 		$resultado = $this->db->get();
-		return $resultado ->result();	
+		return $resultado ->result();
 	}
 	public function getEstadoCivil(){
-		$resultados = $this->db->get("estadocivil");
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("estadocivil n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getTipoDeMedio(){
-		$resultados = $this->db->get("tipodemedio");
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("tipodemedio n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getTipoDeContrato(){
 		$resultados = $this->db->get("tipodecontrato");
