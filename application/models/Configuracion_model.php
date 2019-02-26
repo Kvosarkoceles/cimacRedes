@@ -64,7 +64,7 @@ class Configuracion_model extends CI_Model {
 		$this->db->from("tipodecontrato e");
 		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-		return $resultados ->result();	
+		return $resultados ->result();
 	}
 	public function getTipocontrato($id){
 		$this->db->select("e.*");
@@ -74,10 +74,10 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getTipodecargo(){
-		$this->db->select("c.*");
-		$this->db->from("cargoenelmedio c");
+		$this->db->select("e.*,es.nombre as estatus");
+		$this->db->from("cargoenelmedio e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-
 		return $resultados ->result();
 	}
 	public function getTipocargo($id){

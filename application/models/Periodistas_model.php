@@ -143,9 +143,12 @@ class Periodistas_model extends CI_Model {
 		$resultado = $this->db->get();
 		return $resultado ->result();
 	}
-	public function getCargoEnElMedio(){
-		$resultados = $this->db->get("cargoenelmedio");
-		return $resultados ->result();
+	public function getCargoEnElMedio(){	
+		$this->db->select("n.*");
+		$this->db->from("cargoenelmedio n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getIncidentes($id){
 		$this->db->select("u.*");
