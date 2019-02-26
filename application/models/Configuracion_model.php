@@ -146,11 +146,12 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getJudicializaciono(){
-		$this->db->select("c.*");
-		$this->db->from("tipodejudicializacion c");
+		$this->db->select("e.*,es.nombre as estatus");
+		$this->db->from("tipodejudicializacion e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-
 		return $resultados ->result();
+
 	}
 	public function getTipojudicializaciono($id){
 		$this->db->select("e.*");

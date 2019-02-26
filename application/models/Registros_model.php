@@ -118,8 +118,11 @@ class Registros_model extends CI_Model {
 		return $resultados ->result();
 	}
 	public function getJudicializacionr(){
-		$resultados = $this->db->get("tipodejudicializacion");
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("tipodejudicializacion n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getNiveles(){
 		$resultados = $this->db->get("niveles");

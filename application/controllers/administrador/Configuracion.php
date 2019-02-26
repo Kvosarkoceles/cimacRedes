@@ -799,6 +799,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaJudicializacion",
 		'titulo' => "Judicializacion",
 		'agrega' => "addJudicializacion",
+		'delete' => "delete_judicializacion",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -819,7 +820,8 @@ class Configuracion extends CI_Controller {
 	}
 	public function editaJudicializacion($id){
 		$data  = array(
-			'nombres' => $this->Configuracion_model->getJudicializaciono($id),
+			'nombres' => $this->Configuracion_model->getTipojudicializaciono($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "judicializacion_update"
 		);
 		$this->load->view("layouts/header");
@@ -831,12 +833,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'tipodejudicializacion';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -849,6 +853,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaMotivogresion	($idmenu);
 		}
+	}
+	public function delete_judicializacion($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('tipodejudicializacion',$data,$id);
+		redirect(base_url()."administrador/configuracion/judicializacion");
 	}
 	/*++ Funciones para editar variables Registros end  ++*/
 	/*++ Funciones para editar variables Registros start  ++*/
