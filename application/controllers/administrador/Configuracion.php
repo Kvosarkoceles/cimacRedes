@@ -163,6 +163,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaEstadoCivil",
 		'titulo' => "Estado civil",
 		'agrega' => "addCivil",
+		'delete' => "delete_civil",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -184,6 +185,7 @@ class Configuracion extends CI_Controller {
 	public function editaEstadoCivil($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getCivil($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "estadoCivil_update"
 		);
 		$this->load->view("layouts/header");
@@ -195,12 +197,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'estadocivil';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -213,6 +217,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaEstadoCivil($idmenu);
 		}
+	}
+	public function delete_civil($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('estadocivil',$data,$id);
+		redirect(base_url()."administrador/configuracion/civil");
 	}
 	/*++ Funciones para Estado civil end  ++*/
 	/*++ Funciones para Tipo de medio start  ++*/

@@ -33,8 +33,9 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getEstadocivil(){
-		$this->db->select("ec.*");
-		$this->db->from("estadocivil ec");
+		$this->db->select("e.*,es.nombre as estatus");
+		$this->db->from("estadocivil e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}
