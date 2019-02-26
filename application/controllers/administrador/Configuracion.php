@@ -303,6 +303,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaTipodecontrato",
 		'titulo' => "Tipo de contrato",
 		'agrega' => "addContrato",
+		'delete' => "delete_contrato",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -395,6 +396,7 @@ class Configuracion extends CI_Controller {
 	public function editaTipodecontrato($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipocontrato($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "tipodecontrato_update"
 		);
 		$this->load->view("layouts/header");
@@ -406,12 +408,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'tipodecontrato';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -425,6 +429,14 @@ class Configuracion extends CI_Controller {
 			$this->editaTipodecontrato($idmenu);
 		}
 	}
+	public function delete_contrato($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('tipodecontrato',$data,$id);
+		redirect(base_url()."administrador/configuracion/contrato");
+	}
+
 	/*++ Funciones para Tipo de contrato end  ++*/
 	/*++ Funciones para Tipo de cargo start  ++*/
 	public function cargo(){

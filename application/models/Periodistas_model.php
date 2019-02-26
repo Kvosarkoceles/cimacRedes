@@ -137,8 +137,11 @@ class Periodistas_model extends CI_Model {
 		return $resultado ->result();
 	}
 	public function getTipoDeContrato(){
-		$resultados = $this->db->get("tipodecontrato");
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("tipodecontrato n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getCargoEnElMedio(){
 		$resultados = $this->db->get("cargoenelmedio");

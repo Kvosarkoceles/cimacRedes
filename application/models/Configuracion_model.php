@@ -27,7 +27,6 @@ class Configuracion_model extends CI_Model {
 	public function getCasa($id){
 		$this->db->select("e.*");
 		$this->db->from("tipodecasa e");
-	//	$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$this->db->where("e.id",$id);
 		$resultados = $this->db->get();
 		return $resultados ->row();
@@ -61,10 +60,11 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getTipodecontrato(){
-		$this->db->select("e.*");
+		$this->db->select("e.*,es.nombre as estatus");
 		$this->db->from("tipodecontrato e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-		return $resultados ->result();
+		return $resultados ->result();	
 	}
 	public function getTipocontrato($id){
 		$this->db->select("e.*");
