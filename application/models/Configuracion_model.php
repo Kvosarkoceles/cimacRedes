@@ -104,10 +104,6 @@ class Configuracion_model extends CI_Model {
 	/*Funciones para la periodeista end*/
 	/*Funciones para el registro start*/
 	public function getMotivodelaagresion(){
-		
-
-
-
 		$this->db->select("e.*,es.nombre as estatus");
 		$this->db->from("motivodelasgresion e");
 		$this->db->join("estatus es","e.id_estatus	 = es.valor");
@@ -122,10 +118,10 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getTipodeinvestigacion(){
-		$this->db->select("c.*");
-		$this->db->from("tipodeinvestigacion c");
+		$this->db->select("e.*,es.nombre as estatus");
+		$this->db->from("tipodeinvestigacion e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-
 		return $resultados ->result();
 	}
 	public function getTipoinvestigacion($id){

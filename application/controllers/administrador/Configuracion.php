@@ -658,6 +658,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaTipodeinvestigacion",
 		'titulo' => "Tipo de investigación",
 		'agrega' => "addTipodeinvestigacion",
+		'delete' => "delete_tipodeinvestigacion",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -679,6 +680,7 @@ class Configuracion extends CI_Controller {
 	public function editaTipodeinvestigacion($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipoinvestigacion($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "tipodeinvestigacion_update"
 		);
 		$this->load->view("layouts/header");
@@ -690,12 +692,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'tipodeinvestigacion';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -708,6 +712,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaMotivogresion	($idmenu);
 		}
+	}
+	public function delete_tipodeinvestigacion($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('tipodeinvestigacion',$data,$id);
+		redirect(base_url()."administrador/configuracion/tipodeinvestigacion");
 	}
 	/*++ Funciones para editar variables Registros end  ++*/
 	/*++ Funciones para las vistas Registros end  ++*/
