@@ -34,6 +34,7 @@
                   <div class="col-sm-2  my-1 ">
                     <label class="col-form-label">Edad</label>
                     <select class="custom-select" name="edad" id="edad">
+                        <option selected="selected" value="">Seleccione un valor</option>
                       <?php foreach($edades as $edad):?>
                         <?php if ($edad->id>1): ?>
                           <option value="<?php echo $edad->id;?>"<?php echo $edad->id==$periodista->id_Edad ? "selected":"";?>><?php echo $edad->nombre;?></option>

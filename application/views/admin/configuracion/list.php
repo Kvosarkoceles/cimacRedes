@@ -10,6 +10,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripción</th>
+                                <th scope="col">Estado</th>
                                 <th scope="col">action</th>
                             </tr>
                         </thead>
@@ -21,10 +22,11 @@
                                   <th scope="col"><?php echo $menu->id;?></th>
                                     <td><?php echo $menu->nombre ;?></td>
                                     <td><?php echo $menu->descripcion;?></td>
+                                    <td><?php echo $menu->estatus;?></td>
                                     <td>
                                         <ul class="d-flex justify-content-center">
                                             <li class="mr-3"><a href="<?php echo base_url()?>administrador/configuracion/<?php echo $ruta;?>/<?php echo $menu->id;?>" class="text-secondary"><i class="fa fa-edit"></i></a></li>
-                                            <li><a href="<?php echo base_url()?>administrador/configuracion/delete/<?php echo $ruta;?>" class="text-danger"><i class="ti-trash"></i></a></li>
+                                            <li><a href="<?php echo base_url()?>administrador/configuracion/<?php echo $delete;?>/<?php echo $menu->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
                                         </ul>
                                       </td>
                                 </tr>

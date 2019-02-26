@@ -13,7 +13,11 @@ class Dependent_model extends CI_Model
 		return $query->result();
 	}
 	public function get_nivel2_query($id_nivel1)	{
-		$query = $this->db->get_where('nivel2agresor', array('id_nivel1' => $id_nivel1));
-		return $query->result();
+		$this->db->select("c.*");
+		$this->db->from("nivel2agresor c");
+		$this->db->where("c.id_nivel1",$id_nivel1);
+		$this->db->where("c.id_estatus",'1');
+		$resultados = $this->db->get();
+		return $resultados ->result();
 	}
 }

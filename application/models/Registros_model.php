@@ -130,8 +130,11 @@ class Registros_model extends CI_Model {
 		return $resultados ->result();
 	}
 	public function getTipoAgresor(){
-		$resultados = $this->db->get("tipoagresor");
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("tipoagresor n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getNivel1agresor(){
 		$this->db->select("n.*");
@@ -142,6 +145,7 @@ class Registros_model extends CI_Model {
 	public function getNivel2agresor(){
 		$this->db->select("n.*");
 		$this->db->from("nivel2agresor n");
+		$this->db->where("n.id_estatus","1");
 		$resultado = $this->db->get();
 		return $resultado->result();
 	}

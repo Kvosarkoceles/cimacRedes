@@ -23,6 +23,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editEdades",
 		'titulo' => "Edades",
 		'agrega' => "addEdades",
+		'delete' => "delete_edades",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -44,6 +45,7 @@ class Configuracion extends CI_Controller {
 	public function editEdades($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getEdad($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "edades_update"
 		);
 		$this->load->view("layouts/header");
@@ -55,12 +57,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'edades';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus,
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -73,6 +77,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editEdades($idmenu);
 		}
+	}
+	public function delete_edades($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('edades',$data,$id);
+		redirect(base_url()."administrador/configuracion/edades");
 	}
 	/*++ Funciones para Edades end  ++*/
 	/*++ Funciones para Vivienda start  ++*/
@@ -806,6 +817,8 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaTipoagresor",
 		'titulo' => "Tipo de agresor",
 		'agrega' => "addTipoagresor",
+		'delete' => "delete_tipoagresor",
+
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -827,6 +840,7 @@ class Configuracion extends CI_Controller {
 	public function editaTipoagresor($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipodeagresor($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "tipoagresor_update"
 		);
 		$this->load->view("layouts/header");
@@ -838,12 +852,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'tipoagresor';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus,
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -856,6 +872,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaMotivogresion	($idmenu);
 		}
+	}
+	public function delete_tipoagresor($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('tipoagresor',$data,$id);
+		redirect(base_url()."administrador/configuracion/tipoagresor");
 	}
 
 	public function editaNivel1($id){
@@ -962,6 +985,8 @@ class Configuracion extends CI_Controller {
 			'nivel2' => $this->Configuracion_model->getTipoNivel2($id),
 			'tipoagresor' => $this->Configuracion_model->getTipoagresor(),
 			'nivel1' => $this->Configuracion_model->getTipoagresor_nivel1(),
+			'estatus' => $this->Configuracion_model->getEstatus(),
+
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -1029,24 +1054,23 @@ class Configuracion extends CI_Controller {
 		$nivel1 = $this->input->post("nivel1");
 		$nombres = $this->input->post("nombre");
 		$descripcion = $this->input->post("descripcion");
-		if ($this->form_validation->run()) {
-			$data  = array(
-				'id_tipoAgresor' => $tipoagresor,
-				'id_nivel1' => $nivel1,
-				'nombre' => $nombres,
-				'descripcion'=> $descripcion
-			);
+		$estatus = $this->input->post("status");
+		$data  = array(
+			'id_tipoAgresor' => $tipoagresor,
+			'id_nivel1' => $nivel1,
+			'nombre' => $nombres,
+			'descripcion'=> $descripcion,
+			'id_estatus'=> $estatus
+		);
 
-			if ($this->Configuracion_model->update($menu,$data,$id_nivel2)) {
-				redirect(base_url()."administrador/configuracion/tipoagresor_nivel2");
-			}
-			else{
-				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."administrador/configuracion/editaNivel2".$id_nivel2);
-			}
-		}else {
-			$this->editaNivel2($id_nivel2);
+		if ($this->Configuracion_model->update($menu,$data,$id_nivel2)) {
+			redirect(base_url()."administrador/configuracion/tipoagresor_nivel2");
 		}
+		else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."administrador/configuracion/editaNivel2".$id_nivel2);
+		}
+
 	}
 	public function addItem2(){
 		$data  = array(
@@ -1058,7 +1082,13 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/configuracion/addNivel2",$data);
 		$this->load->view("layouts/footer");
 	}
-
+	public function delete_item2($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('nivel2agresor',$data,$id);
+		redirect(base_url()."administrador/configuracion/tipoagresor_nivel2");
+	}
 
 
 	public function view(){
@@ -1078,11 +1108,11 @@ class Configuracion extends CI_Controller {
 		$this->load->view("admin/usuarios/edit",$data);
 		$this->load->view("layouts/footer");
 	}
-	public function delete($id){
+	private function _delete($id){
 		$data  = array(
 			'id_estado' => "0",
 		);
-		$this->Usuarios_model->update($id,$data);
+		$this->Configuracion_model->update($id,$data);
 		redirect(base_url()."administrador/usuarios");
 	}
 

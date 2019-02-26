@@ -2,31 +2,31 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Agresores extends CI_Controller {
+  public function __construct(){
+	   parent::__construct();
+     if (!$this->session->userdata("login")){
+	      redirect(base_url());
+		    }
+	       $this->load->model("Registros_model");
+         $this->load->model("Agresores_model");
+       }
 
-	public function __construct(){
-		parent::__construct();
-		if (!$this->session->userdata("login")){
-			redirect(base_url());
-		}
-		$this->load->model("Registros_model");
-		$this->load->model("Agresores_model");
+
+  public function add($id){
+    $data  = array(
+	     'sexo' => $this->Registros_model->getSexo(),
+	      'agresor' => $this->Registros_model->getTipoAgresor(),
+	       'nivel1_Agresor' => $this->Registros_model->getNivel1agresor(),
+	        'nivel2_Agresor' => $this->Registros_model->getNivel2agresor(),
+	         'id_datosincidente'=>$id
+	        );
+		  $this->load->view("layouts/header");
+		    $this->load->view("layouts/aside");
+		      $this->load->view("app/registros/agresor/add",$data);
+		        $this->load->view("layouts/footer");
 	}
 
-	public function add($id){
-  	$data  = array(
-	  	'sexo' => $this->Registros_model->getSexo(),
-	  	'agresor' => $this->Registros_model->getTipoAgresor(),
-	   	'nivel1_Agresor' => $this->Registros_model->getNivel1agresor(),
-	  	'nivel2_Agresor' => $this->Registros_model->getNivel2agresor(),
-	  	'id_datosincidente'=>$id
-		);
-		$this->load->view("layouts/header");
-    $this->load->view("layouts/aside");
-	 	$this->load->view("app/registros/agresor/add",$data);
-  	$this->load->view("layouts/footer");
-	}
-
-	public function store(){
+  public function store(){
     // Agresion  start //
     $datosincidente = $this->input->post("id_datosincidente");
     $sexoAgresor = $this->input->post("sexoAgresor");
@@ -51,15 +51,16 @@ class Agresores extends CI_Controller {
       $this->session->set_flashdata("error","No se pudo guardar la informacion");
       redirect(base_url()."administrador/usuarios/add");
     }
+
+
 	}
 
-	public function edit($id) {
+  public function edit($id) {
     $data  = array(
 			'sexo' => $this->Registros_model->getSexo(),
-			'tipoagresor' => $this->Registros_model->getTipoAgresor(),
+			'agresor' => $this->Registros_model->getTipoAgresor(),
 			'nivel1_Agresor' => $this->Registros_model->getNivel1agresor(),
 			'nivel2_Agresor' => $this->Registros_model->getNivel2agresor(),
-			'agresor' => $this->Registros_model->getAgresor($id),
 			'id_datosincidente'=>$id
 		);
     $this->load->view("layouts/header");
@@ -67,6 +68,4 @@ class Agresores extends CI_Controller {
     $this->load->view("app/registros/agresor/edit",$data);
     $this->load->view("layouts/footer");
   }
-
-
 }

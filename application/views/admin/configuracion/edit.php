@@ -20,6 +20,15 @@
                                           <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo $nombres->descripcion?>">
                                         </div>
                                         <div class="form-group">
+                                          <label for="status">Estado:</label>
+                                          <select class="custom-select" name="status" id="status">
+                                            <?php foreach($estatus as $agresor):?>
+                                                <option value="<?php echo $agresor->valor;?>" <?php echo $agresor->valor==$nombres->id_estatus ? "selected":"";?> ><?php echo $agresor->nombre;?></option>
+                                            <?php endforeach;?>
+                                          </select>
+                                          <?php echo form_error("rol","<span class='text-danger'>","</span>"); ?>
+                                        </div>
+                                        <div class="form-group">
                                           <button type="submit" class="btn btn-success btn-flat">Guardar</button>
                                         </div>
 

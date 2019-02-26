@@ -32,7 +32,6 @@ class Periodistas_model extends CI_Model {
 		c.nombre as indigena,
 		c1.nombre as LGBTTTI,
 		us.nombre as usuario");
-	//$this->db->select("p.*,e.nombre as estado, ed.parametro as edad, t.nombre as casa, ec.nombre as estadocivil, c.nombre as indigena, c1.nombre as LGBTTTI");
 		$this->db->from("datosperiodistas p");
 		$this->db->join("estados e","p.id_estados = e.id");
 		$this->db->join("edades ed","p.id_Edad = ed.id");
@@ -72,8 +71,11 @@ class Periodistas_model extends CI_Model {
 		return $resultados;
 	}
 	public function getEdades(){
-		$resultados = $this->db->get("edades");
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("edades n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();
 	}
 	public function getEstados(){
 		$resultados = $this->db->get("estados");

@@ -11,8 +11,9 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getEdades(){
-		$this->db->select("e.*");
+		$this->db->select("e.*	,es.nombre as estatus");
 		$this->db->from("edades e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}
@@ -171,10 +172,10 @@ class Configuracion_model extends CI_Model {
 	/*Funciones para la registro end*/
 	/*Funciones para el Agresor start*/
 	public function getTipoagresor(){
-		$this->db->select("c.*");
+		$this->db->select("c.*	,es.nombre as estatus");
 		$this->db->from("tipoagresor c");
+		$this->db->join("estatus es","c.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-
 		return $resultados ->result();
 	}
 	public function getTipodeagresor($id){
@@ -203,6 +204,7 @@ class Configuracion_model extends CI_Model {
 	public function getNivel2(){
 		$this->db->select("c.*");
 		$this->db->from("nivel2agresor c");
+
 		$resultados = $this->db->get();
 		return $resultados ->result();
 	}
@@ -217,16 +219,26 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getTipoagresor_nivel2(){
-		$this->db->select("c.*, cm.nombre as tipoAgresor, nv.nombre as nivel");
+		$this->db->select("c.*
+		,cm.nombre as tipoAgresor
+		,nv.nombre as nivel
+		,es.nombre as estatus");
 		$this->db->from("nivel2agresor c");
 		$this->db->join("tipoagresor cm","c.id_tipoAgresor	 = cm.id");
 		$this->db->join("nivel1agresor nv","c.id_nivel1	 = nv.id");
+		$this->db->join("estatus es","c.id_estatus	 = es.valor");
 		$this->db->order_by("nv.nombre", "asc");
 		$resultados = $this->db->get();
 
 		return $resultados ->result();
 	}
 	/*Funciones para el Agresor end*/
+	public function getEstatus(){
+		$this->db->select("c.*");
+		$this->db->from("estatus c");
+		$resultados = $this->db->get();
+		return $resultados ->result();
+	}
 	public function save($tabla,$data){
 		return $this->db->insert("$tabla",$data);
 	}

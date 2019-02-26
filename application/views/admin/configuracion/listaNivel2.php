@@ -13,7 +13,8 @@
                                 <th scope="col">Nivel1</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripción</th>
-                                <th scope="col">action</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,10 +27,11 @@
                                     <td><?php echo $menu->nivel ;?></td>
                                     <td><?php echo $menu->nombre ;?></td>
                                     <td><?php echo $menu->descripcion;?></td>
+                                    <td><?php echo $menu->estatus;?></td>
                                     <td>
                                         <ul class="d-flex justify-content-center">
                                             <li class="mr-3"><a href="<?php echo base_url()?>administrador/configuracion/<?php echo $ruta;?>/<?php echo $menu->id;?>" class="text-secondary"><i class="fa fa-edit"></i></a></li>
-                                            <li><a href="<?php echo base_url()?>administrador/configuracion/delete/<?php echo $ruta;?>" class="text-danger"><i class="ti-trash"></i></a></li>
+                                            <li><a href="<?php echo base_url()?>administrador/configuracion/delete_item2/<?php echo $menu->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
                                         </ul>
                                       </td>
                                 </tr>

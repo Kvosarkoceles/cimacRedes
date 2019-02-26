@@ -77,11 +77,7 @@ class Registros extends CI_Controller {
 			'perfiles' => $this->Registros_model->getPerfiles(),
 			'Judicializacion' => $this->Registros_model->getJudicializacionr($id),
 			'niveles' => $this->Registros_model->getNiveles(),
-		);
-		/*$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/permisos/add",$data);
-		$this->load->view("layouts/footer");	*/
+		);	
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("app/registros/edit",$data);

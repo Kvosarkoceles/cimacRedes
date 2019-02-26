@@ -162,7 +162,7 @@
                                 <td><?php echo $agresor->nombre;?></td>
                                 <td>
                                   <ul class="d-flex justify-content-center">
-                                    <li class="mr-3"><a href="<?php echo base_url()?>app/agresor/edit/<?php echo $agresor->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
+                                    <li class="mr-3"><a href="<?php echo base_url()?>app/agresores/edit/<?php echo $agresor->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
                                     <li><a href="<?php echo base_url()?>app/agresor/delete/<?php echo $agresor->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
                                   </ul>
                                 </td>
