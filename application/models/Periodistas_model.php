@@ -116,8 +116,11 @@ class Periodistas_model extends CI_Model {
 		return $resultados ->result();
 	}
 	public function getTiposDeCasa(){
-		$resultados = $this->db->get("tipodecasa");
-		return $resultados ->result();
+		$this->db->select("n.*");
+		$this->db->from("tipodecasa n");
+		$this->db->where("n.id_estatus","1");
+		$resultado = $this->db->get();
+		return $resultado ->result();	
 	}
 	public function getEstadoCivil(){
 		$resultados = $this->db->get("estadocivil");

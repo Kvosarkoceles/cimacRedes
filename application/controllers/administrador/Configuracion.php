@@ -93,6 +93,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editCasa",
 		'titulo' => "Tipo de vivienda",
 		'agrega' => "addVivienda",
+		'delete' => "delete_tipovivienda",
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -114,6 +115,7 @@ class Configuracion extends CI_Controller {
 	public function editCasa($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getCasa($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "casa_update"
 		);
 		$this->load->view("layouts/header");
@@ -125,12 +127,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'tipodecasa';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {
@@ -143,6 +147,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editCasa($idmenu);
 		}
+	}
+	public function delete_tipovivienda($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('tipodecasa',$data,$id);
+		redirect(base_url()."administrador/configuracion/vivienda");
 	}
 	/*++ Funciones para Vivienda end  ++*/
 	/*++ Funciones para Estado civil start  ++*/
