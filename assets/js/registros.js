@@ -483,8 +483,11 @@ function inicio(){
       $('#tenidoResultadosLaCarpetaDeInvestigacion').css("border", "1px solid #A296A6");
       $('#cuales').css("border", "1px solid #A296A6");
       $('#queAHechoLaComisionDeDerechosHumanos').css("border", "1px solid #A296A6");
-    
 
+      $('.header-area').css("background", "#f8effb");
+        $('.page-title-area').css("background", "#f8effb");
+        $('.user-profile').css("background", "#f8effb");
+  $('.main-content-inner').css("background", "#332b358a");
 
 
 
