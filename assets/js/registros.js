@@ -62,11 +62,11 @@
           $(this).css("background-color", "#ffffff");
       });
       //selectores Informacion Personal
-      $('#edad,#estado,#tiposdecasa,#edad').focus(function(){
+      $('#edad,#estado,#tiposdecasa,#edad,#estadoCivil,#comunidadindigena,#comunidadLGBTTTI').focus(function(){
           $(this).css("border", "3px solid #A296A6")
           $(this).css("background-color", "#a296a62e");
       });
-      $('#edad,#estado,#tiposdecasa,#edad').blur(function(){
+      $('#edad,#estado,#tiposdecasa,#edad,#estadoCivil,#comunidadindigena,#comunidadLGBTTTI').blur(function(){
           $(this).css("border", "1px solid #A296A6")
           $(this).css("background-color", "#ffffff");
       });
@@ -388,3 +388,105 @@
      });
 
 });
+$( document ).ready(function() { inicio();});
+function inicio(){
+  //Cajas de texto Informacion Personal
+
+      $('#nombres').css("border", "1px solid #A296A6");
+      $('#apellidoPaterno').css("border", "1px solid #A296A6");
+      $('#apellidoMaterno').css("border", "1px solid #A296A6");
+      $('#municipio').css("border", "1px solid #A296A6");
+      $('#localidad').css("border", "1px solid #A296A6");
+      $('#viveCon').css("border", "1px solid #A296A6");
+      $('#dependientesEconomicos').css("border", "1px solid #A296A6");
+      $('#hijos').css("border", "1px solid #A296A6");
+      $('#edad').css("border", "1px solid #A296A6");
+      $('#tiposdecasa').css("border", "1px solid #A296A6");
+      $('#edad').css("border", "1px solid #A296A6");
+      $('#estado').css("border", "1px solid #A296A6");
+      $('#estadoCivil').css("border", "1px solid #A296A6");
+      $('#comunidadindigena').css("border", "1px solid #A296A6");
+      $('#comunidadLGBTTTI').css("border", "1px solid #A296A6");
+      $('#telefonoparticular').css("border", "1px solid #A296A6");
+      $('#telefonocelular').css("border", "1px solid #A296A6");
+      $('#email').css("border", "1px solid #A296A6");
+      $('#telegram').css("border", "1px solid #A296A6");
+      $('#skype').css("border", "1px solid #A296A6");
+      $('#facebook').css("border", "1px solid #A296A6");
+      $('#twitter').css("border", "1px solid #A296A6");
+      $('#instagram').css("border", "1px solid #A296A6");
+      $('#youtube').css("border", "1px solid #A296A6");
+      $('#snapchat').css("border", "1px solid #A296A6");
+      $('#otraredsocial').css("border", "1px solid #A296A6");
+      $('#nombreDelMedio').css("border", "1px solid #A296A6");
+      $('#tipodemedio').css("border", "1px solid #A296A6");
+      $('#paracuantosmedioslabora').css("border", "1px solid #A296A6");
+      $('#tipodecontrato').css("border", "1px solid #A296A6");
+      $('#direcciondelmedio').css("border", "1px solid #A296A6");
+      $('#cargoenelmedio').css("border", "1px solid #A296A6");
+      $('#fuente').css("border", "1px solid #A296A6");
+      $('#Link1').css("border", "1px solid #A296A6");
+      $('#Link2').css("border", "1px solid #A296A6");
+      $('#Link3').css("border", "1px solid #A296A6");
+      $('#Link4').css("border", "1px solid #A296A6");
+      $('#Link5').css("border", "1px solid #A296A6");
+      $('#AnosDeEjercerElPeriodismo').css("border", "1px solid #A296A6");
+      $('#sexodeljefeinmediato').css("border", "1px solid #A296A6");
+
+
+      $('#fechaIncidente').css("border", "1px solid #A296A6");
+      $('#longitud').css("border", "1px solid #A296A6");
+      $('#latitud').css("border", "1px solid #A296A6");
+      $('#relatoriaDelHecho').css("border", "1px solid #A296A6");
+      $('#motivodelasgresion').css("border", "1px solid #A296A6");
+      $('#tipoDeInvestigacion').css("border", "1px solid #A296A6");
+      $('#sexoAgresor').css("border", "1px solid #A296A6");
+      $('#tipoagresor').css("border", "1px solid #A296A6");
+      $('#nivel1').css("border", "1px solid #A296A6");
+      $('#nivel2').css("border", "1px solid #A296A6");
+      $('#nombreagresor').css("border", "1px solid #A296A6");
+      $('#analisisDeContexto').css("border", "1px solid #A296A6");
+      $('#analisisDeRiesgo').css("border", "1px solid #A296A6");
+      $('#observaciones').css("border", "1px solid #A296A6");
+      $('#tipoDeViolenciaPsicologica').css("border", "1px solid #A296A6");
+      $('#tipodeViolenciaFisica').css("border", "1px solid #A296A6");
+      $('#tipoDeViolenciaPatrimonial').css("border", "1px solid #A296A6");
+      $('#tipodeViolenciaEconomica').css("border", "1px solid #A296A6");
+      $('#tipoDeViolenciaSexual').css("border", "1px solid #A296A6");
+      $('#tipoDeViolenciaCibernetica').css("border", "1px solid #A296A6");
+      $('#modalidadViolenciaFamiliar').css("border", "1px solid #A296A6");
+      $('#modalidadViolenciaLaboral').css("border", "1px solid #A296A6");
+      $('#modalidadViolenciaEnLaComunidad').css("border", "1px solid #A296A6");
+      $('#modalidadViolenciaInstitucional').css("border", "1px solid #A296A6");
+      $('#modalidadViolenciaFeminicida').css("border", "1px solid #A296A6");
+      $('#modalidadDeViolenciaCibernetica').css("border", "1px solid #A296A6");
+      $('#tipodemanifestacion').css("border", "1px solid #A296A6");
+      $('#observacionesmanifestacion').css("border", "1px solid #A296A6");
+      $('#consecuenciaFueDespedida').css("border", "1px solid #A296A6");
+      $('#consecuenciasBajoPerfil').css("border", "1px solid #A296A6");
+      $('#consecuenciasDesplazamiento').css("border", "1px solid #A296A6");
+      $('#Judicializacion').css("border", "1px solid #A296A6");
+      $('#cimacHaceAcompanamientoAnteElMecanismo').css("border", "1px solid #A296A6");
+      $('#queOtraOrganizacionLasAcompana').css("border", "1px solid #A296A6");
+      $('#atencionMedicaRecibida').css("border", "1px solid #A296A6");
+      $('#atencionPsicologicaRecibida').css("border", "1px solid #A296A6");
+      $('#atencionJuridicaRecibida').css("border", "1px solid #A296A6");
+      $('#ningunaAtencionRecibida').css("border", "1px solid #A296A6");
+      $('#beneficiariaDelMecanismoDeProtecion').css("border", "1px solid #A296A6");
+      $('#carpetaDeInvestigacionEnAlgunaProcuraduria').css("border", "1px solid #A296A6");
+      $('#quejaAnteComisionDeDerechosHumanos').css("border", "1px solid #A296A6");
+      $('#renavi').css("border", "1px solid #A296A6");
+      $('#norenavi').css("border", "1px solid #A296A6");
+      $('#estasDeAcuedoConElMecanismoDeProteccion').css("border", "1px solid #A296A6");
+      $('#esasMedidasTePermitenSeguirHaciendoTuTrabajo').css("border", "1px solid #A296A6");
+      $('#porQue').css("border", "1px solid #A296A6");
+      $('#tenidoResultadosLaCarpetaDeInvestigacion').css("border", "1px solid #A296A6");
+      $('#cuales').css("border", "1px solid #A296A6");
+      $('#queAHechoLaComisionDeDerechosHumanos').css("border", "1px solid #A296A6");
+    
+
+
+
+
+
+}
