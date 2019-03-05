@@ -50,6 +50,7 @@ class Periodistas extends CI_Controller {
 			'periodista' => $this->Periodistas_model->getPeriodista($id),
 			'trabajo' => $this->Periodistas_model->getTrabajo($id),
 			'registros' => $this->Periodistas_model->getRegistro($id),
+			'imagenes' => $this->Periodistas_model->getImagenes($id)
 		//	'menus' => $this->Permisos_model->getMenus(),
 		//	'permiso' => $this->Permisos_model->getPermiso($id)
 		);
@@ -73,6 +74,7 @@ class Periodistas extends CI_Controller {
 			'sexo' => $this->Periodistas_model->getSexo(),
 			'periodista' => $this->Periodistas_model->getPeriodista($id),
 			'trabajo' => $this->Periodistas_model->getTrabajo($id),
+			'imagenes' => $this->Periodistas_model->getImagenes($id)
 		//	'trabajo' => $this->Periodistas_model->getTrabajo2($id),
 
 		);
@@ -322,5 +324,5 @@ class Periodistas extends CI_Controller {
 			redirect(base_url()."app/periodistas");
 	}
 
-	
+
 }

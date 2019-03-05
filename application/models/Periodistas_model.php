@@ -156,12 +156,18 @@ class Periodistas_model extends CI_Model {
 	public function getIncidentes($id){
 		$this->db->select("u.*");
 		$this->db->from("datosincidente u");
+		$this->db->where("u.id_datospersonales",$id);
+		$resultado = $this->db->get();
+		return $resultado->result();
+	}
 
-//	$this->db->join("roles r","u.id_rol = r.id");
-	$this->db->where("u.id_datospersonales",$id);
-//	$this->db->where("u.estado","1");
+public function getImagenes($id){
+	$this->db->select("u.*");
+	$this->db->from("imagenes_periodista u");
+	$this->db->where("u.id_periodista",$id);
 	$resultado = $this->db->get();
 	return $resultado->result();
-
 }
+
+
 }

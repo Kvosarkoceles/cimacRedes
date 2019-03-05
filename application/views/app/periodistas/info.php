@@ -71,6 +71,54 @@
                     </div>
                 </div>
                 <div class="card">
+                  <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#accordion25">Imagenes</a>
+                  </div>
+                  <div id="accordion25" class="collapse show" data-parent="#accordion2">
+                    <div class="card-body">
+                      <!-- Progress Table start -->
+                      <div class="col-12 mt-5">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="single-table">
+                              <div class="table-responsive">
+                                <table class="table table-hover progress-table text-center">
+                                  <thead class="text-uppercase">
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Nombre del archivo</th>
+                                      <th scope="col">Descripción</th>
+                                      <th scope="col">Fecha de subida</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <?php if(!empty($imagenes)):?>
+                                      <?php foreach($imagenes as $imagen):?>
+                                        <tr>
+                                          <td scope="col"><?php echo $imagen->id?></td>
+                                          <td scope="col"><?php echo $imagen->titulo?></td>
+                                          <td scope="col"><?php echo $imagen->descripcion?></td>
+                                          <td scope="col"><?php echo $imagen->fechaRegistro?></td>
+                                          <td>
+                                            <ul class="d-flex justify-content-center">
+                                              <li class="mr-1"><a href="<?php echo base_url();?>./assets/uploads/periodista/imagenes/<?php echo $imagen->ruta?>" target="_blank" class="text-primary"><i class="fa fa-eye"></i></a></li>
+                                            </ul>
+                                          </td>
+                                        </tr>
+                                      <?php endforeach;?>
+                                    <?php endif;?>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Progress Table end -->
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion24">Informacion de Incidentes</a>
                     </div>
@@ -137,11 +185,12 @@
                         </div>
                     </div>
                 </div>
+
+              </div>
             </div>
+            <div class="col-md-12">
+              <a href="<?php echo base_url();?>app/periodistas/edit/<?php echo $periodista->id;?>" class="btn btn-outline-primary mb-3  float-right"><span class="fa fa-pencil"></span> Editar</a>
+            </div>
+          </div>
         </div>
-        <div class="col-md-12">
-          <a href="<?php echo base_url();?>app/periodistas/edit/<?php echo $periodista->id;?>" class="btn btn-outline-primary mb-3  float-right"><span class="fa fa-pencil"></span> Editar</a>
-        </div>
-    </div>
-</div>
 <!-- accordion style 2 end -->

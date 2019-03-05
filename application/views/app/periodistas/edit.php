@@ -312,11 +312,11 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <?php if(!empty($agresor)):?>
-                            <?php foreach($agresor as $agresor):?>
+                          <?php if(!empty($imagenes)):?>
+                            <?php foreach($imagenes as $imagen):?>
                               <tr>
-                                <td scope="col">#</td>
-                                <td scope="col">Nombre del archivo</td>
+                                <td scope="col"><?php echo $imagen->id?></td>
+                                <td scope="col"><?php echo $imagen->titulo?></td>
                                 <td scope="col">Tipo de archivo</td>
                                 <td scope="col">Fecha de subida</td>
                                 <td scope="col">Vista previa</td>
@@ -331,17 +331,30 @@
                           <?php endif;?>
                         </tbody>
                       </table>
-                        <a href="<?php echo base_url();?>app/archivos/add/<?php echo $periodista->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
                     </div>
                   </div>
+                </div>
+                <div class="row justify-content-end">
+                   <div class="col-2">
+                     <a href="<?php echo base_url();?>app/archivos/add/<?php echo $periodista->id;?>" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar</a>
+                   </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="container">
+                <div class="row justify-content-end">
+                   <div class="col-2">
+                     <button type="submit" class="btn btn-outline-secondary mb-3">Guardar</button>
+                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-success btn-flat">Guardar</button>
-        </div>
+
       </div>
     </div>
 

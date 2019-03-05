@@ -389,7 +389,7 @@
 
 });
 $( document ).ready(function() { inicio();});
-function inicio(){
+    function inicio(){
   //Cajas de texto Informacion Personal
 
       $('#nombres').css("border", "1px solid #A296A6");
@@ -489,7 +489,8 @@ function inicio(){
         $('.user-profile').css("background", "#f8effb");
   $('.main-content-inner').css("background", "#332b358a");
 
-  $('.card-link').css("background", "#332b358a");
+  $('.card-link').css("background", "#491d5459");
+  
 
 
 }

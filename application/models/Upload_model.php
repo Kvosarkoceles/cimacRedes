@@ -9,12 +9,15 @@ class Upload_model extends CI_Model {
     }
 
     //FUNCIÓN PARA INSERTAR LOS DATOS DE LA IMAGEN SUBIDA
-    function subir($titulo,$imagen)
-    {
+    function subir($titulo,$imagen,$id_periodista){
         $data = array(
             'titulo' => $titulo,
-            'ruta' => $imagen
+            'ruta' => $imagen,
+            'id_periodista' => $id_periodista,
+            'id_usuario	' => $this->session->userdata("id"),
+            'fechaRegistro' =>date("Y")."-".date("m")."-".date("d"),
+            'id_estatus	' =>1,
         );
-        return $this->db->insert('imagenes', $data);
+        return $this->db->insert('imagenes_periodista', $data);
     }
 }
