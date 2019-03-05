@@ -290,12 +290,61 @@
               </div>
             </div>
           </div>
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link">Archivos</a>
+            </div>
+            <div id="accordion14" class="collapse show" data-parent="#accordion1">
+              <div class="card-body">
+                <div class="card-body">
+                  <div class="single-table">
+                    <div class="table-responsive">
+                      <table class="table table-hover progress-table text-center">
+                        <thead class="text-uppercase">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre del archivo</th>
+                            <th scope="col">Tipo de archivo</th>
+                            <th scope="col">Fecha de subida</th>
+                            <th scope="col">Vista previa</th>
+                            <th scope="col">Opciones</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php if(!empty($agresor)):?>
+                            <?php foreach($agresor as $agresor):?>
+                              <tr>
+                                <td scope="col">#</td>
+                                <td scope="col">Nombre del archivo</td>
+                                <td scope="col">Tipo de archivo</td>
+                                <td scope="col">Fecha de subida</td>
+                                <td scope="col">Vista previa</td>
+                                <td>
+                                  <ul class="d-flex justify-content-center">
+                                    <li class="mr-3"><a href="" class="text-success"><i class="fa fa-edit"></i></a></li>
+                                    <li><a href="" class="text-danger"><i class="ti-trash"></i></a></li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            <?php endforeach;?>
+                          <?php endif;?>
+                        </tbody>
+                      </table>
+                        <a href="<?php echo base_url();?>app/archivos/add/<?php echo $periodista->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-flat">Guardar</button>
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-success btn-flat">Guardar</button>
-    </div>
+
   </form>
 </div>
 <!-- accordion style 1 end -->

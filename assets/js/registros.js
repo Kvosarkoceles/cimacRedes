@@ -489,7 +489,7 @@ function inicio(){
         $('.user-profile').css("background", "#f8effb");
   $('.main-content-inner').css("background", "#332b358a");
 
-
+  $('.card-link').css("background", "#332b358a");
 
 
 }

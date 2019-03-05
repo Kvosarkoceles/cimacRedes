@@ -321,4 +321,6 @@ class Periodistas extends CI_Controller {
 		$this->Periodistas_model->delete($id,$data);
 			redirect(base_url()."app/periodistas");
 	}
+
+	
 }
