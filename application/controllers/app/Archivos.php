@@ -26,6 +26,7 @@ class Archivos extends CI_Controller {
 		} else {
 			$config['file_name'] = $this->input->post("id_periodista")."-".$this->input->post("titulo_imagen");
 		}
+
  		$config['allowed_types'] = 'gif|jpg|png';
  		$config['max_size'] = "50000";
  		$config['max_width'] = "2000";
@@ -33,38 +34,61 @@ class Archivos extends CI_Controller {
  		$this->load->library('upload', $config);
  		if (!$this->upload->do_upload($mi_archivo)) {
  				//*** ocurrio un error
- 				$data['uploadError'] = $this->upload->display_errors();
- 				$this->load->view('layouts/header');
-				$this->load->view('layouts/aside');
-				$this->load->view('app/archivos/add',$data);
-				$this->load->view('layouts/footer');
-			}
+ 			$data['uploadError'] = $this->upload->display_errors();
+ 			$this->load->view('layouts/header');
+			$this->load->view('layouts/aside');
+			$this->load->view('app/archivos/add',$data);
+			$this->load->view('layouts/footer');
+		}
  		$file_info = $this->upload->data();
  		$titulo = $this->input->post('titulo_imagen');
 		$imagen = $file_info['file_name'];
 		if ($titulo==="") {
-			$titulo='sin nombre';
+			$titulo='sin_nombre';
 		}
- 		$subir = $this->Upload_model->subir($titulo,$imagen,$id);
- 		$this->load->view('layouts/header');
-		$this->load->view('layouts/aside');
-		//$this->load->view('', $data);
-		$this->load->view('layouts/footer');
+
+		$this->foto_redimencionar($imagen);
+	//	$this->foto_vistaprevia($imagen);
+		$datosImagen = array(
+			'titulo' => $titulo,
+			'ruta' => $imagen,
+			'descripcion' => $this->input->post("descripcion_imagen"),
+			'id_periodista' => $this->input->post("id_periodista"),
+			'fechaRegistro' => date("Y")."-".date("m")."-".date("d"),
+			'id_usuario' => $this->session->userdata("id"),
+			'id_estatus' => 1,
+		 );
+ 	//	$subir = $this->Upload_model->subir($titulo,$imagen,$id);
+
+		if ($this->Upload_model->subirImagenPeriodista($datosImagen)) {
+			redirect(base_url()."app/periodistas/info/".$id);
+		}else{
+			$this->session->set_flashdata("error","No se pudo guardar la informacion");
+			redirect(base_url()."app/archivos/add/".$id);
+		}
+
+ 		
 
 	 }
 
-		function crearMiniatura($filename){
-				$config['image_library'] = 'gd2';
-				$config['source_image'] = 'uploads/imagenes/'.$filename;
-				$config['create_thumb'] = TRUE;
-				$config['maintain_ratio'] = TRUE;
-				$config['new_image']='uploads/imagenes/thumbs/';
-				$config['thumb_marker']='';//captura_thumb.png
-				$config['width'] = 150;
-				$config['height'] = 150;
-				$this->load->library('image_lib', $config);
-				$this->image_lib->resize();
-		}
+
+
+
+	 private function foto_redimencionar($imagen) {
+	 	$configthumbs['image_library'] = 'gd2';
+	 	$configthumbs['source_image'] = './assets/uploads/periodista/imagenes/'.$imagen;
+	 	$configthumbs['new_image'] = './assets/uploads/periodista/imagenes/thumbs/'.$imagen;
+	 	$configthumbs['maintain_ratio'] = TRUE;
+		$configthumbs['width'] = 30;
+		$configthumbs['height'] =30;
+		$this->load->library('image_lib', $configthumbs);
+	 	if (!$this->image_lib->resize()) {
+	 		echo $this->image_lib->display_errors();
+	 	}
+
+	 }
+
+
 
 		public function subirArchivo(){
 		$config['upload_path'] = './uploads/archivos/';
@@ -103,6 +127,9 @@ class Archivos extends CI_Controller {
 			 force_download($name,$data);
 
 	}
+
+
+
 
 
 }

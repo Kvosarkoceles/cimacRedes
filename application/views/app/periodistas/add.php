@@ -298,10 +298,20 @@
           </div>
         </div>
       </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="container">
+            <div class="row justify-content-end">
+               <div class="col-2">
+                 <button type="submit" class="btn btn-outline-secondary mb-3">Guardar</button>
+               </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-success btn-flat">Guardar</button>
-    </div>
+
   </form>
 </div>
 <!-- accordion style 1 end -->

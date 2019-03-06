@@ -20,4 +20,10 @@ class Upload_model extends CI_Model {
         );
         return $this->db->insert('imagenes_periodista', $data);
     }
+
+    public function subirImagenPeriodista($data){
+      return $this->db->insert("imagenes_periodista",$data);
+
+    }
+
 }
