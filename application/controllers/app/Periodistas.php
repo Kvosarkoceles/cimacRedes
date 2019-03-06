@@ -74,7 +74,8 @@ class Periodistas extends CI_Controller {
 			'sexo' => $this->Periodistas_model->getSexo(),
 			'periodista' => $this->Periodistas_model->getPeriodista($id),
 			'trabajo' => $this->Periodistas_model->getTrabajo($id),
-			'imagenes' => $this->Periodistas_model->getImagenes($id)
+			'imagenes' => $this->Periodistas_model->getImagenes($id),
+			'registros' => $this->Periodistas_model->getRegistro($id),
 		//	'trabajo' => $this->Periodistas_model->getTrabajo2($id),
 
 		);
