@@ -8,6 +8,7 @@
         <div class="card-body">
             <h4 class="header-title">Edita periodista</h4>
             <div id="accordion2" class="according accordion-s2">
+                <!--Informacion Personal start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="card-link" data-toggle="collapse" href="#accordion21">Informacion Personal</a>
@@ -121,6 +122,8 @@
                       </div>
                     </div>
                 </div>
+                <!--Informacion Personal end -->
+                <!--Informacion de contacto start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Informacion de contacto</a>
@@ -180,6 +183,8 @@
                       </div>
                     </div>
                 </div>
+                <!--Informacion de contacto end -->
+                <!--Informacion Laboral start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse"  href="#accordion23">Informacion Laboral</a>
@@ -290,6 +295,8 @@
                       </div>
                     </div>
                 </div>
+                <!--Informacion Laboral end -->
+                <!--Archivos start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion24">Archivos</a>
@@ -322,30 +329,35 @@
                                             <td scope="col"><?php echo $imagen->descripcion?></td>
                                             <td scope="col" ><?php echo $imagen->fechaRegistro?></td>
                                             <td valign="middle">
-                                              <a data-toggle="modal" data-target="#example_<?php echo $imagen->id?>"  title="<?php echo $imagen->titulo?>">
-                                                <img src="<?php echo base_url();?>./assets/uploads/periodista/imagenes/thumbs/<?php echo $imagen->ruta?>" alt="<?php echo $imagen->titulo?>" /></a>
-                                                <!-- Button trigger modal -->                                                        <!-- Modal -->
-                                                <div class="modal fade" id="example_<?php echo $imagen->id?>">
-                                                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                    <div class="modal-content">
-                                                      <div class="modal-header">
-                                                        <!--      <h5 class="modal-title">Modal title</h5>-->
-                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                                      </div>
-                                                      <div class="modal-body">
-                                                        <a title="<?php echo $imagen->titulo?>" target="_blank"><img src="<?php echo base_url();?>./assets/uploads/periodista/imagenes/<?php echo $imagen->ruta?>" width="700px" height="700px" alt="<?php echo $imagen->ruta?>" />
-                                                        </a>
+                                              <ul class="d-flex justify-content-center">
+                                                <li class="mr-4">
+                                                  <a data-toggle="modal" data-target="#example_<?php echo $imagen->id?>"  title="<?php echo $imagen->titulo?>">
+                                                    <img src="<?php echo base_url();?>./assets/uploads/periodista/imagenes/thumbs/<?php echo $imagen->ruta?>" alt="<?php echo $imagen->titulo?>" /></a>
+                                                    <!-- Button trigger modal -->                                                        <!-- Modal -->
+                                                    <div class="modal fade" id="example_<?php echo $imagen->id?>">
+                                                      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                          <div class="modal-header">
+                                                            <!--      <h5 class="modal-title">Modal title</h5>-->
+                                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                            <a title="<?php echo $imagen->titulo?>" target="_blank"><img src="<?php echo base_url();?>./assets/uploads/periodista/imagenes/<?php echo $imagen->ruta?>" width="700px" height="700px" alt="<?php echo $imagen->ruta?>" />
+                                                            </a>
+                                                          </div>
+                                                        </div>
                                                       </div>
                                                     </div>
-                                                  </div>
-                                                </div>
-                                                <!-- Vertically centered modal end -->
-                                              </td>
-                                              <td valign="middle">
-                                                <ul class="d-flex justify-content-center">
-                                                  <li class="mr-1">  <a href="<?php echo base_url();?>./assets/uploads/periodista/imagenes/<?php echo $imagen->ruta?>" download="<?php echo $imagen->ruta?>"><i class="fa fa-cloud-download"></i></a></li>
-                                                </ul>
-                                              </td>
+                                                    <!-- Vertically centered modal end -->
+                                                 </li>
+                                                 <li class="mr-4">
+                                                   <a href="<?php echo base_url();?>./assets/uploads/periodista/imagenes/<?php echo $imagen->ruta?>" download="<?php echo $imagen->ruta?>"><i class="fa fa-cloud-download"></i></a>
+                                                 </li>
+                                                 <li class="mr-4">
+                                                   <a href="<?php echo base_url();?>app/archivos/deleteImagen/<?php echo $imagen->id ?>" class="text-danger"> <i class="ti-trash"></i></a>
+                                                 </li>
+                                              </ul>
+                                            </td>
                                             </tr>
                                           <?php endforeach;?>
                                         <?php endif;?>
@@ -418,6 +430,8 @@
 
                     </div>
                 </div>
+                <!--Archivos end -->
+                <!--Informacion de Incidentes start -->
                 <div class="card">
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion25">Informacion de Incidentes</a>
@@ -473,6 +487,8 @@
                         </div>
                     </div>
                 </div>
+                <!--Informacion de Incidentes end -->
+                <!--Botton Guardar start -->
                 <div class="card">
                   <div class="card-body">
                     <div class="container">
@@ -484,6 +500,7 @@
                     </div>
                   </div>
                 </div>
+                <!--Botton Guardar end -->
             </div>
         </div>
     </div>

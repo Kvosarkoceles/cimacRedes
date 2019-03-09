@@ -149,14 +149,20 @@ class Archivos extends CI_Controller {
 	}
 
 	public function deleteArchivo($id){
-		$archivo=$this->Archivos_model->getArchivo($id);
-		$id_periodista =$archivo->id_periodista;
 		$data  = array(
 			'id_estatus' => "0",
 		);
 		$this->Archivos_model->delete($id,$data);
+		header('Location:' . getenv('HTTP_REFERER'));
+	}
+	public function deleteImagen($id){
+
+	
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Archivos_model->deleteImagen($id,$data);
 		//	redirect(base_url()."app/periodistas/edit/$id_periodista");
 		header('Location:' . getenv('HTTP_REFERER'));
 	}
-
 }//cierre de clase Archivos

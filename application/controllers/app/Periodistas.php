@@ -17,8 +17,15 @@ class Periodistas extends CI_Controller {
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
+
+
+		//$this->load->view('datatable');
 		$this->load->view("app/periodistas/list",$data);
 		$this->load->view('layouts/footer');
+	//	$this->load->view("layouts/header");
+		//$this->load->view("layouts/aside");
+		//$this->load->view("app/periodistas/list",$data);
+	//	$this->load->view('layouts/footer');
 	}
 	public function add(){
 		$data  = array(

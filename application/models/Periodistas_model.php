@@ -165,6 +165,7 @@ public function getImagenes($id){
 	$this->db->select("u.*");
 	$this->db->from("imagenes_periodista u");
 	$this->db->where("u.id_periodista",$id);
+	$this->db->where("u.id_estatus",1);
 	$resultado = $this->db->get();
 	return $resultado->result();
 }

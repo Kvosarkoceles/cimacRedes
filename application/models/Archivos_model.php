@@ -33,8 +33,11 @@ class Archivos_model extends CI_Model {
       $this->db->where("id",$id);
       return $this->db->update('archivos_periodista',$data);
     }
+    public function deleteImagen($id,$data){
+      $this->db->where("id",$id);
+      return $this->db->update('imagenes_periodista',$data);
+    }
 
-  
 
     public function getArchivo($id){
       $this->db->select("u.*");
