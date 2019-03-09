@@ -1,5 +1,9 @@
 <!-- accordion style 2 start -->
+
 <div class="col-lg-12 mt-5">
+  <form action="<?php echo base_url();?>app/periodistas/update" method="POST"   autocomplete="off" >
+    <input type="hidden" name="idperiodista" value="<?php echo $periodista->id?>" id ="idperiodista">
+    <input type="hidden" name="idtrabajo" value="<?php echo $trabajo ->id?>" id ="idtrabajo">
     <div class="card">
         <div class="card-body">
             <h4 class="header-title">Edita periodista</h4>
@@ -361,7 +365,7 @@
                         <div class="card-body">
 
                           <div class="card-body">
-                            <h4 class="header-title">Imagenes</h4>
+                            <h4 class="header-title">Archivos</h4>
                             <div class="single-table">
                               <div class="table-responsive">
                                 <table class="table table-hover progress-table text-center">
@@ -376,36 +380,22 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <?php if(!empty($imagenes)):?>
-                                      <?php foreach($imagenes as $imagen):?>
+                                    <?php if(!empty($archivos)):?>
+                                      <?php foreach($archivos as $archivo):?>
                                         <tr>
-                                          <td scope="col"><?php echo $imagen->id?></td>
-                                          <td scope="col"><?php echo $imagen->titulo?></td>
-                                          <td scope="col"><?php echo $imagen->descripcion?></td>
-                                          <td scope="col" ><?php echo $imagen->fechaRegistro?></td>
-                                          <td valign="middle">
-                                            <a data-toggle="modal" data-target="#example_<?php echo $imagen->id?>"  title="<?php echo $imagen->titulo?>">
-                                              <img src="<?php echo base_url();?>./assets/uploads/periodista/imagenes/thumbs/<?php echo $imagen->ruta?>" alt="<?php echo $imagen->titulo?>" /></a>
-                                              <!-- Button trigger modal -->                                                        <!-- Modal -->
-                                              <div class="modal fade" id="example_<?php echo $imagen->id?>">
-                                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                  <div class="modal-content">
-                                                    <div class="modal-header">
-                                                      <!--      <h5 class="modal-title">Modal title</h5>-->
-                                                      <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                      <a title="<?php echo $imagen->titulo?>" target="_blank"><img src="<?php echo base_url();?>./assets/uploads/periodista/imagenes/<?php echo $imagen->ruta?>" width="700px" height="700px" alt="<?php echo $imagen->ruta?>" />
-                                                      </a>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                              <!-- Vertically centered modal end -->
-                                            </td>
+                                          <td scope="col"><?php echo $archivo->id?></td>
+                                          <td scope="col"><?php echo $archivo->titulo?></td>
+                                          <td scope="col"><?php echo $archivo->descripcion?></td>
+                                          <td scope="col" ><?php echo $archivo->fechaRegistro?></td>
+
                                             <td valign="middle">
                                               <ul class="d-flex justify-content-center">
-                                                <li class="mr-1">  <a href="<?php echo base_url();?>./assets/uploads/periodista/imagenes/<?php echo $imagen->ruta?>" download="<?php echo $imagen->ruta?>"><i class="fa fa-cloud-download"></i></a></li>
+                                                <li class="mr-4">
+                                                   <a href="<?php echo base_url();?>app/archivos/downloads/<?php echo $archivo->ruta ?>"> <i class="fa fa-cloud-download"></i></a>
+                                                 </li>
+                                                 <li class="mr-4">
+                                                   <a href="<?php echo base_url();?>app/archivos/deleteArchivo/<?php echo $archivo->id ?>" class="text-danger"> <i class="ti-trash"></i></a>
+                                                 </li>
                                               </ul>
                                             </td>
                                           </tr>
@@ -419,7 +409,7 @@
                           </div>
                           <div class="row justify-content-end">
                              <div class="col-2">
-                               <a href="<?php echo base_url();?>app/archivos/add/<?php echo $periodista->id;?>" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar</a>
+                               <a href="<?php echo base_url();?>app/archivos/addArchivo/<?php echo $periodista->id;?>" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar</a>
                              </div>
                            </div>
                         </div>
@@ -474,7 +464,11 @@
                               </div>
                             </div>
                           </div>
-
+                          <div class="row justify-content-end">
+                             <div class="col-2">
+                               <a href="<?php echo base_url();?>app/registros/add/<?php echo $periodista->id;?>" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar</a>
+                             </div>
+                           </div>
 
                         </div>
                     </div>
@@ -493,5 +487,7 @@
             </div>
         </div>
     </div>
+  </form>
 </div>
+
 <!-- accordion style 2 end -->

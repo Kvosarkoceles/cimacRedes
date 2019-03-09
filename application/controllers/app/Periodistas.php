@@ -50,7 +50,8 @@ class Periodistas extends CI_Controller {
 			'periodista' => $this->Periodistas_model->getPeriodista($id),
 			'trabajo' => $this->Periodistas_model->getTrabajo($id),
 			'registros' => $this->Periodistas_model->getRegistro($id),
-			'imagenes' => $this->Periodistas_model->getImagenes($id)
+			'imagenes' => $this->Periodistas_model->getImagenes($id),
+			'archivos' => $this->Periodistas_model->getArchivos($id)
 		//	'menus' => $this->Permisos_model->getMenus(),
 		//	'permiso' => $this->Permisos_model->getPermiso($id)
 		);
@@ -76,6 +77,7 @@ class Periodistas extends CI_Controller {
 			'trabajo' => $this->Periodistas_model->getTrabajo($id),
 			'imagenes' => $this->Periodistas_model->getImagenes($id),
 			'registros' => $this->Periodistas_model->getRegistro($id),
+			'archivos' => $this->Periodistas_model->getArchivos($id)
 		//	'trabajo' => $this->Periodistas_model->getTrabajo2($id),
 
 		);
@@ -298,13 +300,13 @@ class Periodistas extends CI_Controller {
 			}
 			else{
 				$this->session->set_flashdata("error","No se pudo guardar la informacion");
-				redirect(base_url()."app/periodistas/edit".$idperiodista);
+				redirect(base_url()."app/periodistas/edit/$idperiodista");
 			}
 			if($this->Periodistas_model->update($idtrabajo,$datoslaborales,"datoslaborales")){
 					redirect(base_url()."app/periodistas/info/$idperiodista");
 			}	else{
 					$this->session->set_flashdata("error","No se pudo guardar la informacion");
-					redirect(base_url()."app/periodistas/edit/".$idperiodista);
+					redirect(base_url()."app/periodistas/edit/$idperiodista");
 			}
 		}else {
 			$this->edit($idperiodista);
