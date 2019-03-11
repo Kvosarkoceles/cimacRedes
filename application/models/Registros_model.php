@@ -32,7 +32,6 @@ class Registros_model extends CI_Model {
 													,rn.nombre as renvi
 													,ac5.nombre as estasDeAcuedoConElMecanismo
 													,ac6.nombre as tePermitenSeguirHaciendoTuTrabajo");
-
 		$this->db->from("datosincidente u");
 		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
 		$this->db->join("estados e","p.id_estados = e.id");
@@ -156,4 +155,22 @@ class Registros_model extends CI_Model {
 		$resultados = $this->db->get("tipodemanifestaciones");
 		return $resultados ->result();
 	}
-}
+
+
+	public function getImagenes($id){
+		$this->db->select("u.*");
+		$this->db->from("imagenes_registro u");
+		$this->db->where("u.id_registro",$id);
+		$this->db->where("u.id_estatus",1);
+		$resultado = $this->db->get();
+		return $resultado->result();
+	}
+	public function getArchivos($id){
+		$this->db->select("u.*");
+		$this->db->from("archivos_registro u");
+		$this->db->where("u.id_registro	",$id);
+		$this->db->where("u.id_estatus",1);
+		$resultado = $this->db->get();
+		return $resultado->result();
+	}
+}//fin de clase Registros_model

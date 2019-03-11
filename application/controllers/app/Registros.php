@@ -57,6 +57,8 @@ class Registros extends CI_Controller {
 			'registros' => $this->Registros_model->getRegistro($id),
 			'manifestaciones' => $this->Registros_model->getManifestaciones($id),
 			'agresor' => $this->Agresores_model->getAgresores($id),
+			'imagenes' => $this->Registros_model->getImagenes($id),
+			'archivos' => $this->Registros_model->getArchivos($id)
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -77,7 +79,9 @@ class Registros extends CI_Controller {
 			'perfiles' => $this->Registros_model->getPerfiles(),
 			'Judicializacion' => $this->Registros_model->getJudicializacionr($id),
 			'niveles' => $this->Registros_model->getNiveles(),
-		);	
+			'imagenes' => $this->Registros_model->getImagenes($id),
+			'archivos' => $this->Registros_model->getArchivos($id)
+		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("app/registros/edit",$data);

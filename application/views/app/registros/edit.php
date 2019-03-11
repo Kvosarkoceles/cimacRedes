@@ -589,6 +589,141 @@
             </div>
           </div>
           <!-- Acciones de seguimiento end -->
+          <!--Archivos start -->
+          <div class="card">
+              <div class="card-header">
+                  <a class="collapsed card-link" data-toggle="collapse" href="#accordion24">Archivos</a>
+              </div>
+              <div id="accordion24" class="collapse show" data-parent="#accordion2">
+
+                <div class="card-body">
+                  <div class="card-body">
+                      <div class="card-body">
+                        <h4 class="header-title">Imagenes</h4>
+                        <div class="single-table">
+                          <div class="table-responsive">
+                            <table class="table table-hover progress-table text-center">
+                              <thead class="text-uppercase">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Nombre del archivo</th>
+                                  <th scope="col">Descripción</th>
+                                  <th scope="col">Fecha de subida</th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php if(!empty($imagenes)):?>
+                                  <?php foreach($imagenes as $imagen):?>
+                                    <tr>
+                                      <td scope="col"><?php echo $imagen->id?></td>
+                                      <td scope="col"><?php echo $imagen->titulo?></td>
+                                      <td scope="col"><?php echo $imagen->descripcion?></td>
+                                      <td scope="col" ><?php echo $imagen->fechaRegistro?></td>
+                                      <td valign="middle">
+                                        <ul class="d-flex justify-content-center">
+                                          <li class="mr-4">
+                                            <a data-toggle="modal" data-target="#example_<?php echo $imagen->id?>"  title="<?php echo $imagen->titulo?>">
+                                              <img src="<?php echo base_url();?>./assets/uploads/registros/imagenes/thumbs/<?php echo $imagen->ruta?>" alt="<?php echo $imagen->titulo?>" /></a>
+                                              <!-- Button trigger modal -->                                                        <!-- Modal -->
+                                              <div class="modal fade" id="example_<?php echo $imagen->id?>">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <!--      <h5 class="modal-title">Modal title</h5>-->
+                                                      <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      <a title="<?php echo $imagen->titulo?>" target="_blank"><img src="<?php echo base_url();?>./assets/uploads/registros/imagenes/<?php echo $imagen->ruta?>" width="700px" height="700px" alt="<?php echo $imagen->ruta?>" />
+                                                      </a>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <!-- Vertically centered modal end -->
+                                           </li>
+                                           <li class="mr-4">
+                                             <a href="<?php echo base_url();?>./assets/uploads/registros/imagenes/<?php echo $imagen->ruta?>" download="<?php echo $imagen->ruta?>"><i class="fa fa-cloud-download"></i></a>
+                                           </li>
+                                           <li class="mr-4">
+                                             <a href="<?php echo base_url();?>app/archivos/deleteImagenRegistro/<?php echo $imagen->id ?>" class="text-danger"> <i class="ti-trash"></i></a>
+                                           </li>
+                                        </ul>
+                                      </td>
+                                      </tr>
+                                    <?php endforeach;?>
+                                  <?php endif;?>
+                                </tbody>
+                              </table>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row justify-content-end">
+                         <div class="col-2">
+                           <a href="<?php echo base_url();?>app/archivos/addImagenRegistro/<?php echo $registros->id;?>" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar</a>
+                         </div>
+                       </div>
+                  </div>
+
+                  <div class="card-body">
+
+                    <div class="card-body">
+                      <h4 class="header-title">Archivos</h4>
+                      <div class="single-table">
+                        <div class="table-responsive">
+                          <table class="table table-hover progress-table text-center">
+                            <thead class="text-uppercase">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre del archivo</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Fecha de subida</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php if(!empty($archivos)):?>
+                                <?php foreach($archivos as $archivo):?>
+                                  <tr>
+                                    <td scope="col"><?php echo $archivo->id?></td>
+                                    <td scope="col"><?php echo $archivo->titulo?></td>
+                                    <td scope="col"><?php echo $archivo->descripcion?></td>
+                                    <td scope="col" ><?php echo $archivo->fechaRegistro?></td>
+
+                                      <td valign="middle">
+                                        <ul class="d-flex justify-content-center">
+                                          <li class="mr-4">
+                                             <a href="<?php echo base_url();?>app/archivos/downloadsArchivoRegistro/<?php echo $archivo->ruta ?>"> <i class="fa fa-cloud-download"></i></a>
+                                           </li>
+                                           <li class="mr-4">
+                                             <a href="<?php echo base_url();?>app/archivos/deleteArchivoRegistro/<?php echo $archivo->id ?>" class="text-danger"> <i class="ti-trash"></i></a>
+                                           </li>
+                                        </ul>
+                                      </td>
+                                    </tr>
+                                  <?php endforeach;?>
+                                <?php endif;?>
+                              </tbody>
+                            </table>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row justify-content-end">
+                       <div class="col-2">
+                         <a href="<?php echo base_url();?>app/archivos/addArchivoRegistro/<?php echo $registros->id;?>" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar</a>
+                       </div>
+                     </div>
+                  </div>
+                </div>
+
+
+              </div>
+          </div>
+          <!--Archivos end -->
           <!-- Boton start -->
           <div class="form-group">
             <button type="submit" class="btn btn-outline-primary mb-3">Guardar</button>

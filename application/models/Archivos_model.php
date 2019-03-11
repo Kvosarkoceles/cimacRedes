@@ -25,17 +25,22 @@ class Archivos_model extends CI_Model {
       return $this->db->insert("imagenes_periodista",$data);
     }
 
+    public function subirImagenRegistro($data){
+      return $this->db->insert("imagenes_registro",$data);
+    }
     public function subirArchivoPeriodista($data){
       return $this->db->insert("archivos_periodista",$data);
     }
-
-    public function delete($id,$data){
-      $this->db->where("id",$id);
-      return $this->db->update('archivos_periodista',$data);
+    public function subirArchivoRegistro($data){
+      return $this->db->insert("archivos_registro",$data);
     }
-    public function deleteImagen($id,$data){
+    public function delete($id,$data,$tabla){
       $this->db->where("id",$id);
-      return $this->db->update('imagenes_periodista',$data);
+      return $this->db->update($tabla,$data);
+    }
+    public function deleteImagen($id,$data,$tabla){
+      $this->db->where("id",$id);
+      return $this->db->update($tabla,$data);
     }
 
 
