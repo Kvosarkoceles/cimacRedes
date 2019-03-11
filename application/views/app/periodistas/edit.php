@@ -13,7 +13,7 @@
                     <div class="card-header">
                         <a class="card-link" data-toggle="collapse" href="#accordion21">Informacion Personal</a>
                     </div>
-                    <div id="accordion21" class="collapse" data-parent="#accordion2">
+                    <div id="accordion21" class="collapse show" data-parent="#accordion2">
                       <div class="card-body">
                         <div class="form-row align-items-center">
                           <div class="col-sm-4  my-1">
@@ -128,7 +128,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Informacion de contacto</a>
                     </div>
-                    <div id="accordion22" class="collapse" data-parent="#accordion2">
+                    <div id="accordion22" class="collapse show" data-parent="#accordion2">
                       <div class="card-body">
                         <div class="form-row align-items-center">
                           <div class="col-sm-4 my-1 ">
@@ -189,7 +189,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse"  href="#accordion23">Informacion Laboral</a>
                     </div>
-                    <div id="accordion23" class="collapse" data-parent="#accordion2">
+                    <div id="accordion23" class="collapse show" data-parent="#accordion2">
                       <div class="card-body">
                         <div class="form-row align-items-center">
                           <div class="col-sm-4 my-1 ">
@@ -436,7 +436,7 @@
                     <div class="card-header">
                         <a class="collapsed card-link" data-toggle="collapse" href="#accordion25">Informacion de Incidentes</a>
                     </div>
-                    <div id="accordion25" class="collapse" data-parent="#accordion2">
+                    <div id="accordion25" class="collapse show" data-parent="#accordion2">
                         <div class="card-body">
 
                           <div class="card-body">

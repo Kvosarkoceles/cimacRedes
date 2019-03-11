@@ -615,11 +615,23 @@
                 </div>
               <!-- Acciones de seguimiento end -->
 
-              <!-- Boton start -->
-              <div class="form-group">
-                <button type="submit" class="btn btn-success btn-flat">Guardar</button>
+
+              <!--Botton Guardar start -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="container">
+                    <div class="row justify-content-end">
+                       <div class="col-2">
+                         <button type="submit" class="btn btn-outline-secondary mb-3">Guardar</button>
+                       </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <!-- Boton end -->
+              <!--Botton Guardar end -->
+
+
+            
             </div>
         </div>
     </div>

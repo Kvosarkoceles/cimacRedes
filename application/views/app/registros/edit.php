@@ -105,9 +105,9 @@
           <!-- Agresión start -->
           <div class="card">
             <div class="card-header">
-              <a class="collapsed card-link" data-toggle="collapse" href="#accordion23">Agresión</a>
+              <a class="collapsed card-link" data-toggle="collapse" href="#accordion13">Agresión</a>
             </div>
-            <div id="accordion23" class="collapse show" data-parent="#accordion1">
+            <div id="accordion13" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -171,7 +171,7 @@
                           <?php endif;?>
                         </tbody>
                       </table>
-                      <a href="<?php echo base_url();?>app/agresores/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
+                      <a href="<?php echo base_url();?>app/agresores/add/<?php echo $registros->id;?>" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar Agresor</a>
                     </div>
                   </div>
                 </div>
@@ -182,9 +182,9 @@
           <!-- Analisis start -->
           <div class="card">
             <div class="card-header">
-              <a class="collapsed card-link" data-toggle="collapse" href="#accordion22">Analisis</a>
+              <a class="collapsed card-link" data-toggle="collapse" href="#accordion14">Analisis</a>
             </div>
-            <div id="accordion22" class="collapse show" data-parent="#accordion1">
+            <div id="accordion14" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -211,9 +211,9 @@
           <!-- Tipo de violencia start -->
           <div class="card">
             <div class="card-header">
-              <a class="collapsed card-link" data-toggle="collapse" href="#accordion13">Tipo de violencia</a>
+              <a class="collapsed card-link" data-toggle="collapse" href="#accordion15">Tipo de violencia</a>
             </div>
-            <div id="accordion13" class="collapse show" data-parent="#accordion1">
+            <div id="accordion15" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -274,9 +274,9 @@
           <!-- Modalidad de violencia< start -->
           <div class="card">
             <div class="card-header">
-              <a class="collapsed card-link" data-toggle="collapse" href="#accordion14">Modalidad de violencia</a>
+              <a class="collapsed card-link" data-toggle="collapse" href="#accordion16">Modalidad de violencia</a>
             </div>
-            <div id="accordion14" class="collapse show" data-parent="#accordion1">
+            <div id="accordion16" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -337,9 +337,9 @@
           <!-- Manifestaciones de la violencia start -->
           <div class="card">
             <div class="card-header">
-              <a class="collapsed card-link" data-toggle="collapse" href="#accordion15">Manifestaciones de la violencia</a>
+              <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Manifestaciones de la violencia</a>
             </div>
-            <div id="accordion15" class="collapse show" data-parent="#accordion1">
+            <div id="accordion17" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="single-table">
@@ -370,7 +370,7 @@
                           <?php endif;?>
                         </tbody>
                       </table>
-                      <a href="<?php echo base_url();?>app/manifestacion/add/<?php echo $registros->id;?>" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Manifestacion</a>
+                      <a href="<?php echo base_url();?>app/manifestacion/add/<?php echo $registros->id;?>" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar Manifestacion</a>
                     </div>
                   </div>
                 </div>
@@ -381,9 +381,9 @@
           <!-- Consecuencias start -->
           <div class="card">
             <div class="card-header">
-              <a class="collapsed card-link" data-toggle="collapse" href="#accordion16">Consecuencias</a>
+              <a class="collapsed card-link" data-toggle="collapse" href="#accordion18">Consecuencias</a>
             </div>
-            <div id="accordion16" class="collapse show" data-parent="#accordion1">
+            <div id="accordion18" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -431,9 +431,9 @@
           <!-- Atención Recibida por cimac start -->
           <div class="card">
             <div class="card-header">
-              <a class="collapsed card-link" data-toggle="collapse" href="#accordion17">Atención Recibida Por CIMAC</a>
+              <a class="collapsed card-link" data-toggle="collapse" href="#accordion19">Atención Recibida Por CIMAC</a>
             </div>
-            <div id="accordion17" class="collapse show" data-parent="#accordion1">
+            <div id="accordion19" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -492,9 +492,9 @@
           <!-- Acciones de seguimiento start -->
           <div class="card">
             <div class="card-header">
-              <a class="collapsed card-link" data-toggle="collapse" href="#accordion18">Acciones de seguimiento</a>
+              <a class="collapsed card-link" data-toggle="collapse" href="#accordion20">Acciones de seguimiento</a>
             </div>
-            <div id="accordion18" class="collapse show" data-parent="#accordion1">
+            <div id="accordion20" class="collapse show" data-parent="#accordion1">
               <div class="card-body">
                 <div class="card-body">
                   <div class="form-row align-items-center">
@@ -592,9 +592,9 @@
           <!--Archivos start -->
           <div class="card">
               <div class="card-header">
-                  <a class="collapsed card-link" data-toggle="collapse" href="#accordion24">Archivos</a>
+                  <a class="collapsed card-link" data-toggle="collapse" href="#accordion21">Archivos</a>
               </div>
-              <div id="accordion24" class="collapse show" data-parent="#accordion2">
+              <div id="accordion21" class="collapse show" data-parent="#accordion1">
 
                 <div class="card-body">
                   <div class="card-body">
@@ -724,11 +724,20 @@
               </div>
           </div>
           <!--Archivos end -->
-          <!-- Boton start -->
-          <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary mb-3">Guardar</button>
+          <!--Botton Guardar start -->
+          <div class="card">
+            <div class="card-body">
+              <div class="container">
+                <div class="row justify-content-end">
+                   <div class="col-2">
+                     <button type="submit" class="btn btn-outline-secondary mb-3">Guardar</button>
+                   </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- Boton end -->
+          <!--Botton Guardar end -->
+
         </div>
       </div>
     </div>

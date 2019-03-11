@@ -31,7 +31,8 @@ class Registros_model extends CI_Model {
 													,cndh.nombre as quejaAnteDerechosHumanos
 													,rn.nombre as renvi
 													,ac5.nombre as estasDeAcuedoConElMecanismo
-													,ac6.nombre as tePermitenSeguirHaciendoTuTrabajo");
+													,ac6.nombre as tePermitenSeguirHaciendoTuTrabajo
+													,us.nombre as usuario");
 		$this->db->from("datosincidente u");
 		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
 		$this->db->join("estados e","p.id_estados = e.id");
@@ -48,6 +49,7 @@ class Registros_model extends CI_Model {
 		$this->db->join("niveles rn","u.id_renvi = rn.id");
 		$this->db->join("sino ac5","u.estasDeAcuedoConElMecanismoDeProteccion = ac5.valor");
 		$this->db->join("sino ac6","u.esasMedidasTePermitenSeguirHaciendoTuTrabajo = ac5.valor");
+		$this->db->join("usuarios us","u.id_uduarioModificacion = us.id");
 		$this->db->where("u.id",$id);
 		$resultado = $this->db->get();
 		return $resultado->row();

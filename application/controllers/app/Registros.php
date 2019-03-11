@@ -283,6 +283,8 @@ class Registros extends CI_Controller {
 				'id_motivodelasgresion' => $motivodelasgresion,
 				'id_tipoDeInvestigacion' => $tipoDeInvestigacion,
 					// Agresion  end //
+					'fechaultimamodificacion' =>date("Y")."-".date("m")."-".date("d"),
+					'id_uduarioModificacion	' => $this->session->userdata("id"),
 			);
 			$datosincidente=$this->Registros_model->save('datosincidente',$data);
 			$datosagresor = array(
@@ -481,6 +483,8 @@ class Registros extends CI_Controller {
 				'cuales' => $cuales,
 				'queAHechoLaComisionDeDerechosHumanos' => $queAHechoLaComisionDeDerechosHumanos,
 				// Acciones de seguimiento end //
+				'fechaultimamodificacion' =>date("Y")."-".date("m")."-".date("d"),
+				'id_uduarioModificacion	' => $this->session->userdata("id"),
 			);
 
 			if ($this->Registros_model->update($id_registro,$data)) {

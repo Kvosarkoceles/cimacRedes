@@ -18,35 +18,35 @@ class Permisos extends CI_Controller {
 
 	public function index(){
 		$data  = array(
-			'permisos' => $this->Permisos_model->getPermisos(), 
-		); 
+			'permisos' => $this->Permisos_model->getPermisos(),
+		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("admin/permisos/list",$data);
-		$this->load->view("layouts/footer");	
+		$this->load->view("layouts/footer");
 	}
 
 	public function add(){
 		$data  = array(
-			'roles' => $this->Usuarios_model->getRoles(), 
-			'menus' => $this->Permisos_model->getMenus(), 
-		); 
+			'roles' => $this->Usuarios_model->getRoles(),
+			'menus' => $this->Permisos_model->getMenus(),
+		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("admin/permisos/add",$data);
-		$this->load->view("layouts/footer");	
+		$this->load->view("layouts/footer");
 	}
 
 	public function edit($id){
 		$data  = array(
-			'roles' => $this->Usuarios_model->getRoles(), 
-			'menus' => $this->Permisos_model->getMenus(), 
+			'roles' => $this->Usuarios_model->getRoles(),
+			'menus' => $this->Permisos_model->getMenus(),
 			'permiso' => $this->Permisos_model->getPermiso($id)
-		); 
+		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
 		$this->load->view("admin/permisos/edit",$data);
-		$this->load->view("layouts/footer");	
+		$this->load->view("layouts/footer");
 	}
 
 	public function store(){
@@ -57,14 +57,14 @@ class Permisos extends CI_Controller {
 		$read = $this->input->post("read");
 		$update = $this->input->post("update");
 		$delete = $this->input->post("delete");
-				
+
 
 		$data  = array(
-			'menu_id' => $menu, 
+			'menu_id' => $menu,
 			'rol_id' => $rol,
-			'acceso' => $acceso,	
+			'acceso' => $acceso,
 			'read' => $read,
-			'insert' => $insert,	
+			'insert' => $insert,
 			'update' => $update,
 			'delete' => $delete
 		);
@@ -82,22 +82,22 @@ class Permisos extends CI_Controller {
 		$idpermiso = $this->input->post("idpermiso");
 		$menu = $this->input->post("menu");
 		$rol = $this->input->post("rol");
-		$acceso = $this->input->post("acceder");		
+		$acceso = $this->input->post("acceder");
 		$insert = $this->input->post("insert");
 		$read = $this->input->post("read");
 		$update = $this->input->post("update");
 		$delete = $this->input->post("delete");
-				
+
 
 		$data  = array(
 			'read' => $read,
-			'acceso' => $acceso,	
-			'insert' => $insert,	
+			'acceso' => $acceso,
+			'insert' => $insert,
 			'update' => $update,
 			'delete' => $delete
 		);
 
-		if ($this->Permisos_model->update($idpermiso,$data)) {  
+		if ($this->Permisos_model->update($idpermiso,$data)) {
 			redirect(base_url()."administrador/permisos");
 		}
 		else{
@@ -106,4 +106,3 @@ class Permisos extends CI_Controller {
 		}
 	}
 }
-	      

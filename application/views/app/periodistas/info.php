@@ -69,7 +69,6 @@
             </div>
           </div>
         </div>
-
         <div class="card">
           <div class="card-header">
             <a class="collapsed card-link" data-toggle="collapse" href="#accordion25">Archivos</a>
@@ -242,7 +241,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-md-12">
           <a href="<?php echo base_url();?>app/periodistas/edit/<?php echo $periodista->id;?>" class="btn btn-outline-secondary mb-3 float-right"><span class="fa fa-pencil"></span> Editar</a>
         </div>
