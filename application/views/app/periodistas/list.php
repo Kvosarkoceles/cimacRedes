@@ -27,10 +27,10 @@
                                                        <td>
                                                          <ul class="d-flex justify-content-center">
 
-                                                             <li class="mr-3"><a href="<?php echo base_url()?>periodista.html/<?php echo $periodista->id;?>" class="text-primary"><i class="fa fa-eye"></i></a></li>
-                                                             <li class="mr-3"><a href="<?php echo base_url()?>edita_periodista.html/<?php echo $periodista->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
-                                                             <li class="mr-3"><a href="<?php echo base_url();?>delete_periodista.html/<?php echo $periodista->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
-                                                             <li class="mr-3"><a href="<?php echo base_url();?>agrega_registro.html/<?php echo $periodista->id;?>" class="text-primary"><i class="fa fa-plus"></i></a></li>
+                                                             <li class="mr-3"><a href="<?php echo base_url()?>app/periodistas/info/<?php echo $periodista->id;?>" class="text-primary"><i class="fa fa-eye"></i></a></li>
+                                                             <li class="mr-3"><a href="<?php echo base_url()?>app/periodistas/edit/<?php echo $periodista->id;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
+                                                             <li class="mr-3"><a href="<?php echo base_url();?>app/periodistas/delete/<?php echo $periodista->id;?>" class="text-danger"><i class="ti-trash"></i></a></li>
+                                                             <li class="mr-3"><a href="<?php echo base_url();?>app/registros/add/<?php echo $periodista->id;?>" class="text-primary"><i class="fa fa-plus"></i></a></li>
                                                          </ul>
 
                                                        </td>
@@ -49,7 +49,7 @@
                                <div class="container">
                                  <div class="row justify-content-end">
                                     <div class="col-md-3">
-                                      <a href="<?php echo base_url();?>agrega_periodista.html" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar Periodista</a>
+                                      <a href="<?php echo base_url();?>app/periodistas/add" class="btn btn-outline-secondary mb-3"><span class="fa fa-plus"></span> Agregar Periodista</a>
                                     </div>
                                  </div>
                                </div>

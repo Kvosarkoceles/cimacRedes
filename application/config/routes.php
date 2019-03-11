@@ -53,7 +53,7 @@ $route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-
+/*
 $route['periodistas.html'] = 'app/periodistas';
 $route['periodista.html/(:any)'] = 'app/periodistas/info/$1';
 $route['agrega_periodista.html'] = 'app/periodistas/add';
@@ -139,3 +139,4 @@ $route['nivel2.html'] = 'administrador/configuracion/tipoagresor_nivel2';
 $route['nivel2.html/(:any)'] = 'administrador/configuracion/editaNivel2/$1';
 $route['delete_nivel2.html/(:any)'] = 'administrador/configuracion/delete_item2/$1';
 $route['addNivel2.html'] = 'administrador/configuracion/addItem2';
+*/

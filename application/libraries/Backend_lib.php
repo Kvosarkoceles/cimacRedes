@@ -1,7 +1,7 @@
 <?php
-	
+
 	class Backend_lib	{
-		
+
 		private $CI;
 
 		public function __construct(){
@@ -10,7 +10,7 @@
 
 		public function control(){
 			if (!$this->CI->session->userdata("login")) {
-				redirect(base_url());			
+				redirect(base_url());
 			}
 			$url=$this->CI->uri->segment(1);
 			#if ($this->CI->uri->segment(7)) {
@@ -22,24 +22,28 @@
 			#if ($this->CI->uri->segment(5)) {
 			#	$url=$this->CI->uri->segment(1)."/".$this->CI->uri->segment(2)."/".$this->CI->uri->segment(3)."/".$this->CI->uri->segment(4)."/".$this->CI->uri->segment(5);
 			#}
-			#if ($this->CI->uri->segment(4)) {
-			#	$url=$this->CI->uri->segment(1)."/".$this->CI->uri->segment(2)."/".$this->CI->uri->segment(3)."/".$this->CI->uri->segment(4);
-			#}
-			#if ($this->CI->uri->segment(3)) {
-			#	$url=$this->CI->uri->segment(1)."/".$this->CI->uri->segment(2)."/".$this->CI->uri->segment(3);
-			#}
-			if ($this->CI->uri->segment(2)) {
+			if ($this->CI->uri->segment(4)) {
 				$url=$this->CI->uri->segment(1)."/".$this->CI->uri->segment(2);
+			}else {
+				if ($this->CI->uri->segment(3)) {
+					$url=$this->CI->uri->segment(1)."/".$this->CI->uri->segment(2);
+				}else {
+					if ($this->CI->uri->segment(2)) {
+						$url=$this->CI->uri->segment(1)."/".$this->CI->uri->segment(2);
+					}
 			}
 
-			$infomenu = $this->CI->Backend_model->getID($url);
+			}
 
-			$permisos = $this->CI->Backend_model->getPermisos($infomenu->id_indice,$this->CI->session->userdata("rol"));
 
+//			$infomenu = $this->CI->Backend_model->getID($url);
+	$infomenu = $this->CI->Backend_model->getID($url);
+		$permisos = $this->CI->Backend_model->getPermisos($infomenu->id);
+//	$permisos = $this->CI->Backend_model->getPermisos($infomenu,2);
 			if ($permisos->acceso == 0) {
-				redirect(base_url().directorio."/".contactos);
+				redirect(base_url().app."/".periodistas);
 			}else{
-				return $permisos; 
+				return $permisos;
 			}
 
 		}

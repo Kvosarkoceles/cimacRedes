@@ -2,12 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Configuracion extends CI_Controller {
-
+	private $permisos;
 	public function __construct(){
 		parent::__construct();
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
+			$this->permisos = $this->backend_lib->control();
 		$this->load->model("Configuracion_model");
 		$this->load->model('Dependent_model', 'dep_model', TRUE);
 	}

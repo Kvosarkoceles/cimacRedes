@@ -69,7 +69,7 @@
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-group"></i><span>Administracion</span></a>
                                 <ul class="collapse">
                                     <li><a href="<?php echo base_url();?>administrador/usuarios">Usuarias</a></li>
-
+                                    <li><a href="<?php echo base_url();?>administrador/permisos">Permisos</a></li>
                                 </ul>
                             </li>
                         </ul>

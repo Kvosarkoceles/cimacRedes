@@ -1,44 +1,89 @@
 <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
+
                             <div class="card-body">
-                                <h4 class="header-title">Table Periodistas</h4>
+
+                                <h4 class="header-title">  Permisos
+        <small>Listado</small></h4>
+
+        <div class="row">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url();?>administrador/permisos/add" class="btn btn-primary btn-flat"><span class="fa fa-plus"></span> Agregar Permiso</a>
+                    </div>
+                </div>
+
+                <br>
                                 <div class="data-tables">
                                     <table id="dataTable" class="text-center">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th>Clave</th>
-                                                <th>Fecha</th>
-                                                <th>Nombre(s)</th>
-                                                
-                                                <th>Estado</th>
-                                                
-                                                
+                                              <th>#</th>
+<th>Menu</th>
+<th>Rol</th>
+<th>Acceder</th>
+<th>Leer</th>
+<th>Insertar</th>
+<th>Actualizar</th>
+<th>Eliminar</th>
+<th>opciones</th>
+
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Airi Satou</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>33</td>
-                                                
-                                            </tr>
-                                           
-                                            <tr>
-                                                <td>Caesar Vance</td>
-                                                <td>Pre-Sales Support</td>
-                                                <td>New York</td>
-                                                <td>29</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                
-                                                <td>Edinburgh</td>
-                                                <td>21</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
-                                            </tr>
+                                          <?php if(!empty($permisos)):?>
+                                    <?php foreach($permisos as $permiso):?>
+                                        <tr>
+                                            <td><?php echo $permiso->id;?></td>
+                                            <td><?php echo $permiso->menu;?></td>
+                                            <td><?php echo $permiso->rol;?></td>
+                                            <td>
+                                                <?php if($permiso->acceso == 0):?>
+                                                    <span class="fa fa-times"></span>
+                                                <?php else: ?>
+                                                    <span class="fa fa-check"></span>
+                                                <?php endif;?>
+                                            </td>
+                                            <td>
+                                                <?php if($permiso->read == 0):?>
+                                                    <span class="fa fa-times"></span>
+                                                <?php else: ?>
+                                                    <span class="fa fa-check"></span>
+                                                <?php endif;?>
+                                            </td>
+
+                                            <td>
+                                                <?php if($permiso->insert == 0):?>
+                                                    <span class="fa fa-times"></span>
+                                                <?php else: ?>
+                                                    <span class="fa fa-check"></span>
+                                                <?php endif;?>
+                                            </td>
+                                            <td>
+                                                <?php if($permiso->update == 0):?>
+                                                    <span class="fa fa-times"></span>
+                                                <?php else: ?>
+                                                    <span class="fa fa-check"></span>
+                                                <?php endif;?>
+                                            </td>
+                                            <td>
+                                                <?php if($permiso->delete == 0):?>
+                                                    <span class="fa fa-times"></span>
+                                                <?php else: ?>
+                                                    <span class="fa fa-check"></span>
+                                                <?php endif;?>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="<?php echo base_url()?>administrador/permisos/edit/<?php echo $permiso->id;?>" class="btn btn-warning"><span class="fa fa-pencil"></span></a>
+                                                    <a href="<?php echo base_url();?>administrador/permisos/delete/<?php echo $permiso->id;?>" class="btn btn-danger btn-remove"><span class="fa fa-remove"></span></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach;?>
+                                <?php endif;?>
+
                                         </tbody>
                                     </table>
                                 </div>
