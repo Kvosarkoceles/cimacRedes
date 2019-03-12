@@ -24,7 +24,7 @@
             <div class="col-sm-6  my-1 ">
               <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nivel->nombre?>">
+                <input type="text" class="form-control" id="nombre_nivel1" name="nombre" value="<?php echo $nivel->nombre?>">
                 <?php echo form_error("nombre","<span class='text-danger'>","</span>"); ?>
               </div>
             </div>

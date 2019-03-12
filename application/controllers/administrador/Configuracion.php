@@ -881,6 +881,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaManifestacion",
 		'titulo' => "Manifestacion de la violencia",
 		'agrega' => "addManifestacion",
+		'delete' => "delete_manifestacion",
 		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
@@ -932,6 +933,13 @@ class Configuracion extends CI_Controller {
 		}else {
 			$this->editaManifestacion	($idmenu);
 		}
+	}
+	public function delete_manifestacion($id){
+		$data  = array(
+			'id_estatus' => "0",
+		);
+		$this->Configuracion_model->update('tipodemanifestaciones',$data,$id);
+		redirect(base_url()."administrador/configuracion/manifestacion");
 	}
 	/*++ Funciones para editar variables Registros end  ++*/
 	/*++ Funciones para las vistas Agresor tart  ++*/

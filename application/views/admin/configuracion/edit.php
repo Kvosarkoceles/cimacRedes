@@ -13,7 +13,7 @@
                                       <div class="col-sm-4  my-1 ">
                                         <div class="form-group">
                                           <label for="nombres">Nombre:</label>
-                                          <input type="text" class="form-control" id="nombres" name="nombres" value="<?php echo $nombres->nombre?>">
+                                          <input type="text" class="form-control" id="nombre" name="nombres" value="<?php echo $nombres->nombre?>">
                                         </div>
                                         <div class="form-group">
                                           <label for="descripcion">descripcion:</label>
