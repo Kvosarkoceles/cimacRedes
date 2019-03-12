@@ -25,8 +25,12 @@
                                     <td><?php echo $menu->descripcion;?></td>
                                     <td>
                                         <ul class="d-flex justify-content-center">
+                                              <?php if($permisos->update == 1):?>
                                             <li class="mr-3"><a href="<?php echo base_url()?>administrador/configuracion/<?php echo $ruta;?>/<?php echo $menu->id;?>" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                                          <?php endif ?>
+                                          <?php if($permisos->delete == 1):?>
                                             <li><a href="<?php echo base_url()?>administrador/configuracion/delete/<?php echo $ruta;?>" class="text-danger"><i class="ti-trash"></i></a></li>
+                                          <?php endif ?>
                                         </ul>
                                       </td>
                                 </tr>
@@ -39,9 +43,11 @@
                     </table>
                 </div>
             </div>
+              <?php if($permisos->insert == 1):?>
             <div class="col-md-12"  align="right">
               <a href="<?php echo base_url();?>administrador/configuracion/addItem1" class="btn btn-outline-primary mb-3"><span class="fa fa-plus"></span> Agregar Item</a>
             </div>
+          <?php endif ?>
         </div>
     </div>
 </div>

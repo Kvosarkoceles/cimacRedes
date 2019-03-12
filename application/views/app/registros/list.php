@@ -37,10 +37,15 @@
                                                         </td>
                                                         <td>
                                                           <ul class="d-flex justify-content-center">
-
+                                                            <?php if($permisos->read == 1):?>
                                                               <li class="mr-3"><a href="<?php echo base_url()?>app/registros/info/<?php echo $registro->registroID;?>" class="text-primary"><i class="fa fa-eye"></i></a></li>
+                                                            <?php endif;?>
+                                                            <?php if($permisos->update == 1):?>
                                                               <li class="mr-3"><a href="<?php echo base_url()?>app/registros/edit/<?php echo $registro->registroID;?>" class="text-success"><i class="fa fa-edit"></i></a></li>
+                                                              <?php endif;?>
+                                                              <?php if($permisos->delete == 1):?>
                                                               <li><a href="<?php echo base_url()?>app/registros/delete/<?php echo $registro->registroID;?>" class="text-danger"><i class="ti-trash"></i></a></li>
+                                                              <?php endif;?>
                                                           </ul>
                                                         </td>
                                                     </tr>

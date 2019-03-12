@@ -17,6 +17,7 @@ private $permisos;
 
 	public function index(){
 		$data  = array(
+				'permisos' => $this->permisos,
 				'registros' => $this->Registros_model->getRegistros(),
 				//'trabajos' => $this->Periodistas_model->getTrabajos(),
 			);

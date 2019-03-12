@@ -1,122 +1,93 @@
+<!-- accordion style 2 start -->
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-        Permisos
-        <small>Editar</small>
-        </h1>
-    </section>
-    <!-- Main content -->
-    <section class="content">
-        <!-- Default box -->
-        <div class="box box-solid">
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <?php if($this->session->flashdata("error")):?>
-                            <div class="alert alert-danger alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <p><i class="icon fa fa-ban"></i><?php echo $this->session->flashdata("error"); ?></p>
-                                
-                             </div>
-                        <?php endif;?>
-                            <form action="<?php echo base_url();?>administrador/permisos/update" method="POST">
-                            <input type="hidden" name="idpermiso" value="<?php echo $permiso->id?>">    
-                            <div class="form-group">
-                                <label for="roles">Roles:</label>
-                                <select name="rol" id="rol" class="form-control" disabled="disabled">
-                                    <?php foreach($roles as $rol):?>
-                                        <option value="<?php echo $rol->id;?>"<?php   echo $rol->id == $permiso->rol_id ?"selected":"" ?> ><?php echo $rol->nombre;?></option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="menu">Menus:</label>
-                                <select name="menu" id="rol" class="form-control" disabled="disabled">
-                                    <?php foreach($menus as $menu):?>
-                                        <option value="<?php echo $menu->id;?>"<?php   echo $menu->id == $permiso->menu_id ?"selected":"" ?>><?php echo $menu->nombre;?></option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                           
-                            <div class="form-group">
-                                <label for="acceder">Acceder:</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="acceder" value="1" <?php echo $permiso->acceso == 1? "checked":""; ?> >Si
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="acceder" value="0" <?php echo $permiso->acceso == 0? "checked":""; ?>>No
-                                </label>
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            <div class="form-group">
-                                <label for="read">Leer:</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="read" value="1" <?php echo $permiso->read == 1? "checked":""; ?> >Si
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="read" value="0" <?php echo $permiso->read == 0? "checked":""; ?>>No
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label for="insert">Agregar:</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="insert" value="1" <?php echo $permiso->insert == 1? "checked":""; ?> >Si
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="insert" value="0" <?php echo $permiso->insert == 0? "checked":""; ?>>No
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label for="update">Editar:</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="update" value="1" <?php echo $permiso->update == 1? "checked":""; ?>>Si
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="update" value="0" <?php echo $permiso->update == 0? "checked":""; ?>>No
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label for="delete">Eliminar:</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="delete" value="1" <?php echo $permiso->delete == 1? "checked":""; ?>>Si
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="delete" value="0" <?php echo $permiso->delete == 0? "checked":""; ?>>No
-                                </label>
-                            </div>
-                            
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-flat">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+<div class="col-lg-12 mt-5">
+  <form action="<?php echo base_url();?>administrador/permisos/update" method="POST"   autocomplete="off" >
+      <input type="TEXT" name="idpermiso" value="<?php echo $permiso->id?>">
+  <!--  <input type="hidden" name="idperiodista" value="<?php echo $periodista->id?>" id ="idperiodista">
+    <input type="hidden" name="idtrabajo" value="<?php echo $trabajo ->id?>" id ="idtrabajo">-->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Edita permiso</h4>
+            <div class="col-lg-3 mt-5">
+              <div class="form-group">
+                  <label for="roles">Roles:</label>
+                  <select name="rol" id="rol" class="form-control" disabled="disabled" >
+                      <?php foreach($roles as $rol):?>
+                          <option value="<?php echo $rol->id;?>"<?php   echo $rol->id == $permiso->id_rol ?"selected":"" ?> ><?php echo $rol->nombre;?></option>
+                      <?php endforeach;?>
+                  </select>
+              </div>
             </div>
-            <!-- /.box-body -->
+            <div class="col-lg-3 mt-5">
+              <div class="form-group">
+                  <label for="menu">Menus:</label>
+                  <select name="menu" id="rol" class="form-control" disabled="disabled">
+                      <?php foreach($menus as $menu):?>
+                          <option value="<?php echo $menu->id;?>"<?php   echo $menu->id == $permiso->menu_id ?"selected":"" ?>><?php echo $menu->nombre;?></option>
+                      <?php endforeach;?>
+                  </select>
+              </div>
+            </div>
+            <div class="col-lg-3 mt-5">
+              <div class="form-group">
+                  <label for="acceder">Acceder:</label>
+                  <select name="acceder" id="acceder" class="form-control">
+                      <?php foreach($sinos as $sino):?>
+                          <option value="<?php echo $sino->valor;?>"<?php   echo $sino->valor == $permiso->acceso ?"selected":"" ?>><?php echo $sino->nombre;?></option>
+                      <?php endforeach;?>
+                  </select>
+              </div>
+            </div>
+            <div class="col-lg-3 mt-5">
+              <div class="form-group">
+                  <label for="read">Leer:</label>
+                  <select name="read" id="read" class="form-control">
+                      <?php foreach($sinos as $sino):?>
+                          <option value="<?php echo $sino->valor;?>"<?php   echo $sino->valor == $permiso->read ?"selected":"" ?>><?php echo $sino->nombre;?></option>
+                      <?php endforeach;?>
+                  </select>
+              </div>
+            </div>
+            <div class="col-lg-3 mt-5">
+              <div class="form-group">
+                  <label for="insert">Agregar:</label>
+                  <select name="insert" id="insert" class="form-control">
+                      <?php foreach($sinos as $sino):?>
+                          <option value="<?php echo $sino->valor;?>"<?php   echo $sino->valor == $permiso->insert ?"selected":"" ?>><?php echo $sino->nombre;?></option>
+                      <?php endforeach;?>
+                  </select>
+              </div>
+            </div>
+            <div class="col-lg-3 mt-5">
+              <div class="form-group">
+                  <label for="update">Editar:</label>
+                  <select name="update" id="update" class="form-control">
+                      <?php foreach($sinos as $sino):?>
+                          <option value="<?php echo $sino->valor;?>"<?php   echo $sino->valor == $permiso->update ?"selected":"" ?>><?php echo $sino->nombre;?></option>
+                      <?php endforeach;?>
+                  </select>
+              </div>
+            </div>
+            <div class="col-lg-3 mt-5">
+              <div class="form-group">
+                  <label for="delete">Eliminar:</label>
+                  <select name="delete" id="delete" class="form-control">
+                      <?php foreach($sinos as $sino):?>
+                          <option value="<?php echo $sino->valor;?>"<?php   echo $sino->valor == $permiso->delete ?"selected":"" ?>><?php echo $sino->nombre;?></option>
+                      <?php endforeach;?>
+                  </select>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-5">
+
+              <div class="form-group">
+                  <button type="submit" class="btn btn-success btn-flat">Guardar</button>
+              </div>
+
+            </div>
         </div>
-        <!-- /.box -->
-    </section>
-    <!-- /.content -->
+    </div>
+  </form>
 </div>
-<!-- /.content-wrapper -->
+
+<!-- accordion style 2 end -->

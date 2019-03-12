@@ -161,15 +161,16 @@ class Configuracion_model extends CI_Model {
 		return $resultados ->row();
 	}
 	public function getManifestacion(){
-		$this->db->select("c.*");
-		$this->db->from("tipodemanifestaciones c");
+		$this->db->select("e.*,es.nombre as estatus");
+		$this->db->from("tipodemanifestaciones e");
+		$this->db->join("estatus es","e.id_estatus	 = es.valor");
 		$resultados = $this->db->get();
-
 		return $resultados ->result();
 	}
 	public function getTipomanifestacion($id){
 		$this->db->select("e.*");
 		$this->db->from("tipodemanifestaciones e");
+
 		$this->db->where("e.id",$id);
 		$resultados = $this->db->get();
 		return $resultados ->row();

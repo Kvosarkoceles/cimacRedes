@@ -18,6 +18,7 @@ class Usuarios extends CI_Controller {
 
 	public function index(){
 		$data  = array(
+		'permisos' => $this->permisos,
 		'usuarios' => $this->Usuarios_model->getUsuarios(),
 			//'permisos' => $this->permisos,
 		);

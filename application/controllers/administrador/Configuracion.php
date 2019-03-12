@@ -25,6 +25,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Edades",
 		'agrega' => "addEdades",
 		'delete' => "delete_edades",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -95,6 +96,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Tipo de vivienda",
 		'agrega' => "addVivienda",
 		'delete' => "delete_tipovivienda",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -165,6 +167,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Estado civil",
 		'agrega' => "addCivil",
 		'delete' => "delete_civil",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -235,6 +238,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Tipo de medio",
 		'agrega' => "addMedio",
 		'delete' => "delete_medio",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -305,6 +309,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Tipo de contrato",
 		'agrega' => "addContrato",
 		'delete' => "delete_contrato",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -447,6 +452,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Cargo en el medio",
 		'agrega' => "addCargo",
 		'delete' => "delete_cargo",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -517,6 +523,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Fuente",
 		'agrega' => "addFuente",
 		'delete' => "delete_fuente",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -590,6 +597,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Motivos de la agresión",
 		'agrega' => "addMotivogresion",
 		'delete' => "delete_motivogresion",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -660,6 +668,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Tipo de investigación",
 		'agrega' => "addTipodeinvestigacion",
 		'delete' => "delete_tipodeinvestigacion",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -731,6 +740,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Perfil bajo",
 		'agrega' => "addPerfilbajo",
 		'delete' => "delete_perfilbajo",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -801,6 +811,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Judicializacion",
 		'agrega' => "addJudicializacion",
 		'delete' => "delete_judicializacion",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -870,6 +881,7 @@ class Configuracion extends CI_Controller {
 		'ruta' => "editaManifestacion",
 		'titulo' => "Manifestacion de la violencia",
 		'agrega' => "addManifestacion",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -930,7 +942,7 @@ class Configuracion extends CI_Controller {
 		'titulo' => "Tipo de agresor",
 		'agrega' => "addTipoagresor",
 		'delete' => "delete_tipoagresor",
-
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -1007,7 +1019,8 @@ class Configuracion extends CI_Controller {
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipoagresor_nivel1(),
 		'ruta' => "editaNivel1",
-		'titulo' => "Tipo de agresor Nivel 1"
+		'titulo' => "Tipo de agresor Nivel 1",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -1109,7 +1122,8 @@ class Configuracion extends CI_Controller {
 		$data  = array(
 		'menus' => $this->Configuracion_model->getTipoagresor_nivel2(),
 		'ruta' => "editaNivel2",
-		'titulo' => "Tipo de agresor Nivel 2"
+		'titulo' => "Tipo de agresor Nivel 2",
+		'permisos' => $this->permisos,
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");

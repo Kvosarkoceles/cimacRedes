@@ -13,12 +13,14 @@ class Permisos extends CI_Controller {
 
 		$this->permisos = $this->backend_lib->control();
 		$this->load->model("Permisos_model");
+		$this->load->model("Registros_model");
 		$this->load->model("Usuarios_model");
 	}
 
 	public function index(){
 		$data  = array(
-			'permisos' => $this->Permisos_model->getPermisos(),
+			'permisoslista' => $this->Permisos_model->getPermisos(),
+			'permisos' => $this->permisos
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
@@ -41,7 +43,8 @@ class Permisos extends CI_Controller {
 		$data  = array(
 			'roles' => $this->Usuarios_model->getRoles(),
 			'menus' => $this->Permisos_model->getMenus(),
-			'permiso' => $this->Permisos_model->getPermiso($id)
+			'permiso' => $this->Permisos_model->getPermiso($id),
+			'sinos' => $this->Registros_model->getSiNo(),
 		);
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
