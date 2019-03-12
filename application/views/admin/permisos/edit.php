@@ -2,7 +2,7 @@
 
 <div class="col-lg-12 mt-5">
   <form action="<?php echo base_url();?>administrador/permisos/update" method="POST"   autocomplete="off" >
-      <input type="TEXT" name="idpermiso" value="<?php echo $permiso->id?>">
+      <input type="hidden" name="idpermiso" value="<?php echo $permiso->id?>">
   <!--  <input type="hidden" name="idperiodista" value="<?php echo $periodista->id?>" id ="idperiodista">
     <input type="hidden" name="idtrabajo" value="<?php echo $trabajo ->id?>" id ="idtrabajo">-->
     <div class="card">
