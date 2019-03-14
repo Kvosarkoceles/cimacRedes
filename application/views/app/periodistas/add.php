@@ -1,6 +1,6 @@
 <!-- accordion style 1 start -->
 <div class="col-lg-12 mt-5">
-  <form action="<?php echo base_url();?>app/periodistas/store" method="POST">
+  <form action="<?php echo base_url();?>app/periodistas/store" method="POST" autocomplete="off" >
     <div class="card">
       <div class="card-body">
         <h3 class="header-title">Agregar periodista</h3>

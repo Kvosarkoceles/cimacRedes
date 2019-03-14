@@ -1,5 +1,5 @@
 
-    $(document).ready(function(){
+  $(document).ready(function(){
       //aregla caja de texto nombre
       $('#nombres').on('blur', function(){
         var value=$('#nombres').val().toUpperCase();
@@ -388,7 +388,7 @@
      });
 
 });
-$( document ).ready(function() { inicio();});
+  $( document ).ready(function() { inicio();});
     function inicio(){
   //Cajas de texto Informacion Personal
 
@@ -490,7 +490,70 @@ $( document ).ready(function() { inicio();});
   $('.main-content-inner').css("background", "#332b358a");
 
   $('.card-link').css("background", "#491d5459");
-  
+
 
 
 }
+
+
+
+
+$(document).ready(function(){
+  var is_visible = false ;
+  $('#see').click(function(){
+    var input = document.getElementById("password_Nuevo");
+    var see = document.getElementById("see");
+    if(is_visible){
+      input.type = 'password';
+      is_visible = false;
+      see.style.color='#262626';
+    }else{
+      input.type = 'text';
+      is_visible = true;
+      see.style.color='#fd7e14';
+
+  }
+
+  });
+
+});
+
+
+$(document).ready(function(){
+  $('#password_Nuevo').on('keyup', function(){
+    var input = $('#password_Nuevo').val();
+    input=input.trim();
+    var tamañominimo=input.length<=5;
+    var tamañomaximo= input.length>=15;
+    if(input.length<=5){
+      document.querySelector('#validaciontamañominimo').innerText ='la contaseña no puede ser menor a 5 caracteres';
+      $('#validaciontamañominimo').addClass("alert alert-warning alert-dismissible fade show");
+      }else{
+        document.querySelector('#validaciontamañominimo').innerText ='';
+        $('#validaciontamañominimo').removeClass("alert alert-warning alert-dismissible fade show");
+      }
+      if(input.length>=15){
+        document.querySelector('#validaciontamañomaximo').innerText ='la contaseña no puede ser mayor a 15 caracteres';
+        $('#validaciontamañomaximo').addClass("alert alert-warning alert-dismissible fade show");
+      }else{
+        document.querySelector('#validaciontamañomaximo').innerText ='';
+        $('#validaciontamañomaximo').removeClass("alert alert-warning alert-dismissible fade show");
+      }
+    if(input.match(/[0-9]/i)){
+      document.querySelector('#validacionDigitos').innerText ='';
+      $('#validacionDigitos').removeClass("alert alert-warning alert-dismissible fade show");
+    }else{
+      document.querySelector('#validacionDigitos').innerText ='la contraseña debe de contener digitos';
+      $('#validacionDigitos').addClass("alert alert-warning alert-dismissible fade show");
+    }
+    if(input.match(/[^A-Za-z0-9-' ']/i)){
+      document.querySelector('#validacionCaracter').innerText ='';
+      $('#validacionCaracter').removeClass("alert alert-warning alert-dismissible fade show");
+    }else{
+      document.querySelector('#validacionCaracter').innerText ='la contraseña debe de contener caracteres especiales';
+      $('#validacionCaracter').addClass("alert alert-warning alert-dismissible fade show");
+
+    }
+  });
+
+});

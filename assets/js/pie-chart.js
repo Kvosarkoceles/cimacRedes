@@ -87,20 +87,20 @@ if ($('#ampiechart1').length) {
         "labelRadius": -35,
         "labelText": "[[percents]]%",
         "dataProvider": [{
-            "country": "Lithuania",
-            "litres": 501.9,
+            "country": "ciudad de ",
+            "litres": 10,
             "backgroundColor": "#815DF6"
         }, {
             "country": "Czech Republic",
-            "litres": 301.9,
+            "litres": 10,
             "backgroundColor": "#67B7DC"
         }, {
             "country": "Ireland",
-            "litres": 201.1,
+            "litres": 10,
             "backgroundColor": "#9c82f4"
         }, {
             "country": "The Netherlands",
-            "litres": 150,
+            "litres": 10,
             "backgroundColor": "#FDD400"
         }],
         "color": "#fff",
