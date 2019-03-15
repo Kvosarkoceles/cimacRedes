@@ -14,14 +14,20 @@ class Agresores_model extends CI_Model {
 			$this->db->join("nivel1agresor n1","u.id_nivel1 = n1.id");
 			$this->db->join("nivel2agresor n2","u.id_nivel2 = n2.id");
 			$this->db->where("u.id_datosincidente",$id);
+      $this->db->where("u.id_estatus",1);
 			$resultado = $this->db->get();
 			return $resultado->result();
-			}
+	}
   public function getAgresor($id){
 		$this->db->select("u.*");
 		$this->db->from("datosagresor u");
 		$this->db->where("u.id_datosincidente",$id);
 		$resultado = $this->db->get();
 		return $resultado->row();
-		}
+  }
+
+  public function update($id,$data){
+    $this->db->where("id",$id);
+    return $this->db->update("datosagresor",$data);
+  }
 }

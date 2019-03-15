@@ -1,7 +1,7 @@
 <!-- accordion style 1 start -->
 <div class="col-lg-12 mt-5">
-<form action="<?php echo base_url();?>app/agresores/update/<?php echo $agresor->id ?>" method="POST">
-  <input type="hidden" name="id_datosincidente" value="<?php echo $agresor->id_datosincidente ?>" id ="id_datosincidente">
+<!--  <form action="<?php echo base_url();?>app/agresores/update/<?php echo $agresor->id ?>" method="POST">-->
+<!--  <input type="text" name="id_datosincidente" value="<?php echo $agresor->id_datosincidente ?>" id ="id_datosincidente">-->
     <div class="card">
         <div class="card-body">
             <h4 class="header-title">Edita Agresor</h4>
@@ -21,7 +21,7 @@
                                       <option value="1">Selecciona un valor</option>
                                     <?php foreach($sexo as $sex):?>
                                       <?php if ($sex->id>1): ?>
-                                        <option value="<?php echo $sex->id;?>" <?php echo $sex->id==$agresor->id_sexo ? "selected":"";?> ><?php echo $sex->nombre;?>
+                                  <!--      <option value="<?php echo $sex->id;?>" <?php echo $sex->id==$agresor->id_sexo ? "selected":"";?> ><?php echo $sex->nombre;?></option>-->
                                       <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
@@ -45,7 +45,7 @@
                                     <option value="1">selecione un valor</option>
                                     <?php foreach($nivel1_Agresor as $agres):?>
                                       <?php if ($agres->id > 1): ?>
-                                        <option value="<?php echo $agres->id;?>" <?php echo $agres->id==$agresor->id_nivel1  ? "selected":"";?> ><?php echo $agres->nombre;?></option>
+                                        <option value="<?php echo $agres->id;?>" <?php echo $agres->id==$agresor->id_nivel1 ? "selected":"";?> ><?php echo $agres->nombre;?></option>
                                       <?php endif; ?>
                                     <?php endforeach;?>
                                     </select>
@@ -55,7 +55,8 @@
                                     <select class="custom-select col-sm-12" name="nivel2" id="nivel2" >
 
                                     <?php foreach($nivel2_Agresor as $nivelA):?>
-                                      <option value="<?php echo $nivelA->id;?>" <?php echo $nivelA->id==$agresor->id_nivel2  ? "selected":"";?> ><?php echo $nivelA->nombre;?></option>
+                                      <option value="<?php echo $nivelA->id;?>" <?php echo $nivelA->id==$agresor->id_nivel2 ? "selected":"";?> ><?php echo $nivelA->nombre;?></option>
+
                                     <?php endforeach;?>
                                     </select>
                                 </div>
@@ -63,7 +64,7 @@
                               <div class="form-row align-items-center">
                                 <div class="col-sm-5  my-1">
                                     <label for="nombreagresor" class="col-form-label" align="center">Nombre del agresor:</label>
-                                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="nombreagresor" name="nombreagresor">
+                                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo $agresor->nombre ?>" id="nombreagresor" name="nombreagresor">
                                     <?php echo form_error("nombreagresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                                 </div>
                               </div>

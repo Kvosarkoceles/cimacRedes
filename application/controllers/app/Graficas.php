@@ -20,10 +20,10 @@ class Graficas extends CI_Controller {
 		'usuarios' => $this->Usuarios_model->getUsuarios(),
 			//'permisos' => $this->permisos,
 		);
-		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("app/graficas/graficas");
-		$this->load->view("layouts/footer");
+	//	$this->load->view("layouts/header");
+		//$this->load->view("layouts/aside");
+		$this->load->view("informes/barras");
+		//$this->load->view("layouts/footer");
 	}
 
 	public function add(){
