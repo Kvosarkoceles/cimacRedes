@@ -63,7 +63,7 @@
                               <div class="form-row align-items-center">
                                 <div class="col-sm-5  my-1">
                                     <label for="nombreagresor" class="col-form-label" align="center">Nombre del agresor:</label>
-                                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="" id="nombreagresor" name="nombreagresor">
+                                    <input class="form-control form-control-sm input-rounded col-sm-12" type="text" value="<?php echo $agresor->nombre;?>" id="nombreagresor" name="nombreagresor">
                                     <?php echo form_error("nombreagresor","<div class='alert alert-danger alert-dismissible fade show' role='aler't><button type='button' class='close' data-dismiss='alert'>&times;</button> ","</div>"); ?>
                                 </div>
                               </div>

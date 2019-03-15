@@ -449,8 +449,8 @@
                                       <th scope="col">Fecha</th>
                                       <th scope="col">Lugar</th>
                                       <th scope="col">Tipo de violencia</th>
-                                    </tr>
-                                      <th scope="col">Opciones</th>
+
+                                      <th scope="col"></th>  </tr>
                                   </thead>
                                   <tbody>
                                     <?php if(!empty($registros)):?>
