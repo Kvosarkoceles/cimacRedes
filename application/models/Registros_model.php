@@ -178,4 +178,34 @@ class Registros_model extends CI_Model {
 		$resultado = $this->db->get();
 		return $resultado->result();
 	}
+
+	public function getYears(){
+		$this->db->select("YEAR(fechaIncidente) as year");
+		$this->db->from("datosincidente");
+		$this->db->group_by("year");
+		$this->db->order_by("year", "desc");
+		$resultados = $this->db->get();
+		return $resultados->result();
+	}
+
+	public function getCantidad($year){
+		$this->db->select("MONTH(fechaIncidente) as mes , SUM(estatus) as montos");
+		$this->db->from("datosincidente");
+	$this->db->where("YEAR(fechaIncidente)",$year);
+		$this->db->group_by("mes");
+		$this->db->order_by("mes", "asc");
+		$resultados = $this->db->get();
+		return $resultados->result();
+
+	//	$this->db->select("MONTH(fechaIncidente) as mes, SUM(estatus) as montos");
+		//$this->db->from("datosincidente");
+		//$this->db->where("fechaIncidente" >="2019-01-01");
+		//$this->db->where("fechaIncidente" <="2019-01-01");
+		//$this->db->group_by("mes");
+		//$this->db->order_by("mes");
+		//$resultados = $this->db->get();
+		//return $resultados->result();
+	}
+
+
 }//fin de clase Registros_model

@@ -866,9 +866,7 @@ ul.breadcrumbs {
     letter-spacing: 0;
 }
 
-.highcharts-exporting-group {
-    display: none;
-}
+
 
 /*-------------------- END Fact Area ------------------- */
 
@@ -1348,9 +1346,7 @@ table.dbkit-table tr td {
 
 /* socialads */
 
-.highcharts-credits {
-    display: none;
-}
+
 
 /* user-statistics */
 
