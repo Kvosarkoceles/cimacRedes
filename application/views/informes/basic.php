@@ -1,59 +1,27 @@
 <div class="col-lg-12 mt-5">
   <div class="card">
     <div class="card-body">
-      <h3 class="header-title">Informe anual</h3>
+      <h1 class="header-title">Informe anual</h1>
 
-
-      <div class="col-lg-12 mt-5">
-        <div class="box-tools pull-left">
-           <select class="form-control" name="year" id="year">
-              <?php foreach($años as $año):?>
-                  <option value="<?php echo $año->year;?>"><?php echo $año->year;?></option>
-              <?php endforeach;?>
-           </select>
-        </div>
-      </div>
-      <div class="col-lg-12  mt-5">
-        <div id="container" style="height: 400px; width: 100%"></div>
-      </div>
-      <div class="col-lg-12  mt-5">
-        <!-- table light start -->
-      <!--   <div class="col-lg-12 mt-5">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="header-title">Thead light</h4>
-                    <div class="single-table">
-                        <div class="table-responsive">
-                            <table class="table text-center">
-                                <thead class="text-uppercase bg-light">
-                                    <tr>
-                                        <th scope="col">mes</th>
-                                        <th scope="col">montos</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  <?php if(!empty($informe)):?>
-                                       <?php foreach($informe as $info):?>
-                                    <tr>
-
-                                        <td><?php echo $info->mes;?></td>
-                                        <td><?php echo $info->montos;?></td>
-                                    </tr>
-                                  <?php endforeach;?>
-                              <?php endif;?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+        <div class="form-row align-items-center">
+          <div class="col-lg-12 mt-5">
+            <div class="pull-right">
+               <select class="form-control" name="year" id="year">
+                  <?php foreach($años as $año):?>
+                      <option value="<?php echo $año->year;?>"><?php echo $año->year;?></option>
+                  <?php endforeach;?>
+               </select>
             </div>
-        </div>-->
+          </div>
+          <div class="col-lg-6  mt-5">
+            <div id="graficaPorAño" style="height: 500px; width: 100%"></div>
+          </div>
+          <div class="col-lg-6  mt-5">
+            <div id="graficaPorEstado" style="height: 500px; width: 100%"></div>
+          </div>
+        </div>
 
 
-
-        <!-- table light end -->
-      </div>
 
 
       </div>
@@ -66,54 +34,75 @@ $( document ).ready(function() {
   var base_url= "<?php echo base_url();?>";
   var año =(new Date).getFullYear();
   datagrafico(base_url, año);
+  datagraficoEstados(base_url,año);
+//  graficoEstados();
   $("#year").on("change",function(){
     yearselect = $(this).val();
     datagrafico(base_url,yearselect);
+    datagraficoEstados(base_url,yearselect);
+  });
+  $("#year2").on("change",function(){
+    yearselect = $(this).val();
+    datagrafico(base_url,yearselect);
+    datagraficoEstados(base_url,yearselect);
   });
 });
   function grafico(meses,montos,año) {
-    Highcharts.chart('container', {
-      chart: {
-        type: 'column'
-      },
-      title: {
-        text: 'Casos de violencia contra mujeres periodistas'
-      },
-      subtitle: {
-            text: 'Fuente: Elaboración propia con datos del Programa de Libertad de Expresión y Género de CIMAC'
+      Highcharts.chart('graficaPorAño', {
+        chart: {
+            //type: 'column',
+            spacingBottom: 15,
+            spacingTop: 10,
+            spacingLeft: 1,
+            spacingRight: 1,
+            options3d: {
+            enabled: false,
+            alpha: 10,
+            beta: 25,
+            depth: 70
+            }
         },
-      xAxis: {
-        categories: meses,
-        crosshair: true
-      },
-      yAxis: {
-        min: 0,
         title: {
-          text: 'Casos registrados'
+          text: 'Casos de violencia contra mujeres periodistas'
+        },
+        subtitle: {
+              text: 'Fuente: Elaboración propia con datos del Programa de Libertad de Expresión y Género de CIMAC'
+          },
+        credits: {
+          text: '@sarkoceles',
+          href: 'https://www.facebook.com/Sarkoceles/',
+            enabled: true
+        },
+        xAxis: {
+          categories: meses,
+        },
+        yAxis: {
+              title: {
+                  text: ' Número de casos registrados por año'
+              }
+          },
+        series: [{
+            data: montos,
+            name: año,
+            color: '#CC2EFA'
+        }],
+        exporting: {
+           enabled: true,
+
+         buttons: {
+          contextButton: {
+              menuItems: ['downloadJPEG','downloadSVG','downloadPNG','separator','downloadXLS'],
+          }
+          },
+        width: 1800,
+
+        filename: 'registrados_del_año:_'+año,
         }
-      },
-      tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-          '<td style="padding:0"><b>{point.y:.1} periodista</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-      },
-      plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-      },
-      series: [{
-        name: año,
-        data: montos
-      }]
+
     });
   }
   function datagrafico(base_url,year) {
-    namesMonth= ["Enero","Febrero","Marzo","Abr","May","Jun","Jul","Ago","Set","Oct","Nov","Dic"];
+    namesMonth= ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre","Diciembre"];
     $.ajax({
         url:"<?php echo base_url() ?>app/graficas/getData",
         type: "POST",
@@ -131,6 +120,94 @@ $( document ).ready(function() {
             });
 
             grafico(meses,montos,year);
+        }
+
+    });
+    //grafico();
+
+  }
+  function graficoEstados(estado,montos,year) {
+    Highcharts.chart('graficaPorEstado', {
+
+      chart: {
+          type: 'column',
+
+          spacingBottom: 15,
+          spacingTop: 10,
+          spacingLeft: 1,
+          spacingRight: 1,
+          options3d: {
+            enabled: false,
+            alpha: 10,
+            beta: 25,
+            depth: 70
+          }
+
+      },
+      title: {
+        text: 'Casos de violencia contra mujeres periodistas'
+      },
+      subtitle: {
+            text: 'Fuente: Elaboración propia con datos del Programa de Libertad de Expresión y Género de CIMAC'
+        },
+      credits: {
+        text: '@sarkoceles',
+        href: 'https://www.facebook.com/Sarkoceles/',
+          enabled: true
+      },
+      xAxis: {
+        categories: estado,
+      },
+      yAxis: {
+            title: {
+                text: ' Número de casos registrados por estado'
+            }
+        },
+      series: [{
+          data: montos,
+          name: year,
+          color: '#CC2EFA'
+      }],
+      exporting: {
+         enabled: true,
+
+       buttons: {
+        contextButton: {
+            menuItems: ['downloadJPEG','downloadSVG','downloadPNG','separator','downloadXLS'],
+        }
+        },
+      width: 1800,
+
+      filename: 'registrados_estados_del_año:_'+year,
+      }
+
+  });
+  }
+
+  function datagraficoEstados(base_url,year) {
+      $.ajax({
+        url:"<?php echo base_url() ?>app/graficas/getDataEstados",
+        type: "POST",
+        data: { year : year},
+        dataType: 'json',
+        success:function(data){
+          //  alert("exito");
+            var estado = new Array();
+            var montos = new Array();
+            $.each(data, function( index, value ) {
+
+              estado.push(value.estado );
+              valor = Number(value.montos);
+              montos.push(valor);
+
+            // meses.push(namesMonth[value.mes-1]);
+              // valor = Number(value.montos);
+                // montos.push(valor);
+            //  meses.push(namesMonth[value.mes - 1]);
+
+            });
+
+            graficoEstados(estado,montos,year);
         }
 
     });

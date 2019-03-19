@@ -12,13 +12,13 @@ class Graficas extends CI_Controller {
 	 	$this->load->library('form_validation');
 		$this->load->model("Registros_model");
 		$this->load->model("Periodistas_model");
-
+		$this->load->model("Informe_model");
 	}
 
 	public function index(){
 		$data  = array(
 		'años' => $this->Registros_model->getYears(),
-		'informe' => $this->Registros_model->getCantidad('2019')
+		'informe' => $this->Informe_model->getCantidadEstados('2017')
 
 			//'permisos' => $this->permisos,
 		);
@@ -36,5 +36,9 @@ class Graficas extends CI_Controller {
 		$resultados = $this->Registros_model->getCantidad($year);
 		echo json_encode($resultados);
 	}
-
+	public function getDataEstados(){
+		$year = $this->input->post("year");
+		$resultados = $this->Informe_model->getCantidadEstados($year);
+		echo json_encode($resultados);
+	}
 }

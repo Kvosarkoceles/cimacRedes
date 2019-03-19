@@ -7,6 +7,12 @@
     <title>Cimac - Redes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>assets/images/icon/favicon.ico">
+
+
+      <script src="<?php echo base_url();?>assets/js/highcharts.js"></script>
+        <script src="<?php echo base_url();?>assets/js/exporting.js"></script>
+        <script src="<?php echo base_url();?>assets/js/export-data.js"></script>
+
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/themify-icons.css">
