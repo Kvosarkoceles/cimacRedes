@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Graficas extends CI_Controller {
-
 	public function __construct(){
 
 		parent::__construct();
@@ -14,11 +13,10 @@ class Graficas extends CI_Controller {
 		$this->load->model("Periodistas_model");
 		$this->load->model("Informe_model");
 	}
-
 	public function index(){
 		$data  = array(
 		'años' => $this->Registros_model->getYears(),
-		'informe' => $this->Informe_model->getCantidadEstados('2017')
+		'informe' => $this->Informe_model->getCantidadTipodeMedio('2019')
 
 			//'permisos' => $this->permisos,
 		);
@@ -30,7 +28,6 @@ class Graficas extends CI_Controller {
 		//	$this->load->view("informes/index");
 
 	}
-
 	public function getData(){
 		$year = $this->input->post("year");
 		$resultados = $this->Registros_model->getCantidad($year);
@@ -39,6 +36,16 @@ class Graficas extends CI_Controller {
 	public function getDataEstados(){
 		$year = $this->input->post("year");
 		$resultados = $this->Informe_model->getCantidadEstados($year);
+		echo json_encode($resultados);
+	}
+	public function getDataEdades(){
+		$year = $this->input->post("year");
+		$resultados = $this->Informe_model->getCantidadEdades($year);
+		echo json_encode($resultados);
+	}
+	public function getDataTipodeMedio(){
+		$year = $this->input->post("year");
+		$resultados = $this->Informe_model->getCantidadTipodeMedio($year);
 		echo json_encode($resultados);
 	}
 }

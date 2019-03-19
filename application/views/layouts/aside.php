@@ -19,14 +19,8 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-pie-chart"></i><span>Graficas</span></a>
-                                <ul class="collapse">
-                                    <li><a href="<?php echo base_url()?>app/graficas">Por años</a></li>
-                                    <li><a href="">Por Estado</a></li>
-                                    <li><a href="">Por Sexenio</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="<?php echo base_url()?>app/graficas"><i class="fa fa-pie-chart"></i> <span>Graficas</span></a></li>
+                          
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Listas</span></a>
                                 <ul class="collapse">
