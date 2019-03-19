@@ -904,6 +904,7 @@ class Configuracion extends CI_Controller {
 	public function editaManifestacion($id){
 		$data  = array(
 			'nombres' => $this->Configuracion_model->getTipomanifestacion($id),
+			'estatus' => $this->Configuracion_model->getEstatus(),
 			'base' => "manifestacion_update"
 		);
 		$this->load->view("layouts/header");
@@ -915,12 +916,14 @@ class Configuracion extends CI_Controller {
 		$idmenu = $this->input->post("idmenu");
 		$nombres = $this->input->post("nombres");
 		$descripcion = $this->input->post("descripcion");
+		$estatus = $this->input->post("status");
 		$menu = 'tipodemanifestaciones';
 		$this->form_validation->set_rules("nombres","Nombres","required");
 		if ($this->form_validation->run()) {
 			$data  = array(
 				'nombre' => $nombres,
 				'descripcion' => $descripcion,
+				'id_estatus' => $estatus
 			);
 
 			if ($this->Configuracion_model->update($menu,$data,$idmenu)) {

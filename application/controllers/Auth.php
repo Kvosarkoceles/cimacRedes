@@ -10,7 +10,7 @@ class Auth extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata("login")) {
-			redirect(base_url()."app/periodistas");
+			redirect(base_url()."app/graficas");
 		}
 		else{
 			$this->load->view("admin/login");
@@ -39,7 +39,7 @@ class Auth extends CI_Controller {
 				'login' => TRUE
 			);
 			$this->session->set_userdata($data);
-			redirect(base_url()."app/periodistas");
+			redirect(base_url()."app/graficas");
 		}
 	}
 

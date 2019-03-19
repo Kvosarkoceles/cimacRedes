@@ -118,7 +118,7 @@ $( document ).ready(function() {
             color: '#7f00ff'
         }],
         exporting: {
-           enabled: false,
+           enabled: true,
 
          buttons: {
           contextButton: {
@@ -198,7 +198,7 @@ $( document ).ready(function() {
           color: '#ff00ff'
       }],
       exporting: {
-        enabled: false,
+        enabled: true,
         buttons: {
           contextButton: {
             menuItems: ['downloadJPEG','downloadSVG','downloadPNG','separator','downloadXLS'],
@@ -268,7 +268,7 @@ $( document ).ready(function() {
           color: '#ffff01'
       }],
       exporting: {
-        enabled: false,
+        enabled: true,
         buttons: {
           contextButton: {
             menuItems: ['downloadJPEG','downloadSVG','downloadPNG','separator','downloadXLS'],
@@ -338,7 +338,7 @@ $( document ).ready(function() {
           color: '#00ff01'
       }],
       exporting: {
-        enabled: false,
+        enabled: true,
         buttons: {
           contextButton: {
             menuItems: ['downloadJPEG','downloadSVG','downloadPNG','separator','downloadXLS'],
