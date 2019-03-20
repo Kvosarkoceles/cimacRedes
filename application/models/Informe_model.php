@@ -2,6 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Informe_model extends CI_Model {
+	public function getCantidadTotal($year){
+		$this->db->select("SUM(di.estatus) as monto");
+		$this->db->from("datosincidente di");
+		//$this->db->join("estados es","di.id_estados = es.id");
+		$this->db->where("YEAR(fechaIncidente)",$year);
+		//$this->db->group_by("estado");
+		//$this->db->order_by("estado", "asc");
+		$resultados = $this->db->get();
+		return $resultados->row();
+	}
 
 	public function getCantidadEstados($year){
 		$this->db->select("es.nombre as estado , SUM(estatus) as montos");

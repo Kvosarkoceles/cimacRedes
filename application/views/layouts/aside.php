@@ -12,15 +12,16 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="<?php echo base_url()?>"><h1>CIMAC</h1></a>
-                </div>
+                  <a  href="<?php echo base_url()?>"><img src="<?php echo base_url();?>assets/images/icon/logo-cimac.png" alt="Los Tejos" /></a>
+                <!--    <a href="<?php echo base_url()?>"><h1>CIMAC</h1></a>-->
+              </div>
             </div>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li><a href="<?php echo base_url()?>app/graficas"><i class="fa fa-pie-chart"></i> <span>Graficas</span></a></li>
-                          
+
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Listas</span></a>
                                 <ul class="collapse">

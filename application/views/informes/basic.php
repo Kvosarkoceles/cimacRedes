@@ -1,9 +1,12 @@
 <div class="col-lg-12 mt-5">
   <div class="card">
     <div class="card-body">
-      <h1 class="header-title">Informe anual</h1>
+      <h4 align ="center">Informe anual</h4>
+      <h5 align="center">Número total de casos registrados:
+      <label for="total" id="total"><?php echo $total->monto ?></label></h5>
       <div class="form-row align-items-center">
           <div class="col-lg-12 mt-5">
+
             <div class="pull-right">
                <select class="form-control" name="year" id="year">
                   <?php foreach($años as $año):?>
@@ -69,6 +72,7 @@ $( document ).ready(function() {
   datagraficoEstados(base_url,año);
   datagraficoEdades(base_url,año);
   datagraficoTipodeMedio(base_url,año);
+    total(base_url,año);
 //  graficoEstados();
   $("#year").on("change",function(){
     yearselect = $(this).val();
@@ -76,8 +80,24 @@ $( document ).ready(function() {
     datagraficoEstados(base_url,yearselect);
     datagraficoEdades(base_url,yearselect);
     datagraficoTipodeMedio(base_url,yearselect);
+    total(base_url,yearselect);
+
   });
 });
+
+function total(base_url,year) {
+  $.ajax({
+    url:"<?php echo base_url() ?>app/graficas/getTotal",
+    type: "POST",
+    data: { year : year},
+    dataType: 'json',
+    success:function(data){
+       valor = Number(data.monto);
+        $('#total').text(valor);
+    }
+  });
+}
+
   function grafico(meses,montos,año) {
       Highcharts.chart('graficaPorAño', {
         chart: {
