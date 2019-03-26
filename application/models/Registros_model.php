@@ -180,8 +180,11 @@ class Registros_model extends CI_Model {
 	}
 
 	public function getYears(){
-		$this->db->select("YEAR(fechaIncidente) as year");
-		$this->db->from("datosincidente");
+		$this->db->select("YEAR(u.fechaIncidente) as year");
+		$this->db->from("datosincidente u");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->where("p.estatus",1);
+		$this->db->where("u.estatus",1);
 		$this->db->group_by("year");
 		$this->db->order_by("year", "desc");
 		$resultados = $this->db->get();
@@ -189,9 +192,11 @@ class Registros_model extends CI_Model {
 	}
 
 	public function getCantidad($year){
-		$this->db->select("MONTH(fechaIncidente) as mes , SUM(estatus) as montos");
-		$this->db->from("datosincidente");
-	$this->db->where("YEAR(fechaIncidente)",$year);
+		$this->db->select("MONTH(u.fechaIncidente) as mes , SUM(u.estatus) as montos");
+		$this->db->from("datosincidente u");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->where("p.estatus",1);
+		$this->db->where("YEAR(fechaIncidente)",$year);
 		$this->db->group_by("mes");
 		$this->db->order_by("mes", "asc");
 		$resultados = $this->db->get();
