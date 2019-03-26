@@ -16,7 +16,7 @@ class Graficas extends CI_Controller {
 	public function index(){
 		$data  = array(
 		'años' => $this->Registros_model->getYears(),
-		'informe' => $this->Informe_model->getMotivoAgresion('2019'),
+		'informe' => $this->Informe_model->getTipoDeInvestigacion('2019'),
 	//	'informe' => $this->Informe_model->getCantidadEstados('2019'),
 			//'permisos' => $this->permisos,
 		);
@@ -66,6 +66,11 @@ class Graficas extends CI_Controller {
 	public function getDataMotivoAgresion(){
 		$year = $this->input->post("year");
 		$resultados = $this->Informe_model->getMotivoAgresion($year);
+		echo json_encode($resultados);
+	}
+	public function getDataTipoDeInvestigacio(){
+		$year = $this->input->post("year");
+		$resultados = $this->Informe_model->getTipoDeInvestigacion($year);
 		echo json_encode($resultados);
 	}
 }

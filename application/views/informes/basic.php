@@ -23,7 +23,7 @@
                 <div class="card-header">
                   <a class="card-link" data-toggle="collapse" href="#accordion3">General</a>
                 </div>
-                <div id="accordion3" class="collapse" data-parent="#accordion2">
+                <div id="accordion3" class="collapse show" data-parent="#accordion2">
                   <div class="card-body">
                     <div class="col-lg-12  mt-5">
                       <h4 class="header-title" align="center">Número de casos registrados</h4>
@@ -38,7 +38,7 @@
                 <div class="card-header">
                   <a class="collapsed card-link" data-toggle="collapse" href="#accordion4">Información de la Periodista</a>
                 </div>
-                <div id="accordion4" class="collapse" data-parent="#accordion2">
+                <div id="accordion4" class="collapse show" data-parent="#accordion2">
                   <div class="card-body">
                     <!--Grafica edades-->
                     <div class="form-row align-items-center ">
@@ -93,7 +93,7 @@
                 <div class="card-header">
                   <a class="collapsed card-link" data-toggle="collapse" href="#accordion5">Ubicación de la agresión</a>
                 </div>
-                <div id="accordion5" class="collapse" data-parent="#accordion2">
+                <div id="accordion5" class="collapse show" data-parent="#accordion2">
                   <div class="card-body">
                     <div class="form-row align-items-center">
                       <div class="col-lg-1 mt-5"></div>
@@ -125,6 +125,14 @@
                       </div>
                       <div class="col-lg-1 mt-5"></div>
                     </div>
+                    <div class="form-row align-items-center">
+                      <div class="col-lg-1 mt-5"></div>
+                      <div class="col-lg-10  mt-5">
+                        <h4 class="header-title" align="center">Número de casos registrados por tipo de investigación</h4>
+                        <div id="graficaPorTipoDeInvestigacio" style="height: 500px; width: 100%"></div>
+                      </div>
+                      <div class="col-lg-1 mt-5"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -148,6 +156,7 @@
     datagraficoCargoMedio(base_url,año);
     datagraficoFuente(base_url,año);
     datagraficoMotivoAgresion(base_url,año);
+    datagraficoTipoDeInvestigacio(base_url,año);
     total(base_url,año);
     $("#year").on("change",function(){
       yearselect = $(this).val();
@@ -158,6 +167,7 @@
       datagraficoCargoMedio(base_url,yearselect);
       datagraficoFuente(base_url,yearselect);
       datagraficoMotivoAgresion(base_url,yearselect);
+      datagraficoTipoDeInvestigacio(base_url,yearselect);
       total(base_url,yearselect);
     });
   });
@@ -676,6 +686,77 @@
           montos.push(valor);
         });
         graficaPorMotivoAgresion(estado,montos,year);
+      }
+    });
+  }
+  //Tipo De Investigacio
+  function graficaPorTipoDeInvestigacio(estado,montos,year) {
+    Highcharts.chart('graficaPorTipoDeInvestigacio', {
+      chart: {
+        type: 'column',
+          spacingBottom: 15,
+          spacingTop: 10,
+          spacingLeft: 1,
+          spacingRight: 1,
+          options3d: {
+            enabled: false,
+            alpha: 10,
+            beta: 25,
+            depth: 70
+          }
+
+      },
+      title: {
+        text: 'Casos de violencia contra mujeres periodistas'
+      },
+      subtitle: {
+            text: 'Fuente: Elaboración propia con datos del Programa de Libertad de Expresión y Género de CIMAC'
+        },
+      credits: {
+        text: '@sarkoceles',
+        href: 'https://www.facebook.com/Sarkoceles/',
+          enabled: true
+      },
+      xAxis: {
+        categories: estado,
+      },
+      yAxis: {
+            title: {
+                text: ' Número de casos registrados por motivo de la agresión'
+            }
+        },
+      series: [{
+          data: montos,
+          name: year,
+          color: '#00ff01'
+      }],
+      exporting: {
+        enabled: true,
+        buttons: {
+          contextButton: {
+            menuItems: ['downloadJPEG','downloadSVG','downloadPNG','separator','downloadXLS'],
+          }
+        },
+        width: 1800,
+        filename: 'registrados_estados_del_año:_'+year,
+      }
+    });
+  }
+  function datagraficoTipoDeInvestigacio(base_url,year) {
+    $.ajax({
+      url:"<?php echo base_url() ?>app/graficas/getDataTipoDeInvestigacio",
+      type: "POST",
+      data: { year : year},
+      dataType: 'json',
+      success:function(data){
+        var estado = new Array();
+        var montos = new Array();
+        $.each(data, function( index, value ) {
+          estado.push(value.estado );
+          valor = Number(value.montos);
+          montos.push(valor);
+        });
+        graficaPorTipoDeInvestigacio(estado,montos,year);
       }
     });
   }

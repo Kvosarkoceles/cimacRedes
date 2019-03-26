@@ -201,15 +201,6 @@ class Registros_model extends CI_Model {
 		$this->db->order_by("mes", "asc");
 		$resultados = $this->db->get();
 		return $resultados->result();
-
-	//	$this->db->select("MONTH(fechaIncidente) as mes, SUM(estatus) as montos");
-		//$this->db->from("datosincidente");
-		//$this->db->where("fechaIncidente" >="2019-01-01");
-		//$this->db->where("fechaIncidente" <="2019-01-01");
-		//$this->db->group_by("mes");
-		//$this->db->order_by("mes");
-		//$resultados = $this->db->get();
-		//return $resultados->result();
 	}
 
 
