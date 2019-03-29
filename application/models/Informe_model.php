@@ -106,4 +106,74 @@ class Informe_model extends CI_Model {
 		$resultado = $this->db->get();
 		return $resultado->result();
 	}
+
+
+
+	public function getTipoDeViolenciaPsicologica($year){
+		$this->db->select("u.estatus");
+		$this->db->from("datosincidente u");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->where("YEAR(fechaIncidente)",$year);
+		$this->db->where("p.estatus",1);
+		$this->db->where("u.estatus",1);
+		$this->db->where("u.tipoDeViolenciaPsicologica",1);
+		$resultado = $this->db->get();
+		return $resultado->num_rows();
+	}
+	public function getTipoDeViolenciaFisica($year){
+		$this->db->select("u.estatus");
+		$this->db->from("datosincidente u");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->where("YEAR(fechaIncidente)",$year);
+		$this->db->where("p.estatus",1);
+		$this->db->where("u.estatus",1);
+		$this->db->where("u.tipodeViolenciaFisica",1);
+		$resultado = $this->db->get();
+		return $resultado->num_rows();
+	}
+	public function getTipoDeViolenciaPatrimonial($year){
+		$this->db->select("u.estatus");
+		$this->db->from("datosincidente u");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->where("YEAR(fechaIncidente)",$year);
+		$this->db->where("p.estatus",1);
+		$this->db->where("u.estatus",1);
+		$this->db->where("u.tipoDeViolenciaPatrimonial",1);
+		$resultado = $this->db->get();
+		return $resultado->num_rows();
+	}
+	public function getTipoDeViolenciaEconomica($year){
+		$this->db->select("u.estatus");
+		$this->db->from("datosincidente u");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->where("YEAR(fechaIncidente)",$year);
+		$this->db->where("p.estatus",1);
+		$this->db->where("u.estatus",1);
+		$this->db->where("u.tipodeViolenciaEconomica",1);
+		$resultado = $this->db->get();
+		return $resultado->num_rows();
+	}
+	public function getTipoDeViolenciaSexual($year){
+		$this->db->select("u.estatus");
+		$this->db->from("datosincidente u");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->where("YEAR(fechaIncidente)",$year);
+		$this->db->where("p.estatus",1);
+		$this->db->where("u.estatus",1);
+		$this->db->where("u.tipoDeViolenciaSexual",1);
+		$resultado = $this->db->get();
+		return $resultado->num_rows();
+	}
+	public function getTipoDeViolenciaCibernetica($year){
+		$this->db->select("u.estatus");
+		$this->db->from("datosincidente u");
+		$this->db->join("datosperiodistas p","u.id_datospersonales = p.id");
+		$this->db->where("YEAR(fechaIncidente)",$year);
+		$this->db->where("p.estatus",1);
+		$this->db->where("u.estatus",1);
+		$this->db->where("u.tipoDeViolenciaCibernetica",1);
+		$resultado = $this->db->get();
+		return $resultado->num_rows();
+	}
+
 }

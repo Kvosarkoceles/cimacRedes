@@ -110,7 +110,7 @@
                 </div>
               </div>
               <!-- Ubicación de la agresión end  -->
-              <!-- Ubicación de la agresión start  -->
+              <!-- Agresión start  -->
               <div class="card">
                 <div class="card-header">
                   <a class="collapsed card-link" data-toggle="collapse" href="#accordion6">Agresión</a>
@@ -136,7 +136,28 @@
                   </div>
                 </div>
               </div>
-              <!-- Ubicación de la agresión end  -->
+              <!-- Agresión end  -->
+              <!-- Tipo de violencia start  -->
+              <div class="card">
+                <div class="card-header">
+                  <a class="collapsed card-link" data-toggle="collapse" href="#accordion7">Tipo de violencia</a>
+                </div>
+                <div id="accordion7" class="collapse show" data-parent="#accordion2">
+                  <div class="card-body">
+                    <!--Grafica tipo de violencia start-->
+                    <div class="form-row align-items-center">
+                      <div class="col-lg-1 mt-5"></div>
+                      <div class="col-lg-10  mt-5">
+                        <h4 class="header-title" align="center">Número de casos registrados por tipo de violencia</h4>
+                        <div id="graficaPorTipoDeViolencia" style="height: 500px; width: 100%"></div>
+                      </div>
+                      <div class="col-lg-1 mt-5"></div>
+                    </div>
+                    <!--Grafica tipo de violencia end-->
+                  </div>
+                </div>
+              </div>
+              <!-- Tipo de violencia end  -->
             </div>
           </div>
         </div>
@@ -157,6 +178,7 @@
     datagraficoFuente(base_url,año);
     datagraficoMotivoAgresion(base_url,año);
     datagraficoTipoDeInvestigacio(base_url,año);
+    datagraficoTipoDeViolencia(base_url,año);
     total(base_url,año);
     $("#year").on("change",function(){
       yearselect = $(this).val();
@@ -168,6 +190,7 @@
       datagraficoFuente(base_url,yearselect);
       datagraficoMotivoAgresion(base_url,yearselect);
       datagraficoTipoDeInvestigacio(base_url,yearselect);
+      datagraficoTipoDeViolencia(base_url,yearselect);
       total(base_url,yearselect);
     });
   });
@@ -444,7 +467,7 @@
       series: [{
           data: montos,
           name: year,
-          color: '#00ff01'
+          color: '#9005c1'
       }],
       exporting: {
         enabled: true,
@@ -491,7 +514,6 @@
             beta: 25,
             depth: 70
           }
-
       },
       title: {
         text: 'Casos de violencia contra mujeres periodistas'
@@ -515,7 +537,7 @@
       series: [{
           data: montos,
           name: year,
-          color: '#00ff01'
+          color: '#09bbc1'
       }],
       exporting: {
         enabled: true,
@@ -528,6 +550,7 @@
         filename: 'registrados_estados_del_año:_'+year,
       }
     });
+
   }
   function datagraficoCargoMedio(base_url,year) {
     $.ajax({
@@ -657,7 +680,7 @@
       series: [{
           data: montos,
           name: year,
-          color: '#00ff01'
+          color: '#9eff00'
       }],
       exporting: {
         enabled: true,
@@ -728,7 +751,7 @@
       series: [{
           data: montos,
           name: year,
-          color: '#00ff01'
+          color: '#8505f6'
       }],
       exporting: {
         enabled: true,
@@ -760,6 +783,79 @@
       }
     });
   }
+
+  function datagraficoTipoDeViolencia(base_url,year) {
+    $.ajax({
+      url:"<?php echo base_url() ?>app/graficas/getDataTipoDeViolencia",
+      type: "POST",
+      data: { year : year},
+      dataType: 'json',
+      success:function(data){
+        var catidad = new Array();
+
+        $.each(data, function( index, value ) {
+
+          catidad.push(value);
+          //valor = Number(value.montos);
+          //montos.push(valor);
+        });
+       graficaPorTipoDeViolencia(catidad,year);
+      }
+    });
+  }
+  function graficaPorTipoDeViolencia(catidad,year) {
+    Highcharts.chart('graficaPorTipoDeViolencia', {
+      chart: {
+        type: 'column',
+          spacingBottom: 15,
+          spacingTop: 10,
+          spacingLeft: 1,
+          spacingRight: 1,
+          options3d: {
+            enabled: false,
+            alpha: 10,
+            beta: 25,
+            depth: 70
+          }
+
+      },
+      title: {
+        text: 'Casos de violencia contra mujeres periodistas'
+      },
+      subtitle: {
+            text: 'Fuente: Elaboración propia con datos del Programa de Libertad de Expresión y Género de CIMAC'
+        },
+      credits: {
+        text: '@sarkoceles',
+        href: 'https://www.facebook.com/Sarkoceles/',
+          enabled: true
+      },
+      xAxis: {
+        categories: ['Violencia psicologica','Violencia fisica','Violencia Patrimonial','Violencia Economica','Violencia Sexual','Violencia en línea'],
+      },
+      yAxis: {
+            title: {
+                text: ' Número de casos registrados por motivo de la agresión'
+            }
+        },
+      series: [{
+          data: catidad,
+          name: year,
+          color: '#d0ff6e'
+      }],
+      exporting: {
+        enabled: true,
+        buttons: {
+          contextButton: {
+            menuItems: ['downloadJPEG','downloadSVG','downloadPNG','separator','downloadXLS'],
+          }
+        },
+        width: 1800,
+        filename: 'registrados_estados_del_año:_'+year,
+      }
+    });
+  }
+
 </script>
 
 
@@ -777,7 +873,7 @@
 
 
 
-<div class="col-12 mt-5">
+<!--<div class="col-12 mt-5">
   <div class="card">
     <div class="card-body">
       <div class="single-table">
@@ -790,17 +886,41 @@
               </tr>
             </thead>
             <tbody>
-              <?php if(!empty($informe)):?>
-                <?php foreach($informe as $info):?>
-                  <tr>
-                    <td scope="col"><?php echo $info->estado?></td>
-                    <td scope="col"><?php echo $info->montos?></td>
-                  <?php endforeach;?>
-                <?php endif;?>
+              <tr>
+                <td scope="col">Violencia psicologica</td>
+                <td scope="col"><?php echo $psicologica?></td>
+              </tr>
+
+              <tr>
+                <td scope="col">Violencia fisica</td>
+                <td scope="col"><?php echo $fisica?></td>
+              </tr>
+
+
+              <tr>
+                <td scope="col">Violencia Patrimonial</td>
+                <td scope="col"><?php echo $patrimonial?></td>
+              </tr>
+              <tr>
+                <td scope="col">Violencia Economica</td>
+                <td scope="col"><?php echo $economica?></td>
+              </tr>
+              <tr>
+                <td scope="col">Violencia Sexual</td>
+                <td scope="col"><?php echo $sexual?></td>
+              </tr>
+              <tr>
+                <td scope="col">Violencia en línea</td>
+                <td scope="col"><?php echo $cibernetica?></td>
+              </tr>
+
+
+
               </tbody>
             </table>
+
         </div>
       </div>
     </div>
   </div>
-</div>
+</div>-->>
